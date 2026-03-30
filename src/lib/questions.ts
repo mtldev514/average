@@ -160,33 +160,54 @@ const REGISTRY: Record<string, QuestionConfig> = {
   },
 };
 
-// ─── Builder ───────────────────────────────────────────
+// ─── Section (one model = one section) ─────────────────
 
-const PALETTE = [
-  "#b5785a", "#b8963e", "#5b7fa5",
-  "#6b8f71", "#8b6fa5", "#a56b7f", "#c75b3f",
+export interface Section {
+  id: string;
+  number: string;
+  label: string;
+  subtitle: string;
+  color: string;
+  stats: Stat[];
+}
+
+const SECTION_COLORS = [
+  "#b5785a", "#6b8f71", "#5b7fa5",
+  "#b8963e", "#8b6fa5", "#a56b7f", "#c75b3f",
 ];
 
-export function buildStats(model: ModelData): Stat[] {
-  return model.questions.map((q, i) => {
-    const config = REGISTRY[q.id];
-    if (!config) {
-      throw new Error(`Unknown question ID: "${q.id}". Add it to the registry in questions.ts.`);
-    }
+// ─── Builder ───────────────────────────────────────────
+
+export function buildSections(models: ModelData[]): Section[] {
+  return models.map((model, mi) => {
+    const color = SECTION_COLORS[mi % SECTION_COLORS.length];
     return {
-      id: q.id,
-      label: q.question,
-      unit: q.unit,
-      why: q.why,
-      placeholder: config.placeholder,
-      min: config.min,
-      max: config.max,
-      calc: config.calc,
-      verdicts: config.verdicts,
-      sliderExp: config.sliderExp,
-      step: config.step,
-      presets: config.presets,
-      color: PALETTE[i % PALETTE.length],
+      id: model.model.toLowerCase().replace(/\s+/g, "-"),
+      number: String(mi + 1).padStart(2, "0"),
+      label: model.model.toUpperCase(),
+      subtitle: model.philosophy,
+      color,
+      stats: model.questions.map((q) => {
+        const config = REGISTRY[q.id];
+        if (!config) {
+          throw new Error(`Unknown question ID: "${q.id}". Add it to the registry in questions.ts.`);
+        }
+        return {
+          id: `${mi}-${q.id}`,
+          label: q.question,
+          unit: q.unit,
+          why: q.why,
+          placeholder: config.placeholder,
+          min: config.min,
+          max: config.max,
+          calc: config.calc,
+          verdicts: config.verdicts,
+          sliderExp: config.sliderExp,
+          step: config.step,
+          presets: config.presets,
+          color,
+        };
+      }),
     };
   });
 }
