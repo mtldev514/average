@@ -31,15 +31,21 @@ const BASE_SECTIONS = buildSections(allModels as ModelData[]);
 // ─── Analysis helper ───────────────────────────────────
 
 interface VerdictLevels { high: string; above: string; average: string; below: string; low: string }
-interface ModelAnalysis { model: string; section: VerdictLevels; composite: VerdictLevels }
-const ANALYSIS = analysisData as ModelAnalysis[];
+interface ModelAnalysis { section: VerdictLevels; composite: VerdictLevels; questions: Record<string, VerdictLevels> }
+const ANALYSIS = analysisData as Record<string, ModelAnalysis>;
 
-function pickVerdict(levels: VerdictLevels, score: number): string {
+function pickVerdict(levels: VerdictLevels | undefined, score: number): string {
+  if (!levels) return "";
   if (score >= 85) return levels.high;
   if (score >= 60) return levels.above;
   if (score >= 40) return levels.average;
   if (score >= 15) return levels.below;
   return levels.low;
+}
+
+// Map section IDs to analysis keys
+function sectionToKey(sectionId: string): string {
+  return sectionId.replace(/[()]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/-+$/, "");
 }
 
 // ─── Components ────────────────────────────────────────
@@ -294,8 +300,8 @@ function SectionHeader({ section }: { section: Section }) {
   );
 }
 
-function SectionSummaryBar({ section, avg, modelIndex }: { section: Section; avg: number; modelIndex: number }) {
-  const analysis = ANALYSIS[modelIndex];
+function SectionSummaryBar({ section, avg }: { section: Section; avg: number }) {
+  const analysis = ANALYSIS[sectionToKey(section.id)];
   return (
     <div style={{ marginBottom: 20 }}>
       <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 4 }}>
@@ -309,7 +315,7 @@ function SectionSummaryBar({ section, avg, modelIndex }: { section: Section; avg
           {Math.round(avg)}
         </span>
       </div>
-      {analysis && (
+      {analysis?.section && (
         <div style={{ marginLeft: 172, fontSize: 12, color: "#999", fontFamily: "'IBM Plex Mono', monospace", fontStyle: "italic", lineHeight: 1.5 }}>
           {pickVerdict(analysis.section, avg)}
         </div>
@@ -326,12 +332,12 @@ function Summary({ sections, results, locale }: { sections: Section[]; results: 
   const ui = getUI(locale);
   const avg = filled.reduce((s, [, v]) => s + v * 100, 0) / filled.length;
 
-  const sectionAverages = sections.map((section, mi) => {
+  const sectionAverages = sections.map((section) => {
     const sectionFilled = filled.filter(([id]) => section.stats.some((s) => s.id === id));
     if (sectionFilled.length === 0) return null;
     const sAvg = sectionFilled.reduce((s, [, v]) => s + v * 100, 0) / sectionFilled.length;
-    return { section, avg: sAvg, modelIndex: mi };
-  }).filter((x): x is { section: Section; avg: number; modelIndex: number } => x !== null);
+    return { section, avg: sAvg };
+  }).filter((x): x is { section: Section; avg: number } => x !== null);
 
   return (
     <div style={{ marginTop: 72, paddingTop: 48, borderTop: "2px solid #1a1a1a", animation: "fadeIn 0.6s ease" }}>
@@ -350,20 +356,21 @@ function Summary({ sections, results, locale }: { sections: Section[]; results: 
 
       {sectionAverages.length > 1 && (
         <div style={{ maxWidth: 520, margin: "0 auto 40px" }}>
-          {sectionAverages.map(({ section, avg: sAvg, modelIndex }) => (
-            <SectionSummaryBar key={section.id} section={section} avg={sAvg} modelIndex={modelIndex} />
+          {sectionAverages.map(({ section, avg: sAvg }) => (
+            <SectionSummaryBar key={section.id} section={section} avg={sAvg} />
           ))}
         </div>
       )}
 
       {/* Composite analysis — each model's take */}
       <div style={{ maxWidth: 520, margin: "0 auto 40px" }}>
-        {ANALYSIS.map((a, i) => {
+        {Object.entries(ANALYSIS).map(([key, a]) => {
           const insight = pickVerdict(a.composite, avg);
+          if (!insight) return null;
           return (
-            <div key={a.model} style={{ marginBottom: 16, padding: "12px 16px", background: "#faf9f7", borderRadius: 10, border: "1px solid #e8e4de" }}>
+            <div key={key} style={{ marginBottom: 16, padding: "12px 16px", background: "#faf9f7", borderRadius: 10, border: "1px solid #e8e4de" }}>
               <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, color: "#bbb", letterSpacing: 1 }}>
-                {a.model.toUpperCase()}
+                {key.toUpperCase().replace(/-/g, " ")}
               </span>
               <p style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 13, color: "#666", fontStyle: "italic", lineHeight: 1.5, marginTop: 4 }}>
                 {insight}
