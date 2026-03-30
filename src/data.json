@@ -1,122 +1,66 @@
 [
     {
-"model": "GPT-5.4 Thinking",
-"philosophy": "Un humain moyen ne se définit pas seulement par son corps ou son revenu, mais par la forme statistique de sa vie: qui dépend de lui, combien de temps il perd, combien de liens il peut activer, à quelle distance il vit de ses origines. Un humain exceptionnel n’est pas juste “au-dessus” des autres; il ou elle se trouve souvent dans les queues extrêmes des charges invisibles, de la mobilité, de l’autonomie ou de la capacité relationnelle.",
-"questions": [
-{
-"question": "En une semaine typique, combien d’heures consacrez-vous au care non payé (enfants, proches, cuisine, ménage) ?",
-"unit": "heures/semaine",
-"why": "C’est l’un des plus gros blocs de travail humain invisibles, et pourtant presque aucun portrait standard d’une personne ne le mesure. L’ILO estime qu’environ 16,4 milliards d’heures de care non payé sont effectuées chaque jour dans 64 pays couvrant les deux tiers de la population mondiale en âge de travailler, et ONU Femmes montre que cet axe reste massivement structuré par le genre. ",
-"estimated_median": 18,
-"extreme_high": "Révèle une vie fortement orientée vers la responsabilité, l’interdépendance, et souvent une autonomie amputée par la charge de soin.",
-"extreme_low": "Révèle soit une grande liberté de temps, soit une vie peu enchâssée dans des obligations familiales ou domestiques."
-},
-{
-"question": "En une journée typique, combien de minutes passez-vous en déplacement entre des lieux ?",
-"unit": "minutes/jour",
-"why": "Le déplacement est un impôt caché sur la vie: il compresse le temps libre, le sommeil, la sociabilité et la santé. Une analyse récente couvrant 43 pays conclut que le temps quotidien de transport humain se regroupe étonnamment autour de 78 minutes par jour. ",
-"estimated_median": 75,
-"extreme_high": "Révèle une vie fragmentée par la distance, l’étalement urbain, la contrainte économique ou la multi-appartenance.",
-"extreme_low": "Révèle soit une forte proximité entre les sphères de vie, soit une immobilité subie."
-},
-{
-"question": "À quelle distance de votre lieu de naissance vivez-vous aujourd’hui ?",
-"unit": "kilomètres",
-"why": "Cette mesure capte le rapport concret à l’origine: enracinement, exil, mobilité choisie, ou déplacement contraint. Les migrants internationaux ne représentent qu’environ 3,7% de la population mondiale, et même parmi eux les trajets courts sont les plus fréquents; la distance vécue reste donc une variable très discriminante. ",
-"estimated_median": 30,
-"extreme_high": "Révèle souvent rupture biographique, ambition de mobilité, migration, déracinement ou cosmopolitisme vécu.",
-"extreme_low": "Révèle souvent une forte continuité locale, des attaches denses, ou des contraintes limitant la mobilité."
-},
-{
-"question": "Depuis vos 18 ans, combien de fois avez-vous changé de logement principal ?",
-"unit": "changements",
-"why": "Deux personnes du même âge peuvent avoir vécu des vies radicalement différentes en matière de stabilité sans que cela apparaisse dans leurs revenus ou diplômes. Le nombre de déménagements condense précarité, expérimentation, rupture relationnelle, coût du logement, et adaptabilité.",
-"estimated_median": 3,
-"extreme_high": "Révèle instabilité, exploration intense, précarité, ou forte capacité à se reconfigurer.",
-"extreme_low": "Révèle continuité, ancrage, inertie, ou accès durable à un environnement stable."
-},
-{
-"question": "Combien d’adultes pourriez-vous appeler à 3 h du matin pour une aide réelle ?",
-"unit": "personnes",
-"why": "C’est une mesure bien plus opérationnelle que “êtes-vous seul·e ?”. Gallup a montré qu’environ un adulte sur cinq dans le monde n’a ni amis ni famille sur qui compter en cas de besoin, tandis que dans l’OCDE environ 90% déclarent avoir au moins une personne sur qui compter — ce qui rend la taille du noyau d’aide très révélatrice. ",
-"estimated_median": 2,
-"extreme_high": "Révèle un capital social dense, une confiance réciproque forte, et souvent une vie relationnelle investie sur le long terme.",
-"extreme_low": "Révèle fragilité structurelle, isolement, rupture de liens, ou dépendance à des institutions plutôt qu’à des personnes."
-},
-{
-"question": "Au cours du dernier mois, combien d’heures avez-vous données bénévolement à des personnes hors de votre foyer ?",
-"unit": "heures/mois",
-"why": "Cette question mesure le surplus civique: ce que quelqu’un rend au monde au-delà du travail payé et du cercle domestique. L’ILO estime que 34,5% des personnes en âge de travailler font du bénévolat chaque mois, soit environ 2,1 milliards de personnes; cela suggère qu’un score nul reste probablement très central dans la distribution globale. ",
-"estimated_median": 0,
-"extreme_high": "Révèle une forte orientation collective, religieuse, politique ou communautaire, et une capacité à transformer du temps privé en bien commun.",
-"extreme_low": "Révèle soit un manque de temps disponible, soit une vie plus fermée sur la survie, le foyer ou le travail."
-},
-{
-"question": "En une semaine typique, combien d’heures d’éveil passez-vous seul·e ?",
-"unit": "heures/semaine",
-"why": "Le temps seul est une réalité structurelle, pas seulement un ressenti psychologique. Les enquêtes de temps d’usage montrent déjà des volumes quotidiens élevés de temps passé seul dans plusieurs pays, ce qui en fait une bonne variable de base pour situer une vie entre densité relationnelle, autonomie et isolement. ",
-"estimated_median": 24,
-"extreme_high": "Révèle autonomie, solitude choisie, travail solitaire, vieillissement isolé, ou fragilité des liens quotidiens.",
-"extreme_low": "Révèle vie collective dense, promiscuité, charge familiale, ou insertion continue dans des groupes."
-},
-{
-"question": "Dans combien de langues pouvez-vous tenir une conversation de 30 minutes sur un sujet concret ?",
-"unit": "langues",
-"why": "On mesure souvent l’éducation, rarement la pluralité réelle des mondes sociaux accessibles. Le nombre de langues réellement utilisables révèle exposition culturelle, migration, plasticité cognitive et capacité de circulation entre milieux.",
-"estimated_median": 1,
-"extreme_high": "Révèle une forte capacité de traduction entre univers sociaux, une mémoire culturelle composite, ou une biographie transnationale.",
-"extreme_low": "Révèle une vie plus localisée linguistiquement, ce qui n’est pas un défaut mais signale un horizon social plus concentré."
-},
-{
-"question": "Combien de personnes dépendent de votre revenu pour leurs besoins essentiels chaque mois ?",
-"unit": "personnes",
-"why": "Le revenu seul dit peu; le nombre de vies qu’il soutient change tout. Cette mesure capture le poids adulte réel: parentalité, aide familiale, remises d’argent, soutien intergénérationnel, ou au contraire autonomie sans charge.",
-"estimated_median": 1,
-"extreme_high": "Révèle un rôle de pilier économique, avec une pression morale et matérielle souvent invisible dans les indicateurs classiques.",
-"extreme_low": "Révèle soit une grande indépendance matérielle, soit une position économique trop faible pour soutenir d’autres personnes."
-},
-{
-"question": "Dans un mois typique, combien d’heures passez-vous à remplir des formulaires, attendre des réponses, ou résoudre des problèmes administratifs ?",
-"unit": "heures/mois",
-"why": "C’est une dimension presque absente des portraits humains, alors qu’elle mesure directement le frottement entre une personne et les systèmes qui gouvernent sa vie. La Banque mondiale note explicitement que les gouvernements sous-estiment souvent le temps que les citoyens passent à gérer ces services. ",
-"estimated_median": 3,
-"extreme_high": "Révèle précarité, maladie, migration, statut complexe, faible qualité institutionnelle, ou vie extrêmement administrée.",
-"extreme_low": "Révèle simplicité bureaucratique, privilège de délégation, bonne intégration institutionnelle, ou faible exposition aux systèmes."
-}
-]
+  "model": "GPT-5.4 Thinking",
+  "philosophy": "Un humain moyen ne se définit pas seulement par son corps ou son revenu, mais par la forme statistique de sa vie: qui dépend de lui, combien de temps il perd, combien de liens il peut activer, à quelle distance il vit de ses origines. Un humain exceptionnel n’est pas juste “au-dessus” des autres; il ou elle se trouve souvent dans les queues extrêmes des charges invisibles, de la mobilité, de l’autonomie ou de la capacité relationnelle.",
+  "questions": [
+    {
+      "question": "En une semaine typique, combien d’heures consacrez-vous au care non payé (enfants, proches, cuisine, ménage) ?",
+      "unit": "heures/semaine",
+      "why": "C’est l’un des plus gros blocs de travail humain invisibles, et pourtant presque aucun portrait standard d’une personne ne le mesure. Cette variable capture la charge réelle de soutien, d’entretien du vivant et d’interdépendance, bien au-delà des indicateurs classiques.",
+      "estimated_median": 18,
+      "extreme_high": "Révèle une vie fortement orientée vers la responsabilité, l’interdépendance, et souvent une autonomie amputée par la charge de soin.",
+      "extreme_low": "Révèle soit une grande liberté de temps, soit une vie peu enchâssée dans des obligations familiales ou domestiques."
+    },
+    {
+      "question": "Combien de personnes dépendent de votre revenu pour leurs besoins essentiels chaque mois ?",
+      "unit": "personnes",
+      "why": "Le revenu seul dit peu; le nombre de vies qu’il soutient change tout. Cette mesure capture le poids adulte réel: parentalité, aide familiale, remises d’argent, soutien intergénérationnel, ou au contraire autonomie sans charge.",
+      "estimated_median": 1,
+      "extreme_high": "Révèle un rôle de pilier économique, avec une pression morale et matérielle souvent invisible dans les indicateurs classiques.",
+      "extreme_low": "Révèle soit une grande indépendance matérielle, soit une position économique trop faible pour soutenir d’autres personnes."
+    },
+    {
+      "question": "Combien d’adultes pourriez-vous appeler à 3 h du matin pour une aide réelle ?",
+      "unit": "personnes",
+      "why": "C’est une mesure opérationnelle du capital social réel. Elle ne demande pas si quelqu’un “se sent entouré”, mais combien de liens sont assez solides pour être activés dans une situation critique.",
+      "estimated_median": 2,
+      "extreme_high": "Révèle un capital social dense, une confiance réciproque forte, et souvent une vie relationnelle investie sur le long terme.",
+      "extreme_low": "Révèle fragilité structurelle, isolement, rupture de liens, ou dépendance à des institutions plutôt qu’à des personnes."
+    },
+    {
+      "question": "Dans un mois typique, combien d’heures passez-vous à remplir des formulaires, attendre des réponses, ou résoudre des problèmes administratifs ?",
+      "unit": "heures/mois",
+      "why": "Cette dimension mesure le frottement entre une personne et les systèmes qui gouvernent sa vie. Elle condense précarité, maladie, migration, complexité familiale, qualité institutionnelle et capacité de délégation — un coût humain presque jamais mesuré directement.",
+      "estimated_median": 3,
+      "extreme_high": "Révèle précarité, maladie, migration, statut complexe, faible qualité institutionnelle, ou vie extrêmement administrée.",
+      "extreme_low": "Révèle simplicité bureaucratique, privilège de délégation, bonne intégration institutionnelle, ou faible exposition aux systèmes."
+    },
+    {
+      "question": "À quelle distance de votre lieu de naissance vivez-vous aujourd’hui ?",
+      "unit": "kilomètres",
+      "why": "Cette mesure capte le rapport concret à l’origine: enracinement, exil, mobilité choisie, ou déplacement contraint. Elle dit quelque chose de profond sur la continuité biographique, les ruptures et l’ouverture géographique réelle d’une vie.",
+      "estimated_median": 30,
+      "extreme_high": "Révèle souvent rupture biographique, ambition de mobilité, migration, déracinement ou cosmopolitisme vécu.",
+      "extreme_low": "Révèle souvent une forte continuité locale, des attaches denses, ou des contraintes limitant la mobilité."
+    }
+  ]
 },
 {
   "model": "GPT-5.3",
   "philosophy": "Un humain moyen optimise implicitement pour la stabilité et la conformité aux contraintes locales, tandis qu’un humain exceptionnel accumule des écarts mesurables dans ses comportements répétés. Ce sont les distributions invisibles — attention, exposition, adaptation, et transformation — qui révèlent le plus profondément une trajectoire humaine.",
   "questions": [
     {
-      "question": "Combien d’heures par semaine passes-tu en conversation profonde (au moins 10 minutes continues sur un sujet personnel ou abstrait) ?",
-      "unit": "heures/semaine",
-      "why": "La profondeur relationnelle est rarement mesurée mais structure fortement cognition, empathie et identité. La plupart des données sociales capturent la quantité d’interactions, pas leur profondeur.",
-      "estimated_median": 2,
-      "extreme_high": "Capacité élevée d’introspection, liens sociaux denses, possible dépendance relationnelle ou surcharge émotionnelle.",
-      "extreme_low": "Isolement cognitif ou social, interactions principalement transactionnelles, faible élaboration interne."
-    },
-    {
       "question": "Combien de fois par an changes-tu significativement d’opinion sur un sujet important (politique, moral, personnel) ?",
       "unit": "changements/an",
-      "why": "Mesure directe de la plasticité cognitive réelle, au-delà des déclarations d’ouverture d’esprit.",
+      "why": "Parmi toutes les propositions :contentReference[oaicite:0]{index=0}, peu mesurent directement la plasticité cognitive réelle. C’est une variable dynamique (évolution) plutôt que statique (état), ce qui la rend plus discriminante sur le long terme.",
       "estimated_median": 1,
       "extreme_high": "Grande adaptabilité ou instabilité cognitive, exposition à des environnements variés.",
       "extreme_low": "Rigidité mentale ou forte cohérence interne, dépend du contexte."
     },
     {
-      "question": "Combien de jours consécutifs peux-tu passer sans interaction sociale significative avant de ressentir un inconfort ?",
-      "unit": "jours",
-      "why": "Indicateur comportemental du besoin social réel, plus fiable que les auto-descriptions introverti/extraverti.",
-      "estimated_median": 3,
-      "extreme_high": "Autonomie sociale élevée, possible détachement ou isolement chronique.",
-      "extreme_low": "Dépendance sociale forte, besoin élevé de validation ou de stimulation externe."
-    },
-    {
       "question": "Combien de minutes par jour passes-tu à ne rien consommer (ni écran, ni lecture, ni musique), juste à penser ou observer ?",
       "unit": "minutes/jour",
-      "why": "Mesure de l’espace mental non structuré, fortement corrélé à la créativité et à la consolidation cognitive.",
+      "why": "Plusieurs modèles approchent le silence ou la solitude :contentReference[oaicite:1]{index=1}, mais peu isolent précisément l’absence de stimulation. Cette variable capte directement l’espace mental brut, rarement mesuré.",
       "estimated_median": 10,
       "extreme_high": "Forte capacité contemplative, créativité ou rumination accrue.",
       "extreme_low": "Surcharge informationnelle, dépendance à la stimulation externe."
@@ -124,39 +68,15 @@
     {
       "question": "Combien de projets personnels (non obligatoires) as-tu menés à terme dans les 12 derniers mois ?",
       "unit": "projets/an",
-      "why": "Capture l’agentivité réelle et la capacité à transformer intention en action sans contrainte externe.",
+      "why": "Contrairement aux métriques de travail ou de production proposées ailleurs :contentReference[oaicite:2]{index=2}, celle-ci isole l’agentivité sans contrainte. Elle mesure la transformation réelle d’intention en action autonome.",
       "estimated_median": 1,
       "extreme_high": "Forte discipline, autonomie, possible sur-optimisation ou dispersion.",
       "extreme_low": "Inertie comportementale, manque de structure ou de motivation intrinsèque."
     },
     {
-      "question": "Combien de fois par mois es-tu exposé à un environnement humain totalement nouveau (culture, groupe social, contexte) ?",
-      "unit": "expositions/mois",
-      "why": "Mesure l’ouverture réelle au monde et la diversité des inputs sociaux, souvent sous-estimée.",
-      "estimated_median": 1,
-      "extreme_high": "Exploration active, haute adaptabilité sociale, possible instabilité contextuelle.",
-      "extreme_low": "Environnement fermé, homogénéité sociale, faible renouvellement des perspectives."
-    },
-    {
-      "question": "Combien de décisions importantes prends-tu seul·e par an (impact durable > 6 mois) ?",
-      "unit": "décisions/an",
-      "why": "Indicateur de responsabilité individuelle et d’autonomie décisionnelle.",
-      "estimated_median": 3,
-      "extreme_high": "Autonomie forte, leadership, ou isolement décisionnel.",
-      "extreme_low": "Dépendance aux structures ou aux autres pour orienter sa vie."
-    },
-    {
-      "question": "Combien d’heures par semaine consacres-tu à améliorer une compétence sans contrainte externe directe ?",
-      "unit": "heures/semaine",
-      "why": "Mesure la motivation intrinsèque et la croissance auto-dirigée, distincte du travail ou des obligations.",
-      "estimated_median": 2,
-      "extreme_high": "Orientation forte vers la maîtrise, potentiel d’expertise.",
-      "extreme_low": "Stagnation ou priorisation du confort immédiat."
-    },
-    {
       "question": "Combien de fois par semaine fais-tu quelque chose que tu trouves difficile volontairement ?",
       "unit": "actions/semaine",
-      "why": "Expose la relation à l’inconfort, un moteur clé d’évolution rarement quantifié.",
+      "why": "Plusieurs modèles mesurent la friction ou l’effort :contentReference[oaicite:3]{index=3}, mais rarement sous forme d’exposition volontaire répétée. Cela capture la relation active à l’inconfort, un moteur central d’évolution.",
       "estimated_median": 2,
       "extreme_high": "Tolérance élevée à l’effort et au stress, croissance rapide.",
       "extreme_low": "Évitement, maintien du statu quo."
@@ -164,7 +84,7 @@
     {
       "question": "Combien de fois par an revisites-tu intentionnellement un souvenir ou événement passé pour le reconsidérer ?",
       "unit": "révisions/an",
-      "why": "Mesure la capacité de réécriture narrative de soi, essentielle pour intégrer les expériences.",
+      "why": "Alors que d’autres modèles mesurent les attaches ou la mémoire :contentReference[oaicite:4]{index=4}, cette question mesure la capacité active de relecture de soi. Elle capte la transformation interne plutôt que l’état hérité.",
       "estimated_median": 4,
       "extreme_high": "Travail introspectif intense, possible rumination.",
       "extreme_low": "Faible intégration du passé, identité plus rigide ou évitement."
