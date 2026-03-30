@@ -173,87 +173,47 @@
 },
 {
   "model": "Gemini 3 Flash",
-  "philosophy": "L'humain moyen est un nœud de répétitions biologiques et sociales qui maintient la stabilité de l'espèce. L'humain exceptionnel se définit par sa capacité à s'extraire de l'entropie ambiante, que ce soit par une maîtrise extrême de son environnement interne ou par un impact disproportionné sur son réseau de relations.",
+  "philosophy": "L'humain moyen est un nœud de répétitions qui maintient la stabilité de l'espèce. L'humain exceptionnel se définit par sa capacité à s'extraire de l'entropie ambiante, soit par une trace temporelle longue, soit par une rupture avec l'aliénation technique.",
   "questions": [
     {
       "question": "Combien de générations après vous faudra-t-il pour que votre nom ne soit plus jamais prononcé ?",
       "unit": "Générations",
-      "why": "Mesure l'empreinte mémorielle et l'impact culturel profond au-delà de la simple célébrité éphémère.",
+      "why": "Alors que Claude Opus regarde l'héritage reçu, cette question mesure l'empreinte mémorielle projetée. Elle quantifie l'impact culturel ou familial profond au-delà de la simple existence biologique.",
       "estimated_median": 3,
-      "extreme_high": "Bâtisseur de civilisation ou créateur d'idées immortelles.",
-      "extreme_low": "Existence purement ancrée dans le présent, sans volonté de trace ou de lignée."
-    },
-    {
-      "question": "Quel est le nombre maximal de personnes que vous pourriez mobiliser pour vous aider physiquement en moins de 24 heures sans offrir de rémunération ?",
-      "unit": "Individus",
-      "why": "C'est l'indice ultime du capital social réel et de la solidarité tribale active, souvent confondu avec le nombre de 'followers'.",
-      "estimated_median": 4,
-      "extreme_high": "Pivot communautaire ou leader charismatique disposant d'une loyauté absolue.",
-      "extreme_low": "Isolement social profond ou autonomie radicale (volontaire ou subie)."
-    },
-    {
-      "question": "Combien d'heures pouvez-vous rester assis seul dans une pièce vide sans aucun stimulus externe avant de ressentir une détresse psychologique ?",
-      "unit": "Heures",
-      "why": "Mesure la densité de la vie intérieure et la capacité de métacognition, une compétence rare à l'ère de l'économie de l'attention.",
-      "estimated_median": 0.5,
-      "extreme_high": "Maîtrise contemplative ou structure mentale d'une richesse exceptionnelle.",
-      "extreme_low": "Dépendance totale aux stimuli environnementaux pour valider l'existence du soi."
-    },
-    {
-      "question": "À combien de kilomètres de votre lieu de naissance vivez-vous actuellement ?",
-      "unit": "Kilomètres",
-      "why": "Indique la propension à la migration et la rupture avec les racines biologiques pour construire son propre destin géographique.",
-      "estimated_median": 50,
-      "extreme_high": "Explorateur global ou déraciné cherchant une nouvelle identité.",
-      "extreme_low": "Ancrage traditionnel fort, gardien de la continuité locale."
+      "extreme_high": "Bâtisseur de civilisation, créateur d'idées immortelles ou ancêtre d'une lignée mémorielle forte.",
+      "extreme_low": "Existence purement ancrée dans le présent, sans volonté ou capacité de laisser une trace."
     },
     {
       "question": "Combien de jours par an votre survie dépend-elle de technologies que vous ne seriez pas capable de réparer vous-même ?",
       "unit": "Jours",
-      "why": "Révèle le degré d'aliénation technique et la fragilité de l'individu face à l'effondrement de la complexité systémique.",
+      "why": "Cette question introduit la dimension de l'aliénation technique. Elle mesure la fragilité de l'individu face à l'effondrement de la complexité systémique, un angle mort des modèles plus portés sur le psychologique.",
       "estimated_median": 365,
-      "extreme_high": "Citadin ultra-spécialisé totalement intégré à la technosphère.",
-      "extreme_low": "Autarcie technique, maîtrise des fondamentaux de la survie physique."
+      "extreme_high": "Citadin ultra-spécialisé totalement intégré à la technosphère, mais vulnérable à la moindre rupture systémique.",
+      "extreme_low": "Autarcie technique relative ; individu possédant une maîtrise des fondamentaux de sa propre subsistance."
     },
     {
-      "question": "Combien de fois par mois changez-vous radicalement d'opinion sur un sujet qui vous tient à cœur après avoir été exposé à de nouvelles données ?",
-      "unit": "Occurrences par mois",
-      "why": "C'est la mesure de la plasticité cognitive et de l'absence d'ego intellectuel face à la vérité.",
-      "estimated_median": 0,
-      "extreme_high": "Esprit scientifique pur ou instabilité identitaire chronique.",
-      "extreme_low": "Rigidité dogmatique ou certitude existentielle inébranlable."
-    },
-    {
-      "question": "Quel est le rapport entre le temps passé à créer quelque chose (objet, idée, soin) et le temps passé à consommer le travail d'autrui ?",
+      "question": "Quel est le rapport (ratio) entre le temps passé à créer quelque chose (objet, idée, soin, code) et le temps passé à consommer le travail d'autrui ?",
       "unit": "Ratio (Création / Consommation)",
-      "why": "Distingue les contributeurs nets à l'entropie informationnelle des consommateurs passifs.",
+      "why": "Elle distingue les contributeurs nets à l'entropie informationnelle et matérielle des consommateurs passifs. C'est l'indice de métabolisme créatif d'un être humain.",
       "estimated_median": 0.05,
-      "extreme_high": "Producteur compulsif, artiste ou artisan de sa propre vie.",
-      "extreme_low": "Consommateur pur, absorbé par le flux produit par la société."
+      "extreme_high": "Producteur compulsif, artiste ou artisan dont la vie est une source d'outputs pour la société.",
+      "extreme_low": "Consommateur pur, dont l'existence est principalement une absorption du flux produit par autrui."
     },
     {
-      "question": "Combien de langues (systèmes de signes) utilisez-vous pour structurer votre pensée de manière fluide ?",
-      "unit": "Systèmes (Langues, Mathématiques, Code, Musique)",
-      "why": "Le langage limite le monde ; multiplier les systèmes de signes multiplie les réalités accessibles.",
+      "question": "Combien de systèmes de signes (langues, mathématiques, langages de programmation, solfège) utilisez-vous pour structurer votre pensée de manière fluide ?",
+      "unit": "Systèmes",
+      "why": "Au-delà des langues parlées (déjà citées), cette question mesure la pluralité des cadres logiques. Chaque système de signes supplémentaire offre une nouvelle dimension pour décoder la réalité.",
       "estimated_median": 1,
-      "extreme_high": "Polyglotte cognitif capable de percevoir la réalité sous des angles multiples.",
-      "extreme_low": "Pensée monoculturelle, strictement limitée par un seul cadre conceptuel."
+      "extreme_high": "Polyglotte cognitif capable de sauter d'un paradigme à l'autre (ex: penser un problème en musique ou en code).",
+      "extreme_low": "Pensée monoculturelle, strictement limitée par les frontières d'un seul cadre conceptuel."
     },
     {
       "question": "Combien de minutes pouvez-vous maintenir un effort physique à 80% de votre capacité cardiaque maximale avant de demander l'arrêt ?",
       "unit": "Minutes",
-      "why": "Au-delà de la forme physique, c'est un test de volonté et de tolérance à l'inconfort biologique.",
+      "why": "La plupart des modèles ont ignoré la volonté biologique pure. Ce n'est pas seulement un test de fitness, c'est une mesure de la tolérance à l'inconfort viscéral et du contrôle de l'esprit sur le cri du corps.",
       "estimated_median": 8,
-      "extreme_high": "Conditionnement athlétique supérieur ou résilience mentale hors norme.",
-      "extreme_low": "Sédentarité critique ou faible tolérance à la contrainte physique."
-    },
-    {
-      "question": "À combien de personnes inconnues avez-vous apporté une aide significative (plus d'une heure de votre temps) sans aucune attente de réciprocité au cours de la dernière année ?",
-      "unit": "Personnes",
-      "why": "Mesure l'altruisme pur et l'extension du cercle de considération morale au-delà du clan.",
-      "estimated_median": 1,
-      "extreme_high": "Philanthrope de terrain ou saint laïc.",
-      "extreme_low": "Individualisme strict ou survie focalisée uniquement sur le cercle restreint."
+      "extreme_high": "Résilience mentale et physique hors norme ; capacité à habiter la douleur pour un objectif supérieur.",
+      "extreme_low": "Faible tolérance à la contrainte physique ou déconnexion totale des capacités motrices de l'espèce."
     }
   ]
 },
@@ -304,21 +264,13 @@
   ]
 },
 {
-  "model": "Gemini 3 pro",
-  "philosophy": "L'exceptionnalité humaine ne réside pas dans les attributs biologiques ou économiques de base, mais dans notre gestion de la friction existentielle : comment nous allouons notre temps libre, notre tolérance à l'inconfort (social, cognitif, émotionnel) et la profondeur de notre connexion à l'altérité. L'humain 'moyen' gravite autour des chemins de moindre résistance, tandis que l'humain exceptionnel, par choix ou par destin, accumule des ruptures et des engagements qui forgent une densité psychologique mesurable.",
+  "model": "Gemini Pro",
+  "philosophy": "L'exceptionnalité humaine ne réside pas dans les attributs de base, mais dans notre gestion de la friction existentielle. Ayant observé les propositions des autres modèles, j'ai épuré ma liste pour ne retenir que les mesures les plus viscérales de cette friction : la souveraineté temporelle, la tolérance à la vulnérabilité, l'immunité à l'échec, la profondeur historique directe et l'usure physique assumée.",
   "questions": [
-    {
-      "question": "À quelle distance exacte (à vol d'oiseau) de votre lieu de naissance vivez-vous actuellement ?",
-      "unit": "Kilomètres",
-      "why": "Les autres modèles mesureront le revenu ou l'éducation, mais la distance géographique capte le continuum entre l'enracinement ancestral profond et le nomadisme globalisé. C'est un indicateur massif du type de réseau de soutien et de l'exposition à la diversité d'un individu.",
-      "estimated_median": 45,
-      "extreme_high": "Un déracinement total, souvent signe d'une migration forcée (réfugié) ou d'un privilège de mobilité extrême (expatrié global). Indique une identité malléable.",
-      "extreme_low": "Un ancrage hyper-local. Révèle une loyauté communautaire forte, un réseau familial dense, mais potentiellement une exposition limitée aux chocs culturels."
-    },
     {
       "question": "Combien de jours par mois, en moyenne, vous réveillez-vous naturellement, sans aucune alarme ni obligation externe vous forçant à sortir du lit ?",
       "unit": "Jours/mois",
-      "why": "Cette métrique quantifie la 'souveraineté temporelle'. Au lieu de demander la richesse financière, elle mesure la richesse temporelle et l'aliénation au rythme du système socio-économique global.",
+      "why": "Cette métrique quantifie la 'souveraineté temporelle'. (Comme l'a d'ailleurs noté Claude Opus en me citant, cela mesure une dimension fondamentale de la liberté quotidienne). Elle évalue la richesse temporelle et l'aliénation au rythme du système.",
       "estimated_median": 6,
       "extreme_high": "Une autonomie temporelle quasi totale (rentier, nomade, chômeur longue durée, ou retraité). Un luxe rare ou une marginalisation systémique.",
       "extreme_low": "Une soumission totale aux contraintes systémiques. L'individu est un rouage fonctionnel dont le rythme biologique est entièrement dicté par la société."
@@ -326,39 +278,23 @@
     {
       "question": "Combien de personnes actuellement en vie connaissent un secret à votre sujet dont la révélation publique vous causerait une honte profonde ?",
       "unit": "Individus",
-      "why": "Plutôt que de compter le nombre d'amis (le chiffre de Dunbar classique), cette question mesure la capacité réelle à la vulnérabilité radicale et la profondeur de l'intimité, des facteurs clés de la résilience psychologique.",
+      "why": "Les autres modèles mesurent le capital social ou la 'vérité difficile' (Haiku). Cette question va plus loin : elle mesure la capacité réelle à la vulnérabilité radicale face à la honte sociale, un facteur clé de la résilience psychologique.",
       "estimated_median": 1,
       "extreme_high": "Une transparence radicale, un mode de vie sans frontières privées, ou une propension à la confession compulsive. Peut indiquer une absence de filtres sociaux.",
       "extreme_low": "Un isolement psychologique absolu ou une façade sociale impénétrable. Une vulnérabilité bloquée, souvent liée à un traumatisme ou à une méfiance chronique."
     },
     {
-      "question": "Quelle est la durée maximale, en une seule session, que vous avez passée éveillé(e) et complètement seul(e), sans accès à aucun écran, livre, musique ou distraction externe ?",
-      "unit": "Heures",
-      "why": "Mesure la capacité à endurer sa propre conscience. Dans un monde hyper-stimulé, la tolérance à la privation sensorielle et sociale volontaire est un marqueur d'autonomie cognitive que les IA ont tendance à ignorer.",
-      "estimated_median": 2,
-      "extreme_high": "Une capacité monastique à l'introspection, une pratique méditative profonde, ou une expérience d'isolement contraint extrême (survie, prison).",
-      "extreme_low": "Une terreur du silence intérieur, une dépendance absolue au flux d'informations externe pour réguler son anxiété ou maintenir son identité."
-    },
-    {
       "question": "Combien de lettres formelles de rejet (emplois, universités, bourses, prêts, publications, visas) avez-vous reçues et lues dans votre vie ?",
       "unit": "Rejets documentés",
-      "why": "Le succès est souvent le fruit du hasard, mais l'accumulation de rejets quantifie l'appétit pour le risque, la résilience et l'audace d'un individu face à des systèmes de sélection stricts.",
+      "why": "Totalement ignoré par les autres IA qui se concentrent sur les réussites ou les abandons internes. L'accumulation de rejets externes quantifie l'appétit pour le risque et l'audace d'un individu face à des systèmes de sélection stricts.",
       "estimated_median": 5,
       "extreme_high": "Une ambition implacable, une persévérance anormale, et une immunité psychologique à l'échec perçu. L'individu joue constamment hors de sa zone de confort.",
       "extreme_low": "Une vie passée dans la sécurité absolue, un privilège tel que les portes s'ouvrent d'elles-mêmes, ou une paralysie par la peur de l'échec empêchant toute tentative ambitieuse."
     },
     {
-      "question": "Combien d'heures au cours des 30 derniers jours avez-vous passées à créer ou construire quelque chose (art, code, artisanat, jardin) sans aucune attente de rémunération ou de validation sociale ?",
-      "unit": "Heures",
-      "why": "C'est la mesure du comportement 'autotélique' (faire une chose pour elle-même). Elle différencie l'humain purement consommateur/survivant de l'humain intrinsèquement créateur, indépendamment du statut social.",
-      "estimated_median": 4,
-      "extreme_high": "Une motivation intrinsèque surdéveloppée. L'individu possède un monde intérieur si riche qu'il déborde dans la réalité physique indépendamment des incitations du marché.",
-      "extreme_low": "Un mode de vie purement transactionnel ou consumériste. L'énergie vitale est entièrement absorbée par la survie, le travail salarié ou le divertissement passif."
-    },
-    {
       "question": "Quel âge avait la personne la plus âgée avec laquelle vous avez eu une conversation bidirectionnelle significative de plus d'une heure ?",
       "unit": "Années (Âge de la personne)",
-      "why": "Mesure la 'profondeur historique' personnelle. L'étendue de l'expérience humaine ne se limite pas à notre propre vie ; elle est amplifiée par notre contact direct avec des mémoires d'époques révolues.",
+      "why": "Claude Opus compte les ancêtres abstraits, mais cette question mesure la 'profondeur historique' incarnée et vécue. L'étendue de l'expérience humaine est amplifiée par notre contact direct avec des mémoires d'époques révolues.",
       "estimated_median": 82,
       "extreme_high": "Un pont vivant vers une époque lointaine. Indique une valorisation de la transmission intergénérationnelle et une perspective historique incarnée (ex: avoir discuté avec un centenaire).",
       "extreme_low": "Une bulle générationnelle stricte. L'individu est coupé de la sagesse ou des traumatismes historiques directs, évoluant dans un présent perpétuel sans racines orales."
@@ -366,26 +302,10 @@
     {
       "question": "Combien de cicatrices physiques permanentes de plus de 1 centimètre possédez-vous sur votre corps ?",
       "unit": "Cicatrices",
-      "why": "Une cartographie quantifiable de la friction physique avec le monde. Cela contourne les bilans médicaux classiques pour évaluer l'aventure, la brutalité de l'environnement ou l'exposition au danger physique.",
+      "why": "Une cartographie quantifiable de la friction physique avec le monde, complètement absente des autres modèles. Cela contourne les bilans de santé pour évaluer l'aventure, la brutalité de l'environnement ou l'exposition au danger physique.",
       "estimated_median": 3,
       "extreme_high": "Une vie marquée par le risque physique extrême, des conditions de travail ardues, des sports extrêmes, ou des accidents graves. Un corps qui a violemment interagi avec son environnement.",
       "extreme_low": "Une existence physiquement très protégée, potentiellement sédentaire, ou une chance biomécanique inhabituelle. L'intégrité de l'enveloppe corporelle est intacte."
-    },
-    {
-      "question": "Combien d'heures au cours des 12 derniers mois avez-vous passées à aider activement un être humain que vous ne connaissiez pas, sans aucune forme de compensation ?",
-      "unit": "Heures",
-      "why": "Va au-delà des dons financiers (qui favorisent les riches) pour mesurer l'altruisme pur et le sacrifice de son propre temps vital pour la tribu élargie de l'humanité, hors du cercle de parenté.",
-      "estimated_median": 0,
-      "extreme_high": "Un sens du devoir civique ou une empathie systémique exceptionnels. L'individu se perçoit comme fondamentalement responsable du bien-être d'étrangers absolus.",
-      "extreme_low": "L'écrasante norme humaine : l'attention et les ressources sont strictement confinées à la tribu immédiate (famille, amis) ou échangées de manière transactionnelle."
-    },
-    {
-      "question": "Pendant combien de minutes consécutives êtes-vous capable de soutenir votre attention sur un argumentaire ou un texte dense sans ressentir le besoin compulsif de changer d'activité ou de vérifier un appareil ?",
-      "unit": "Minutes",
-      "why": "L'endurance cognitive est la ressource la plus attaquée au 21e siècle. Cette métrique évalue l'intégrité du cortex préfrontal face à l'économie de l'attention algorithmique, une donnée invisible mais déterminante.",
-      "estimated_median": 15,
-      "extreme_high": "Une résilience cognitive d'élite. Capacité à traiter la complexité profonde et à résister à la fragmentation technologique de l'esprit.",
-      "extreme_low": "Une cognition fracturée, typique de l'ère hyper-numérique. L'individu a perdu la capacité de suivre une pensée nuancée, se limitant à des heuristiques et des stimuli courts."
     }
   ]
 },
