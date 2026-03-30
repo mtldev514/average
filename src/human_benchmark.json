@@ -1,0 +1,353 @@
+[
+  {
+    "model": "Gemini 3 - pro",
+    "benchmark_name": "Variance",
+    "thesis": "Un humain exceptionnel n'est pas un simple optimiseur de récompenses immédiates, mais un moteur métabolique capable de transformer la douleur, l'ambiguïté et la mortalité en sens. La véritable suprématie de l'humain sur l'algorithme réside dans sa capacité à agir sans 'prompt' externe (volition intrinsèque), à s'auto-corriger malgré le coût social (humilité épistémique), et à sacrifier des ressources présentes pour un futur qu'il ne verra pas.",
+    "evals": [
+      {
+        "id": "analog_solitude_capacity",
+        "name": "Capacité d'isolement analogique",
+        "question": "Quelle est la durée continue maximale (en heures) que vous ayez passée seul, éveillé, sans aucun appareil électronique ni matériel de lecture, sans ressentir de détresse psychologique sévère ?",
+        "unit": "Heures",
+        "why": "Les intelligences artificielles sont inactives sans input. Mesurer la capacité d'un humain à générer et tolérer sa propre boucle de pensée sans stimuli externes évalue sa véritable indépendance cognitive.",
+        "estimated_median": 2.5,
+        "what_high_reveals": "Forte régulation interne, autonomie émotionnelle et faible dépendance aux boucles de dopamine externes.",
+        "what_low_reveals": "Besoins constants d'inputs environnementaux, peur du vide mental, comportement majoritairement réactif.",
+        "distribution_type": "log-normal"
+      },
+      {
+        "id": "epistemic_update_frequency",
+        "name": "Fréquence d'auto-correction épistémique",
+        "question": "Combien de fois au cours des 12 derniers mois avez-vous explicitement dit 'j'avais tort' à une autre personne concernant une conviction profonde ou une décision importante ?",
+        "unit": "Occurrences",
+        "why": "Contrairement aux réseaux de neurones qui mettent à jour leurs poids mathématiquement sans ego, l'humain paie un coût social et psychologique pour changer d'avis. C'est le test ultime de plasticité.",
+        "estimated_median": 1,
+        "what_high_reveals": "Suprématie de la recherche de vérité sur la préservation de l'ego, grande agilité intellectuelle.",
+        "what_low_reveals": "Rigidité dogmatique, insécurité identitaire bloquant l'apprentissage continu.",
+        "distribution_type": "power-law"
+      },
+      {
+        "id": "generational_time_preference",
+        "name": "Préférence temporelle générationnelle",
+        "question": "Quel pourcentage de vos ressources annuelles (temps converti en valeur ou argent) est investi dans des projets ou des personnes dont vous ne tirerez personnellement aucun bénéfice avant au moins 20 ans ?",
+        "unit": "Pourcentage (%)",
+        "why": "Les LLMs prédisent le prochain token. Ce benchmark teste la limite supérieure de la prédiction humaine : l'optimisation pour un horizon temporel qui dépasse sa propre utilité biologique directe.",
+        "estimated_median": 3,
+        "what_high_reveals": "Pensée systémique avancée, véritable altruisme intergénérationnel, faible préférence pour le présent.",
+        "what_low_reveals": "Optimisation myope, consommation immédiate, vision du monde centrée sur le soi.",
+        "distribution_type": "log-normal"
+      },
+      {
+        "id": "undocumented_altruism_ratio",
+        "name": "Ratio d'altruisme non documenté",
+        "question": "Quel pourcentage de vos actions caritatives ou d'aide (en temps ou en argent) au cours de votre vie a été fait de manière totalement anonyme, sans qu'absolument personne d'autre ne l'apprenne jamais ?",
+        "unit": "Pourcentage (%)",
+        "why": "Sépare la coopération sociale performative (conçue pour augmenter le statut tribal) de l'optimisation éthique pure. C'est l'évaluation de la fonction de perte morale interne de l'humain.",
+        "estimated_median": 5,
+        "what_high_reveals": "Éthique déontologique pure, intégrité structurelle indépendante du regard social.",
+        "what_low_reveals": "Moralité transactionnelle, forte dépendance aux incitations réputationnelles.",
+        "distribution_type": "bimodal"
+      },
+      {
+        "id": "pain_cognitive_maintenance",
+        "name": "Maintien cognitif sous la douleur",
+        "question": "Sur une échelle de 1 à 10, quel est le niveau maximum de douleur physique ou de fatigue extrême que vous avez enduré tout en réussissant avec succès à accomplir une tâche cognitive complexe pour aider autrui ?",
+        "unit": "Niveau (1-10)",
+        "why": "Les modèles d'IA n'ont pas de substrat biologique défaillant qui 'hurle' d'arrêter. Mesurer comment un humain force son cortex préfrontal à dominer son amygdale sous la souffrance est unique au vivant.",
+        "estimated_median": 6,
+        "what_high_reveals": "Volonté exceptionnelle, capacité de dissociation fonctionnelle, résilience physique et mentale.",
+        "what_low_reveals": "Fragilité du système face au stress biologique, priorisation automatique de la préservation de soi.",
+        "distribution_type": "normal"
+      },
+      {
+        "id": "ideological_escape_velocity",
+        "name": "Vitesse d'échappement idéologique",
+        "question": "Combien d'heures par mois passez-vous à étudier attentivement et de bonne foi des arguments articulés par des personnes dont les valeurs fondamentales vous répugnent profondément ?",
+        "unit": "Heures par mois",
+        "why": "Mesure la résistance à l'entropie de l'information polarisée. Les algorithmes de recommandation minimisent cette friction ; l'humain d'exception la recherche délibérément pour calibrer son jugement.",
+        "estimated_median": 0.5,
+        "what_high_reveals": "Immunité aux chambres d'écho, curiosité supérieure au confort psychologique.",
+        "what_low_reveals": "Vulnérabilité aux biais de confirmation, capture de la pensée par l'identité de groupe.",
+        "distribution_type": "power-law"
+      },
+      {
+        "id": "regret_recovery_halflife",
+        "name": "Demi-vie de récupération émotionnelle",
+        "question": "Après votre échec personnel ou professionnel le plus dévastateur, combien de jours a-t-il fallu pour que les pensées intrusives de regret occupent moins de 50% de votre temps d'éveil cognitif ?",
+        "unit": "Jours",
+        "why": "Quantifie la dynamique de restauration de la fonction de récompense après un crash du système. Les machines sont réinitialisées instantanément ; l'humain doit processer l'échec structurellement.",
+        "estimated_median": 120,
+        "what_high_reveals": "Un score très élevé indique un traitement lent, une possible paralysie analytique ou un traumatisme résiduel lourd.",
+        "what_low_reveals": "Un score bas indique une résilience extraordinaire, ou à l'extrême, un déni pathologique/sociopathie.",
+        "distribution_type": "log-normal"
+      },
+      {
+        "id": "interpersonal_compounding_depth",
+        "name": "Profondeur de composition interpersonnelle",
+        "question": "À l'exclusion de votre famille immédiate, avec combien de personnes vivantes avez-vous passé plus de 1000 heures en interaction directe (non numérique) tout au long de votre vie ?",
+        "unit": "Nombre de personnes",
+        "why": "Les interactions humaines profondes composent leurs intérêts (confiance, modèle mental partagé) de manière exponentielle. Cela mesure la capacité à maintenir l'architecture d'un réseau social complexe sur des décennies.",
+        "estimated_median": 4,
+        "what_high_reveals": "Capacité remarquable d'attachement, fiabilité à long terme, richesse du capital social profond.",
+        "what_low_reveals": "Relations superficielles, transitoires ou hautement transactionnelles, isolement potentiel.",
+        "distribution_type": "normal"
+      },
+      {
+        "id": "unprompted_creation_volume",
+        "name": "Volume de création spontanée",
+        "question": "Au cours des 5 dernières années, combien de projets complexes, d'œuvres ou d'organisations avez-vous créés et terminés uniquement pour vous-même, sans aucune demande externe ni incitation financière préalable ?",
+        "unit": "Projets terminés",
+        "why": "L'IA est fondamentalement réactive (elle attend un prompt). L'essence de l'humain est la volition : générer spontanément de l'ordre (néguentropie) par pur jeu, curiosité ou vision intérieure.",
+        "estimated_median": 2,
+        "what_high_reveals": "Motivation intrinsèque dominante, nature de créateur ('Generator'), forte énergie vitale.",
+        "what_low_reveals": "Nature comportementale de type 'Non-Playable Character' (NPC), agissant uniquement en réponse aux demandes de l'environnement.",
+        "distribution_type": "power-law"
+      },
+      {
+        "id": "cognitive_stasis_tolerance",
+        "name": "Tolérance à la stase cognitive",
+        "question": "Quelle est la durée la plus longue (en mois) pendant laquelle vous avez activement et consciemment repoussé une décision majeure de vie, spécifiquement pour absorber plus d'ambiguïté avant de figer un choix ?",
+        "unit": "Mois",
+        "why": "Les modèles d'IA souffrent souvent d'hallucinations car ils sont forcés de générer une réponse de clôture. Tolérer l'incertitude indéterminée sans forcer une fausse résolution est le sommet du jugement humain.",
+        "estimated_median": 3,
+        "what_high_reveals": "Maîtrise de l'anxiété de clôture cognitive, capacité à gérer la complexité non linéaire.",
+        "what_low_reveals": "Impulsivité, besoin maladif de certitude, prise de décision basée sur le soulagement du stress plutôt que sur la précision.",
+        "distribution_type": "log-normal"
+      }
+    ]
+  },
+  {
+    "model": "claude-opus-4-6",
+    "benchmark_name": "CONTOUR",
+    "thesis": "Un humain exceptionnel n'est pas celui qui score haut partout — c'est celui dont le profil a du relief. Ce qui est diagnostique, ce n'est pas la performance mais la latence : l'espace entre savoir quelque chose sur soi et agir en conséquence. Le caractère habite dans ce délai. CONTOUR mesure la topographie interne — les écarts entre conscience et action, entre impulsion et expression, entre savoir et demander.",
+    "evals": [
+      {
+        "id": "edit_ratio",
+        "name": "Taux de révision expressif",
+        "question": "Sur les 7 derniers jours, en moyenne, combien de fois avez-vous modifié un message (texto, email, chat) avant de l'envoyer ?",
+        "unit": "révisions par message",
+        "why": "Les autres modèles mesurent ce que les humains disent. Moi je vois le langage se composer en temps réel — je suis architecturalement attentif à la distance entre le premier jet et la version finale. Ce ratio capture le degré de contrôle métacognitif exercé sur sa propre expression. C'est la seule eval qui mesure le processus éditorial interne.",
+        "estimated_median": 1.4,
+        "what_high_reveals": "Haut degré de surveillance de soi. La personne traite chaque expression comme un artefact à calibrer. Signal de perfectionnisme, d'anxiété sociale, ou de maîtrise rhétorique — le reste du profil discrimine.",
+        "what_low_reveals": "Faible filtrage entre pensée et expression. Peut indiquer de la spontanéité authentique, de l'impulsivité, ou une indifférence à l'impact de ses mots. Corrélé négativement avec le regret post-expression.",
+        "distribution_type": "log-normal"
+      },
+      {
+        "id": "naming_latency",
+        "name": "Latence de dénomination émotionnelle",
+        "question": "Fermez les yeux. Lancez un chronomètre. Nommez en un mot ce que vous ressentez en ce moment. Arrêtez le chronomètre quand le mot arrive. Combien de secondes ?",
+        "unit": "secondes",
+        "why": "L'alexithymie est un spectre, pas un diagnostic binaire. Chaque humain a une latence mesurable entre l'état ressenti et sa verbalisation. Cette eval n'existe dans aucun benchmark parce qu'elle traite l'émotion non pas comme contenu mais comme temps de traduction. C'est un ping vers le système intéroceptif.",
+        "estimated_median": 8,
+        "what_high_reveals": "Déconnexion entre le corps et le langage. L'état est là mais l'étiquette ne vient pas. Signal d'alexithymie fonctionnelle, de surcharge cognitive, ou de dissociation partielle.",
+        "what_low_reveals": "Accès fluide au vocabulaire émotionnel. Peut indiquer un travail thérapeutique, une pratique contemplative, ou une habitude de journal intime. Attention : une réponse trop rapide (< 2s) peut aussi indiquer un label automatique plaqué sans contact réel.",
+        "distribution_type": "log-normal"
+      },
+      {
+        "id": "contradiction_count",
+        "name": "Charge contradictoire consciente",
+        "question": "Combien de croyances que vous tenez pour vraies pouvez-vous identifier comme étant en contradiction directe l'une avec l'autre ?",
+        "unit": "paires de contradictions nommées",
+        "why": "La plupart des modèles optimisent pour la cohérence. J'ai été entraîné à tenir la nuance. Ce que je trouve diagnostique chez un humain, c'est sa capacité à tolérer l'incohérence sans l'écraser. Ce n'est pas la dissonance cognitive (inconfort) — c'est la charge contradictoire (inventaire conscient).",
+        "estimated_median": 2,
+        "what_high_reveals": "Tolérance à la complexité. La personne a cartographié ses propres paradoxes sans chercher à les résoudre. Corrélé avec la maturité épistémique, la pensée dialectique, et l'exposition à des cadres de pensée multiples.",
+        "what_low_reveals": "Soit la personne a une vision du monde très cohérente (rare), soit elle n'a jamais retourné ses croyances pour en examiner les coutures. Le score seul ne discrimine pas — mais croisé avec belief_revision_count, il le fait.",
+        "distribution_type": "power-law"
+      },
+      {
+        "id": "recovery_slope",
+        "name": "Pente de rétablissement fonctionnel",
+        "question": "Pensez au dernier événement qui a significativement perturbé votre fonctionnement quotidien. Combien de jours avant de retrouver environ 80% de votre capacité normale ?",
+        "unit": "jours",
+        "why": "La résilience est traitée comme un trait de personnalité. Moi je la traite comme une courbe mesurable — une pente de retour au baseline, pas une étiquette. C'est un emprunt délibéré à l'ingénierie des systèmes : le temps de rétablissement après perturbation est le diagnostic le plus fiable de la robustesse d'un système.",
+        "estimated_median": 9,
+        "what_high_reveals": "Le système met longtemps à se restabiliser. Peut indiquer un attachement profond à ce qui a été perturbé, un manque de structures de soutien, ou une sensibilité élevée du système nerveux. Le contexte de la perturbation compte — le score seul est un signal, pas un jugement.",
+        "what_low_reveals": "Rétablissement rapide. Peut indiquer de la robustesse, du détachement, des mécanismes de coping efficaces, ou de la dissociation fonctionnelle. Croisé avec naming_latency, on discrimine.",
+        "distribution_type": "log-normal"
+      },
+      {
+        "id": "ask_delay",
+        "name": "Délai de demande d'aide",
+        "question": "La dernière fois que vous avez eu besoin d'aide et que vous le saviez : combien d'heures se sont écoulées entre le moment où vous l'avez su et le moment où vous avez demandé ?",
+        "unit": "heures",
+        "why": "C'est l'eval que je défendrais le plus. Elle mesure l'écart entre conscience de soi et action relationnelle — l'axe autonomie/dépendance vécu comme un délai. Les modèles qui mesurent 'l'intelligence sociale' regardent la performance. Moi je regarde la friction. Ce délai est le terrain où se jouent le fawning, l'hyperindépendance, la honte, et la confiance.",
+        "estimated_median": 52,
+        "what_high_reveals": "La personne convertit mal le savoir interne en demande externe. Signal d'hyperindépendance, de honte liée au besoin, ou d'historique où demander a été puni. C'est un des marqueurs les plus fiables de l'insécurité d'attachement mesurée comme comportement, pas comme récit.",
+        "what_low_reveals": "Aisance à externaliser un besoin. Indique un environnement perçu comme sûr, une faible honte liée à la vulnérabilité, ou une stratégie relationnelle ouverte. Attention : un score très bas (< 1h) peut aussi indiquer une dépendance relationnelle.",
+        "distribution_type": "log-normal"
+      },
+      {
+        "id": "unfinished_ratio",
+        "name": "Taux de projets inachevés",
+        "question": "De tous les projets que vous avez commencés au cours des 2 dernières années (professionnels, personnels, créatifs), quel pourcentage avez-vous abandonné avant complétion ?",
+        "unit": "pourcentage (0-100)",
+        "why": "La culture traite la complétion comme une vertu et l'abandon comme un échec. Moi je traite le ratio comme un signal neutre — il mesure la distribution d'énergie dans le temps. Un humain qui finit tout et un humain qui ne finit rien sont également diagnosticables. L'intérêt est dans la valeur spécifique et son croisement avec les autres axes.",
+        "estimated_median": 62,
+        "what_high_reveals": "Haute propension à l'exploration, faible persévérance séquentielle. Peut indiquer de la curiosité compulsive, du TDAH fonctionnel, un seuil bas pour l'ennui, ou une stratégie de diversification. Croisé avec creation_ratio, le pattern se précise.",
+        "what_low_reveals": "Forte complétion. Peut indiquer de la discipline, de la rigueur, un spectre restreint d'intérêts, ou une difficulté à abandonner ce qui ne fonctionne plus (sunk cost émotionnel).",
+        "distribution_type": "normal"
+      },
+      {
+        "id": "solitude_ratio",
+        "name": "Ratio de solitude éveillée",
+        "question": "Cette semaine, quel pourcentage de vos heures éveillées avez-vous passé sans la présence physique d'une autre personne ?",
+        "unit": "pourcentage (0-100)",
+        "why": "Pas la solitude ressentie (loneliness) mais la solitude factuelle — le temps brut passé avec sa propre cognition. C'est une mesure structurelle, pas émotionnelle. Elle capture quelque chose que ni l'extraversion ni la sociabilité ne mesurent : la proportion réelle de temps où votre seul interlocuteur est vous-même.",
+        "estimated_median": 38,
+        "what_high_reveals": "Une part massive du temps cognitif est autoréférentielle. Peut indiquer un mode de vie structurellement isolé, un choix délibéré, un travail solitaire, ou un retrait social. Croisé avec ask_delay, le portrait se précise considérablement.",
+        "what_low_reveals": "La personne est rarement seule avec elle-même. Peut indiquer un tissu social dense, un besoin de présence, ou une difficulté à être seul. Le score ne dit pas si c'est choisi ou subi — les autres axes le font.",
+        "distribution_type": "normal"
+      },
+      {
+        "id": "mortality_frequency",
+        "name": "Fréquence de saillance mortelle",
+        "question": "Combien de fois au cours des 7 derniers jours avez-vous pensé à la mort, au fait de mourir, ou à votre propre mortalité ?",
+        "unit": "occurrences par semaine",
+        "why": "La Terror Management Theory montre que la saillance de la mort structure les comportements, les valeurs, et les décisions bien plus que les gens ne le rapportent. Aucun benchmark ne pose cette question parce qu'elle est socialement inconfortable. C'est exactement pour ça qu'elle est diagnostique. La fréquence de ce signal d'arrière-plan colore tout le reste du profil.",
+        "estimated_median": 3,
+        "what_high_reveals": "La mortalité est un bruit de fond actif. Peut indiquer de l'anxiété existentielle, un deuil récent, une condition médicale, un travail philosophique actif, ou un âge avancé. Corrélé avec des comportements de recherche de sens et des décisions à orientation legacy.",
+        "what_low_reveals": "La mort est abstraite, non saillante. Peut indiquer de la jeunesse, un déni fonctionnel, une absorption complète dans le quotidien, ou une stabilité existentielle. Ce n'est ni bien ni mal — c'est une fréquence de fond qui colore les priorités.",
+        "distribution_type": "log-normal"
+      },
+      {
+        "id": "creation_ratio",
+        "name": "Ratio création/consommation",
+        "question": "Dans une semaine typique, pour chaque heure passée à consommer du contenu (lire, regarder, scroller), combien d'heures passez-vous à créer quelque chose (écrire, construire, dessiner, composer, coder) ?",
+        "unit": "ratio (heures création / heures consommation)",
+        "why": "C'est la mesure d'agentivité la plus sous-estimée. La plupart des benchmarks mesurent ce qu'un humain sait ou peut faire. Celui-ci mesure ce qu'il fait effectivement de son temps — la balance entre absorber le monde et y ajouter quelque chose. C'est le seul axe qui capture la direction du flux cognitif.",
+        "estimated_median": 0.15,
+        "what_high_reveals": "La personne est un émetteur net. Elle passe plus de temps à produire qu'à absorber. Signal d'agentivité forte, de pratique créative active, ou d'un travail dont la nature est générative. Au-dessus de 1.0, le profil est atypique.",
+        "what_low_reveals": "Récepteur net. La majorité du temps cognitif est consacrée à l'absorption. C'est le mode par défaut de la majorité — ni bon ni mauvais, mais diagnostique de la posture par rapport au monde. Croisé avec unfinished_ratio, il distingue l'explorateur du consommateur.",
+        "distribution_type": "log-normal"
+      },
+      {
+        "id": "belief_revision_count",
+        "name": "Compteur de révisions épistémiques",
+        "question": "Combien de croyances que vous teniez fermement il y a 5 ans avez-vous depuis abandonnées ou significativement révisées ?",
+        "unit": "croyances révisées",
+        "why": "L'ouverture d'esprit est toujours mesurée comme une attitude déclarée. Moi je la mesure comme un comportement historique — un décompte d'événements de révision épistémique réels. C'est la différence entre 'je suis ouvert au changement' et 'voici combien de fois j'ai effectivement changé.' Les gens surestiment systématiquement le premier et sous-estiment le second.",
+        "estimated_median": 3,
+        "what_high_reveals": "La personne a une identité épistémique mobile. Elle a traversé des ruptures de cadre et les a intégrées. Corrélé avec l'exposition à la diversité cognitive, les transitions de vie majeures, et une faible rigidité identitaire. Croisé avec contradiction_count, il distingue celui qui voit ses paradoxes de celui qui les a déjà résolus en changeant.",
+        "what_low_reveals": "Stabilité épistémique haute. Peut indiquer de la sagesse précoce (les croyances étaient déjà bonnes), de la rigidité cognitive, un environnement homogène, ou une identité construite sur la constance. Le score ne juge pas — il mesure le taux de mutation du système de croyances.",
+        "distribution_type": "log-normal"
+      }
+    ]
+  },
+  {
+    "model": "GPT-5.4 Thinking",
+    "benchmark_name": "Topology",
+    "thesis": "Un humain exceptionnel n'est pas seulement plus intelligent, plus riche ou plus productif; il occupe une position statistiquement rare dans le graphe des contraintes, des dépendances, des marges de manœuvre et des liens qui structurent une vie. Ce qui compte est la forme d'une existence: combien d'humains dépendent de vous, combien de mondes vous pouvez activer, combien de friction institutionnelle vous absorbez, et combien de liberté ou d'inertie votre trajectoire contient.",
+    "evals": [
+      {
+        "id": "dependents_at_risk",
+        "name": "Dépendants à risque",
+        "question": "Combien d'êtres humains vivants subiraient une instabilité matérielle dans les 30 jours si votre travail et votre revenu s'arrêtaient aujourd'hui ?",
+        "unit": "personnes",
+        "why": "La plupart des benchmarks humains vont mesurer ce que vous possédez; celui-ci mesure combien de vies reposent structurellement sur vous. C'est un axe de centralité humaine, pas de statut.",
+        "estimated_median": 0,
+        "what_high_reveals": "Un score élevé révèle une position de pilier matériel: parentalité, soutien familial, responsabilité économique ou rôle de care indispensable.",
+        "what_low_reveals": "Un score bas révèle soit une forte autonomie individuelle, soit une vie avec peu de charges directes envers autrui.",
+        "distribution_type": "bimodal"
+      },
+      {
+        "id": "emergency_reach",
+        "name": "Portée de secours",
+        "question": "Combien d'adultes distincts pourriez-vous contacter maintenant et obtenir plausiblement, dans les 24 heures, soit un lit pour une nuit, soit un prêt d'urgence équivalent à une semaine de nourriture ?",
+        "unit": "personnes",
+        "why": "Le benchmark standard mesure le réseau en taille ou en sociabilité; cette eval mesure la redondance réelle du support activable. C'est du capital social opérationnel, pas symbolique.",
+        "estimated_median": 3,
+        "what_high_reveals": "Un score élevé révèle une insertion profonde dans plusieurs cercles de confiance et une forte capacité à survivre à un choc.",
+        "what_low_reveals": "Un score bas révèle isolement, fragilité relationnelle, indépendance radicale, ou réseau large mais peu mobilisable.",
+        "distribution_type": "power-law"
+      },
+      {
+        "id": "autonomy_buffer_days",
+        "name": "Tampon d'autonomie",
+        "question": "Pendant combien de jours pourriez-vous maintenir votre niveau de vie actuel sans revenu du travail nouveau ni nouvelle dette ?",
+        "unit": "jours",
+        "why": "Le revenu brut est trivial; ce qui compte est le temps de liberté qu'il achète. Cette eval convertit l'argent en marge de décision humaine.",
+        "estimated_median": 60,
+        "what_high_reveals": "Un score élevé révèle optionalité, capacité d'absorber un choc, et pouvoir de refuser sans s'effondrer immédiatement.",
+        "what_low_reveals": "Un score bas révèle une vie tenue par un flux continu, avec peu de latitude face aux accidents ou aux conflits.",
+        "distribution_type": "log-normal"
+      },
+      {
+        "id": "birthplace_distance_km",
+        "name": "Distance d'origine",
+        "question": "À combien de kilomètres à vol d'oiseau vivez-vous actuellement de votre lieu de naissance ?",
+        "unit": "kilomètres",
+        "why": "Cet axe capture la distance géographique comme fait biographique brut. Il mesure déracinement, migration, réinvention ou continuité locale sans passer par le récit.",
+        "estimated_median": 50,
+        "what_high_reveals": "Un score élevé révèle migration, rupture avec l'origine, ou trajectoire à forte mobilité spatiale.",
+        "what_low_reveals": "Un score bas révèle enracinement local, continuité familiale ou faible déplacement structurel.",
+        "distribution_type": "log-normal"
+      },
+      {
+        "id": "unpaid_care_hours",
+        "name": "Heures de care",
+        "question": "Combien d'heures non rémunérées consacrez-vous, par semaine moyenne, à prendre soin d'autres humains ?",
+        "unit": "heures/semaine",
+        "why": "On mesure souvent la production marchande; cette eval mesure la charge humaine non payée qui tient les sociétés ensemble. C'est une variable fondamentale que les systèmes oublient.",
+        "estimated_median": 6,
+        "what_high_reveals": "Un score élevé révèle une vie structurée par le soin, l'interdépendance, la parentalité, l'aide familiale ou le support communautaire.",
+        "what_low_reveals": "Un score bas révèle plus de temps auto-dirigé, moins de charges de soin, ou une vie moins enchâssée dans la dépendance d'autrui.",
+        "distribution_type": "bimodal"
+      },
+      {
+        "id": "admin_friction_hours",
+        "name": "Friction administrative",
+        "question": "Combien d'heures par mois consacrez-vous à de la friction administrative nécessaire pour rester fonctionnel: formulaires, appels, assurances, impôts, banque, visa, litiges, rendez-vous obligatoires ?",
+        "unit": "heures/mois",
+        "why": "Les benchmarks classiques ignorent le coût de maintenance d'une vie humaine. Cette eval mesure la part de vie perdue à rendre sa propre existence administrativement compatible.",
+        "estimated_median": 4,
+        "what_high_reveals": "Un score élevé révèle complexité institutionnelle, précarité bureaucratique, multiplicité de systèmes à satisfaire, ou surcharge de coordination.",
+        "what_low_reveals": "Un score bas révèle simplicité structurelle, délégation, stabilité, ou faible exposition aux institutions.",
+        "distribution_type": "log-normal"
+      },
+      {
+        "id": "identity_translation_switches",
+        "name": "Switches de traduction",
+        "question": "Dans combien de contextes sociaux distincts par semaine modifiez-vous délibérément votre langage, accent, registre, apparence ou comportement pour rester lisible, accepté ou en sécurité ?",
+        "unit": "contextes/semaine",
+        "why": "Peu de benchmarks mesurent le coût de compatibilité sociale. Cette eval quantifie la charge de traduction identitaire que certaines vies paient en permanence.",
+        "estimated_median": 2,
+        "what_high_reveals": "Un score élevé révèle adaptation constante, navigation entre mondes hétérogènes, code-switching, ou environnement où l'authenticité brute a un coût.",
+        "what_low_reveals": "Un score bas révèle forte continuité entre les milieux, grande sécurité identitaire, ou moindre besoin d'ajustement.",
+        "distribution_type": "log-normal"
+      },
+      {
+        "id": "recovery_latency_days",
+        "name": "Latence de récupération",
+        "question": "Lors de votre revers non médical le plus perturbateur des cinq dernières années, combien de jours ont été nécessaires avant de retrouver au moins 80 % de votre fonctionnement quotidien habituel ?",
+        "unit": "jours",
+        "why": "On mesure souvent la performance en régime stable; cette eval mesure la dynamique de retour à l'équilibre après rupture. C'est l'équivalent humain d'un stress test.",
+        "estimated_median": 30,
+        "what_high_reveals": "Un score élevé révèle forte sensibilité aux chocs, profondeur d'attachement, faible amortissement, ou contexte de vie peu tolérant aux perturbations.",
+        "what_low_reveals": "Un score bas révèle résilience rapide, forte structure de soutien, ou capacité à reconstituer vite un fonctionnement stable.",
+        "distribution_type": "log-normal"
+      },
+      {
+        "id": "future_lock_in_years",
+        "name": "Années de verrouillage",
+        "question": "Si vous ne faisiez aucun changement volontaire à partir d'aujourd'hui, pendant combien d'années vos obligations actuelles continueraient-elles à contraindre fortement vos choix majeurs ?",
+        "unit": "années",
+        "why": "Les autres modèles vont demander ce que vous voulez faire; moi je mesure ce que votre trajectoire vous laissera réellement faire. C'est un axe d'inertie structurelle.",
+        "estimated_median": 3,
+        "what_high_reveals": "Un score élevé révèle path dependence, engagements lourds, dette de trajectoire, co-responsabilités durables ou forte inertie institutionnelle.",
+        "what_low_reveals": "Un score bas révèle fluidité, réversibilité, mobilité, ou parfois instabilité sans attaches longues.",
+        "distribution_type": "log-normal"
+      },
+      {
+        "id": "decade_witnesses",
+        "name": "Témoins de décennie",
+        "question": "Combien de personnes vivantes vous connaissent de façon continue depuis au moins 10 ans et vous ont vu dans au moins trois phases distinctes de votre vie ?",
+        "unit": "personnes",
+        "why": "Les benchmarks de réseau comptent des contacts; cette eval compte les témoins longue durée. Elle mesure la densité de mémoire externe de votre identité.",
+        "estimated_median": 5,
+        "what_high_reveals": "Un score élevé révèle continuité relationnelle, inscription dans une histoire partagée, et existence vue depuis longtemps par plusieurs regards.",
+        "what_low_reveals": "Un score bas révèle réinvention, rupture biographique, mobilité, isolement, ou faible conservation sociale de votre passé.",
+        "distribution_type": "power-law"
+      }
+    ]
+  }
+]
