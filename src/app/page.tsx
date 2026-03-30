@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import basicModel from "@/models/basic.json";
+import allModels from "@/data.json";
 import {
   buildSections,
   getVerdict,
@@ -17,8 +17,7 @@ import {
 
 // ─── Build sections from all models ────────────────────
 
-const MODELS: ModelData[] = [basicModel as ModelData];
-const SECTIONS = buildSections(MODELS);
+const SECTIONS = buildSections(allModels as ModelData[]);
 const ALL_STATS = SECTIONS.flatMap((s) => s.stats);
 
 // ─── Components ────────────────────────────────────────

@@ -1,5 +1,67 @@
 [
+{
+  "model": "Humain de base",
+  "philosophy": "L'humain moyen est une fiction statistique \u2014 un point sur une courbe que personne n'habite vraiment. L'exceptionnel, c'est juste la queue de la distribution qui refuse de rentrer dans le rang.",
+  "questions": [
     {
+      "question": "Taille",
+      "unit": "cm",
+      "why": "La m\u00e9trique la plus universelle. G\u00e9n\u00e9tique pure, z\u00e9ro m\u00e9rite.",
+      "estimated_median": 170,
+      "extreme_high": "230+ cm \u2014 territoire NBA, vie de cadres de porte.",
+      "extreme_low": "< 145 cm \u2014 en dessous du 1er percentile mondial."
+    },
+    {
+      "question": "Salaire annuel",
+      "unit": "$",
+      "why": "Position \u00e9conomique brute. Le chiffre que tout le monde compare en secret.",
+      "estimated_median": 52000,
+      "extreme_high": "500k+ \u2014 le top 1% canadien.",
+      "extreme_low": "< 20k \u2014 sous le seuil de faible revenu."
+    },
+    {
+      "question": "Langues parl\u00e9es",
+      "unit": "langues",
+      "why": "Fen\u00eatre sur la neuroplasticit\u00e9 et l'exposition culturelle.",
+      "estimated_median": 2,
+      "extreme_high": "6+ \u2014 hyperpolyglotte, cerveau c\u00e2bl\u00e9 diff\u00e9remment.",
+      "extreme_low": "1 \u2014 monolingue, majorit\u00e9 anglophone."
+    },
+    {
+      "question": "Livres par an",
+      "unit": "livres",
+      "why": "Proxy pour la curiosit\u00e9 intellectuelle et la discipline d'attention.",
+      "estimated_median": 5,
+      "extreme_high": "52+ \u2014 un par semaine, biblioth\u00e8que humaine.",
+      "extreme_low": "0 \u2014 la lecture est un choix, pas une obligation."
+    },
+    {
+      "question": "Caf\u00e9s par jour",
+      "unit": "caf\u00e9s",
+      "why": "Marqueur de routine quotidienne et de d\u00e9pendance assum\u00e9e.",
+      "estimated_median": 2,
+      "extreme_high": "6+ \u2014 ton sang est un espresso.",
+      "extreme_low": "0 \u2014 anomalie statistique (ou th\u00e9)."
+    },
+    {
+      "question": "Ami\u00b7es proches",
+      "unit": "amis",
+      "why": "Capital social r\u00e9el. Les gens qui r\u00e9pondent \u00e0 2h du matin.",
+      "estimated_median": 5,
+      "extreme_high": "12+ \u2014 r\u00e9seau profond, statistiquement rare.",
+      "extreme_low": "0 \u2014 la solitude n'est pas un d\u00e9faut."
+    },
+    {
+      "question": "Courriels non lus",
+      "unit": "emails",
+      "why": "Indice de chaos num\u00e9rique et de rapport \u00e0 l'obligation.",
+      "estimated_median": 200,
+      "extreme_high": "10 000+ \u2014 inbox zero est un concept \u00e9tranger.",
+      "extreme_low": "0 \u2014 contr\u00f4le absolu ou compte cr\u00e9\u00e9 hier."
+    }
+  ]
+},
+{
   "model": "GPT-5.4 Thinking",
   "philosophy": "Un humain moyen ne se définit pas seulement par son corps ou son revenu, mais par la forme statistique de sa vie: qui dépend de lui, combien de temps il perd, combien de liens il peut activer, à quelle distance il vit de ses origines. Un humain exceptionnel n’est pas juste “au-dessus” des autres; il ou elle se trouve souvent dans les queues extrêmes des charges invisibles, de la mobilité, de l’autonomie ou de la capacité relationnelle.",
   "questions": [

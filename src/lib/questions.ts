@@ -38,130 +38,6 @@ export interface Stat {
   color: string;
 }
 
-export interface ModelData {
-  model: string;
-  philosophy: string;
-  questions: {
-    id: string;
-    question: string;
-    unit: string;
-    why: string;
-    estimated_median: number;
-    extreme_high: string;
-    extreme_low: string;
-  }[];
-}
-
-// ─── Question configs ──────────────────────────────────
-// Each entry maps a question ID to its statistical engine.
-
-interface QuestionConfig {
-  placeholder: string;
-  min: number;
-  max: number;
-  step: number;
-  sliderExp: number;
-  presets: number[];
-  calc: (v: number) => number;
-  verdicts: Verdict[];
-}
-
-const REGISTRY: Record<string, QuestionConfig> = {
-  height: {
-    placeholder: "175",
-    min: 100, max: 230, step: 1, sliderExp: 1,
-    presets: [155, 165, 175, 185, 195],
-    calc: (v) => normalCDF(v, 170.5, 9.5),
-    verdicts: [
-      [97, "Tu vois les concerts sans te lever sur la pointe."],
-      [80, "Au-dessus de la m\u00eal\u00e9e, litt\u00e9ralement."],
-      [45, "Parfaitement ordinaire. Bienvenue."],
-      [20, "Compact\u00b7e et efficace."],
-      [0, "Le monde est construit pour les autres."],
-    ],
-  },
-  salary: {
-    placeholder: "72 000",
-    min: 0, max: 2000000, step: 1000, sliderExp: 3,
-    presets: [40000, 72000, 100000, 150000, 250000],
-    calc: (v) => logNormalCDF(v, 10.85, 0.75),
-    verdicts: [
-      [99, "Le 1%. Les gens \u00e9crivent des articles sur toi."],
-      [85, "Confortable. Tu choisis ton resto."],
-      [50, "Pile au milieu. Statistiquement invisible."],
-      [25, "En dessous de la m\u00e9diane, au-dessus du seuil."],
-      [0, "L\u2019argent c\u2019est un concept de toute fa\u00e7on."],
-    ],
-  },
-  languages: {
-    placeholder: "2",
-    min: 1, max: 15, step: 1, sliderExp: 1,
-    presets: [1, 2, 3, 4, 5],
-    calc: (v) => logNormalCDF(v, 0.5, 0.55),
-    verdicts: [
-      [90, "Polyglotte. Tu penses dans plusieurs langues."],
-      [70, "Trilingue. L\u2019Europe est jalouse."],
-      [40, "Bilingue. Minimum canadien."],
-      [15, "Une seule langue. Assum\u00e9\u00b7e."],
-      [0, "M\u00eame ta langue maternelle, c\u2019est approximatif."],
-    ],
-  },
-  books: {
-    placeholder: "12",
-    min: 0, max: 300, step: 1, sliderExp: 2,
-    presets: [2, 5, 12, 24, 52],
-    calc: (v) => logNormalCDF(v + 1, 1.6, 1.1),
-    verdicts: [
-      [95, "Biblioth\u00e8que vivante. Les libraires te connaissent."],
-      [65, "Lecteur\u00b7ice s\u00e9rieux\u00b7se. Goodreads est content."],
-      [35, "Quelques livres. C\u2019est d\u00e9j\u00e0 plus que la plupart."],
-      [10, "Un livre c\u2019est un livre."],
-      [0, "Les podcasts comptent pas, d\u00e9sol\u00e9."],
-    ],
-  },
-  coffee: {
-    placeholder: "2",
-    min: 0, max: 12, step: 1, sliderExp: 1,
-    presets: [0, 1, 2, 3, 5],
-    calc: (v) => normalCDF(v, 2.2, 1.3),
-    verdicts: [
-      [90, "Tes veines transportent de l\u2019espresso."],
-      [60, "Amateur\u00b7ice s\u00e9rieux\u00b7se. Le barista conna\u00eet ta commande."],
-      [35, "Un ou deux. Raisonnable."],
-      [10, "Presque rien. Th\u00e9?"],
-      [0, "Z\u00e9ro caf\u00e9ine. Suspect."],
-    ],
-  },
-  friends: {
-    placeholder: "4",
-    min: 0, max: 30, step: 1, sliderExp: 1,
-    presets: [1, 3, 5, 8, 12],
-    calc: (v) => normalCDF(v, 5, 2.5),
-    verdicts: [
-      [90, "Populaire pour vrai. Pas juste sur Instagram."],
-      [60, "Cercle solide. Qualit\u00e9 sur quantit\u00e9."],
-      [35, "Quelques vrais. C\u2019est assez."],
-      [10, "Un\u00b7e ou deux. Mais des bon\u00b7nes."],
-      [0, "La solitude est sous-estim\u00e9e."],
-    ],
-  },
-  emails: {
-    placeholder: "342",
-    min: 0, max: 100000, step: 1, sliderExp: 3,
-    presets: [0, 50, 500, 5000, 50000],
-    calc: (v) => logNormalCDF(v + 1, 5.5, 2.0),
-    verdicts: [
-      [90, "Inbox zero est un mythe pour toi."],
-      [65, "Des centaines. Tu tries par survol."],
-      [35, "Quelques dizaines. G\u00e9rable."],
-      [10, "Presque propre. Tu lis tes emails."],
-      [0, "Z\u00e9ro. Soit organis\u00e9\u00b7e, soit compte neuf."],
-    ],
-  },
-};
-
-// ─── Section (one model = one section) ─────────────────
-
 export interface Section {
   id: string;
   number: string;
@@ -171,40 +47,132 @@ export interface Section {
   stats: Stat[];
 }
 
-const SECTION_COLORS = [
-  "#b5785a", "#6b8f71", "#5b7fa5",
-  "#b8963e", "#8b6fa5", "#a56b7f", "#c75b3f",
-];
+export interface ModelQuestion {
+  question: string;
+  unit: string;
+  why: string;
+  estimated_median: number;
+  extreme_high: string;
+  extreme_low: string;
+}
+
+export interface ModelData {
+  model: string;
+  philosophy: string;
+  questions: ModelQuestion[];
+}
+
+// ─── Auto-inference from JSON fields ───────────────────
+
+function inferRange(median: number, unit: string) {
+  const u = unit.toLowerCase();
+
+  if (u.includes("%") || u.includes("pourcentage"))
+    return { min: 0, max: 100, step: 1, sliderExp: 1 };
+  if (u.includes("ratio"))
+    return { min: 0, max: Math.max(1, median * 20), step: 0.01, sliderExp: 2 };
+  if (u === "cm")
+    return { min: 100, max: 230, step: 1, sliderExp: 1 };
+  if ((u.includes("jour") || u.includes("day")) && median > 300)
+    return { min: 0, max: 366, step: 1, sliderExp: 1 };
+  if ((u.includes("jour") || u.includes("day")) && median <= 30)
+    return { min: 0, max: 31, step: 1, sliderExp: 1 };
+  if (u.includes("km") || u.includes("kilomètre"))
+    return { min: 0, max: 20000, step: 1, sliderExp: 3 };
+  if (u.includes("ans") || u.includes("âge") || u.includes("année"))
+    return { min: 0, max: 115, step: 1, sliderExp: 1 };
+  if (u.includes("génération"))
+    return { min: 0, max: 10, step: 1, sliderExp: 1 };
+
+  // Generic: scale from median
+  if (median >= 1000)
+    return { min: 0, max: Math.ceil(median * 20), step: Math.max(1, Math.round(median / 100)), sliderExp: 3 };
+  if (median >= 50)
+    return { min: 0, max: Math.ceil(median * 6), step: 1, sliderExp: 2 };
+  if (median >= 10)
+    return { min: 0, max: Math.ceil(median * 5), step: 1, sliderExp: 1.5 };
+  if (median >= 1)
+    return { min: 0, max: Math.max(15, Math.ceil(median * 6)), step: 1, sliderExp: 1 };
+  // median < 1
+  return { min: 0, max: Math.max(5, Math.ceil(median * 30)), step: 0.1, sliderExp: 1.5 };
+}
+
+function buildCalc(median: number, min: number, max: number): (v: number) => number {
+  const range = max - min;
+  const relPos = range > 0 ? (median - min) / range : 0.5;
+
+  if (relPos < 0.3 && median > 0) {
+    // Right-skewed → lognormal
+    const mu = Math.log(Math.max(median, 0.01));
+    const sigma = Math.max(0.4, Math.min(2.0, Math.log(Math.max(max, median * 3) / Math.max(median, 0.01)) / 2.5));
+    return (v: number) => logNormalCDF(Math.max(v, 0.001), mu, sigma);
+  }
+
+  // Normal
+  const sd = Math.max(range / 6, Math.abs(median) * 0.3, 0.5);
+  return (v: number) => normalCDF(v, median, sd);
+}
+
+function buildPresets(median: number, min: number, max: number, step: number): number[] {
+  const snap = (v: number) => Math.round(Math.max(min, Math.min(max, v)) / step) * step;
+  const values = [
+    snap(min + (median - min) * 0.2),
+    snap(min + (median - min) * 0.7),
+    snap(median),
+    snap(median + (max - median) * 0.3),
+    snap(median + (max - median) * 0.6),
+  ];
+  const unique = [...new Set(values)].sort((a, b) => a - b);
+  return unique.length >= 3 ? unique : [snap(min), snap(median), snap(max)];
+}
+
+function firstSentence(text: string): string {
+  const match = text.match(/^[^.!?]+[.!?]?/);
+  const sentence = match ? match[0].trim() : text;
+  return sentence.length > 120 ? sentence.substring(0, 117) + "\u2026" : sentence;
+}
+
+function buildVerdicts(extremeHigh: string, extremeLow: string): Verdict[] {
+  return [
+    [85, firstSentence(extremeHigh)],
+    [60, "Au-dessus de la m\u00e9diane."],
+    [40, "Dans la moyenne."],
+    [15, "En dessous de la plupart."],
+    [0, firstSentence(extremeLow)],
+  ];
+}
 
 // ─── Builder ───────────────────────────────────────────
+
+const SECTION_COLORS = [
+  "#b5785a", "#5b7fa5", "#8b6fa5",
+  "#b8963e", "#6b8f71", "#c75b3f", "#a56b7f",
+];
 
 export function buildSections(models: ModelData[]): Section[] {
   return models.map((model, mi) => {
     const color = SECTION_COLORS[mi % SECTION_COLORS.length];
     return {
-      id: model.model.toLowerCase().replace(/\s+/g, "-"),
+      id: model.model.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
       number: String(mi + 1).padStart(2, "0"),
       label: model.model.toUpperCase(),
       subtitle: model.philosophy,
       color,
-      stats: model.questions.map((q) => {
-        const config = REGISTRY[q.id];
-        if (!config) {
-          throw new Error(`Unknown question ID: "${q.id}". Add it to the registry in questions.ts.`);
-        }
+      stats: model.questions.map((q, qi) => {
+        const { min, max, step, sliderExp } = inferRange(q.estimated_median, q.unit);
         return {
-          id: `${mi}-${q.id}`,
+          id: `${mi}-${qi}`,
           label: q.question,
           unit: q.unit,
           why: q.why,
-          placeholder: config.placeholder,
-          min: config.min,
-          max: config.max,
-          calc: config.calc,
-          verdicts: config.verdicts,
-          sliderExp: config.sliderExp,
-          step: config.step,
-          presets: config.presets,
+          placeholder: String(q.estimated_median),
+          min,
+          max,
+          step,
+          sliderExp,
+          presets: buildPresets(q.estimated_median, min, max, step),
+          calc: buildCalc(q.estimated_median, min, max),
+          verdicts: buildVerdicts(q.extreme_high, q.extreme_low),
           color,
         };
       }),
@@ -212,7 +180,7 @@ export function buildSections(models: ModelData[]): Section[] {
   });
 }
 
-// ─── Helpers (re-exported for page use) ────────────────
+// ─── Helpers (re-exported for page) ────────────────────
 
 export function getVerdict(stat: Stat, pct: number) {
   for (const [threshold, text] of stat.verdicts) {
@@ -239,6 +207,7 @@ export function valueToPos(val: number, min: number, max: number, exp: number) {
 export function formatDisplay(v: number, step: number = 1): string {
   const rounded = step < 1 ? Math.round(v / step) * step : Math.round(v);
   if (Math.abs(rounded) >= 10000) return Math.round(rounded).toLocaleString("fr-CA");
+  if (step < 1 && step >= 0.01) return rounded.toFixed(2);
   if (step < 1) return rounded.toFixed(1);
   return Math.round(rounded).toString();
 }
@@ -246,5 +215,6 @@ export function formatDisplay(v: number, step: number = 1): string {
 export function fmtPreset(v: number): string {
   if (v >= 1000000) return `${v / 1000000}M`;
   if (v >= 1000) return `${v / 1000}k`;
+  if (v < 1 && v > 0) return v.toFixed(2);
   return v.toString();
 }
