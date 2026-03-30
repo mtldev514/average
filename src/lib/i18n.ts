@@ -39,12 +39,19 @@ export interface UIStrings {
   whyQuestion: string;
 }
 
+interface VerdictTranslation {
+  high: string;
+  above: string;
+  average: string;
+  below: string;
+  low: string;
+}
+
 interface QuestionTranslation {
   label: string;
   unit: string;
   why: string;
-  verdictHigh: string;
-  verdictLow: string;
+  verdicts: VerdictTranslation;
 }
 
 interface ModelTranslation {
@@ -136,12 +143,13 @@ export function translateSections(sections: Section[], locale: string): Section[
         const qt = mt.questions[qi];
         if (!qt) return stat;
 
+        const v = qt.verdicts;
         const verdicts: Verdict[] = [
-          [85, qt.verdictHigh],
-          [60, ui.aboveMedian],
-          [40, ui.average],
-          [15, ui.belowMost],
-          [0, qt.verdictLow],
+          [85, v.high],
+          [60, v.above],
+          [40, v.average],
+          [15, v.below],
+          [0, v.low],
         ];
 
         return {

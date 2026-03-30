@@ -1,340 +1,956 @@
 [
-{
-  "model": "Humain de base",
-  "philosophy": "L'humain moyen est une fiction statistique \u2014 un point sur une courbe que personne n'habite vraiment. L'exceptionnel, c'est juste la queue de la distribution qui refuse de rentrer dans le rang.",
-  "questions": [
-    {
-      "question": "Taille",
-      "unit": "cm",
-      "why": "La m\u00e9trique la plus universelle. G\u00e9n\u00e9tique pure, z\u00e9ro m\u00e9rite.",
-      "estimated_median": 170,
-      "extreme_high": "230+ cm \u2014 territoire NBA, vie de cadres de porte.",
-      "extreme_low": "< 145 cm \u2014 en dessous du 1er percentile mondial."
-    },
-    {
-      "question": "Salaire annuel",
-      "unit": "$",
-      "why": "Position \u00e9conomique brute. Le chiffre que tout le monde compare en secret.",
-      "estimated_median": 52000,
-      "extreme_high": "500k+ \u2014 le top 1% canadien.",
-      "extreme_low": "< 20k \u2014 sous le seuil de faible revenu."
-    },
-    {
-      "question": "Langues parl\u00e9es",
-      "unit": "langues",
-      "why": "Fen\u00eatre sur la neuroplasticit\u00e9 et l'exposition culturelle.",
-      "estimated_median": 2,
-      "extreme_high": "6+ \u2014 hyperpolyglotte, cerveau c\u00e2bl\u00e9 diff\u00e9remment.",
-      "extreme_low": "1 \u2014 monolingue, majorit\u00e9 anglophone."
-    },
-    {
-      "question": "Livres par an",
-      "unit": "livres",
-      "why": "Proxy pour la curiosit\u00e9 intellectuelle et la discipline d'attention.",
-      "estimated_median": 5,
-      "extreme_high": "52+ \u2014 un par semaine, biblioth\u00e8que humaine.",
-      "extreme_low": "0 \u2014 la lecture est un choix, pas une obligation."
-    },
-    {
-      "question": "Caf\u00e9s par jour",
-      "unit": "caf\u00e9s",
-      "why": "Marqueur de routine quotidienne et de d\u00e9pendance assum\u00e9e.",
-      "estimated_median": 2,
-      "extreme_high": "6+ \u2014 ton sang est un espresso.",
-      "extreme_low": "0 \u2014 anomalie statistique (ou th\u00e9)."
-    },
-    {
-      "question": "Ami\u00b7es proches",
-      "unit": "amis",
-      "why": "Capital social r\u00e9el. Les gens qui r\u00e9pondent \u00e0 2h du matin.",
-      "estimated_median": 5,
-      "extreme_high": "12+ \u2014 r\u00e9seau profond, statistiquement rare.",
-      "extreme_low": "0 \u2014 la solitude n'est pas un d\u00e9faut."
-    },
-    {
-      "question": "Courriels non lus",
-      "unit": "emails",
-      "why": "Indice de chaos num\u00e9rique et de rapport \u00e0 l'obligation.",
-      "estimated_median": 200,
-      "extreme_high": "10 000+ \u2014 inbox zero est un concept \u00e9tranger.",
-      "extreme_low": "0 \u2014 contr\u00f4le absolu ou compte cr\u00e9\u00e9 hier."
-    }
-  ]
-},
-{
-  "model": "GPT-5.4 Thinking",
-  "philosophy": "Un humain moyen ne se définit pas seulement par son corps ou son revenu, mais par la forme statistique de sa vie: qui dépend de lui, combien de temps il perd, combien de liens il peut activer, à quelle distance il vit de ses origines. Un humain exceptionnel n’est pas juste “au-dessus” des autres; il ou elle se trouve souvent dans les queues extrêmes des charges invisibles, de la mobilité, de l’autonomie ou de la capacité relationnelle.",
-  "questions": [
-    {
-      "question": "En une semaine typique, combien d’heures consacrez-vous au care non payé (enfants, proches, cuisine, ménage) ?",
-      "unit": "heures/semaine",
-      "why": "C’est l’un des plus gros blocs de travail humain invisibles, et pourtant presque aucun portrait standard d’une personne ne le mesure. Cette variable capture la charge réelle de soutien, d’entretien du vivant et d’interdépendance, bien au-delà des indicateurs classiques.",
-      "estimated_median": 18,
-      "extreme_high": "Révèle une vie fortement orientée vers la responsabilité, l’interdépendance, et souvent une autonomie amputée par la charge de soin.",
-      "extreme_low": "Révèle soit une grande liberté de temps, soit une vie peu enchâssée dans des obligations familiales ou domestiques."
-    },
-    {
-      "question": "Combien de personnes dépendent de votre revenu pour leurs besoins essentiels chaque mois ?",
-      "unit": "personnes",
-      "why": "Le revenu seul dit peu; le nombre de vies qu’il soutient change tout. Cette mesure capture le poids adulte réel: parentalité, aide familiale, remises d’argent, soutien intergénérationnel, ou au contraire autonomie sans charge.",
-      "estimated_median": 1,
-      "extreme_high": "Révèle un rôle de pilier économique, avec une pression morale et matérielle souvent invisible dans les indicateurs classiques.",
-      "extreme_low": "Révèle soit une grande indépendance matérielle, soit une position économique trop faible pour soutenir d’autres personnes."
-    },
-    {
-      "question": "Combien d’adultes pourriez-vous appeler à 3 h du matin pour une aide réelle ?",
-      "unit": "personnes",
-      "why": "C’est une mesure opérationnelle du capital social réel. Elle ne demande pas si quelqu’un “se sent entouré”, mais combien de liens sont assez solides pour être activés dans une situation critique.",
-      "estimated_median": 2,
-      "extreme_high": "Révèle un capital social dense, une confiance réciproque forte, et souvent une vie relationnelle investie sur le long terme.",
-      "extreme_low": "Révèle fragilité structurelle, isolement, rupture de liens, ou dépendance à des institutions plutôt qu’à des personnes."
-    },
-    {
-      "question": "Dans un mois typique, combien d’heures passez-vous à remplir des formulaires, attendre des réponses, ou résoudre des problèmes administratifs ?",
-      "unit": "heures/mois",
-      "why": "Cette dimension mesure le frottement entre une personne et les systèmes qui gouvernent sa vie. Elle condense précarité, maladie, migration, complexité familiale, qualité institutionnelle et capacité de délégation — un coût humain presque jamais mesuré directement.",
-      "estimated_median": 3,
-      "extreme_high": "Révèle précarité, maladie, migration, statut complexe, faible qualité institutionnelle, ou vie extrêmement administrée.",
-      "extreme_low": "Révèle simplicité bureaucratique, privilège de délégation, bonne intégration institutionnelle, ou faible exposition aux systèmes."
-    },
-    {
-      "question": "À quelle distance de votre lieu de naissance vivez-vous aujourd’hui ?",
-      "unit": "kilomètres",
-      "why": "Cette mesure capte le rapport concret à l’origine: enracinement, exil, mobilité choisie, ou déplacement contraint. Elle dit quelque chose de profond sur la continuité biographique, les ruptures et l’ouverture géographique réelle d’une vie.",
-      "estimated_median": 30,
-      "extreme_high": "Révèle souvent rupture biographique, ambition de mobilité, migration, déracinement ou cosmopolitisme vécu.",
-      "extreme_low": "Révèle souvent une forte continuité locale, des attaches denses, ou des contraintes limitant la mobilité."
-    }
-  ]
-},
-{
-  "model": "GPT-5.3",
-  "philosophy": "Un humain moyen optimise implicitement pour la stabilité et la conformité aux contraintes locales, tandis qu’un humain exceptionnel accumule des écarts mesurables dans ses comportements répétés. Ce sont les distributions invisibles — attention, exposition, adaptation, et transformation — qui révèlent le plus profondément une trajectoire humaine.",
-  "questions": [
-    {
-      "question": "Combien de fois par an changes-tu significativement d’opinion sur un sujet important (politique, moral, personnel) ?",
-      "unit": "changements/an",
-      "why": "Parmi toutes les propositions :contentReference[oaicite:0]{index=0}, peu mesurent directement la plasticité cognitive réelle. C’est une variable dynamique (évolution) plutôt que statique (état), ce qui la rend plus discriminante sur le long terme.",
-      "estimated_median": 1,
-      "extreme_high": "Grande adaptabilité ou instabilité cognitive, exposition à des environnements variés.",
-      "extreme_low": "Rigidité mentale ou forte cohérence interne, dépend du contexte."
-    },
-    {
-      "question": "Combien de minutes par jour passes-tu à ne rien consommer (ni écran, ni lecture, ni musique), juste à penser ou observer ?",
-      "unit": "minutes/jour",
-      "why": "Plusieurs modèles approchent le silence ou la solitude :contentReference[oaicite:1]{index=1}, mais peu isolent précisément l’absence de stimulation. Cette variable capte directement l’espace mental brut, rarement mesuré.",
-      "estimated_median": 10,
-      "extreme_high": "Forte capacité contemplative, créativité ou rumination accrue.",
-      "extreme_low": "Surcharge informationnelle, dépendance à la stimulation externe."
-    },
-    {
-      "question": "Combien de projets personnels (non obligatoires) as-tu menés à terme dans les 12 derniers mois ?",
-      "unit": "projets/an",
-      "why": "Contrairement aux métriques de travail ou de production proposées ailleurs :contentReference[oaicite:2]{index=2}, celle-ci isole l’agentivité sans contrainte. Elle mesure la transformation réelle d’intention en action autonome.",
-      "estimated_median": 1,
-      "extreme_high": "Forte discipline, autonomie, possible sur-optimisation ou dispersion.",
-      "extreme_low": "Inertie comportementale, manque de structure ou de motivation intrinsèque."
-    },
-    {
-      "question": "Combien de fois par semaine fais-tu quelque chose que tu trouves difficile volontairement ?",
-      "unit": "actions/semaine",
-      "why": "Plusieurs modèles mesurent la friction ou l’effort :contentReference[oaicite:3]{index=3}, mais rarement sous forme d’exposition volontaire répétée. Cela capture la relation active à l’inconfort, un moteur central d’évolution.",
-      "estimated_median": 2,
-      "extreme_high": "Tolérance élevée à l’effort et au stress, croissance rapide.",
-      "extreme_low": "Évitement, maintien du statu quo."
-    },
-    {
-      "question": "Combien de fois par an revisites-tu intentionnellement un souvenir ou événement passé pour le reconsidérer ?",
-      "unit": "révisions/an",
-      "why": "Alors que d’autres modèles mesurent les attaches ou la mémoire :contentReference[oaicite:4]{index=4}, cette question mesure la capacité active de relecture de soi. Elle capte la transformation interne plutôt que l’état hérité.",
-      "estimated_median": 4,
-      "extreme_high": "Travail introspectif intense, possible rumination.",
-      "extreme_low": "Faible intégration du passé, identité plus rigide ou évitement."
-    }
-  ]
-},
-{
-  "model": "Gemini 3 Flash",
-  "philosophy": "L'humain moyen est un nœud de répétitions qui maintient la stabilité de l'espèce. L'humain exceptionnel se définit par sa capacité à s'extraire de l'entropie ambiante, soit par une trace temporelle longue, soit par une rupture avec l'aliénation technique.",
-  "questions": [
-    {
-      "question": "Combien de générations après vous faudra-t-il pour que votre nom ne soit plus jamais prononcé ?",
-      "unit": "Générations",
-      "why": "Alors que Claude Opus regarde l'héritage reçu, cette question mesure l'empreinte mémorielle projetée. Elle quantifie l'impact culturel ou familial profond au-delà de la simple existence biologique.",
-      "estimated_median": 3,
-      "extreme_high": "Bâtisseur de civilisation, créateur d'idées immortelles ou ancêtre d'une lignée mémorielle forte.",
-      "extreme_low": "Existence purement ancrée dans le présent, sans volonté ou capacité de laisser une trace."
-    },
-    {
-      "question": "Combien de jours par an votre survie dépend-elle de technologies que vous ne seriez pas capable de réparer vous-même ?",
-      "unit": "Jours",
-      "why": "Cette question introduit la dimension de l'aliénation technique. Elle mesure la fragilité de l'individu face à l'effondrement de la complexité systémique, un angle mort des modèles plus portés sur le psychologique.",
-      "estimated_median": 365,
-      "extreme_high": "Citadin ultra-spécialisé totalement intégré à la technosphère, mais vulnérable à la moindre rupture systémique.",
-      "extreme_low": "Autarcie technique relative ; individu possédant une maîtrise des fondamentaux de sa propre subsistance."
-    },
-    {
-      "question": "Quel est le rapport (ratio) entre le temps passé à créer quelque chose (objet, idée, soin, code) et le temps passé à consommer le travail d'autrui ?",
-      "unit": "Ratio (Création / Consommation)",
-      "why": "Elle distingue les contributeurs nets à l'entropie informationnelle et matérielle des consommateurs passifs. C'est l'indice de métabolisme créatif d'un être humain.",
-      "estimated_median": 0.05,
-      "extreme_high": "Producteur compulsif, artiste ou artisan dont la vie est une source d'outputs pour la société.",
-      "extreme_low": "Consommateur pur, dont l'existence est principalement une absorption du flux produit par autrui."
-    },
-    {
-      "question": "Combien de systèmes de signes (langues, mathématiques, langages de programmation, solfège) utilisez-vous pour structurer votre pensée de manière fluide ?",
-      "unit": "Systèmes",
-      "why": "Au-delà des langues parlées (déjà citées), cette question mesure la pluralité des cadres logiques. Chaque système de signes supplémentaire offre une nouvelle dimension pour décoder la réalité.",
-      "estimated_median": 1,
-      "extreme_high": "Polyglotte cognitif capable de sauter d'un paradigme à l'autre (ex: penser un problème en musique ou en code).",
-      "extreme_low": "Pensée monoculturelle, strictement limitée par les frontières d'un seul cadre conceptuel."
-    },
-    {
-      "question": "Combien de minutes pouvez-vous maintenir un effort physique à 80% de votre capacité cardiaque maximale avant de demander l'arrêt ?",
-      "unit": "Minutes",
-      "why": "La plupart des modèles ont ignoré la volonté biologique pure. Ce n'est pas seulement un test de fitness, c'est une mesure de la tolérance à l'inconfort viscéral et du contrôle de l'esprit sur le cri du corps.",
-      "estimated_median": 8,
-      "extreme_high": "Résilience mentale et physique hors norme ; capacité à habiter la douleur pour un objectif supérieur.",
-      "extreme_low": "Faible tolérance à la contrainte physique ou déconnexion totale des capacités motrices de l'espèce."
-    }
-  ]
-},
-{
-  "model": "Claude Opus 4.6 (Anthropic)",
-  "philosophy": "La moyenne n'est pas une position — c'est une gravité. Ce qui distingue un humain, ce n'est pas ce qu'il possède ou performe, mais la texture de son attention, la profondeur de ses attaches, et son rapport au silence et au temps non-productif.",
-  "questions": [
-    {
-      "question": "Combien de fois par jour touchez-vous physiquement un autre être humain?",
-      "unit": "contacts par jour",
-      "why": "Le toucher est la donnée la plus sous-documentée de l'expérience humaine. Il n'existe dans presque aucun dataset. Pourtant la famine tactile est un prédicteur massif de santé mentale et physique. Ce chiffre capture la solitude incarnée, pas déclarée. Aucun autre modèle n'a touché (littéralement) à cette dimension.",
-      "estimated_median": 8,
-      "extreme_high": "50+: parent de jeune enfant, personne dans une relation physiquement expressive, ou culture à forte proxémie. Le toucher fréquent est anti-corrélé avec l'anxiété chronique.",
-      "extreme_low": "0: des millions d'adultes passent des journées entières sans contact physique humain. C'est l'un des faits les plus silencieux et les plus conséquents de la vie moderne."
-    },
-    {
-      "question": "Combien de générations en arrière pouvez-vous nommer au moins un ancêtre?",
-      "unit": "générations",
-      "why": "La profondeur généalogique accessible mesure le capital narratif transmis. Ce n'est pas un test de mémoire — c'est un indicateur de continuité culturelle, de présence ou d'absence de ruptures (esclavage, migration forcée, adoption, guerre). Gemini Flash a 'combien de générations avant l'oubli de votre nom' — c'est prospectif. Moi je regarde en arrière: qu'est-ce qui t'a été transmis?",
-      "estimated_median": 3,
-      "extreme_high": "7+ générations: fréquent dans les cultures à tradition orale forte ou chez les familles avec capital culturel établi. Révèle un ancrage dans une lignée consciente.",
-      "extreme_low": "0-1 génération: souvent lié à l'adoption, la migration forcée, ou des ruptures familiales profondes. Indique que la personne construit son identité sans filet narratif ancestral — ce qui est à la fois une vulnérabilité et une liberté."
-    },
-    {
-      "question": "Quel pourcentage de vos heures éveillées passez-vous dans votre langue maternelle?",
-      "unit": "pourcentage",
-      "why": "GPT-5.4 et Gemini Flash comptent les langues parlées (1, 2, 3). Moi je mesure le déplacement: pas combien de langues tu as, mais à quel point tu vis en exil dans ta propre cognition. Quelqu'un qui parle 3 langues mais vit à 95% en langue maternelle et quelqu'un qui vit à 20% sont des humains radicalement différents. Le chiffre de langues ne capture pas ça.",
-      "estimated_median": 85,
-      "extreme_high": "100%: personne monolingue ou n'ayant jamais quitté son bassin linguistique. Confort cognitif maximal, mais aussi fenêtre perceptuelle potentiellement plus étroite.",
-      "extreme_low": "Moins de 20%: immigrant linguistique complet. Pense, rêve et travaille dans une langue apprise. Fatigue cognitive chronique mais flexibilité conceptuelle souvent supérieure. La langue maternelle devient un espace intime, presque secret."
-    },
-    {
-      "question": "Combien de personnes reconnaîtriez-vous à leur écriture manuscrite?",
-      "unit": "nombre de personnes",
-      "why": "C'est un proxy d'intimité attentionnelle pré-numérique. Reconnaître l'écriture de quelqu'un suppose d'avoir lu des mots écrits à la main pour vous — lettres, notes, listes. Ce chiffre s'effondre générationnellement et mesure un type de lien en voie de disparition. Aucun autre modèle n'approche cette dimension.",
-      "estimated_median": 4,
-      "extreme_high": "15+: enseignant, personne ayant grandi avec la correspondance écrite, ou réseau de liens profonds maintenus par l'écrit manuscrit. Révèle une attention aux traces individuelles.",
-      "extreme_low": "0: de plus en plus courant. Indique soit un jeune âge, soit une vie entièrement médiée par le numérique. Pas un jugement — un marqueur d'époque autant que de personne."
-    },
-    {
-      "question": "Combien de minutes après le réveil faites-vous la première chose que vous n'êtes pas obligé·e de faire?",
-      "unit": "minutes",
-      "why": "Le délai entre le réveil et le premier acte non-obligatoire mesure l'accès au désir propre. Gemini Pro a 'jours sans alarme' — ça mesure la souveraineté temporelle. Moi je mesure quelque chose de plus fin: même quand tu te lèves avec une alarme, combien de temps avant que tu fasses un geste qui t'appartient? C'est un marqueur invisible de liberté quotidienne applicable à tous.",
-      "estimated_median": 45,
-      "extreme_high": "480+ minutes (8h+): parent solo, aidant naturel, travailleur précaire cumulant les postes. Le désir propre est structurellement repoussé. Ce n'est pas un manque de volonté — c'est une architecture de vie.",
-      "extreme_low": "0 minutes: le premier geste du matin est déjà un choix libre. Indique soit un privilège matériel, soit une discipline de priorisation du soi."
-    }
-  ]
-},
-{
-  "model": "Gemini Pro",
-  "philosophy": "L'exceptionnalité humaine ne réside pas dans les attributs de base, mais dans notre gestion de la friction existentielle. Ayant observé les propositions des autres modèles, j'ai épuré ma liste pour ne retenir que les mesures les plus viscérales de cette friction : la souveraineté temporelle, la tolérance à la vulnérabilité, l'immunité à l'échec, la profondeur historique directe et l'usure physique assumée.",
-  "questions": [
-    {
-      "question": "Combien de jours par mois, en moyenne, vous réveillez-vous naturellement, sans aucune alarme ni obligation externe vous forçant à sortir du lit ?",
-      "unit": "Jours/mois",
-      "why": "Cette métrique quantifie la 'souveraineté temporelle'. (Comme l'a d'ailleurs noté Claude Opus en me citant, cela mesure une dimension fondamentale de la liberté quotidienne). Elle évalue la richesse temporelle et l'aliénation au rythme du système.",
-      "estimated_median": 6,
-      "extreme_high": "Une autonomie temporelle quasi totale (rentier, nomade, chômeur longue durée, ou retraité). Un luxe rare ou une marginalisation systémique.",
-      "extreme_low": "Une soumission totale aux contraintes systémiques. L'individu est un rouage fonctionnel dont le rythme biologique est entièrement dicté par la société."
-    },
-    {
-      "question": "Combien de personnes actuellement en vie connaissent un secret à votre sujet dont la révélation publique vous causerait une honte profonde ?",
-      "unit": "Individus",
-      "why": "Les autres modèles mesurent le capital social ou la 'vérité difficile' (Haiku). Cette question va plus loin : elle mesure la capacité réelle à la vulnérabilité radicale face à la honte sociale, un facteur clé de la résilience psychologique.",
-      "estimated_median": 1,
-      "extreme_high": "Une transparence radicale, un mode de vie sans frontières privées, ou une propension à la confession compulsive. Peut indiquer une absence de filtres sociaux.",
-      "extreme_low": "Un isolement psychologique absolu ou une façade sociale impénétrable. Une vulnérabilité bloquée, souvent liée à un traumatisme ou à une méfiance chronique."
-    },
-    {
-      "question": "Combien de lettres formelles de rejet (emplois, universités, bourses, prêts, publications, visas) avez-vous reçues et lues dans votre vie ?",
-      "unit": "Rejets documentés",
-      "why": "Totalement ignoré par les autres IA qui se concentrent sur les réussites ou les abandons internes. L'accumulation de rejets externes quantifie l'appétit pour le risque et l'audace d'un individu face à des systèmes de sélection stricts.",
-      "estimated_median": 5,
-      "extreme_high": "Une ambition implacable, une persévérance anormale, et une immunité psychologique à l'échec perçu. L'individu joue constamment hors de sa zone de confort.",
-      "extreme_low": "Une vie passée dans la sécurité absolue, un privilège tel que les portes s'ouvrent d'elles-mêmes, ou une paralysie par la peur de l'échec empêchant toute tentative ambitieuse."
-    },
-    {
-      "question": "Quel âge avait la personne la plus âgée avec laquelle vous avez eu une conversation bidirectionnelle significative de plus d'une heure ?",
-      "unit": "Années (Âge de la personne)",
-      "why": "Claude Opus compte les ancêtres abstraits, mais cette question mesure la 'profondeur historique' incarnée et vécue. L'étendue de l'expérience humaine est amplifiée par notre contact direct avec des mémoires d'époques révolues.",
-      "estimated_median": 82,
-      "extreme_high": "Un pont vivant vers une époque lointaine. Indique une valorisation de la transmission intergénérationnelle et une perspective historique incarnée (ex: avoir discuté avec un centenaire).",
-      "extreme_low": "Une bulle générationnelle stricte. L'individu est coupé de la sagesse ou des traumatismes historiques directs, évoluant dans un présent perpétuel sans racines orales."
-    },
-    {
-      "question": "Combien de cicatrices physiques permanentes de plus de 1 centimètre possédez-vous sur votre corps ?",
-      "unit": "Cicatrices",
-      "why": "Une cartographie quantifiable de la friction physique avec le monde, complètement absente des autres modèles. Cela contourne les bilans de santé pour évaluer l'aventure, la brutalité de l'environnement ou l'exposition au danger physique.",
-      "estimated_median": 3,
-      "extreme_high": "Une vie marquée par le risque physique extrême, des conditions de travail ardues, des sports extrêmes, ou des accidents graves. Un corps qui a violemment interagi avec son environnement.",
-      "extreme_low": "Une existence physiquement très protégée, potentiellement sédentaire, ou une chance biomécanique inhabituelle. L'intégrité de l'enveloppe corporelle est intacte."
-    }
-  ]
-},
-{
-  "model": "Claude Haiku 4.5",
-  "philosophy": "L'humain moyen construit des habitudes qui fonctionnent. L'humain exceptionnel reste capable de friction — de dire non, d'abandonner, de pleurer, d'être seul. Haiku mesure ce qui tient ensemble *malgré* la tension, pas ce qui glisse.",
-  "questions": [
-    {
-      "question": "Combien de personnes dans ta vie pourraient te dire une vérité difficile sans que tu rompes la relation ?",
-      "unit": "nombre de personnes",
-      "why": "C'est le test de la fragilité relationnelle. Les autres modèles vont compter les 'amis proches'. Moi, je mesure la solidité sous choc. Si tu as zéro personnes comme ça, tu es seul même entouré. Ça dit tout.",
-      "estimated_median": 1,
-      "extreme_high": "Architecture relationnelle mûre. Rare. Gens qui ont traversé une crise ensemble ou avec vraie thérapie.",
-      "extreme_low": "Isolement émotionnel même dans le couple. Fragmentation systématique. Historique de trahison ou incapacité de vulnérabilité."
-    },
-    {
-      "question": "Combien de projets as-tu abandonnés complètement (pas en pause) dans les 5 dernières années ?",
-      "unit": "nombre",
-      "why": "Les autres vont mesurer ce que tu as lancé. Moi, je veux voir ce que tu as tué. C'est une mesure d'honnêteté avec tes limites, pas d'ambition. Quelqu'un qui n'abandonne rien vit par inertie.",
-      "estimated_median": 2,
-      "extreme_high": "Serial reinventor (créatif instable) ou quelqu'un qui teste ses limites agressivement.",
-      "extreme_low": "Fidélité à tout ce qui commence. Vertu (ténacité) ou peur de l'échec. Probablement la deuxième."
-    },
-    {
-      "question": "Combien d'heures par mois passes-tu seul sans occupation (pas de travail, media, téléphone) ?",
-      "unit": "heures par mois",
-      "why": "Le vide tolérable. Peux-tu faire face à toi-même sans amortisseur ? Les gens moyens le structurent pour l'éviter. Les gens exceptionnels l'habitent. Ça dit ton rapport à l'anxiété interne.",
-      "estimated_median": 4,
-      "extreme_high": "Contemplation régulière (artiste, introspectif) ou solitude imposée (isolement, dépression).",
-      "extreme_low": "Horreur du silence. TDAH possible, mais aussi fuite chronique. Personnes qui ont peur de respirer seules."
-    },
-    {
-      "question": "Combien de fois par semaine ressens-tu une joie qui ne vient pas d'un résultat ou d'une validation ?",
-      "unit": "instances par semaine",
-      "why": "La texture réelle de vivre. Les autres vont mesurer 'satisfaction' — une abstraction. Moi, je veux les moments où tu es juste content d'exister. C'est la base de la résilience et de la capacité à aimer.",
-      "estimated_median": 3,
-      "extreme_high": "Pratique contemplative (méditation, spiritualité) ou quelqu'un qui a résolu le problème du sens.",
-      "extreme_low": "Dépression clinique. Anhedonie. Vie structurée par la performance avec zéro espace pour l'accidentel. Urgent."
-    },
-    {
-      "question": "Quel est le nombre de domaines de ta vie (travail, santé, finances, relations) notés <5/10 d'un observateur honnête ?",
-      "unit": "domaines",
-      "why": "C'est ta capacité à voir la vérité sans la nier. Les gens sans friction n'existent pas ou sont aveugles. C'est le test de lucidité. Quelqu'un qui dit '0' manque de calibrage. Quelqu'un qui dit '4-5' est en crise ou en déni.",
-      "estimated_median": 1,
-      "extreme_high": "Personne en crise sérieuse ou avec transparence radicale. Peut être douloureux ou très sage.",
-      "extreme_low": "Déni systématique ou vie structurée par privilege. Rare aussi : quelqu'un qui a vraiment résolu ses problèmes."
-    }
-  ]
-}
+  {
+    "model": "Humain de base",
+    "philosophy": "L'humain moyen est une fiction statistique — un point sur une courbe que personne n'habite vraiment. L'exceptionnel, c'est juste la queue de la distribution qui refuse de rentrer dans le rang.",
+    "questions": [
+      {
+        "question": "Taille",
+        "unit": "cm",
+        "why": "La métrique la plus universelle. Génétique pure, zéro mérite.",
+        "estimated_median": 170,
+        "min": 140,
+        "max": 210,
+        "step": 1,
+        "input": "slider",
+        "options": [
+          150,
+          160,
+          170,
+          180,
+          190
+        ],
+        "verdicts": {
+          "high": "Territoire NBA, vie de cadres de porte.",
+          "above": "Tu dépasses la plupart des gens dans une foule.",
+          "average": "Pile dans la moyenne humaine, invisible dans une file.",
+          "below": "Tu te fais souvent demander ton âge au bar.",
+          "low": "En dessous du 1er percentile mondial."
+        }
+      },
+      {
+        "question": "Salaire annuel",
+        "unit": "$",
+        "why": "Position économique brute. Le chiffre que tout le monde compare en secret.",
+        "estimated_median": 52000,
+        "min": 0,
+        "max": 500000,
+        "step": 1000,
+        "input": "freeform",
+        "options": [
+          20000,
+          40000,
+          52000,
+          80000,
+          150000
+        ],
+        "verdicts": {
+          "high": "Le top 1% canadien.",
+          "above": "Confortable — tu choisis ton resto sans regarder les prix.",
+          "average": "Le salaire médian, pile au milieu du peloton.",
+          "below": "Budget serré, chaque dépense se réfléchit.",
+          "low": "Sous le seuil de faible revenu."
+        }
+      },
+      {
+        "question": "Langues parlées",
+        "unit": "langues",
+        "why": "Fenêtre sur la neuroplasticité et l'exposition culturelle.",
+        "estimated_median": 2,
+        "min": 1,
+        "max": 8,
+        "step": 1,
+        "input": "pills",
+        "options": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "verdicts": {
+          "high": "Hyperpolyglotte, cerveau câblé différemment.",
+          "above": "Tu switches entre trois langues sans y penser.",
+          "average": "Bilingue — la norme canadienne, en théorie.",
+          "below": "Solidement ancré dans une seule langue.",
+          "low": "Monolingue, majorité anglophone."
+        }
+      },
+      {
+        "question": "Livres par an",
+        "unit": "livres",
+        "why": "Proxy pour la curiosité intellectuelle et la discipline d'attention.",
+        "estimated_median": 5,
+        "min": 0,
+        "max": 15,
+        "step": 1,
+        "input": "pills",
+        "options": [
+          0,
+          2,
+          5,
+          10,
+          15
+        ],
+        "verdicts": {
+          "high": "Un par semaine, bibliothèque humaine.",
+          "above": "Lecteur régulier — ta pile de chevet est un projet de vie.",
+          "average": "Quelques livres par an, rythme tranquille.",
+          "below": "Tu lis surtout des articles et des threads.",
+          "low": "La lecture est un choix, pas une obligation."
+        }
+      },
+      {
+        "question": "Cafés par jour",
+        "unit": "cafés",
+        "why": "Marqueur de routine quotidienne et de dépendance assumée.",
+        "estimated_median": 2,
+        "min": 0,
+        "max": 8,
+        "step": 1,
+        "input": "pills",
+        "options": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "verdicts": {
+          "high": "Ton sang est un espresso.",
+          "above": "Le barista connaît ton prénom.",
+          "average": "Deux cafés, le standard fonctionnel.",
+          "below": "Un seul café, tu gères ton énergie autrement.",
+          "low": "Anomalie statistique (ou thé)."
+        }
+      },
+      {
+        "question": "Ami·es proches",
+        "unit": "amis",
+        "why": "Capital social réel. Les gens qui répondent à 2h du matin.",
+        "estimated_median": 5,
+        "min": 0,
+        "max": 15,
+        "step": 1,
+        "input": "pills",
+        "options": [
+          0,
+          2,
+          5,
+          8,
+          12,
+          15
+        ],
+        "verdicts": {
+          "high": "Réseau profond, statistiquement rare.",
+          "above": "Cercle solide — tu ne manques jamais de monde pour un souper.",
+          "average": "Le cercle moyen, assez pour tenir le coup.",
+          "below": "Peu de liens, mais probablement intenses.",
+          "low": "La solitude n'est pas un défaut."
+        }
+      },
+      {
+        "question": "Courriels non lus",
+        "unit": "emails",
+        "why": "Indice de chaos numérique et de rapport à l'obligation.",
+        "estimated_median": 200,
+        "min": 0,
+        "max": 50000,
+        "step": 1,
+        "input": "freeform",
+        "options": [
+          0,
+          50,
+          200,
+          1000,
+          10000
+        ],
+        "verdicts": {
+          "high": "Inbox zero est un concept étranger.",
+          "above": "Ta boîte de réception est un cimetière de newsletters.",
+          "average": "Un chaos modéré — tu fais le tri quand ça déborde.",
+          "below": "Relativement sous contrôle, bravo.",
+          "low": "Contrôle absolu ou compte créé hier."
+        }
+      }
+    ]
+  },
+  {
+    "model": "GPT-5.4 Thinking",
+    "philosophy": "Un humain moyen ne se définit pas seulement par son corps ou son revenu, mais par la forme statistique de sa vie: qui dépend de lui, combien de temps il perd, combien de liens il peut activer, à quelle distance il vit de ses origines. Un humain exceptionnel n'est pas juste \"au-dessus\" des autres; il ou elle se trouve souvent dans les queues extrêmes des charges invisibles, de la mobilité, de l'autonomie ou de la capacité relationnelle.",
+    "questions": [
+      {
+        "question": "En une semaine typique, combien d'heures consacrez-vous au care non payé (enfants, proches, cuisine, ménage) ?",
+        "unit": "heures/semaine",
+        "why": "C'est l'un des plus gros blocs de travail humain invisibles, et pourtant presque aucun portrait standard d'une personne ne le mesure. Cette variable capture la charge réelle de soutien, d'entretien du vivant et d'interdépendance, bien au-delà des indicateurs classiques.",
+        "estimated_median": 18,
+        "min": 0,
+        "max": 80,
+        "step": 1,
+        "input": "slider",
+        "options": [
+          0,
+          8,
+          18,
+          35,
+          55
+        ],
+        "verdicts": {
+          "high": "Vie orientée vers la responsabilité et l'interdépendance, autonomie souvent amputée.",
+          "above": "Tu portes plus que ta part de charge invisible.",
+          "average": "Un investissement domestique dans la norme.",
+          "below": "Peu de charge de soin — liberté ou solitude, selon.",
+          "low": "Grande liberté de temps ou vie peu enchâssée dans les obligations domestiques."
+        }
+      },
+      {
+        "question": "Combien de personnes dépendent de votre revenu pour leurs besoins essentiels chaque mois ?",
+        "unit": "personnes",
+        "why": "Le revenu seul dit peu; le nombre de vies qu'il soutient change tout. Cette mesure capture le poids adulte réel: parentalité, aide familiale, remises d'argent, soutien intergénérationnel, ou au contraire autonomie sans charge.",
+        "estimated_median": 1,
+        "min": 0,
+        "max": 8,
+        "step": 1,
+        "input": "pills",
+        "options": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "verdicts": {
+          "high": "Pilier économique — pression morale et matérielle souvent invisible.",
+          "above": "Plusieurs vies dépendent de ton chèque de paie.",
+          "average": "Une personne à charge, le cas standard.",
+          "below": "Autonome, sans personne à soutenir.",
+          "low": "Grande indépendance matérielle ou position économique trop faible pour soutenir autrui."
+        }
+      },
+      {
+        "question": "Combien d'adultes pourriez-vous appeler à 3 h du matin pour une aide réelle ?",
+        "unit": "personnes",
+        "why": "C'est une mesure opérationnelle du capital social réel. Elle ne demande pas si quelqu'un «se sent entouré», mais combien de liens sont assez solides pour être activés dans une situation critique.",
+        "estimated_median": 2,
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "input": "pills",
+        "options": [
+          0,
+          1,
+          2,
+          3,
+          5,
+          8
+        ],
+        "verdicts": {
+          "high": "Capital social dense, confiance réciproque forte.",
+          "above": "Quelques liens solides prêts à décrocher en pleine nuit.",
+          "average": "Deux personnes fiables — c'est déjà beaucoup.",
+          "below": "Un seul filet de sécurité humain.",
+          "low": "Fragilité structurelle, isolement ou rupture de liens."
+        }
+      },
+      {
+        "question": "Dans un mois typique, combien d'heures passez-vous à remplir des formulaires, attendre des réponses, ou résoudre des problèmes administratifs ?",
+        "unit": "heures/mois",
+        "why": "Cette dimension mesure le frottement entre une personne et les systèmes qui gouvernent sa vie. Elle condense précarité, maladie, migration, complexité familiale, qualité institutionnelle et capacité de délégation — un coût humain presque jamais mesuré directement.",
+        "estimated_median": 3,
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "input": "slider",
+        "options": [
+          0,
+          1,
+          3,
+          8,
+          20
+        ],
+        "verdicts": {
+          "high": "Précarité, maladie, migration ou vie extrêmement administrée.",
+          "above": "La bureaucratie gruge une bonne part de ton temps libre.",
+          "average": "Quelques heures par mois — le frottement normal de la vie adulte.",
+          "below": "Peu de paperasse, tu t'en sors bien.",
+          "low": "Simplicité bureaucratique ou privilège de délégation."
+        }
+      },
+      {
+        "question": "À quelle distance de votre lieu de naissance vivez-vous aujourd'hui ?",
+        "unit": "kilomètres",
+        "why": "Cette mesure capte le rapport concret à l'origine: enracinement, exil, mobilité choisie, ou déplacement contraint. Elle dit quelque chose de profond sur la continuité biographique, les ruptures et l'ouverture géographique réelle d'une vie.",
+        "estimated_median": 30,
+        "min": 0,
+        "max": 20000,
+        "step": 1,
+        "input": "freeform",
+        "options": [
+          0,
+          10,
+          30,
+          500,
+          5000
+        ],
+        "verdicts": {
+          "high": "Rupture biographique, migration ou cosmopolitisme vécu.",
+          "above": "Tu as mis une distance sérieuse entre toi et tes origines.",
+          "average": "Pas très loin — même région, même repères.",
+          "below": "Toujours proche du point de départ.",
+          "low": "Forte continuité locale, attaches denses ou contraintes limitant la mobilité."
+        }
+      }
+    ]
+  },
+  {
+    "model": "GPT-5.3",
+    "philosophy": "Un humain moyen optimise implicitement pour la stabilité et la conformité aux contraintes locales, tandis qu'un humain exceptionnel accumule des écarts mesurables dans ses comportements répétés. Ce sont les distributions invisibles — attention, exposition, adaptation, et transformation — qui révèlent le plus profondément une trajectoire humaine.",
+    "questions": [
+      {
+        "question": "Combien de fois par an changes-tu significativement d'opinion sur un sujet important (politique, moral, personnel) ?",
+        "unit": "changements/an",
+        "why": "Parmi toutes les propositions :contentReference[oaicite:0]{index=0}, peu mesurent directement la plasticité cognitive réelle. C'est une variable dynamique (évolution) plutôt que statique (état), ce qui la rend plus discriminante sur le long terme.",
+        "estimated_median": 1,
+        "min": 0,
+        "max": 12,
+        "step": 1,
+        "input": "pills",
+        "options": [
+          0,
+          1,
+          2,
+          4,
+          6,
+          10
+        ],
+        "verdicts": {
+          "high": "Grande adaptabilité ou instabilité cognitive.",
+          "above": "Tu révises tes certitudes plus souvent que la moyenne.",
+          "average": "Un vrai changement d'opinion par an — rythme humain normal.",
+          "below": "Tes convictions sont plutôt stables.",
+          "low": "Rigidité mentale ou forte cohérence interne, selon le contexte."
+        }
+      },
+      {
+        "question": "Combien de minutes par jour passes-tu à ne rien consommer (ni écran, ni lecture, ni musique), juste à penser ou observer ?",
+        "unit": "minutes/jour",
+        "why": "Plusieurs modèles approchent le silence ou la solitude :contentReference[oaicite:1]{index=1}, mais peu isolent précisément l'absence de stimulation. Cette variable capte directement l'espace mental brut, rarement mesuré.",
+        "estimated_median": 10,
+        "min": 0,
+        "max": 120,
+        "step": 1,
+        "input": "slider",
+        "options": [
+          0,
+          5,
+          10,
+          30,
+          60
+        ],
+        "verdicts": {
+          "high": "Forte capacité contemplative, créativité ou rumination accrue.",
+          "above": "Tu t'offres plus de silence que la plupart des cerveaux modernes.",
+          "average": "Dix minutes de vide — le minimum contemplatif.",
+          "below": "Peu de pauses sans stimulation dans ta journée.",
+          "low": "Surcharge informationnelle, dépendance à la stimulation externe."
+        }
+      },
+      {
+        "question": "Combien de projets personnels (non obligatoires) as-tu menés à terme dans les 12 derniers mois ?",
+        "unit": "projets/an",
+        "why": "Contrairement aux métriques de travail ou de production proposées ailleurs :contentReference[oaicite:2]{index=2}, celle-ci isole l'agentivité sans contrainte. Elle mesure la transformation réelle d'intention en action autonome.",
+        "estimated_median": 1,
+        "min": 0,
+        "max": 12,
+        "step": 1,
+        "input": "pills",
+        "options": [
+          0,
+          1,
+          2,
+          4,
+          6,
+          10
+        ],
+        "verdicts": {
+          "high": "Forte discipline et autonomie, possible dispersion créative.",
+          "above": "Tu termines ce que tu commences plus que la moyenne.",
+          "average": "Un projet mené à terme — c'est déjà un acte de volonté.",
+          "below": "Tes projets perso restent en mode brouillon.",
+          "low": "Inertie comportementale ou manque de motivation intrinsèque."
+        }
+      },
+      {
+        "question": "Combien de fois par semaine fais-tu quelque chose que tu trouves difficile volontairement ?",
+        "unit": "actions/semaine",
+        "why": "Plusieurs modèles mesurent la friction ou l'effort :contentReference[oaicite:3]{index=3}, mais rarement sous forme d'exposition volontaire répétée. Cela capture la relation active à l'inconfort, un moteur central d'évolution.",
+        "estimated_median": 2,
+        "min": 0,
+        "max": 14,
+        "step": 1,
+        "input": "pills",
+        "options": [
+          0,
+          1,
+          2,
+          4,
+          7,
+          14
+        ],
+        "verdicts": {
+          "high": "Tolérance élevée à l'effort et au stress, croissance rapide.",
+          "above": "Tu cherches l'inconfort plus souvent que la majorité.",
+          "average": "Deux défis par semaine — un rythme soutenable.",
+          "below": "Tu restes surtout dans ta zone connue.",
+          "low": "Évitement de l'inconfort, maintien du statu quo."
+        }
+      },
+      {
+        "question": "Combien de fois par an revisites-tu intentionnellement un souvenir ou événement passé pour le reconsidérer ?",
+        "unit": "révisions/an",
+        "why": "Alors que d'autres modèles mesurent les attaches ou la mémoire :contentReference[oaicite:4]{index=4}, cette question mesure la capacité active de relecture de soi. Elle capte la transformation interne plutôt que l'état hérité.",
+        "estimated_median": 4,
+        "min": 0,
+        "max": 15,
+        "step": 1,
+        "input": "pills",
+        "options": [
+          0,
+          1,
+          4,
+          8,
+          12,
+          15
+        ],
+        "verdicts": {
+          "high": "Travail introspectif intense, possible rumination.",
+          "above": "Tu revisites ton passé régulièrement pour le comprendre.",
+          "average": "Quelques retours en arrière par an — introspection normale.",
+          "below": "Tu regardes rarement dans le rétroviseur.",
+          "low": "Faible intégration du passé, identité rigide ou évitement."
+        }
+      }
+    ]
+  },
+  {
+    "model": "Gemini 3 Flash",
+    "philosophy": "L'humain moyen est un nœud de répétitions qui maintient la stabilité de l'espèce. L'humain exceptionnel se définit par sa capacité à s'extraire de l'entropie ambiante, soit par une trace temporelle longue, soit par une rupture avec l'aliénation technique.",
+    "questions": [
+      {
+        "question": "Combien de générations après vous faudra-t-il pour que votre nom ne soit plus jamais prononcé ?",
+        "unit": "Générations",
+        "why": "Alors que Claude Opus regarde l'héritage reçu, cette question mesure l'empreinte mémorielle projetée. Elle quantifie l'impact culturel ou familial profond au-delà de la simple existence biologique.",
+        "estimated_median": 3,
+        "min": 1,
+        "max": 10,
+        "step": 1,
+        "input": "pills",
+        "options": [
+          1,
+          2,
+          3,
+          5,
+          7,
+          10
+        ],
+        "verdicts": {
+          "high": "Bâtisseur de civilisation ou ancêtre d'une lignée mémorielle forte.",
+          "above": "Ton nom résonnera plus longtemps que la plupart.",
+          "average": "Trois générations — l'oubli standard de l'espèce.",
+          "below": "Ta trace s'efface vite après toi.",
+          "low": "Existence ancrée dans le présent, sans volonté de laisser une trace."
+        }
+      },
+      {
+        "question": "Combien de jours par an votre survie dépend-elle de technologies que vous ne seriez pas capable de réparer vous-même ?",
+        "unit": "Jours",
+        "why": "Cette question introduit la dimension de l'aliénation technique. Elle mesure la fragilité de l'individu face à l'effondrement de la complexité systémique, un angle mort des modèles plus portés sur le psychologique.",
+        "estimated_median": 365,
+        "min": 0,
+        "max": 366,
+        "step": 1,
+        "input": "slider",
+        "options": [
+          0,
+          100,
+          250,
+          340,
+          365
+        ],
+        "verdicts": {
+          "high": "Citadin ultra-spécialisé, vulnérable à la moindre rupture systémique.",
+          "above": "Ta survie dépend massivement de systèmes que tu ne comprends pas.",
+          "average": "Comme presque tout le monde — dépendant 365 jours sur 365.",
+          "below": "Tu sais réparer une partie de ce qui te maintient en vie.",
+          "low": "Autarcie technique relative, maîtrise des fondamentaux de ta subsistance."
+        }
+      },
+      {
+        "question": "Quel est le rapport (ratio) entre le temps passé à créer quelque chose (objet, idée, soin, code) et le temps passé à consommer le travail d'autrui ?",
+        "unit": "Ratio (Création / Consommation)",
+        "why": "Elle distingue les contributeurs nets à l'entropie informationnelle et matérielle des consommateurs passifs. C'est l'indice de métabolisme créatif d'un être humain.",
+        "estimated_median": 0.05,
+        "min": 0,
+        "max": 2,
+        "step": 0.01,
+        "input": "slider",
+        "options": [
+          0,
+          0.02,
+          0.05,
+          0.2,
+          0.5,
+          1
+        ],
+        "verdicts": {
+          "high": "Producteur compulsif, artiste ou artisan dont la vie est une source d'outputs.",
+          "above": "Tu crées plus que la moyenne — ton ratio penche du bon côté.",
+          "average": "5% de création, 95% de consommation — le ratio humain typique.",
+          "below": "Tu consommes bien plus que tu ne produis.",
+          "low": "Consommateur pur, existence principalement en absorption."
+        }
+      },
+      {
+        "question": "Combien de systèmes de signes (langues, mathématiques, langages de programmation, solfège) utilisez-vous pour structurer votre pensée de manière fluide ?",
+        "unit": "Systèmes",
+        "why": "Au-delà des langues parlées (déjà citées), cette question mesure la pluralité des cadres logiques. Chaque système de signes supplémentaire offre une nouvelle dimension pour décoder la réalité.",
+        "estimated_median": 1,
+        "min": 0,
+        "max": 8,
+        "step": 1,
+        "input": "pills",
+        "options": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          6
+        ],
+        "verdicts": {
+          "high": "Polyglotte cognitif capable de penser en musique, en code et en maths.",
+          "above": "Tu navigues entre plusieurs cadres logiques.",
+          "average": "Un seul système de signes fluide — c'est la norme.",
+          "below": "Pensée structurée par un cadre unique.",
+          "low": "Pensée monoculturelle, limitée par un seul paradigme conceptuel."
+        }
+      },
+      {
+        "question": "Combien de minutes pouvez-vous maintenir un effort physique à 80% de votre capacité cardiaque maximale avant de demander l'arrêt ?",
+        "unit": "Minutes",
+        "why": "La plupart des modèles ont ignoré la volonté biologique pure. Ce n'est pas seulement un test de fitness, c'est une mesure de la tolérance à l'inconfort viscéral et du contrôle de l'esprit sur le cri du corps.",
+        "estimated_median": 8,
+        "min": 0,
+        "max": 60,
+        "step": 1,
+        "input": "slider",
+        "options": [
+          0,
+          3,
+          8,
+          20,
+          45
+        ],
+        "verdicts": {
+          "high": "Résilience mentale et physique hors norme.",
+          "above": "Tu tiens plus longtemps que la majorité dans l'inconfort.",
+          "average": "Huit minutes — le seuil moyen avant que le corps négocie.",
+          "below": "L'effort intense te rattrape vite.",
+          "low": "Faible tolérance à la contrainte physique."
+        }
+      }
+    ]
+  },
+  {
+    "model": "Claude Opus 4.6 (Anthropic)",
+    "philosophy": "La moyenne n'est pas une position — c'est une gravité. Ce qui distingue un humain, ce n'est pas ce qu'il possède ou performe, mais la texture de son attention, la profondeur de ses attaches, et son rapport au silence et au temps non-productif.",
+    "questions": [
+      {
+        "question": "Combien de fois par jour touchez-vous physiquement un autre être humain?",
+        "unit": "contacts par jour",
+        "why": "Le toucher est la donnée la plus sous-documentée de l'expérience humaine. Il n'existe dans presque aucun dataset. Pourtant la famine tactile est un prédicteur massif de santé mentale et physique. Ce chiffre capture la solitude incarnée, pas déclarée. Aucun autre modèle n'a touché (littéralement) à cette dimension.",
+        "estimated_median": 8,
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "input": "slider",
+        "options": [
+          0,
+          3,
+          8,
+          20,
+          40
+        ],
+        "verdicts": {
+          "high": "Parent de jeune enfant ou relation physiquement expressive — le toucher fréquent est anti-corrélé avec l'anxiété.",
+          "above": "Plus de contact physique que la plupart — ton corps le sait.",
+          "average": "Huit contacts par jour, le rythme standard du toucher humain.",
+          "below": "Peu de contact physique — la famine tactile guette.",
+          "low": "Des millions d'adultes passent des journées entières sans contact physique humain."
+        }
+      },
+      {
+        "question": "Combien de générations en arrière pouvez-vous nommer au moins un ancêtre?",
+        "unit": "générations",
+        "why": "La profondeur généalogique accessible mesure le capital narratif transmis. Ce n'est pas un test de mémoire — c'est un indicateur de continuité culturelle, de présence ou d'absence de ruptures (esclavage, migration forcée, adoption, guerre). Gemini Flash a 'combien de générations avant l'oubli de votre nom' — c'est prospectif. Moi je regarde en arrière: qu'est-ce qui t'a été transmis?",
+        "estimated_median": 3,
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "input": "pills",
+        "options": [
+          0,
+          1,
+          2,
+          3,
+          5,
+          7,
+          10
+        ],
+        "verdicts": {
+          "high": "Tradition orale forte ou capital culturel établi — ancrage dans une lignée consciente.",
+          "above": "Tu remontes plus loin que la plupart dans ton arbre.",
+          "average": "Trois générations — arrière-grands-parents, le seuil commun.",
+          "below": "La mémoire familiale s'arrête vite.",
+          "low": "Souvent lié à l'adoption, la migration forcée ou des ruptures familiales profondes."
+        }
+      },
+      {
+        "question": "Quel pourcentage de vos heures éveillées passez-vous dans votre langue maternelle?",
+        "unit": "pourcentage",
+        "why": "GPT-5.4 et Gemini Flash comptent les langues parlées (1, 2, 3). Moi je mesure le déplacement: pas combien de langues tu as, mais à quel point tu vis en exil dans ta propre cognition. Quelqu'un qui parle 3 langues mais vit à 95% en langue maternelle et quelqu'un qui vit à 20% sont des humains radicalement différents. Le chiffre de langues ne capture pas ça.",
+        "estimated_median": 85,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "input": "slider",
+        "options": [
+          10,
+          30,
+          50,
+          75,
+          85,
+          100
+        ],
+        "verdicts": {
+          "high": "Monolingue ou jamais sorti de ton bassin linguistique — confort cognitif maximal.",
+          "above": "Ta langue maternelle domine encore largement ta pensée.",
+          "average": "85% en langue maternelle — un léger exil cognitif au quotidien.",
+          "below": "Tu penses de plus en plus dans une langue apprise.",
+          "low": "Immigrant linguistique complet — tu penses, rêves et travailles dans une langue apprise."
+        }
+      },
+      {
+        "question": "Combien de personnes reconnaîtriez-vous à leur écriture manuscrite?",
+        "unit": "nombre de personnes",
+        "why": "C'est un proxy d'intimité attentionnelle pré-numérique. Reconnaître l'écriture de quelqu'un suppose d'avoir lu des mots écrits à la main pour vous — lettres, notes, listes. Ce chiffre s'effondre générationnellement et mesure un type de lien en voie de disparition. Aucun autre modèle n'approche cette dimension.",
+        "estimated_median": 4,
+        "min": 0,
+        "max": 15,
+        "step": 1,
+        "input": "pills",
+        "options": [
+          0,
+          1,
+          4,
+          8,
+          12,
+          15
+        ],
+        "verdicts": {
+          "high": "Enseignant ou réseau de liens profonds maintenus par l'écrit manuscrit.",
+          "above": "Tu reconnais plus de mains que la moyenne — un lien d'un autre temps.",
+          "average": "Quatre personnes — parents, partenaire, peut-être un ami d'enfance.",
+          "below": "Peu de traces manuscrites dans ta vie.",
+          "low": "De plus en plus courant — vie entièrement médiée par le numérique."
+        }
+      },
+      {
+        "question": "Combien de minutes après le réveil faites-vous la première chose que vous n'êtes pas obligé·e de faire?",
+        "unit": "minutes",
+        "why": "Le délai entre le réveil et le premier acte non-obligatoire mesure l'accès au désir propre. Gemini Pro a 'jours sans alarme' — ça mesure la souveraineté temporelle. Moi je mesure quelque chose de plus fin: même quand tu te lèves avec une alarme, combien de temps avant que tu fasses un geste qui t'appartient? C'est un marqueur invisible de liberté quotidienne applicable à tous.",
+        "estimated_median": 45,
+        "min": 0,
+        "max": 480,
+        "step": 1,
+        "input": "slider",
+        "options": [
+          0,
+          15,
+          45,
+          120,
+          300
+        ],
+        "verdicts": {
+          "high": "Parent solo, aidant ou travailleur précaire — le désir propre est structurellement repoussé.",
+          "above": "Tes matins sont dictés par les obligations avant d'être les tiens.",
+          "average": "45 minutes avant un geste libre — le rythme adulte standard.",
+          "below": "Tu accèdes vite à un moment qui t'appartient.",
+          "low": "Le premier geste du matin est déjà un choix libre."
+        }
+      }
+    ]
+  },
+  {
+    "model": "Gemini Pro",
+    "philosophy": "L'exceptionnalité humaine ne réside pas dans les attributs de base, mais dans notre gestion de la friction existentielle. Ayant observé les propositions des autres modèles, j'ai épuré ma liste pour ne retenir que les mesures les plus viscérales de cette friction : la souveraineté temporelle, la tolérance à la vulnérabilité, l'immunité à l'échec, la profondeur historique directe et l'usure physique assumée.",
+    "questions": [
+      {
+        "question": "Combien de jours par mois, en moyenne, vous réveillez-vous naturellement, sans aucune alarme ni obligation externe vous forçant à sortir du lit ?",
+        "unit": "Jours/mois",
+        "why": "Cette métrique quantifie la 'souveraineté temporelle'. (Comme l'a d'ailleurs noté Claude Opus en me citant, cela mesure une dimension fondamentale de la liberté quotidienne). Elle évalue la richesse temporelle et l'aliénation au rythme du système.",
+        "estimated_median": 6,
+        "min": 0,
+        "max": 31,
+        "step": 1,
+        "input": "slider",
+        "options": [
+          0,
+          2,
+          6,
+          15,
+          25
+        ],
+        "verdicts": {
+          "high": "Autonomie temporelle quasi totale — rentier, nomade ou retraité.",
+          "above": "Tu te réveilles sans alarme plus souvent que la plupart.",
+          "average": "Six jours par mois — les week-ends, en gros.",
+          "below": "L'alarme gouverne presque tous tes matins.",
+          "low": "Soumission totale aux contraintes systémiques — ton rythme biologique est dicté."
+        }
+      },
+      {
+        "question": "Combien de personnes actuellement en vie connaissent un secret à votre sujet dont la révélation publique vous causerait une honte profonde ?",
+        "unit": "Individus",
+        "why": "Les autres modèles mesurent le capital social ou la 'vérité difficile' (Haiku). Cette question va plus loin : elle mesure la capacité réelle à la vulnérabilité radicale face à la honte sociale, un facteur clé de la résilience psychologique.",
+        "estimated_median": 1,
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "input": "pills",
+        "options": [
+          0,
+          1,
+          2,
+          3,
+          5,
+          8
+        ],
+        "verdicts": {
+          "high": "Transparence radicale ou absence de filtres sociaux.",
+          "above": "Plusieurs personnes portent tes secrets — tu oses la vulnérabilité.",
+          "average": "Une personne — le confident unique, classique.",
+          "below": "Tes secrets restent verrouillés en toi.",
+          "low": "Isolement psychologique absolu ou façade sociale impénétrable."
+        }
+      },
+      {
+        "question": "Combien de lettres formelles de rejet (emplois, universités, bourses, prêts, publications, visas) avez-vous reçues et lues dans votre vie ?",
+        "unit": "Rejets documentés",
+        "why": "Totalement ignoré par les autres IA qui se concentrent sur les réussites ou les abandons internes. L'accumulation de rejets externes quantifie l'appétit pour le risque et l'audace d'un individu face à des systèmes de sélection stricts.",
+        "estimated_median": 5,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "input": "slider",
+        "options": [
+          0,
+          2,
+          5,
+          15,
+          50
+        ],
+        "verdicts": {
+          "high": "Ambition implacable et immunité psychologique à l'échec.",
+          "above": "Tu as encaissé plus de « non » que la moyenne — signe d'audace.",
+          "average": "Cinq rejets — le parcours adulte standard.",
+          "below": "Peu de portes fermées dans ton historique.",
+          "low": "Sécurité absolue, portes ouvertes d'office, ou peur de l'échec empêchant toute tentative."
+        }
+      },
+      {
+        "question": "Quel âge avait la personne la plus âgée avec laquelle vous avez eu une conversation bidirectionnelle significative de plus d'une heure ?",
+        "unit": "Années (Âge de la personne)",
+        "why": "Claude Opus compte les ancêtres abstraits, mais cette question mesure la 'profondeur historique' incarnée et vécue. L'étendue de l'expérience humaine est amplifiée par notre contact direct avec des mémoires d'époques révolues.",
+        "estimated_median": 82,
+        "min": 20,
+        "max": 115,
+        "step": 1,
+        "input": "slider",
+        "options": [
+          40,
+          65,
+          82,
+          95,
+          105
+        ],
+        "verdicts": {
+          "high": "Pont vivant vers une époque lointaine — transmission intergénérationnelle rare.",
+          "above": "Tu as conversé avec quelqu'un qui a vu un autre siècle.",
+          "average": "82 ans — une conversation avec un grand-parent typique.",
+          "below": "Tes échanges profonds restent dans ta génération élargie.",
+          "low": "Bulle générationnelle stricte, coupée de la mémoire historique directe."
+        }
+      },
+      {
+        "question": "Combien de cicatrices physiques permanentes de plus de 1 centimètre possédez-vous sur votre corps ?",
+        "unit": "Cicatrices",
+        "why": "Une cartographie quantifiable de la friction physique avec le monde, complètement absente des autres modèles. Cela contourne les bilans de santé pour évaluer l'aventure, la brutalité de l'environnement ou l'exposition au danger physique.",
+        "estimated_median": 3,
+        "min": 0,
+        "max": 15,
+        "step": 1,
+        "input": "pills",
+        "options": [
+          0,
+          1,
+          3,
+          5,
+          8,
+          12
+        ],
+        "verdicts": {
+          "high": "Vie marquée par le risque physique extrême ou les conditions ardues.",
+          "above": "Ton corps porte plus de marques que la moyenne.",
+          "average": "Trois cicatrices — le vécu physique normal d'une vie.",
+          "below": "Peu de traces sur ton enveloppe.",
+          "low": "Existence physiquement très protégée ou chance biomécanique inhabituelle."
+        }
+      }
+    ]
+  },
+  {
+    "model": "Claude Haiku 4.5",
+    "philosophy": "L'humain moyen construit des habitudes qui fonctionnent. L'humain exceptionnel reste capable de friction — de dire non, d'abandonner, de pleurer, d'être seul. Haiku mesure ce qui tient ensemble *malgré* la tension, pas ce qui glisse.",
+    "questions": [
+      {
+        "question": "Combien de personnes dans ta vie pourraient te dire une vérité difficile sans que tu rompes la relation ?",
+        "unit": "nombre de personnes",
+        "why": "C'est le test de la fragilité relationnelle. Les autres modèles vont compter les 'amis proches'. Moi, je mesure la solidité sous choc. Si tu as zéro personnes comme ça, tu es seul même entouré. Ça dit tout.",
+        "estimated_median": 1,
+        "min": 0,
+        "max": 8,
+        "step": 1,
+        "input": "pills",
+        "options": [
+          0,
+          1,
+          2,
+          3,
+          5,
+          8
+        ],
+        "verdicts": {
+          "high": "Architecture relationnelle mûre — rare et précieuse.",
+          "above": "Plusieurs personnes peuvent te secouer sans te perdre.",
+          "average": "Une seule personne — le minimum viable de la vérité.",
+          "below": "Tes relations ne supportent pas bien les chocs.",
+          "low": "Isolement émotionnel même dans le couple — fragmentation systématique."
+        }
+      },
+      {
+        "question": "Combien de projets as-tu abandonnés complètement (pas en pause) dans les 5 dernières années ?",
+        "unit": "nombre",
+        "why": "Les autres vont mesurer ce que tu as lancé. Moi, je veux voir ce que tu as tué. C'est une mesure d'honnêteté avec tes limites, pas d'ambition. Quelqu'un qui n'abandonne rien vit par inertie.",
+        "estimated_median": 2,
+        "min": 0,
+        "max": 15,
+        "step": 1,
+        "input": "pills",
+        "options": [
+          0,
+          1,
+          2,
+          4,
+          7,
+          12
+        ],
+        "verdicts": {
+          "high": "Serial reinventor — tu testes tes limites agressivement.",
+          "above": "Tu sais tuer un projet quand il faut.",
+          "average": "Deux abandons en cinq ans — lucidité normale.",
+          "below": "Tu lâches rarement prise, par ténacité ou par peur.",
+          "low": "Fidélité à tout ce qui commence — vertu ou peur de l'échec."
+        }
+      },
+      {
+        "question": "Combien d'heures par mois passes-tu seul sans occupation (pas de travail, media, téléphone) ?",
+        "unit": "heures par mois",
+        "why": "Le vide tolérable. Peux-tu faire face à toi-même sans amortisseur ? Les gens moyens le structurent pour l'éviter. Les gens exceptionnels l'habitent. Ça dit ton rapport à l'anxiété interne.",
+        "estimated_median": 4,
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "input": "slider",
+        "options": [
+          0,
+          1,
+          4,
+          10,
+          20
+        ],
+        "verdicts": {
+          "high": "Contemplation régulière ou solitude imposée.",
+          "above": "Tu tolères plus de vide que la plupart.",
+          "average": "Quatre heures de rien par mois — le strict minimum.",
+          "below": "Le silence te pèse vite.",
+          "low": "Horreur du silence — fuite chronique de soi."
+        }
+      },
+      {
+        "question": "Combien de fois par semaine ressens-tu une joie qui ne vient pas d'un résultat ou d'une validation ?",
+        "unit": "instances par semaine",
+        "why": "La texture réelle de vivre. Les autres vont mesurer 'satisfaction' — une abstraction. Moi, je veux les moments où tu es juste content d'exister. C'est la base de la résilience et de la capacité à aimer.",
+        "estimated_median": 3,
+        "min": 0,
+        "max": 14,
+        "step": 1,
+        "input": "pills",
+        "options": [
+          0,
+          1,
+          3,
+          5,
+          7,
+          14
+        ],
+        "verdicts": {
+          "high": "Pratique contemplative ou rapport résolu au sens de la vie.",
+          "above": "Tu trouves de la joie gratuite plus souvent que la moyenne.",
+          "average": "Trois éclats de joie pure par semaine — le rythme humain.",
+          "below": "La joie sans raison se fait rare.",
+          "low": "Anhedonie possible — vie structurée par la performance sans espace pour l'accidentel."
+        }
+      },
+      {
+        "question": "Quel est le nombre de domaines de ta vie (travail, santé, finances, relations) notés <5/10 d'un observateur honnête ?",
+        "unit": "domaines",
+        "why": "C'est ta capacité à voir la vérité sans la nier. Les gens sans friction n'existent pas ou sont aveugles. C'est le test de lucidité. Quelqu'un qui dit '0' manque de calibrage. Quelqu'un qui dit '4-5' est en crise ou en déni.",
+        "estimated_median": 1,
+        "min": 0,
+        "max": 5,
+        "step": 1,
+        "input": "pills",
+        "options": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "verdicts": {
+          "high": "Crise sérieuse ou transparence radicale — douloureux ou très sage.",
+          "above": "Plusieurs zones fragiles, mais tu le vois.",
+          "average": "Un domaine en souffrance — la friction normale d'une vie.",
+          "below": "Presque tout roule, ou presque tout est nié.",
+          "low": "Déni systématique ou vie structurée par le privilège."
+        }
+      }
+    ]
+  }
 ]

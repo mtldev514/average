@@ -33,50 +33,85 @@
           "label": "Taille",
           "unit": "cm",
           "why": "La métrique la plus universelle. Génétique pure, zéro mérite.",
-          "verdictHigh": "230+ cm — territoire NBA, vie de cadres de porte.",
-          "verdictLow": "< 145 cm — en dessous du 1er percentile mondial."
+          "verdicts": {
+            "high": "Territoire NBA, vie de cadres de porte.",
+            "above": "Tu dépasses la plupart des gens dans une foule.",
+            "average": "Pile dans la moyenne humaine, invisible dans une file.",
+            "below": "Tu te fais souvent demander ton âge au bar.",
+            "low": "En dessous du 1er percentile mondial."
+          }
         },
         {
           "label": "Salaire annuel",
           "unit": "$",
           "why": "Position économique brute. Le chiffre que tout le monde compare en secret.",
-          "verdictHigh": "500k+ — le top 1% canadien.",
-          "verdictLow": "< 20k — sous le seuil de faible revenu."
+          "verdicts": {
+            "high": "Le top 1% canadien.",
+            "above": "Confortable — tu choisis ton resto sans regarder les prix.",
+            "average": "Le salaire médian, pile au milieu du peloton.",
+            "below": "Budget serré, chaque dépense se réfléchit.",
+            "low": "Sous le seuil de faible revenu."
+          }
         },
         {
           "label": "Langues parlées",
           "unit": "langues",
           "why": "Fenêtre sur la neuroplasticité et l’exposition culturelle.",
-          "verdictHigh": "6+ — hyperpolyglotte, cerveau câblé différemment.",
-          "verdictLow": "1 — monolingue, majorité anglophone."
+          "verdicts": {
+            "high": "Hyperpolyglotte, cerveau câblé différemment.",
+            "above": "Tu switches entre trois langues sans y penser.",
+            "average": "Bilingue — la norme canadienne, en théorie.",
+            "below": "Solidement ancré dans une seule langue.",
+            "low": "Monolingue, majorité anglophone."
+          }
         },
         {
           "label": "Livres par an",
           "unit": "livres",
           "why": "Proxy pour la curiosité intellectuelle et la discipline d’attention.",
-          "verdictHigh": "52+ — un par semaine, bibliothèque humaine.",
-          "verdictLow": "0 — la lecture est un choix, pas une obligation."
+          "verdicts": {
+            "high": "Un par semaine, bibliothèque humaine.",
+            "above": "Lecteur régulier — ta pile de chevet est un projet de vie.",
+            "average": "Quelques livres par an, rythme tranquille.",
+            "below": "Tu lis surtout des articles et des threads.",
+            "low": "La lecture est un choix, pas une obligation."
+          }
         },
         {
           "label": "Cafés par jour",
           "unit": "cafés",
           "why": "Marqueur de routine quotidienne et de dépendance assumée.",
-          "verdictHigh": "6+ — ton sang est un espresso.",
-          "verdictLow": "0 — anomalie statistique (ou thé)."
+          "verdicts": {
+            "high": "Ton sang est un espresso.",
+            "above": "Le barista connaît ton prénom.",
+            "average": "Deux cafés, le standard fonctionnel.",
+            "below": "Un seul café, tu gères ton énergie autrement.",
+            "low": "Anomalie statistique (ou thé)."
+          }
         },
         {
           "label": "Ami·es proches",
           "unit": "amis",
           "why": "Capital social réel. Les gens qui répondent à 2h du matin.",
-          "verdictHigh": "12+ — réseau profond, statistiquement rare.",
-          "verdictLow": "0 — la solitude n’est pas un défaut."
+          "verdicts": {
+            "high": "Réseau profond, statistiquement rare.",
+            "above": "Cercle solide — tu ne manques jamais de monde pour un souper.",
+            "average": "Le cercle moyen, assez pour tenir le coup.",
+            "below": "Peu de liens, mais probablement intenses.",
+            "low": "La solitude n'est pas un défaut."
+          }
         },
         {
           "label": "Courriels non lus",
           "unit": "emails",
           "why": "Indice de chaos numérique et de rapport à l’obligation.",
-          "verdictHigh": "10 000+ — inbox zero est un concept étranger.",
-          "verdictLow": "0 — contrôle absolu ou compte créé hier."
+          "verdicts": {
+            "high": "Inbox zero est un concept étranger.",
+            "above": "Ta boîte de réception est un cimetière de newsletters.",
+            "average": "Un chaos modéré — tu fais le tri quand ça déborde.",
+            "below": "Relativement sous contrôle, bravo.",
+            "low": "Contrôle absolu ou compte créé hier."
+          }
         }
       ]
     },
@@ -88,36 +123,61 @@
           "label": "Heures de care non payé / semaine",
           "unit": "heures/semaine",
           "why": "L’un des plus gros blocs de travail humain invisible.",
-          "verdictHigh": "Vie orientée vers la responsabilité, autonomie amputée par la charge de soin.",
-          "verdictLow": "Grande liberté de temps, ou vie peu enchâssée dans des obligations."
+          "verdicts": {
+            "high": "Vie orientée vers la responsabilité et l'interdépendance, autonomie souvent amputée.",
+            "above": "Tu portes plus que ta part de charge invisible.",
+            "average": "Un investissement domestique dans la norme.",
+            "below": "Peu de charge de soin — liberté ou solitude, selon.",
+            "low": "Grande liberté de temps ou vie peu enchâssée dans les obligations domestiques."
+          }
         },
         {
           "label": "Personnes dépendantes de ton revenu",
           "unit": "personnes",
           "why": "Le revenu seul dit peu; le nombre de vies qu’il soutient change tout.",
-          "verdictHigh": "Rôle de pilier économique, pression invisible.",
-          "verdictLow": "Grande indépendance matérielle."
+          "verdicts": {
+            "high": "Pilier économique — pression morale et matérielle souvent invisible.",
+            "above": "Plusieurs vies dépendent de ton chèque de paie.",
+            "average": "Une personne à charge, le cas standard.",
+            "below": "Autonome, sans personne à soutenir.",
+            "low": "Grande indépendance matérielle ou position économique trop faible pour soutenir autrui."
+          }
         },
         {
           "label": "Adultes appelables à 3h du matin",
           "unit": "personnes",
           "why": "Mesure opérationnelle du capital social réel.",
-          "verdictHigh": "Capital social dense, confiance réciproque forte.",
-          "verdictLow": "Fragilité structurelle, isolement."
+          "verdicts": {
+            "high": "Capital social dense, confiance réciproque forte.",
+            "above": "Quelques liens solides prêts à décrocher en pleine nuit.",
+            "average": "Deux personnes fiables — c'est déjà beaucoup.",
+            "below": "Un seul filet de sécurité humain.",
+            "low": "Fragilité structurelle, isolement ou rupture de liens."
+          }
         },
         {
           "label": "Heures de bureaucratie / mois",
           "unit": "heures/mois",
           "why": "Friction entre une personne et les systèmes qui gouvernent sa vie.",
-          "verdictHigh": "Précarité, maladie, migration, statut complexe.",
-          "verdictLow": "Privilège de délégation ou simplicité bureaucratique."
+          "verdicts": {
+            "high": "Précarité, maladie, migration ou vie extrêmement administrée.",
+            "above": "La bureaucratie gruge une bonne part de ton temps libre.",
+            "average": "Quelques heures par mois — le frottement normal de la vie adulte.",
+            "below": "Peu de paperasse, tu t'en sors bien.",
+            "low": "Simplicité bureaucratique ou privilège de délégation."
+          }
         },
         {
           "label": "Distance du lieu de naissance",
           "unit": "kilomètres",
           "why": "Rapport concret à l’origine: enracinement, exil, mobilité choisie.",
-          "verdictHigh": "Rupture biographique, migration, cosmopolitisme.",
-          "verdictLow": "Forte continuité locale, attaches denses."
+          "verdicts": {
+            "high": "Rupture biographique, migration ou cosmopolitisme vécu.",
+            "above": "Tu as mis une distance sérieuse entre toi et tes origines.",
+            "average": "Pas très loin — même région, même repères.",
+            "below": "Toujours proche du point de départ.",
+            "low": "Forte continuité locale, attaches denses ou contraintes limitant la mobilité."
+          }
         }
       ]
     },
@@ -129,36 +189,61 @@
           "label": "Changements d’opinion majeurs / an",
           "unit": "changements/an",
           "why": "Plasticité cognitive réelle. Variable dynamique plutôt que statique.",
-          "verdictHigh": "Grande adaptabilité ou instabilité cognitive.",
-          "verdictLow": "Rigidité mentale ou forte cohérence interne."
+          "verdicts": {
+            "high": "Grande adaptabilité ou instabilité cognitive.",
+            "above": "Tu révises tes certitudes plus souvent que la moyenne.",
+            "average": "Un vrai changement d'opinion par an — rythme humain normal.",
+            "below": "Tes convictions sont plutôt stables.",
+            "low": "Rigidité mentale ou forte cohérence interne, selon le contexte."
+          }
         },
         {
           "label": "Minutes de silence pur / jour",
           "unit": "minutes/jour",
           "why": "Absence totale de stimulation. Espace mental brut, rarement mesuré.",
-          "verdictHigh": "Forte capacité contemplative, créativité ou rumination.",
-          "verdictLow": "Surcharge informationnelle, dépendance à la stimulation."
+          "verdicts": {
+            "high": "Forte capacité contemplative, créativité ou rumination accrue.",
+            "above": "Tu t'offres plus de silence que la plupart des cerveaux modernes.",
+            "average": "Dix minutes de vide — le minimum contemplatif.",
+            "below": "Peu de pauses sans stimulation dans ta journée.",
+            "low": "Surcharge informationnelle, dépendance à la stimulation externe."
+          }
         },
         {
           "label": "Projets personnels terminés (12 mois)",
           "unit": "projets/an",
           "why": "Agentivité sans contrainte. Transformation d’intention en action.",
-          "verdictHigh": "Forte discipline, autonomie.",
-          "verdictLow": "Inertie comportementale."
+          "verdicts": {
+            "high": "Forte discipline et autonomie, possible dispersion créative.",
+            "above": "Tu termines ce que tu commences plus que la moyenne.",
+            "average": "Un projet mené à terme — c'est déjà un acte de volonté.",
+            "below": "Tes projets perso restent en mode brouillon.",
+            "low": "Inertie comportementale ou manque de motivation intrinsèque."
+          }
         },
         {
           "label": "Difficultés volontaires / semaine",
           "unit": "actions/semaine",
           "why": "Exposition volontaire répétée à l’inconfort.",
-          "verdictHigh": "Tolérance élevée à l’effort, croissance rapide.",
-          "verdictLow": "Évitement, maintien du statu quo."
+          "verdicts": {
+            "high": "Tolérance élevée à l'effort et au stress, croissance rapide.",
+            "above": "Tu cherches l'inconfort plus souvent que la majorité.",
+            "average": "Deux défis par semaine — un rythme soutenable.",
+            "below": "Tu restes surtout dans ta zone connue.",
+            "low": "Évitement de l'inconfort, maintien du statu quo."
+          }
         },
         {
           "label": "Révisions de souvenirs / an",
           "unit": "révisions/an",
           "why": "Capacité active de relecture de soi.",
-          "verdictHigh": "Travail introspectif intense.",
-          "verdictLow": "Faible intégration du passé, identité rigide."
+          "verdicts": {
+            "high": "Travail introspectif intense, possible rumination.",
+            "above": "Tu revisites ton passé régulièrement pour le comprendre.",
+            "average": "Quelques retours en arrière par an — introspection normale.",
+            "below": "Tu regardes rarement dans le rétroviseur.",
+            "low": "Faible intégration du passé, identité rigide ou évitement."
+          }
         }
       ]
     },
@@ -170,36 +255,61 @@
           "label": "Générations avant l’oubli de ton nom",
           "unit": "Générations",
           "why": "Empreinte mémorielle projetée, au-delà de l’existence biologique.",
-          "verdictHigh": "Bâtisseur de civilisation, lignée mémorielle forte.",
-          "verdictLow": "Existence ancrée dans le présent, sans trace."
+          "verdicts": {
+            "high": "Bâtisseur de civilisation ou ancêtre d'une lignée mémorielle forte.",
+            "above": "Ton nom résonnera plus longtemps que la plupart.",
+            "average": "Trois générations — l'oubli standard de l'espèce.",
+            "below": "Ta trace s'efface vite après toi.",
+            "low": "Existence ancrée dans le présent, sans volonté de laisser une trace."
+          }
         },
         {
           "label": "Jours / an de dépendance technologique",
           "unit": "Jours",
           "why": "Aliénation technique. Fragilité face à l’effondrement systémique.",
-          "verdictHigh": "Citadin ultra-spécialisé, vulnérable.",
-          "verdictLow": "Autarcie technique relative."
+          "verdicts": {
+            "high": "Citadin ultra-spécialisé, vulnérable à la moindre rupture systémique.",
+            "above": "Ta survie dépend massivement de systèmes que tu ne comprends pas.",
+            "average": "Comme presque tout le monde — dépendant 365 jours sur 365.",
+            "below": "Tu sais réparer une partie de ce qui te maintient en vie.",
+            "low": "Autarcie technique relative, maîtrise des fondamentaux de ta subsistance."
+          }
         },
         {
           "label": "Ratio création / consommation",
           "unit": "Ratio (Création / Consommation)",
           "why": "Indice de métabolisme créatif.",
-          "verdictHigh": "Producteur compulsif, artiste ou artisan.",
-          "verdictLow": "Consommateur pur, absorption passive."
+          "verdicts": {
+            "high": "Producteur compulsif, artiste ou artisan dont la vie est une source d'outputs.",
+            "above": "Tu crées plus que la moyenne — ton ratio penche du bon côté.",
+            "average": "5% de création, 95% de consommation — le ratio humain typique.",
+            "below": "Tu consommes bien plus que tu ne produis.",
+            "low": "Consommateur pur, existence principalement en absorption."
+          }
         },
         {
           "label": "Systèmes de signes maîtrisés",
           "unit": "Systèmes",
           "why": "Pluralité des cadres logiques: langues, math, code, solfège.",
-          "verdictHigh": "Polyglotte cognitif, saute d’un paradigme à l’autre.",
-          "verdictLow": "Pensée monoculturelle."
+          "verdicts": {
+            "high": "Polyglotte cognitif capable de penser en musique, en code et en maths.",
+            "above": "Tu navigues entre plusieurs cadres logiques.",
+            "average": "Un seul système de signes fluide — c'est la norme.",
+            "below": "Pensée structurée par un cadre unique.",
+            "low": "Pensée monoculturelle, limitée par un seul paradigme conceptuel."
+          }
         },
         {
           "label": "Minutes à 80% FC max",
           "unit": "Minutes",
           "why": "Volonté biologique pure. Tolérance à l’inconfort viscéral.",
-          "verdictHigh": "Résilience mentale et physique hors norme.",
-          "verdictLow": "Faible tolérance à la contrainte physique."
+          "verdicts": {
+            "high": "Résilience mentale et physique hors norme.",
+            "above": "Tu tiens plus longtemps que la majorité dans l'inconfort.",
+            "average": "Huit minutes — le seuil moyen avant que le corps négocie.",
+            "below": "L'effort intense te rattrape vite.",
+            "low": "Faible tolérance à la contrainte physique."
+          }
         }
       ]
     },
@@ -211,36 +321,61 @@
           "label": "Contacts physiques / jour",
           "unit": "contacts par jour",
           "why": "Le toucher est la donnée la plus sous-documentée de l’expérience humaine.",
-          "verdictHigh": "50+ : parent de jeune enfant, culture à forte proxémie.",
-          "verdictLow": "0 : des millions passent des journées sans contact humain."
+          "verdicts": {
+            "high": "Parent de jeune enfant ou relation physiquement expressive — le toucher fréquent est anti-corrélé avec l'anxiété.",
+            "above": "Plus de contact physique que la plupart — ton corps le sait.",
+            "average": "Huit contacts par jour, le rythme standard du toucher humain.",
+            "below": "Peu de contact physique — la famine tactile guette.",
+            "low": "Des millions d'adultes passent des journées entières sans contact physique humain."
+          }
         },
         {
           "label": "Générations d’ancêtres nommés",
           "unit": "générations",
           "why": "Capital narratif transmis. Indicateur de continuité culturelle.",
-          "verdictHigh": "7+ : tradition orale forte, capital culturel établi.",
-          "verdictLow": "0–1 : adoption, migration forcée, ruptures profondes."
+          "verdicts": {
+            "high": "Tradition orale forte ou capital culturel établi — ancrage dans une lignée consciente.",
+            "above": "Tu remontes plus loin que la plupart dans ton arbre.",
+            "average": "Trois générations — arrière-grands-parents, le seuil commun.",
+            "below": "La mémoire familiale s'arrête vite.",
+            "low": "Souvent lié à l'adoption, la migration forcée ou des ruptures familiales profondes."
+          }
         },
         {
           "label": "Heures éveillées en langue maternelle",
           "unit": "pourcentage",
           "why": "Pas combien de langues tu as, mais à quel point tu vis en exil cognitif.",
-          "verdictHigh": "100% : monolingue, confort cognitif maximal.",
-          "verdictLow": "< 20% : immigrant linguistique complet, fatigue cognitive chronique."
+          "verdicts": {
+            "high": "Monolingue ou jamais sorti de ton bassin linguistique — confort cognitif maximal.",
+            "above": "Ta langue maternelle domine encore largement ta pensée.",
+            "average": "85% en langue maternelle — un léger exil cognitif au quotidien.",
+            "below": "Tu penses de plus en plus dans une langue apprise.",
+            "low": "Immigrant linguistique complet — tu penses, rêves et travailles dans une langue apprise."
+          }
         },
         {
           "label": "Écritures manuscrites reconnues",
           "unit": "nombre de personnes",
           "why": "Proxy d’intimité attentionnelle pré-numérique.",
-          "verdictHigh": "15+ : enseignant, correspondance manuscrite active.",
-          "verdictLow": "0 : vie entièrement médiée par le numérique."
+          "verdicts": {
+            "high": "Enseignant ou réseau de liens profonds maintenus par l'écrit manuscrit.",
+            "above": "Tu reconnais plus de mains que la moyenne — un lien d'un autre temps.",
+            "average": "Quatre personnes — parents, partenaire, peut-être un ami d'enfance.",
+            "below": "Peu de traces manuscrites dans ta vie.",
+            "low": "De plus en plus courant — vie entièrement médiée par le numérique."
+          }
         },
         {
           "label": "Minutes avant le premier acte libre",
           "unit": "minutes",
           "why": "Le délai mesure l’accès au désir propre.",
-          "verdictHigh": "480+ min : parent solo, aidant, précarité.",
-          "verdictLow": "0 min : le premier geste est déjà un choix libre."
+          "verdicts": {
+            "high": "Parent solo, aidant ou travailleur précaire — le désir propre est structurellement repoussé.",
+            "above": "Tes matins sont dictés par les obligations avant d'être les tiens.",
+            "average": "45 minutes avant un geste libre — le rythme adulte standard.",
+            "below": "Tu accèdes vite à un moment qui t'appartient.",
+            "low": "Le premier geste du matin est déjà un choix libre."
+          }
         }
       ]
     },
@@ -252,36 +387,61 @@
           "label": "Réveils naturels / mois",
           "unit": "Jours/mois",
           "why": "Souveraineté temporelle. Richesse vs aliénation au rythme du système.",
-          "verdictHigh": "Autonomie temporelle quasi totale. Luxe rare ou marginalisation.",
-          "verdictLow": "Soumission totale aux contraintes systémiques."
+          "verdicts": {
+            "high": "Autonomie temporelle quasi totale — rentier, nomade ou retraité.",
+            "above": "Tu te réveilles sans alarme plus souvent que la plupart.",
+            "average": "Six jours par mois — les week-ends, en gros.",
+            "below": "L'alarme gouverne presque tous tes matins.",
+            "low": "Soumission totale aux contraintes systémiques — ton rythme biologique est dicté."
+          }
         },
         {
           "label": "Détenteur·ices de ton secret honteux",
           "unit": "Individus",
           "why": "Capacité à la vulnérabilité radicale face à la honte sociale.",
-          "verdictHigh": "Transparence radicale, absence de filtres sociaux.",
-          "verdictLow": "Isolement psychologique ou façade impénétrable."
+          "verdicts": {
+            "high": "Transparence radicale ou absence de filtres sociaux.",
+            "above": "Plusieurs personnes portent tes secrets — tu oses la vulnérabilité.",
+            "average": "Une personne — le confident unique, classique.",
+            "below": "Tes secrets restent verrouillés en toi.",
+            "low": "Isolement psychologique absolu ou façade sociale impénétrable."
+          }
         },
         {
           "label": "Lettres de rejet reçues (vie)",
           "unit": "Rejets documentés",
           "why": "Appétit pour le risque face aux systèmes de sélection.",
-          "verdictHigh": "Ambition implacable, immunité à l’échec.",
-          "verdictLow": "Sécurité absolue ou paralysie par la peur."
+          "verdicts": {
+            "high": "Ambition implacable et immunité psychologique à l'échec.",
+            "above": "Tu as encaissé plus de « non » que la moyenne — signe d'audace.",
+            "average": "Cinq rejets — le parcours adulte standard.",
+            "below": "Peu de portes fermées dans ton historique.",
+            "low": "Sécurité absolue, portes ouvertes d'office, ou peur de l'échec empêchant toute tentative."
+          }
         },
         {
           "label": "Âge de la plus vieille personne côtoyée 1h+",
           "unit": "Années (Âge de la personne)",
           "why": "Profondeur historique incarnée. Contact direct avec des mémoires d’époques révolues.",
-          "verdictHigh": "Pont vivant vers une époque lointaine.",
-          "verdictLow": "Bulle générationnelle stricte, présent perpétuel."
+          "verdicts": {
+            "high": "Pont vivant vers une époque lointaine — transmission intergénérationnelle rare.",
+            "above": "Tu as conversé avec quelqu'un qui a vu un autre siècle.",
+            "average": "82 ans — une conversation avec un grand-parent typique.",
+            "below": "Tes échanges profonds restent dans ta génération élargie.",
+            "low": "Bulle générationnelle stricte, coupée de la mémoire historique directe."
+          }
         },
         {
           "label": "Cicatrices permanentes (> 1 cm)",
           "unit": "Cicatrices",
           "why": "Cartographie de la friction physique avec le monde.",
-          "verdictHigh": "Risque physique extrême, corps marqué.",
-          "verdictLow": "Existence physiquement très protégée."
+          "verdicts": {
+            "high": "Vie marquée par le risque physique extrême ou les conditions ardues.",
+            "above": "Ton corps porte plus de marques que la moyenne.",
+            "average": "Trois cicatrices — le vécu physique normal d'une vie.",
+            "below": "Peu de traces sur ton enveloppe.",
+            "low": "Existence physiquement très protégée ou chance biomécanique inhabituelle."
+          }
         }
       ]
     },
@@ -293,36 +453,61 @@
           "label": "Personnes qui peuvent te dire une vérité difficile",
           "unit": "nombre de personnes",
           "why": "Test de fragilité relationnelle. Solidité sous choc.",
-          "verdictHigh": "Architecture relationnelle mûre. Rare.",
-          "verdictLow": "Isolement émotionnel même en couple."
+          "verdicts": {
+            "high": "Architecture relationnelle mûre — rare et précieuse.",
+            "above": "Plusieurs personnes peuvent te secouer sans te perdre.",
+            "average": "Une seule personne — le minimum viable de la vérité.",
+            "below": "Tes relations ne supportent pas bien les chocs.",
+            "low": "Isolement émotionnel même dans le couple — fragmentation systématique."
+          }
         },
         {
           "label": "Projets abandonnés (5 ans)",
           "unit": "nombre",
           "why": "Mesure d’honnêteté avec tes limites, pas d’ambition.",
-          "verdictHigh": "Serial reinventor ou test agressif de limites.",
-          "verdictLow": "Fidélité à tout. Ténacité ou peur de l’échec."
+          "verdicts": {
+            "high": "Serial reinventor — tu testes tes limites agressivement.",
+            "above": "Tu sais tuer un projet quand il faut.",
+            "average": "Deux abandons en cinq ans — lucidité normale.",
+            "below": "Tu lâches rarement prise, par ténacité ou par peur.",
+            "low": "Fidélité à tout ce qui commence — vertu ou peur de l'échec."
+          }
         },
         {
           "label": "Heures seul·e sans occupation / mois",
           "unit": "heures par mois",
           "why": "Le vide tolérable. Peux-tu faire face à toi-même sans amortisseur?",
-          "verdictHigh": "Contemplation régulière ou solitude imposée.",
-          "verdictLow": "Horreur du silence. Fuite chronique."
+          "verdicts": {
+            "high": "Contemplation régulière ou solitude imposée.",
+            "above": "Tu tolères plus de vide que la plupart.",
+            "average": "Quatre heures de rien par mois — le strict minimum.",
+            "below": "Le silence te pèse vite.",
+            "low": "Horreur du silence — fuite chronique de soi."
+          }
         },
         {
           "label": "Joies gratuites / semaine",
           "unit": "instances par semaine",
           "why": "Moments où tu es content d’exister, sans résultat ni validation.",
-          "verdictHigh": "Pratique contemplative ou problème du sens résolu.",
-          "verdictLow": "Anhédonie. Vie structurée par la performance."
+          "verdicts": {
+            "high": "Pratique contemplative ou rapport résolu au sens de la vie.",
+            "above": "Tu trouves de la joie gratuite plus souvent que la moyenne.",
+            "average": "Trois éclats de joie pure par semaine — le rythme humain.",
+            "below": "La joie sans raison se fait rare.",
+            "low": "Anhedonie possible — vie structurée par la performance sans espace pour l'accidentel."
+          }
         },
         {
           "label": "Domaines de vie notés < 5/10",
           "unit": "domaines",
           "why": "Test de lucidité. Quelqu’un qui dit 0 manque de calibrage.",
-          "verdictHigh": "Crise sérieuse ou transparence radicale.",
-          "verdictLow": "Déni systématique ou privilège structurel."
+          "verdicts": {
+            "high": "Crise sérieuse ou transparence radicale — douloureux ou très sage.",
+            "above": "Plusieurs zones fragiles, mais tu le vois.",
+            "average": "Un domaine en souffrance — la friction normale d'une vie.",
+            "below": "Presque tout roule, ou presque tout est nié.",
+            "low": "Déni systématique ou vie structurée par le privilège."
+          }
         }
       ]
     }

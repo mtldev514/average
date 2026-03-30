@@ -55,86 +55,24 @@ export interface ModelQuestion {
   unit: string;
   why: string;
   estimated_median: number;
-  extreme_high: string;
-  extreme_low: string;
+  min: number;
+  max: number;
+  step: number;
+  input: InputType;
+  options: number[];
+  verdicts: {
+    high: string;
+    above: string;
+    average: string;
+    below: string;
+    low: string;
+  };
 }
 
 export interface ModelData {
   model: string;
   philosophy: string;
   questions: ModelQuestion[];
-}
-
-// ─── Auto-inference from JSON fields ───────────────────
-
-function inferRange(median: number, unit: string) {
-  const u = unit.toLowerCase();
-
-  if (u.includes("%") || u.includes("pourcentage"))
-    return { min: 0, max: 100, step: 1, sliderExp: 1 };
-  if (u.includes("ratio"))
-    return { min: 0, max: Math.max(1, median * 20), step: 0.01, sliderExp: 2 };
-  if (u === "cm")
-    return { min: 100, max: 230, step: 1, sliderExp: 1 };
-  if ((u.includes("jour") || u.includes("day")) && median > 300)
-    return { min: 0, max: 366, step: 1, sliderExp: 1 };
-  if ((u.includes("jour") || u.includes("day")) && median <= 31)
-    return { min: 0, max: 31, step: 1, sliderExp: 1 };
-  if (u.includes("km") || u.includes("kilomètre"))
-    return { min: 0, max: 20000, step: 1, sliderExp: 3 };
-  if (u.includes("ans") || u.includes("âge") || u.includes("année"))
-    return { min: 0, max: 115, step: 1, sliderExp: 1 };
-  if (u.includes("génération"))
-    return { min: 0, max: 10, step: 1, sliderExp: 1 };
-
-  if (median >= 1000)
-    return { min: 0, max: Math.ceil(median * 20), step: Math.max(1, Math.round(median / 100)), sliderExp: 3 };
-  if (median >= 50)
-    return { min: 0, max: Math.ceil(median * 6), step: 1, sliderExp: 2 };
-  if (median >= 10)
-    return { min: 0, max: Math.ceil(median * 5), step: 1, sliderExp: 1.5 };
-  if (median >= 1)
-    return { min: 0, max: Math.max(15, Math.ceil(median * 6)), step: 1, sliderExp: 1 };
-  return { min: 0, max: Math.max(5, Math.ceil(median * 30)), step: 0.1, sliderExp: 1.5 };
-}
-
-// ─── Input type detection ──────────────────────────────
-
-function detectInput(
-  median: number,
-  min: number,
-  max: number,
-  step: number,
-  sliderExp: number,
-): { inputType: InputType; pills: number[] } {
-  const range = max - min;
-  const isInt = step >= 1;
-
-  // Small discrete integers → pills
-  if (isInt && median <= 7 && range <= 12) {
-    const pills: number[] = [];
-    for (let v = min; v <= max && pills.length < 9; v += step) pills.push(v);
-    return { inputType: "pills", pills };
-  }
-
-  // Slightly wider but still discrete and low median → pills with cutoff
-  if (isInt && median <= 7 && range <= 40) {
-    const cutoff = Math.min(max, Math.max(Math.ceil(median * 2.5), median + 4));
-    const pills: number[] = [];
-    for (let v = min; v <= cutoff && pills.length < 8; v += step) pills.push(v);
-    return { inputType: "pills", pills };
-  }
-
-  // Check if slider puts median too far left (>50% skew on the visual)
-  const medianPos = Math.pow(
-    Math.max(0, Math.min(1, (median - min) / (max - min))),
-    1 / sliderExp,
-  );
-  if (medianPos < 0.12 && max - min > 20) {
-    return { inputType: "freeform", pills: [] };
-  }
-
-  return { inputType: "slider", pills: [] };
 }
 
 // ─── Distribution ──────────────────────────────────────
@@ -153,36 +91,31 @@ function buildCalc(median: number, min: number, max: number): (v: number) => num
   return (v: number) => normalCDF(v, median, sd);
 }
 
-// ─── Presets (for slider/freeform) ─────────────────────
+// ─── Slider exponent (kept for visual scaling) ────────
 
-function buildPresets(median: number, min: number, max: number, step: number): number[] {
-  const snap = (v: number) => Math.round(Math.max(min, Math.min(max, v)) / step) * step;
-  const values = [
-    snap(min + (median - min) * 0.2),
-    snap(min + (median - min) * 0.7),
-    snap(median),
-    snap(median + (max - median) * 0.3),
-    snap(median + (max - median) * 0.6),
-  ];
-  const unique = [...new Set(values)].sort((a, b) => a - b);
-  return unique.length >= 3 ? unique : [snap(min), snap(median), snap(max)];
+function inferSliderExp(median: number, min: number, max: number, unit: string): number {
+  const u = unit.toLowerCase();
+  if (u.includes("ratio")) return 2;
+  if (u.includes("km") || u.includes("kilomètre")) return 3;
+  if (median >= 1000) return 3;
+  if (median >= 50) return 2;
+  if (median >= 10) return 1.5;
+  // Check for heavy right skew
+  const range = max - min;
+  const relPos = range > 0 ? (median - min) / range : 0.5;
+  if (relPos < 0.15) return 2;
+  return 1;
 }
 
-// ─── Verdicts ──────────────────────────────────────────
+// ─── Verdicts from explicit object ────────────────────
 
-function firstSentence(text: string): string {
-  const match = text.match(/^[^.!?]+[.!?]?/);
-  const sentence = match ? match[0].trim() : text;
-  return sentence.length > 120 ? sentence.substring(0, 117) + "\u2026" : sentence;
-}
-
-function buildVerdicts(extremeHigh: string, extremeLow: string): Verdict[] {
+function verdictsFromObj(v: ModelQuestion["verdicts"]): Verdict[] {
   return [
-    [85, firstSentence(extremeHigh)],
-    [60, "Au-dessus de la m\u00e9diane."],
-    [40, "Dans la moyenne."],
-    [15, "En dessous de la plupart."],
-    [0, firstSentence(extremeLow)],
+    [85, v.high],
+    [60, v.above],
+    [40, v.average],
+    [15, v.below],
+    [0, v.low],
   ];
 }
 
@@ -203,8 +136,10 @@ export function buildSections(models: ModelData[]): Section[] {
       subtitle: model.philosophy,
       color,
       stats: model.questions.map((q, qi) => {
-        const { min, max, step, sliderExp } = inferRange(q.estimated_median, q.unit);
-        const { inputType, pills } = detectInput(q.estimated_median, min, max, step, sliderExp);
+        const { min, max, step } = q;
+        const sliderExp = inferSliderExp(q.estimated_median, min, max, q.unit);
+        const inputType = q.input;
+        const pills = inputType === "pills" ? q.options : [];
         return {
           id: `${mi}-${qi}`,
           label: q.question,
@@ -217,9 +152,9 @@ export function buildSections(models: ModelData[]): Section[] {
           sliderExp,
           inputType,
           pills,
-          presets: inputType === "pills" ? [] : buildPresets(q.estimated_median, min, max, step),
+          presets: inputType === "pills" ? [] : q.options,
           calc: buildCalc(q.estimated_median, min, max),
-          verdicts: buildVerdicts(q.extreme_high, q.extreme_low),
+          verdicts: verdictsFromObj(q.verdicts),
           color,
         };
       }),

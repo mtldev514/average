@@ -33,50 +33,85 @@
           "label": "Altura",
           "unit": "cm",
           "why": "A métrica mais universal. Genética pura, zero mérito.",
-          "verdictHigh": "230+ cm — território NBA, vida batendo em portas.",
-          "verdictLow": "< 145 cm — abaixo do 1º percentil global."
+          "verdicts": {
+            "high": "230+ cm — território NBA, vida batendo em portas.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "< 145 cm — abaixo do 1º percentil global."
+          }
         },
         {
           "label": "Salário anual",
           "unit": "$",
           "why": "Posição econômica bruta. O número que todo mundo compara em segredo.",
-          "verdictHigh": "500k+ — o top 1% no Canadá.",
-          "verdictLow": "< 20k — abaixo do limiar de baixa renda."
+          "verdicts": {
+            "high": "500k+ — o top 1% no Canadá.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "< 20k — abaixo do limiar de baixa renda."
+          }
         },
         {
           "label": "Idiomas falados",
           "unit": "idiomas",
           "why": "Janela para neuroplasticidade e exposição cultural.",
-          "verdictHigh": "6+ — hiperpoliglota, cérebro com fiação diferente.",
-          "verdictLow": "1 — monolíngue."
+          "verdicts": {
+            "high": "6+ — hiperpoliglota, cérebro com fiação diferente.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "1 — monolíngue."
+          }
         },
         {
           "label": "Livros por ano",
           "unit": "livros",
           "why": "Proxy de curiosidade intelectual e disciplina de atenção.",
-          "verdictHigh": "52+ — um por semana, biblioteca ambulante.",
-          "verdictLow": "0 — leitura é uma escolha, não uma obrigação."
+          "verdicts": {
+            "high": "52+ — um por semana, biblioteca ambulante.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "0 — leitura é uma escolha, não uma obrigação."
+          }
         },
         {
           "label": "Cafés por dia",
           "unit": "cafés",
           "why": "Marcador de rotina diária e dependência assumida.",
-          "verdictHigh": "6+ — seu sangue é espresso.",
-          "verdictLow": "0 — anomalia estatística (ou chá)."
+          "verdicts": {
+            "high": "6+ — seu sangue é espresso.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "0 — anomalia estatística (ou chá)."
+          }
         },
         {
           "label": "Amigos próximos",
           "unit": "amigos",
           "why": "Capital social real. As pessoas que atendem às 2h da manhã.",
-          "verdictHigh": "12+ — rede profunda, estatisticamente raro.",
-          "verdictLow": "0 — solidão não é defeito."
+          "verdicts": {
+            "high": "12+ — rede profunda, estatisticamente raro.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "0 — solidão não é defeito."
+          }
         },
         {
           "label": "E-mails não lidos",
           "unit": "e-mails",
           "why": "Índice de caos digital e relação com obrigações.",
-          "verdictHigh": "10.000+ — inbox zero é um conceito estrangeiro.",
-          "verdictLow": "0 — controle absoluto ou conta nova."
+          "verdicts": {
+            "high": "10.000+ — inbox zero é um conceito estrangeiro.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "0 — controle absoluto ou conta nova."
+          }
         }
       ]
     },
@@ -88,36 +123,61 @@
           "label": "Horas de cuidado não remunerado por semana",
           "unit": "horas/semana",
           "why": "Um dos maiores blocos invisíveis de trabalho humano.",
-          "verdictHigh": "Vida orientada pela responsabilidade, autonomia amputada pelo cuidado.",
-          "verdictLow": "Grande liberdade de tempo, ou poucas obrigações domésticas."
+          "verdicts": {
+            "high": "Vida orientada pela responsabilidade, autonomia amputada pelo cuidado.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "Grande liberdade de tempo, ou poucas obrigações domésticas."
+          }
         },
         {
           "label": "Pessoas que dependem da sua renda",
           "unit": "pessoas",
           "why": "Renda diz pouco; o número de vidas que ela sustenta muda tudo.",
-          "verdictHigh": "Pilar econômico, pressão invisível.",
-          "verdictLow": "Grande independência material."
+          "verdicts": {
+            "high": "Pilar econômico, pressão invisível.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "Grande independência material."
+          }
         },
         {
           "label": "Adultos que você poderia ligar às 3h da manhã",
           "unit": "pessoas",
           "why": "Medida operacional de capital social real.",
-          "verdictHigh": "Capital social denso, confiança recíproca forte.",
-          "verdictLow": "Fragilidade estrutural, isolamento."
+          "verdicts": {
+            "high": "Capital social denso, confiança recíproca forte.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "Fragilidade estrutural, isolamento."
+          }
         },
         {
           "label": "Horas de burocracia por mês",
           "unit": "horas/mês",
           "why": "Atrito entre a pessoa e os sistemas que governam sua vida.",
-          "verdictHigh": "Precariedade, doença, migração, status complexo.",
-          "verdictLow": "Privilégio de delegação ou simplicidade burocrática."
+          "verdicts": {
+            "high": "Precariedade, doença, migração, status complexo.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "Privilégio de delegação ou simplicidade burocrática."
+          }
         },
         {
           "label": "Distância do local de nascimento",
           "unit": "quilômetros",
           "why": "Relação concreta com a origem: enraizamento, exílio, mobilidade escolhida.",
-          "verdictHigh": "Ruptura biográfica, migração, cosmopolitismo.",
-          "verdictLow": "Forte continuidade local, laços densos."
+          "verdicts": {
+            "high": "Ruptura biográfica, migração, cosmopolitismo.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "Forte continuidade local, laços densos."
+          }
         }
       ]
     },
@@ -129,36 +189,61 @@
           "label": "Mudanças de opinião importantes por ano",
           "unit": "mudanças/ano",
           "why": "Plasticidade cognitiva real. Variável dinâmica, não estática.",
-          "verdictHigh": "Grande adaptabilidade ou instabilidade cognitiva.",
-          "verdictLow": "Rigidez mental ou forte coerência interna."
+          "verdicts": {
+            "high": "Grande adaptabilidade ou instabilidade cognitiva.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "Rigidez mental ou forte coerência interna."
+          }
         },
         {
           "label": "Minutos de silêncio puro por dia",
           "unit": "minutos/dia",
           "why": "Ausência total de estímulo. Espaço mental bruto, raramente medido.",
-          "verdictHigh": "Forte capacidade contemplativa, criatividade ou ruminação.",
-          "verdictLow": "Sobrecarga de informação, dependência de estímulos."
+          "verdicts": {
+            "high": "Forte capacidade contemplativa, criatividade ou ruminação.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "Sobrecarga de informação, dependência de estímulos."
+          }
         },
         {
           "label": "Projetos pessoais concluídos (12 meses)",
           "unit": "projetos/ano",
           "why": "Agência sem restrição. Intenção transformada em ação.",
-          "verdictHigh": "Forte disciplina, autonomia.",
-          "verdictLow": "Inércia comportamental."
+          "verdicts": {
+            "high": "Forte disciplina, autonomia.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "Inércia comportamental."
+          }
         },
         {
           "label": "Dificuldades voluntárias por semana",
           "unit": "ações/semana",
           "why": "Exposição voluntária e repetida ao desconforto.",
-          "verdictHigh": "Alta tolerância ao esforço, crescimento rápido.",
-          "verdictLow": "Evitação, manutenção do status quo."
+          "verdicts": {
+            "high": "Alta tolerância ao esforço, crescimento rápido.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "Evitação, manutenção do status quo."
+          }
         },
         {
           "label": "Revisões de memória por ano",
           "unit": "revisões/ano",
           "why": "Capacidade ativa de releitura de si mesmo.",
-          "verdictHigh": "Trabalho introspectivo intenso.",
-          "verdictLow": "Fraca integração do passado, identidade rígida."
+          "verdicts": {
+            "high": "Trabalho introspectivo intenso.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "Fraca integração do passado, identidade rígida."
+          }
         }
       ]
     },
@@ -170,36 +255,61 @@
           "label": "Gerações antes do seu nome ser esquecido",
           "unit": "Gerações",
           "why": "Pegada memorial projetada, além da existência biológica.",
-          "verdictHigh": "Construtor de civilização, linhagem memorial forte.",
-          "verdictLow": "Existência ancorada no presente, sem rastro."
+          "verdicts": {
+            "high": "Construtor de civilização, linhagem memorial forte.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "Existência ancorada no presente, sem rastro."
+          }
         },
         {
           "label": "Dias por ano de dependência tecnológica",
           "unit": "Dias",
           "why": "Alienação técnica. Fragilidade diante de colapso sistêmico.",
-          "verdictHigh": "Urbanita ultra-especializado, vulnerável.",
-          "verdictLow": "Autossuficiência técnica relativa."
+          "verdicts": {
+            "high": "Urbanita ultra-especializado, vulnerável.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "Autossuficiência técnica relativa."
+          }
         },
         {
           "label": "Proporção criação/consumo",
           "unit": "Proporção (Criação / Consumo)",
           "why": "Índice de metabolismo criativo.",
-          "verdictHigh": "Produtor compulsivo, artista ou artesão.",
-          "verdictLow": "Consumidor puro, absorção passiva."
+          "verdicts": {
+            "high": "Produtor compulsivo, artista ou artesão.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "Consumidor puro, absorção passiva."
+          }
         },
         {
           "label": "Sistemas de signos dominados",
           "unit": "Sistemas",
           "why": "Pluralidade de esquemas lógicos: línguas, matemática, código, teoria musical.",
-          "verdictHigh": "Poliglota cognitivo, saltador de paradigmas.",
-          "verdictLow": "Pensamento monocultural."
+          "verdicts": {
+            "high": "Poliglota cognitivo, saltador de paradigmas.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "Pensamento monocultural."
+          }
         },
         {
           "label": "Minutos a 80% da frequência cardíaca máxima",
           "unit": "Minutos",
           "why": "Vontade biológica pura. Tolerância ao desconforto visceral.",
-          "verdictHigh": "Resiliência mental e física extraordinária.",
-          "verdictLow": "Baixa tolerância à exigência física."
+          "verdicts": {
+            "high": "Resiliência mental e física extraordinária.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "Baixa tolerância à exigência física."
+          }
         }
       ]
     },
@@ -211,36 +321,61 @@
           "label": "Contatos físicos por dia",
           "unit": "contatos por dia",
           "why": "O toque é o dado mais subdocumentado da experiência humana.",
-          "verdictHigh": "50+: pai/mãe de criança pequena, cultura de alta proximidade.",
-          "verdictLow": "0: milhões passam dias inteiros sem contato humano."
+          "verdicts": {
+            "high": "50+: pai/mãe de criança pequena, cultura de alta proximidade.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "0: milhões passam dias inteiros sem contato humano."
+          }
         },
         {
           "label": "Gerações de ancestrais nomeados",
           "unit": "gerações",
           "why": "Capital narrativo transmitido. Indicador de continuidade cultural.",
-          "verdictHigh": "7+: forte tradição oral, capital cultural estabelecido.",
-          "verdictLow": "0–1: adoção, migração forçada, rupturas profundas."
+          "verdicts": {
+            "high": "7+: forte tradição oral, capital cultural estabelecido.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "0–1: adoção, migração forçada, rupturas profundas."
+          }
         },
         {
           "label": "Horas acordado na língua materna",
           "unit": "porcentagem",
           "why": "Não quantos idiomas você tem, mas o quanto vive em exílio cognitivo.",
-          "verdictHigh": "100%: monolíngue, conforto cognitivo máximo.",
-          "verdictLow": "< 20%: imigrante linguístico completo, fadiga cognitiva crônica."
+          "verdicts": {
+            "high": "100%: monolíngue, conforto cognitivo máximo.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "< 20%: imigrante linguístico completo, fadiga cognitiva crônica."
+          }
         },
         {
           "label": "Caligrafias reconhecidas",
           "unit": "pessoas",
           "why": "Proxy de intimidade atencional pré-digital.",
-          "verdictHigh": "15+: professor, correspondência manuscrita ativa.",
-          "verdictLow": "0: vida inteiramente mediada pelo digital."
+          "verdicts": {
+            "high": "15+: professor, correspondência manuscrita ativa.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "0: vida inteiramente mediada pelo digital."
+          }
         },
         {
           "label": "Minutos antes do primeiro ato livre",
           "unit": "minutos",
           "why": "O atraso mede o acesso ao próprio desejo.",
-          "verdictHigh": "480+ min: pai/mãe solo, cuidador, precariedade.",
-          "verdictLow": "0 min: o primeiro gesto já é uma escolha livre."
+          "verdicts": {
+            "high": "480+ min: pai/mãe solo, cuidador, precariedade.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "0 min: o primeiro gesto já é uma escolha livre."
+          }
         }
       ]
     },
@@ -252,36 +387,61 @@
           "label": "Despertares naturais por mês",
           "unit": "Dias/mês",
           "why": "Soberania temporal. Riqueza de tempo vs. alienação sistêmica.",
-          "verdictHigh": "Autonomia temporal quase total. Luxo raro ou marginalização.",
-          "verdictLow": "Submissão total às restrições sistêmicas."
+          "verdicts": {
+            "high": "Autonomia temporal quase total. Luxo raro ou marginalização.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "Submissão total às restrições sistêmicas."
+          }
         },
         {
           "label": "Detentores do seu segredo vergonhoso",
           "unit": "Indivíduos",
           "why": "Capacidade de vulnerabilidade radical diante da vergonha social.",
-          "verdictHigh": "Transparência radical, sem filtros sociais.",
-          "verdictLow": "Isolamento psicológico absoluto ou fachada impenetrável."
+          "verdicts": {
+            "high": "Transparência radical, sem filtros sociais.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "Isolamento psicológico absoluto ou fachada impenetrável."
+          }
         },
         {
           "label": "Cartas de rejeição recebidas (vida toda)",
           "unit": "Rejeições documentadas",
           "why": "Apetite por risco diante de sistemas de seleção rigorosos.",
-          "verdictHigh": "Ambição incansável, imunidade ao fracasso.",
-          "verdictLow": "Segurança absoluta ou paralisado pelo medo."
+          "verdicts": {
+            "high": "Ambição incansável, imunidade ao fracasso.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "Segurança absoluta ou paralisado pelo medo."
+          }
         },
         {
           "label": "Idade da pessoa mais velha com quem conversou 1h+",
           "unit": "Anos (Idade da pessoa)",
           "why": "Profundidade histórica encarnada. Contato direto com memórias de eras passadas.",
-          "verdictHigh": "Ponte viva com uma era distante.",
-          "verdictLow": "Bolha geracional estrita, presente perpétuo."
+          "verdicts": {
+            "high": "Ponte viva com uma era distante.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "Bolha geracional estrita, presente perpétuo."
+          }
         },
         {
           "label": "Cicatrizes permanentes (> 1 cm)",
           "unit": "Cicatrizes",
           "why": "Mapa quantificável de atrito físico com o mundo.",
-          "verdictHigh": "Risco físico extremo, corpo marcado.",
-          "verdictLow": "Existência muito protegida fisicamente."
+          "verdicts": {
+            "high": "Risco físico extremo, corpo marcado.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "Existência muito protegida fisicamente."
+          }
         }
       ]
     },
@@ -293,36 +453,61 @@
           "label": "Pessoas que podem te dizer uma verdade dura",
           "unit": "pessoas",
           "why": "Teste de fragilidade relacional. Força sob impacto.",
-          "verdictHigh": "Arquitetura relacional madura. Raro.",
-          "verdictLow": "Isolamento emocional mesmo em casal."
+          "verdicts": {
+            "high": "Arquitetura relacional madura. Raro.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "Isolamento emocional mesmo em casal."
+          }
         },
         {
           "label": "Projetos totalmente abandonados (5 anos)",
           "unit": "projetos",
           "why": "Honestidade com seus limites, não com sua ambição.",
-          "verdictHigh": "Reinventor serial ou testador agressivo de limites.",
-          "verdictLow": "Lealdade a tudo. Tenacidade ou medo do fracasso."
+          "verdicts": {
+            "high": "Reinventor serial ou testador agressivo de limites.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "Lealdade a tudo. Tenacidade ou medo do fracasso."
+          }
         },
         {
           "label": "Horas sozinho sem ocupação por mês",
           "unit": "horas por mês",
           "why": "O vazio tolerável. Você consegue encarar a si mesmo sem um anteparo?",
-          "verdictHigh": "Contemplação regular ou solidão imposta.",
-          "verdictLow": "Horror ao silêncio. Fuga crônica."
+          "verdicts": {
+            "high": "Contemplação regular ou solidão imposta.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "Horror ao silêncio. Fuga crônica."
+          }
         },
         {
           "label": "Alegrias gratuitas por semana",
           "unit": "ocorrências por semana",
           "why": "Momentos de estar contente por existir, sem resultado ou validação.",
-          "verdictHigh": "Prática contemplativa ou resolveu o problema do sentido.",
-          "verdictLow": "Anedonia. Vida estruturada pela performance."
+          "verdicts": {
+            "high": "Prática contemplativa ou resolveu o problema do sentido.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "Anedonia. Vida estruturada pela performance."
+          }
         },
         {
           "label": "Áreas da vida avaliadas < 5/10",
           "unit": "áreas",
           "why": "Teste de lucidez. Quem diz 0 não tem calibragem.",
-          "verdictHigh": "Crise séria ou transparência radical.",
-          "verdictLow": "Negação sistemática ou privilégio estrutural."
+          "verdicts": {
+            "high": "Crise séria ou transparência radical.",
+            "above": "Acima da mediana.",
+            "average": "Na média.",
+            "below": "Abaixo da maioria.",
+            "low": "Negação sistemática ou privilégio estrutural."
+          }
         }
       ]
     }
