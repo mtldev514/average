@@ -1,0 +1,106 @@
+{
+  "ui": {
+    "subtitle": "Ingresá tus datos. Te decimos qué tan normal sos.",
+    "outOf": "de 100",
+    "aheadOf": "por delante de {n} personas de cada 100",
+    "aheadAlmost": "por delante de casi todos",
+    "behindAlmost": "casi todos están por delante",
+    "middle": "justo en el medio",
+    "aboveMedian": "Por encima de la mediana.",
+    "average": "Promedio.",
+    "belowMost": "Por debajo de la mayoría.",
+    "clear": "borrar",
+    "compositeScore": "PUNTAJE COMPUESTO",
+    "data": "DATOS",
+    "models": "MODELOS",
+    "questions": "PREGUNTAS",
+    "approx": "DISTRIBUCIONES APROXIMADAS",
+    "verdictTop": "Estadísticamente, casi no existís.",
+    "verdict75": "Por encima del promedio en casi todo. Impresionante, o suerte.",
+    "verdict60": "Ligeramente arriba. Justo lo suficiente para mencionarlo.",
+    "verdict45": "Promedio. Está en el nombre.",
+    "verdict30": "Por debajo en varios ejes. Un dato, no un juicio.",
+    "verdictLow": "Estadísticamente notable — desde abajo. Igual de notable."
+  },
+  "models": [
+    {
+      "name": "Humano Básico",
+      "philosophy": "El humano promedio es una ficción estadística — un punto en una curva que nadie realmente habita. Lo excepcional es solo la cola de la distribución que se niega a alinearse.",
+      "questions": [
+        { "label": "Altura", "unit": "cm", "why": "La métrica más universal. Pura genética, cero mérito.", "verdictHigh": "230+ cm — territorio NBA, vida de marcos de puertas.", "verdictLow": "< 145 cm — por debajo del percentil 1 global." },
+        { "label": "Salario anual", "unit": "$", "why": "Posición económica cruda. El número que todos comparan en secreto.", "verdictHigh": "500k+ — el 1% más rico en Canadá.", "verdictLow": "< 20k — por debajo del umbral de ingresos bajos." },
+        { "label": "Idiomas hablados", "unit": "idiomas", "why": "Ventana a la neuroplasticidad y la exposición cultural.", "verdictHigh": "6+ — hiperpolíglota, cerebro cableado distinto.", "verdictLow": "1 — monolingüe." },
+        { "label": "Libros por año", "unit": "libros", "why": "Indicador de curiosidad intelectual y disciplina de atención.", "verdictHigh": "52+ — uno por semana, biblioteca andante.", "verdictLow": "0 — leer es una elección, no una obligación." },
+        { "label": "Cafés por día", "unit": "cafés", "why": "Marcador de rutina diaria y dependencia asumida.", "verdictHigh": "6+ — tu sangre es espresso.", "verdictLow": "0 — anomalía estadística (o té)." },
+        { "label": "Amigos cercanos", "unit": "amigos", "why": "Capital social real. Las personas que contestan a las 2am.", "verdictHigh": "12+ — red profunda, estadísticamente raro.", "verdictLow": "0 — la soledad no es un defecto." },
+        { "label": "Emails sin leer", "unit": "emails", "why": "Índice de caos digital y relación con la obligación.", "verdictHigh": "10,000+ — inbox zero es un concepto ajeno.", "verdictLow": "0 — control absoluto o cuenta nueva." }
+      ]
+    },
+    {
+      "name": "GPT-5.4 Thinking",
+      "philosophy": "Un humano promedio no se define solo por su cuerpo o ingresos, sino por la forma estadística de su vida: quién depende de él, cuánto tiempo pierde, cuántos vínculos puede activar.",
+      "questions": [
+        { "label": "Horas de cuidado no remunerado por semana", "unit": "horas/semana", "why": "Uno de los mayores bloques invisibles de trabajo humano.", "verdictHigh": "Vida orientada a la responsabilidad, autonomía amputada por el cuidado.", "verdictLow": "Gran libertad de tiempo, o pocas obligaciones domésticas." },
+        { "label": "Personas que dependen de tu ingreso", "unit": "personas", "why": "El ingreso dice poco; la cantidad de vidas que sostiene lo cambia todo.", "verdictHigh": "Pilar económico, presión invisible.", "verdictLow": "Gran independencia material." },
+        { "label": "Adultos a los que podrías llamar a las 3am", "unit": "personas", "why": "Medida operativa del capital social real.", "verdictHigh": "Capital social denso, confianza recíproca fuerte.", "verdictLow": "Fragilidad estructural, aislamiento." },
+        { "label": "Horas de burocracia por mes", "unit": "horas/mes", "why": "Fricción entre una persona y los sistemas que gobiernan su vida.", "verdictHigh": "Precariedad, enfermedad, migración, estatus complejo.", "verdictLow": "Privilegio de delegación o simplicidad burocrática." },
+        { "label": "Distancia del lugar de nacimiento", "unit": "kilómetros", "why": "Relación concreta con el origen: arraigo, exilio, movilidad elegida.", "verdictHigh": "Ruptura biográfica, migración, cosmopolitismo.", "verdictLow": "Fuerte continuidad local, vínculos densos." }
+      ]
+    },
+    {
+      "name": "GPT-5.3",
+      "philosophy": "Un humano promedio optimiza para la estabilidad. Un humano excepcional acumula desviaciones medibles. Las distribuciones invisibles revelan una trayectoria.",
+      "questions": [
+        { "label": "Cambios importantes de opinión por año", "unit": "cambios/año", "why": "Plasticidad cognitiva real. Variable dinámica, no estática.", "verdictHigh": "Gran adaptabilidad o inestabilidad cognitiva.", "verdictLow": "Rigidez mental o fuerte coherencia interna." },
+        { "label": "Minutos de silencio puro por día", "unit": "minutos/día", "why": "Ausencia total de estimulación. Espacio mental crudo, raramente medido.", "verdictHigh": "Fuerte capacidad contemplativa, creatividad o rumiación.", "verdictLow": "Sobrecarga de información, dependencia de estimulación." },
+        { "label": "Proyectos personales completados (12 meses)", "unit": "proyectos/año", "why": "Agencia sin restricción. Intención transformada en acción.", "verdictHigh": "Fuerte disciplina, autonomía.", "verdictLow": "Inercia conductual." },
+        { "label": "Dificultades voluntarias por semana", "unit": "acciones/semana", "why": "Exposición voluntaria repetida a la incomodidad.", "verdictHigh": "Alta tolerancia al esfuerzo, crecimiento rápido.", "verdictLow": "Evitación, mantenimiento del statu quo." },
+        { "label": "Revisiones de memoria por año", "unit": "revisiones/año", "why": "Capacidad activa de auto-relectura.", "verdictHigh": "Trabajo introspectivo intenso.", "verdictLow": "Integración débil del pasado, identidad rígida." }
+      ]
+    },
+    {
+      "name": "Gemini 3 Flash",
+      "philosophy": "El humano promedio es un nodo de repeticiones. Lo excepcional se define por la capacidad de extraerse de la entropía ambiental.",
+      "questions": [
+        { "label": "Generaciones antes de que tu nombre se olvide", "unit": "Generaciones", "why": "Huella memorial proyectada, más allá de la existencia biológica.", "verdictHigh": "Constructor de civilización, linaje memorial fuerte.", "verdictLow": "Existencia anclada en el presente, sin rastro." },
+        { "label": "Días por año de dependencia tecnológica", "unit": "Días", "why": "Alienación técnica. Fragilidad ante el colapso sistémico.", "verdictHigh": "Urbanita ultra-especializado, vulnerable.", "verdictLow": "Autosuficiencia técnica relativa." },
+        { "label": "Ratio creación/consumo", "unit": "Ratio (Creación / Consumo)", "why": "Índice de metabolismo creativo.", "verdictHigh": "Productor compulsivo, artista o artesano.", "verdictLow": "Consumidor puro, absorción pasiva." },
+        { "label": "Sistemas de signos dominados", "unit": "Sistemas", "why": "Pluralidad de marcos lógicos: idiomas, matemática, código, teoría musical.", "verdictHigh": "Políglota cognitivo, saltador de paradigmas.", "verdictLow": "Pensamiento monocultural." },
+        { "label": "Minutos al 80% de frecuencia cardíaca máxima", "unit": "Minutos", "why": "Voluntad biológica pura. Tolerancia a la incomodidad visceral.", "verdictHigh": "Resiliencia mental y física extraordinaria.", "verdictLow": "Baja tolerancia a la exigencia física." }
+      ]
+    },
+    {
+      "name": "Claude Opus 4.6 (Anthropic)",
+      "philosophy": "El promedio no es una posición — es una gravedad. Lo que distingue a un humano es la textura de su atención, la profundidad de sus vínculos y su relación con el silencio.",
+      "questions": [
+        { "label": "Contactos físicos por día", "unit": "contactos por día", "why": "El tacto es el dato más sub-documentado de la experiencia humana.", "verdictHigh": "50+: padre/madre de niño pequeño, cultura de alta proximidad.", "verdictLow": "0: millones pasan días enteros sin contacto humano." },
+        { "label": "Generaciones de ancestros nombrados", "unit": "generaciones", "why": "Capital narrativo transmitido. Indicador de continuidad cultural.", "verdictHigh": "7+: fuerte tradición oral, capital cultural establecido.", "verdictLow": "0–1: adopción, migración forzada, rupturas profundas." },
+        { "label": "Horas despierto en lengua materna", "unit": "porcentaje", "why": "No cuántos idiomas tenés, sino cuánto vivís en exilio cognitivo.", "verdictHigh": "100%: monolingüe, máximo confort cognitivo.", "verdictLow": "< 20%: inmigrante lingüístico total, fatiga cognitiva crónica." },
+        { "label": "Caligrafías reconocidas", "unit": "personas", "why": "Indicador de intimidad atencional pre-digital.", "verdictHigh": "15+: docente, correspondencia manuscrita activa.", "verdictLow": "0: vida enteramente mediada por lo digital." },
+        { "label": "Minutos antes del primer acto libre", "unit": "minutos", "why": "La demora mide el acceso al propio deseo.", "verdictHigh": "480+ min: padre/madre soltero/a, cuidador/a, precariedad.", "verdictLow": "0 min: el primer gesto ya es una elección libre." }
+      ]
+    },
+    {
+      "name": "Gemini Pro",
+      "philosophy": "La excepcionalidad reside en gestionar la fricción existencial: soberanía temporal, tolerancia a la vulnerabilidad, inmunidad al fracaso.",
+      "questions": [
+        { "label": "Despertares naturales por mes", "unit": "Días/mes", "why": "Soberanía temporal. Riqueza de tiempo vs. alienación sistémica.", "verdictHigh": "Autonomía temporal casi total. Lujo raro o marginación.", "verdictLow": "Sumisión total a las restricciones sistémicas." },
+        { "label": "Personas que guardan tu secreto vergonzoso", "unit": "Individuos", "why": "Capacidad de vulnerabilidad radical frente a la vergüenza social.", "verdictHigh": "Transparencia radical, sin filtros sociales.", "verdictLow": "Aislamiento psicológico absoluto o fachada impenetrable." },
+        { "label": "Cartas de rechazo recibidas (en la vida)", "unit": "Rechazos documentados", "why": "Apetito de riesgo frente a sistemas de selección estricta.", "verdictHigh": "Ambición implacable, inmunidad al fracaso.", "verdictLow": "Seguridad absoluta o parálisis por miedo." },
+        { "label": "Edad de la persona más vieja con la que hablaste 1h+", "unit": "Años (Edad de la persona)", "why": "Profundidad histórica encarnada. Contacto directo con memorias de épocas pasadas.", "verdictHigh": "Puente viviente a una era distante.", "verdictLow": "Burbuja generacional estricta, presente perpetuo." },
+        { "label": "Cicatrices permanentes (> 1 cm)", "unit": "Cicatrices", "why": "Mapa cuantificable de la fricción física con el mundo.", "verdictHigh": "Riesgo físico extremo, cuerpo marcado.", "verdictLow": "Existencia muy protegida físicamente." }
+      ]
+    },
+    {
+      "name": "Claude Haiku 4.5",
+      "philosophy": "El humano promedio construye hábitos que funcionan. El excepcional sigue siendo capaz de fricción — de decir que no, renunciar, llorar, estar solo.",
+      "questions": [
+        { "label": "Personas que te pueden decir una verdad dura", "unit": "personas", "why": "Test de fragilidad relacional. Fortaleza bajo impacto.", "verdictHigh": "Arquitectura relacional madura. Raro.", "verdictLow": "Aislamiento emocional incluso en pareja." },
+        { "label": "Proyectos totalmente abandonados (5 años)", "unit": "proyectos", "why": "Honestidad con tus límites, no con tu ambición.", "verdictHigh": "Reinventor serial o testeador agresivo de límites.", "verdictLow": "Lealtad a todo. Tenacidad o miedo al fracaso." },
+        { "label": "Horas solo sin ocupación por mes", "unit": "horas por mes", "why": "El vacío tolerable. ¿Podés enfrentarte a vos mismo sin un amortiguador?", "verdictHigh": "Contemplación regular o soledad impuesta.", "verdictLow": "Horror al silencio. Huida crónica." },
+        { "label": "Alegrías gratuitas por semana", "unit": "instancias por semana", "why": "Momentos de estar contento de existir, sin resultado ni validación.", "verdictHigh": "Práctica contemplativa o resolvió el problema del sentido.", "verdictLow": "Anhedonia. Vida estructurada por el rendimiento." },
+        { "label": "Dominios de vida calificados < 5/10", "unit": "dominios", "why": "Test de lucidez. Alguien que dice 0 carece de calibración.", "verdictHigh": "Crisis seria o transparencia radical.", "verdictLow": "Negación sistemática o privilegio estructural." }
+      ]
+    }
+  ]
+}
