@@ -1,36 +1,11 @@
 {
-  "humain-de-base": {
-    "section": {
-      "high": "Tu scores au-dessus sur les m\u00e9triques de base. Solide, sans \u00eatre spectaculaire.",
-      "above": "L\u00e9g\u00e8rement au-dessus de la moyenne sur les fondamentaux. Rien \u00e0 signaler.",
-      "average": "Pile dans la norme. Bienvenue dans la majorit\u00e9 silencieuse.",
-      "below": "En dessous sur les bases. C\u2019est une donn\u00e9e, pas un diagnostic.",
-      "low": "Les m\u00e9triques classiques ne te favorisent pas. \u00c7a ne dit rien sur le reste."
-    },
-    "composite": {
-      "high": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "above": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "average": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "below": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "low": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-    },
-    "questions": {
-      "q0": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q1": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q2": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q3": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q4": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q5": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q6": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." }
-    }
-  },
   "gpt-5-4-thinking": {
     "section": {
-      "high": "La forme statistique de ta vie est dense. Charges invisibles, liens activ\u00e9s, distance parcourue \u2014 tu portes beaucoup.",
-      "above": "Tu es au-dessus de la m\u00e9diane sur les charges et les liens. Ta vie a du poids structurel.",
-      "average": "Ta charge et tes liens sont dans la norme. Une vie statistiquement ordinaire \u2014 ce qui ne veut pas dire simple.",
-      "below": "Peu de d\u00e9pendances, peu de friction syst\u00e9mique. Libert\u00e9 ou isolement \u2014 les donn\u00e9es ne tranchent pas.",
-      "low": "Tr\u00e8s peu de charge visible. Soit tu as \u00e9limin\u00e9 la friction, soit elle ne t\u2019a pas encore trouv\u00e9."
+      "high": "La forme statistique de ta vie est dense. Charges invisibles, liens activés, distance parcourue — tu portes beaucoup.",
+      "above": "Tu es au-dessus de la médiane sur les charges et les liens. Ta vie a du poids structurel.",
+      "average": "Ta charge et tes liens sont dans la norme. Une vie statistiquement ordinaire — ce qui ne veut pas dire simple.",
+      "below": "Peu de dépendances, peu de friction systémique. Liberté ou isolement — les données ne tranchent pas.",
+      "low": "Très peu de charge visible. Soit tu as éliminé la friction, soit elle ne t’a pas encore trouvé."
     },
     "composite": {
       "high": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -40,20 +15,50 @@
       "low": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },
     "questions": {
-      "q0": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q1": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q2": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q3": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q4": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." }
+      "q0": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      },
+      "q1": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      },
+      "q2": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      },
+      "q3": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      },
+      "q4": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      }
     }
   },
   "gpt-5-3": {
     "section": {
-      "high": "Plasticit\u00e9 cognitive \u00e9lev\u00e9e. Tu changes, tu cr\u00e9es, tu revisites. Ton esprit n\u2019est pas en veille.",
-      "above": "Plus de mouvement interne que la moyenne. Tu transformes plut\u00f4t que tu ne r\u00e9p\u00e8tes.",
-      "average": "Transformation cognitive moyenne. Tu \u00e9volues, mais au rythme du troupeau.",
-      "below": "Peu de mouvement dans les comportements r\u00e9p\u00e9t\u00e9s. Stabilit\u00e9 ou inertie \u2014 la fronti\u00e8re est mince.",
-      "low": "Tr\u00e8s peu de d\u00e9viation. Tes habitudes sont des rails. Confort ou enfermement?"
+      "high": "Plasticité cognitive élevée. Tu changes, tu crées, tu revisites. Ton esprit n’est pas en veille.",
+      "above": "Plus de mouvement interne que la moyenne. Tu transformes plutôt que tu ne répètes.",
+      "average": "Transformation cognitive moyenne. Tu évolues, mais au rythme du troupeau.",
+      "below": "Peu de mouvement dans les comportements répétés. Stabilité ou inertie — la frontière est mince.",
+      "low": "Très peu de déviation. Tes habitudes sont des rails. Confort ou enfermement?"
     },
     "composite": {
       "high": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -63,20 +68,50 @@
       "low": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },
     "questions": {
-      "q0": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q1": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q2": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q3": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q4": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." }
+      "q0": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      },
+      "q1": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      },
+      "q2": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      },
+      "q3": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      },
+      "q4": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      }
     }
   },
   "gemini-3-flash": {
     "section": {
-      "high": "Tu t\u2019extrais de l\u2019entropie ambiante. Trace longue, cr\u00e9ation nette, cadres multiples. Tu n\u2019es pas un n\u0153ud de r\u00e9p\u00e9titions.",
-      "above": "Au-dessus du bruit. Tu contribues plus que tu ne consommes, et ton empreinte d\u00e9passera ta biologie.",
-      "average": "Un n\u0153ud standard dans le r\u00e9seau. Tu maintiens la stabilit\u00e9 de l\u2019esp\u00e8ce. C\u2019est d\u00e9j\u00e0 quelque chose.",
-      "below": "Consommation nette sup\u00e9rieure \u00e0 la cr\u00e9ation. L\u2019entropie l\u2019emporte. Courant mais pas in\u00e9vitable.",
-      "low": "Int\u00e9gr\u00e9 \u00e0 la technoph\u00e8re, faible trace, peu de syst\u00e8mes de pens\u00e9e. Le prix de la sp\u00e9cialisation."
+      "high": "Tu t’extrais de l’entropie ambiante. Trace longue, création nette, cadres multiples. Tu n’es pas un nœud de répétitions.",
+      "above": "Au-dessus du bruit. Tu contribues plus que tu ne consommes, et ton empreinte dépassera ta biologie.",
+      "average": "Un nœud standard dans le réseau. Tu maintiens la stabilité de l’espèce. C’est déjà quelque chose.",
+      "below": "Consommation nette supérieure à la création. L’entropie l’emporte. Courant mais pas inévitable.",
+      "low": "Intégré à la technophère, faible trace, peu de systèmes de pensée. Le prix de la spécialisation."
     },
     "composite": {
       "high": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -86,20 +121,50 @@
       "low": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },
     "questions": {
-      "q0": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q1": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q2": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q3": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q4": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." }
+      "q0": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      },
+      "q1": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      },
+      "q2": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      },
+      "q3": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      },
+      "q4": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      }
     }
   },
   "claude-opus-4-6": {
     "section": {
-      "high": "La texture de ton attention est dense. Toucher, m\u00e9moire, langue, \u00e9criture \u2014 tu habites ta vie avec pr\u00e9sence.",
-      "above": "Plus d\u2019attention que la plupart. Tu remarques ce que d\u2019autres traversent sans voir.",
+      "high": "La texture de ton attention est dense. Toucher, mémoire, langue, écriture — tu habites ta vie avec présence.",
+      "above": "Plus d’attention que la plupart. Tu remarques ce que d’autres traversent sans voir.",
       "average": "Un rapport au monde dans la moyenne. Assez de liens pour tenir, assez de silence pour respirer.",
-      "below": "Peu de contact, peu de m\u00e9moire transmise. La vie moderne \u00e9rode ces dimensions sans pr\u00e9venir.",
-      "low": "Presque aucune trace de pr\u00e9sence tactile ou narrative. Ce n\u2019est pas un jugement \u2014 c\u2019est une \u00e9poque."
+      "below": "Peu de contact, peu de mémoire transmise. La vie moderne érode ces dimensions sans prévenir.",
+      "low": "Presque aucune trace de présence tactile ou narrative. Ce n’est pas un jugement — c’est une époque."
     },
     "composite": {
       "high": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -109,20 +174,50 @@
       "low": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },
     "questions": {
-      "q0": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q1": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q2": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q3": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q4": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." }
+      "q0": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      },
+      "q1": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      },
+      "q2": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      },
+      "q3": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      },
+      "q4": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      }
     }
   },
   "gemini-pro": {
     "section": {
-      "high": "Friction assum\u00e9e. R\u00e9veils libres, rejets encaiss\u00e9s, cicatrices port\u00e9es. Tu as jou\u00e9 \u2014 et \u00e7a se voit.",
-      "above": "Plus de friction que la moyenne. Tu t\u2019es expos\u00e9 aux syst\u00e8mes et tu as les marques.",
-      "average": "Friction standard. Assez d\u2019\u00e9checs pour apprendre, pas assez pour se blinder.",
-      "below": "Peu de friction. Soit prot\u00e9g\u00e9, soit prudent. Les deux ont un co\u00fbt.",
-      "low": "Presque aucune friction existentielle. Un cocon \u2014 ou une cage sans barreaux visibles."
+      "high": "Friction assumée. Réveils libres, rejets encaissés, cicatrices portées. Tu as joué — et ça se voit.",
+      "above": "Plus de friction que la moyenne. Tu t’es exposé aux systèmes et tu as les marques.",
+      "average": "Friction standard. Assez d’échecs pour apprendre, pas assez pour se blinder.",
+      "below": "Peu de friction. Soit protégé, soit prudent. Les deux ont un coût.",
+      "low": "Presque aucune friction existentielle. Un cocon — ou une cage sans barreaux visibles."
     },
     "composite": {
       "high": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -132,20 +227,50 @@
       "low": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },
     "questions": {
-      "q0": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q1": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q2": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q3": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q4": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." }
+      "q0": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      },
+      "q1": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      },
+      "q2": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      },
+      "q3": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      },
+      "q4": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      }
     }
   },
   "claude-haiku-4-5": {
     "section": {
-      "high": "Tu sais abandonner, faire face au vide, et recevoir la v\u00e9rit\u00e9. C\u2019est rare. Vraiment.",
-      "above": "Plus de friction int\u00e9rieure que la plupart. Tu ne glisses pas \u2014 tu choisis.",
+      "high": "Tu sais abandonner, faire face au vide, et recevoir la vérité. C’est rare. Vraiment.",
+      "above": "Plus de friction intérieure que la plupart. Tu ne glisses pas — tu choisis.",
       "average": "Des habitudes qui fonctionnent, un peu de friction. Le mode humain standard.",
-      "below": "Peu de friction interne. Soit tu as r\u00e9solu tes probl\u00e8mes, soit tu ne les regardes pas.",
-      "low": "Z\u00e9ro friction visible. \u00c7a m\u2019inqui\u00e8te plus que \u00e7a ne me rassure."
+      "below": "Peu de friction interne. Soit tu as résolu tes problèmes, soit tu ne les regardes pas.",
+      "low": "Zéro friction visible. Ça m’inquiète plus que ça ne me rassure."
     },
     "composite": {
       "high": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -155,11 +280,41 @@
       "low": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     },
     "questions": {
-      "q0": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q1": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q2": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q3": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." },
-      "q4": { "high": "Lorem ipsum.", "above": "Lorem ipsum.", "average": "Lorem ipsum.", "below": "Lorem ipsum.", "low": "Lorem ipsum." }
+      "q0": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      },
+      "q1": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      },
+      "q2": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      },
+      "q3": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      },
+      "q4": {
+        "high": "Lorem ipsum.",
+        "above": "Lorem ipsum.",
+        "average": "Lorem ipsum.",
+        "below": "Lorem ipsum.",
+        "low": "Lorem ipsum."
+      }
     }
   }
 }

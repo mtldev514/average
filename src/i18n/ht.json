@@ -21,100 +21,10 @@
     "verdict45": "Mwayèn. Se sa ki nan non an.",
     "verdict30": "Pi ba sou plizyè aks. Yon done, pa yon jijman.",
     "verdictLow": "Statistikman remakab — soti anba. Remakab kanmenm.",
-    "concept": "Nou mande 7 IA: chwazi 5 kesyon pou mezire jis ki jan yon moun nòmal. Yon modèl debaz konplete pòtre a. Men sa yo reponn.",
+    "concept": "Nou mande 6 IA: chwazi 5 kesyon pou mezire jis ki jan yon moun nòmal. Men sa yo reponn.",
     "whyQuestion": "poukisa kesyon sa a?"
   },
   "models": [
-    {
-      "name": "Moun Debaz",
-      "philosophy": "Moun mwayèn nan se yon fiksyon statistik — yon pwen sou yon koub pèsonn pa vrèman rete. Sa ki eksepsyonèl la se jis ke bout distribisyon an ki refize tonbe nan liy.",
-      "questions": [
-        {
-          "label": "Wotè",
-          "unit": "cm",
-          "why": "Mezi ki pi inivèsèl. Jenetik pi, zewo merite.",
-          "verdicts": {
-            "high": "230+ cm — teritwa NBA, lavi kadpòt.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "< 145 cm — pi ba pase 1ye pousan mondyal la."
-          }
-        },
-        {
-          "label": "Salè chak ane",
-          "unit": "$",
-          "why": "Pozisyon ekonomik brit. Nimewo tout moun konpare an kachèt.",
-          "verdicts": {
-            "high": "500k+ — nan 1% ki pi wo nan Kanada.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "< 20k — pi ba pase limit revni fèb la."
-          }
-        },
-        {
-          "label": "Lang ou pale",
-          "unit": "lang",
-          "why": "Fenèt sou newoplastisite ak ekspozisyon kiltirèl.",
-          "verdicts": {
-            "high": "6+ — ipèpoliglòt, sèvo ki konekte yon lòt jan.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "1 — yon sèl lang."
-          }
-        },
-        {
-          "label": "Liv pa ane",
-          "unit": "liv",
-          "why": "Endis kiryozite entelektyèl ak disiplin atansyon.",
-          "verdicts": {
-            "high": "52+ — youn pa semèn, bibliyotèk ki mache.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "0 — lekti se yon chwa, pa yon obligasyon."
-          }
-        },
-        {
-          "label": "Kafe pa jou",
-          "unit": "kafe",
-          "why": "Makè woutin chak jou ak depandans sipoze.",
-          "verdicts": {
-            "high": "6+ — san w se espreso.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "0 — anomali statistik (oswa te)."
-          }
-        },
-        {
-          "label": "Zanmi pwòch",
-          "unit": "zanmi",
-          "why": "Vrè kapital sosyal. Moun ki reponn a 2è dimaten.",
-          "verdicts": {
-            "high": "12+ — rezo pwofon, statistikman ra.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "0 — solitud pa yon defo."
-          }
-        },
-        {
-          "label": "Imèl ou pa li",
-          "unit": "imèl",
-          "why": "Endèks kaos nimerik ak relasyon ak obligasyon.",
-          "verdicts": {
-            "high": "10,000+ — bwat vid se yon konsèp etranje.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "0 — kontwòl absoli oswa kont tou nèf."
-          }
-        }
-      ]
-    },
     {
       "name": "GPT-5.4 Thinking",
       "philosophy": "Yon moun mwayèn pa defini pa kò l oswa revni l sèlman, men pa fòm statistik lavi l: kilès ki depann de li, konbyen tan li pèdi, konbyen lyen li ka aktive.",

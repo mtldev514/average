@@ -1,7 +1,7 @@
 {
   "ui": {
     "subtitle": "Enter your data. We'll tell you how normal you are.",
-    "concept": "We asked 7 AIs: pick 5 questions to measure how average a human is. A baseline model completes the picture. Here’s what they answered.",
+    "concept": "We asked 6 AIs: pick 5 questions to measure how average a human is. Here's what they answered.",
     "outOf": "out of 100",
     "aheadOf": "ahead of {n} people out of 100",
     "aheadAlmost": "ahead of almost everyone",
@@ -25,96 +25,6 @@
     "whyQuestion": "why this question?"
   },
   "models": [
-    {
-      "name": "Basic Human",
-      "philosophy": "The average human is a statistical fiction — a point on a curve no one actually inhabits. The exceptional is just the tail of the distribution that refuses to fall in line.",
-      "questions": [
-        {
-          "label": "Height",
-          "unit": "cm",
-          "why": "The most universal metric. Pure genetics, zero merit.",
-          "verdicts": {
-            "high": "230+ cm — NBA territory, life of door frames.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "< 145 cm — below the 1st global percentile."
-          }
-        },
-        {
-          "label": "Annual salary",
-          "unit": "$",
-          "why": "Raw economic position. The number everyone secretly compares.",
-          "verdicts": {
-            "high": "500k+ — the top 1% in Canada.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "< 20k — below the low-income threshold."
-          }
-        },
-        {
-          "label": "Languages spoken",
-          "unit": "languages",
-          "why": "Window into neuroplasticity and cultural exposure.",
-          "verdicts": {
-            "high": "6+ — hyperpolyglot, differently wired brain.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "1 — monolingual."
-          }
-        },
-        {
-          "label": "Books per year",
-          "unit": "books",
-          "why": "Proxy for intellectual curiosity and attention discipline.",
-          "verdicts": {
-            "high": "52+ — one per week, walking library.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "0 — reading is a choice, not an obligation."
-          }
-        },
-        {
-          "label": "Coffees per day",
-          "unit": "coffees",
-          "why": "Daily routine marker and assumed dependency.",
-          "verdicts": {
-            "high": "6+ — your blood is espresso.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "0 — statistical anomaly (or tea)."
-          }
-        },
-        {
-          "label": "Close friends",
-          "unit": "friends",
-          "why": "Real social capital. The people who answer at 2am.",
-          "verdicts": {
-            "high": "12+ — deep network, statistically rare.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "0 — solitude is not a flaw."
-          }
-        },
-        {
-          "label": "Unread emails",
-          "unit": "emails",
-          "why": "Digital chaos index and relationship to obligation.",
-          "verdicts": {
-            "high": "10,000+ — inbox zero is a foreign concept.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "0 — absolute control or brand new account."
-          }
-        }
-      ]
-    },
     {
       "name": "GPT-5.4 Thinking",
       "philosophy": "An average human isn't defined by body or income alone, but by the statistical shape of their life: who depends on them, how much time they lose, how many bonds they can activate.",

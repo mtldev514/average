@@ -21,100 +21,10 @@
     "verdict45": "Na média. Está no nome.",
     "verdict30": "Abaixo em vários eixos. Um ponto de dados, não um julgamento.",
     "verdictLow": "Estatisticamente notável — de baixo. Ainda assim, notável.",
-    "concept": "Perguntamos a 7 IAs: escolha 5 perguntas para medir o quão médio um humano é. Um modelo base completa o retrato. Aqui estão as respostas.",
+    "concept": "Perguntamos a 6 IAs: escolha 5 perguntas para medir o quão médio um humano é. Aqui estão as respostas.",
     "whyQuestion": "por que essa pergunta?"
   },
   "models": [
-    {
-      "name": "Humano Básico",
-      "philosophy": "O humano médio é uma ficção estatística — um ponto numa curva que ninguém de fato habita. O excepcional é apenas a cauda da distribuição que se recusa a entrar na linha.",
-      "questions": [
-        {
-          "label": "Altura",
-          "unit": "cm",
-          "why": "A métrica mais universal. Genética pura, zero mérito.",
-          "verdicts": {
-            "high": "230+ cm — território NBA, vida batendo em portas.",
-            "above": "Acima da mediana.",
-            "average": "Na média.",
-            "below": "Abaixo da maioria.",
-            "low": "< 145 cm — abaixo do 1º percentil global."
-          }
-        },
-        {
-          "label": "Salário anual",
-          "unit": "$",
-          "why": "Posição econômica bruta. O número que todo mundo compara em segredo.",
-          "verdicts": {
-            "high": "500k+ — o top 1% no Canadá.",
-            "above": "Acima da mediana.",
-            "average": "Na média.",
-            "below": "Abaixo da maioria.",
-            "low": "< 20k — abaixo do limiar de baixa renda."
-          }
-        },
-        {
-          "label": "Idiomas falados",
-          "unit": "idiomas",
-          "why": "Janela para neuroplasticidade e exposição cultural.",
-          "verdicts": {
-            "high": "6+ — hiperpoliglota, cérebro com fiação diferente.",
-            "above": "Acima da mediana.",
-            "average": "Na média.",
-            "below": "Abaixo da maioria.",
-            "low": "1 — monolíngue."
-          }
-        },
-        {
-          "label": "Livros por ano",
-          "unit": "livros",
-          "why": "Proxy de curiosidade intelectual e disciplina de atenção.",
-          "verdicts": {
-            "high": "52+ — um por semana, biblioteca ambulante.",
-            "above": "Acima da mediana.",
-            "average": "Na média.",
-            "below": "Abaixo da maioria.",
-            "low": "0 — leitura é uma escolha, não uma obrigação."
-          }
-        },
-        {
-          "label": "Cafés por dia",
-          "unit": "cafés",
-          "why": "Marcador de rotina diária e dependência assumida.",
-          "verdicts": {
-            "high": "6+ — seu sangue é espresso.",
-            "above": "Acima da mediana.",
-            "average": "Na média.",
-            "below": "Abaixo da maioria.",
-            "low": "0 — anomalia estatística (ou chá)."
-          }
-        },
-        {
-          "label": "Amigos próximos",
-          "unit": "amigos",
-          "why": "Capital social real. As pessoas que atendem às 2h da manhã.",
-          "verdicts": {
-            "high": "12+ — rede profunda, estatisticamente raro.",
-            "above": "Acima da mediana.",
-            "average": "Na média.",
-            "below": "Abaixo da maioria.",
-            "low": "0 — solidão não é defeito."
-          }
-        },
-        {
-          "label": "E-mails não lidos",
-          "unit": "e-mails",
-          "why": "Índice de caos digital e relação com obrigações.",
-          "verdicts": {
-            "high": "10.000+ — inbox zero é um conceito estrangeiro.",
-            "above": "Acima da mediana.",
-            "average": "Na média.",
-            "below": "Abaixo da maioria.",
-            "low": "0 — controle absoluto ou conta nova."
-          }
-        }
-      ]
-    },
     {
       "name": "GPT-5.4 Thinking",
       "philosophy": "Um humano médio não se define só pelo corpo ou renda, mas pela forma estatística da sua vida: quem depende dele, quanto tempo ele perde, quantos vínculos consegue ativar.",

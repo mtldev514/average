@@ -21,100 +21,10 @@
     "verdict45": "Promedio. Está en el nombre.",
     "verdict30": "Por debajo en varios ejes. Un dato, no un juicio.",
     "verdictLow": "Estadísticamente notable — desde abajo. Igual de notable.",
-    "concept": "Le pedimos a 7 IAs: elegí 5 preguntas para medir qué tan promedio es un humano. Un modelo base completa el cuadro. Esto es lo que respondieron.",
+    "concept": "Le pedimos a 6 IAs: elegí 5 preguntas para medir qué tan promedio es un humano. Esto es lo que respondieron.",
     "whyQuestion": "¿por qué esta pregunta?"
   },
   "models": [
-    {
-      "name": "Humano Básico",
-      "philosophy": "El humano promedio es una ficción estadística — un punto en una curva que nadie realmente habita. Lo excepcional es solo la cola de la distribución que se niega a alinearse.",
-      "questions": [
-        {
-          "label": "Altura",
-          "unit": "cm",
-          "why": "La métrica más universal. Pura genética, cero mérito.",
-          "verdicts": {
-            "high": "230+ cm — territorio NBA, vida de marcos de puertas.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "< 145 cm — por debajo del percentil 1 global."
-          }
-        },
-        {
-          "label": "Salario anual",
-          "unit": "$",
-          "why": "Posición económica cruda. El número que todos comparan en secreto.",
-          "verdicts": {
-            "high": "500k+ — el 1% más rico en Canadá.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "< 20k — por debajo del umbral de ingresos bajos."
-          }
-        },
-        {
-          "label": "Idiomas hablados",
-          "unit": "idiomas",
-          "why": "Ventana a la neuroplasticidad y la exposición cultural.",
-          "verdicts": {
-            "high": "6+ — hiperpolíglota, cerebro cableado distinto.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "1 — monolingüe."
-          }
-        },
-        {
-          "label": "Libros por año",
-          "unit": "libros",
-          "why": "Indicador de curiosidad intelectual y disciplina de atención.",
-          "verdicts": {
-            "high": "52+ — uno por semana, biblioteca andante.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "0 — leer es una elección, no una obligación."
-          }
-        },
-        {
-          "label": "Cafés por día",
-          "unit": "cafés",
-          "why": "Marcador de rutina diaria y dependencia asumida.",
-          "verdicts": {
-            "high": "6+ — tu sangre es espresso.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "0 — anomalía estadística (o té)."
-          }
-        },
-        {
-          "label": "Amigos cercanos",
-          "unit": "amigos",
-          "why": "Capital social real. Las personas que contestan a las 2am.",
-          "verdicts": {
-            "high": "12+ — red profunda, estadísticamente raro.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "0 — la soledad no es un defecto."
-          }
-        },
-        {
-          "label": "Emails sin leer",
-          "unit": "emails",
-          "why": "Índice de caos digital y relación con la obligación.",
-          "verdicts": {
-            "high": "10,000+ — inbox zero es un concepto ajeno.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "0 — control absoluto o cuenta nueva."
-          }
-        }
-      ]
-    },
     {
       "name": "GPT-5.4 Thinking",
       "philosophy": "Un humano promedio no se define solo por su cuerpo o ingresos, sino por la forma estadística de su vida: quién depende de él, cuánto tiempo pierde, cuántos vínculos puede activar.",
