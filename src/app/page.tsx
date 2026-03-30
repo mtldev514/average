@@ -164,7 +164,7 @@ function StatRow({ stat, value, onChange, result }: { stat: Stat; value: string;
 
 function SectionHeader({ section }: { section: Section }) {
   return (
-    <div style={{ marginTop: 64, marginBottom: 32 }}>
+    <div id={section.id} style={{ marginTop: 64, marginBottom: 32, scrollMarginTop: 24 }}>
       <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
         <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 12, fontWeight: 600, color: section.color, letterSpacing: 1 }}>
           {section.number}
@@ -354,7 +354,19 @@ export default function Home() {
           <p style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 13, color: "#999", marginTop: 14, lineHeight: 1.7, maxWidth: 440 }}>
             Entre tes donn&eacute;es. On te dit &agrave; quel point tu es normal&middot;e.
           </p>
-          <div style={{ display: "flex", gap: 8, marginTop: 20, flexWrap: "wrap", alignItems: "center" }}>
+          {/* Model nav */}
+          <nav style={{ display: "flex", gap: 6, marginTop: 20, flexWrap: "wrap", alignItems: "center" }}>
+            {SECTIONS.map((s) => (
+              <a
+                key={s.id}
+                href={`#${s.id}`}
+                className="meta-btn"
+                style={{ borderColor: s.color + "55", color: s.color }}
+              >
+                {s.label.toLowerCase()}
+              </a>
+            ))}
+            <span style={{ color: "#ddd", margin: "0 2px" }}>&middot;</span>
             <button className="meta-btn" onClick={fillRandom}>au hasard</button>
             <button className="meta-btn" onClick={fillMean}>tout moyen</button>
             {filledCount > 0 && (
@@ -365,7 +377,7 @@ export default function Home() {
                 {filledCount}/{ALL_STATS.length}
               </span>
             )}
-          </div>
+          </nav>
         </div>
 
         {/* Sections (one per model) */}
