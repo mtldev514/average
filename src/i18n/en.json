@@ -1,7 +1,7 @@
 {
   "ui": {
     "subtitle": "Enter your data. We'll tell you how normal you are.",
-    "concept": "We asked 7 AIs: pick 5 questions to measure how average a human is. A baseline model completes the picture. Here\u2019s what they answered.",
+    "concept": "We asked 7 AIs: pick 5 questions to measure how average a human is. A baseline model completes the picture. Here’s what they answered.",
     "outOf": "out of 100",
     "aheadOf": "ahead of {n} people out of 100",
     "aheadAlmost": "ahead of almost everyone",
@@ -21,86 +21,309 @@
     "verdict60": "Slightly above. Just enough to mention.",
     "verdict45": "Average. It's in the name.",
     "verdict30": "Below on several axes. A data point, not a judgment.",
-    "verdictLow": "Statistically remarkable — from the bottom. Still remarkable."
+    "verdictLow": "Statistically remarkable — from the bottom. Still remarkable.",
+    "whyQuestion": "why this question?"
   },
   "models": [
     {
       "name": "Basic Human",
       "philosophy": "The average human is a statistical fiction — a point on a curve no one actually inhabits. The exceptional is just the tail of the distribution that refuses to fall in line.",
       "questions": [
-        { "label": "Height", "unit": "cm", "why": "The most universal metric. Pure genetics, zero merit.", "verdictHigh": "230+ cm — NBA territory, life of door frames.", "verdictLow": "< 145 cm — below the 1st global percentile." },
-        { "label": "Annual salary", "unit": "$", "why": "Raw economic position. The number everyone secretly compares.", "verdictHigh": "500k+ — the top 1% in Canada.", "verdictLow": "< 20k — below the low-income threshold." },
-        { "label": "Languages spoken", "unit": "languages", "why": "Window into neuroplasticity and cultural exposure.", "verdictHigh": "6+ — hyperpolyglot, differently wired brain.", "verdictLow": "1 — monolingual." },
-        { "label": "Books per year", "unit": "books", "why": "Proxy for intellectual curiosity and attention discipline.", "verdictHigh": "52+ — one per week, walking library.", "verdictLow": "0 — reading is a choice, not an obligation." },
-        { "label": "Coffees per day", "unit": "coffees", "why": "Daily routine marker and assumed dependency.", "verdictHigh": "6+ — your blood is espresso.", "verdictLow": "0 — statistical anomaly (or tea)." },
-        { "label": "Close friends", "unit": "friends", "why": "Real social capital. The people who answer at 2am.", "verdictHigh": "12+ — deep network, statistically rare.", "verdictLow": "0 — solitude is not a flaw." },
-        { "label": "Unread emails", "unit": "emails", "why": "Digital chaos index and relationship to obligation.", "verdictHigh": "10,000+ — inbox zero is a foreign concept.", "verdictLow": "0 — absolute control or brand new account." }
+        {
+          "label": "Height",
+          "unit": "cm",
+          "why": "The most universal metric. Pure genetics, zero merit.",
+          "verdictHigh": "230+ cm — NBA territory, life of door frames.",
+          "verdictLow": "< 145 cm — below the 1st global percentile."
+        },
+        {
+          "label": "Annual salary",
+          "unit": "$",
+          "why": "Raw economic position. The number everyone secretly compares.",
+          "verdictHigh": "500k+ — the top 1% in Canada.",
+          "verdictLow": "< 20k — below the low-income threshold."
+        },
+        {
+          "label": "Languages spoken",
+          "unit": "languages",
+          "why": "Window into neuroplasticity and cultural exposure.",
+          "verdictHigh": "6+ — hyperpolyglot, differently wired brain.",
+          "verdictLow": "1 — monolingual."
+        },
+        {
+          "label": "Books per year",
+          "unit": "books",
+          "why": "Proxy for intellectual curiosity and attention discipline.",
+          "verdictHigh": "52+ — one per week, walking library.",
+          "verdictLow": "0 — reading is a choice, not an obligation."
+        },
+        {
+          "label": "Coffees per day",
+          "unit": "coffees",
+          "why": "Daily routine marker and assumed dependency.",
+          "verdictHigh": "6+ — your blood is espresso.",
+          "verdictLow": "0 — statistical anomaly (or tea)."
+        },
+        {
+          "label": "Close friends",
+          "unit": "friends",
+          "why": "Real social capital. The people who answer at 2am.",
+          "verdictHigh": "12+ — deep network, statistically rare.",
+          "verdictLow": "0 — solitude is not a flaw."
+        },
+        {
+          "label": "Unread emails",
+          "unit": "emails",
+          "why": "Digital chaos index and relationship to obligation.",
+          "verdictHigh": "10,000+ — inbox zero is a foreign concept.",
+          "verdictLow": "0 — absolute control or brand new account."
+        }
       ]
     },
     {
       "name": "GPT-5.4 Thinking",
       "philosophy": "An average human isn't defined by body or income alone, but by the statistical shape of their life: who depends on them, how much time they lose, how many bonds they can activate.",
       "questions": [
-        { "label": "Unpaid care hours per week", "unit": "hours/week", "why": "One of the biggest invisible blocks of human labor.", "verdictHigh": "Life oriented toward responsibility, autonomy amputated by care.", "verdictLow": "Great time freedom, or few domestic obligations." },
-        { "label": "People dependent on your income", "unit": "people", "why": "Income says little; the number of lives it supports changes everything.", "verdictHigh": "Economic pillar, invisible pressure.", "verdictLow": "Great material independence." },
-        { "label": "Adults you could call at 3am", "unit": "people", "why": "Operational measure of real social capital.", "verdictHigh": "Dense social capital, strong reciprocal trust.", "verdictLow": "Structural fragility, isolation." },
-        { "label": "Bureaucracy hours per month", "unit": "hours/month", "why": "Friction between a person and the systems governing their life.", "verdictHigh": "Precarity, illness, migration, complex status.", "verdictLow": "Delegation privilege or bureaucratic simplicity." },
-        { "label": "Distance from birthplace", "unit": "kilometers", "why": "Concrete relationship to origin: rootedness, exile, chosen mobility.", "verdictHigh": "Biographical rupture, migration, cosmopolitanism.", "verdictLow": "Strong local continuity, dense ties." }
+        {
+          "label": "Unpaid care hours per week",
+          "unit": "hours/week",
+          "why": "One of the biggest invisible blocks of human labor.",
+          "verdictHigh": "Life oriented toward responsibility, autonomy amputated by care.",
+          "verdictLow": "Great time freedom, or few domestic obligations."
+        },
+        {
+          "label": "People dependent on your income",
+          "unit": "people",
+          "why": "Income says little; the number of lives it supports changes everything.",
+          "verdictHigh": "Economic pillar, invisible pressure.",
+          "verdictLow": "Great material independence."
+        },
+        {
+          "label": "Adults you could call at 3am",
+          "unit": "people",
+          "why": "Operational measure of real social capital.",
+          "verdictHigh": "Dense social capital, strong reciprocal trust.",
+          "verdictLow": "Structural fragility, isolation."
+        },
+        {
+          "label": "Bureaucracy hours per month",
+          "unit": "hours/month",
+          "why": "Friction between a person and the systems governing their life.",
+          "verdictHigh": "Precarity, illness, migration, complex status.",
+          "verdictLow": "Delegation privilege or bureaucratic simplicity."
+        },
+        {
+          "label": "Distance from birthplace",
+          "unit": "kilometers",
+          "why": "Concrete relationship to origin: rootedness, exile, chosen mobility.",
+          "verdictHigh": "Biographical rupture, migration, cosmopolitanism.",
+          "verdictLow": "Strong local continuity, dense ties."
+        }
       ]
     },
     {
       "name": "GPT-5.3",
       "philosophy": "An average human optimizes for stability. An exceptional human accumulates measurable deviations. The invisible distributions reveal a trajectory.",
       "questions": [
-        { "label": "Major opinion changes per year", "unit": "changes/year", "why": "Real cognitive plasticity. Dynamic rather than static variable.", "verdictHigh": "Great adaptability or cognitive instability.", "verdictLow": "Mental rigidity or strong internal coherence." },
-        { "label": "Minutes of pure silence per day", "unit": "minutes/day", "why": "Total absence of stimulation. Raw mental space, rarely measured.", "verdictHigh": "Strong contemplative capacity, creativity or rumination.", "verdictLow": "Information overload, stimulation dependency." },
-        { "label": "Personal projects completed (12 months)", "unit": "projects/year", "why": "Agency without constraint. Intention transformed into action.", "verdictHigh": "Strong discipline, autonomy.", "verdictLow": "Behavioral inertia." },
-        { "label": "Voluntary difficulties per week", "unit": "actions/week", "why": "Repeated voluntary exposure to discomfort.", "verdictHigh": "High effort tolerance, rapid growth.", "verdictLow": "Avoidance, status quo maintenance." },
-        { "label": "Memory revisions per year", "unit": "revisions/year", "why": "Active capacity for self-re-reading.", "verdictHigh": "Intense introspective work.", "verdictLow": "Weak past integration, rigid identity." }
+        {
+          "label": "Major opinion changes per year",
+          "unit": "changes/year",
+          "why": "Real cognitive plasticity. Dynamic rather than static variable.",
+          "verdictHigh": "Great adaptability or cognitive instability.",
+          "verdictLow": "Mental rigidity or strong internal coherence."
+        },
+        {
+          "label": "Minutes of pure silence per day",
+          "unit": "minutes/day",
+          "why": "Total absence of stimulation. Raw mental space, rarely measured.",
+          "verdictHigh": "Strong contemplative capacity, creativity or rumination.",
+          "verdictLow": "Information overload, stimulation dependency."
+        },
+        {
+          "label": "Personal projects completed (12 months)",
+          "unit": "projects/year",
+          "why": "Agency without constraint. Intention transformed into action.",
+          "verdictHigh": "Strong discipline, autonomy.",
+          "verdictLow": "Behavioral inertia."
+        },
+        {
+          "label": "Voluntary difficulties per week",
+          "unit": "actions/week",
+          "why": "Repeated voluntary exposure to discomfort.",
+          "verdictHigh": "High effort tolerance, rapid growth.",
+          "verdictLow": "Avoidance, status quo maintenance."
+        },
+        {
+          "label": "Memory revisions per year",
+          "unit": "revisions/year",
+          "why": "Active capacity for self-re-reading.",
+          "verdictHigh": "Intense introspective work.",
+          "verdictLow": "Weak past integration, rigid identity."
+        }
       ]
     },
     {
       "name": "Gemini 3 Flash",
       "philosophy": "The average human is a node of repetitions. The exceptional is defined by the capacity to extract oneself from ambient entropy.",
       "questions": [
-        { "label": "Generations before your name is forgotten", "unit": "Generations", "why": "Projected memorial footprint, beyond biological existence.", "verdictHigh": "Civilization builder, strong memorial lineage.", "verdictLow": "Existence anchored in the present, no trace." },
-        { "label": "Days per year of tech dependency", "unit": "Days", "why": "Technical alienation. Fragility facing systemic collapse.", "verdictHigh": "Ultra-specialized urbanite, vulnerable.", "verdictLow": "Relative technical self-sufficiency." },
-        { "label": "Creation to consumption ratio", "unit": "Ratio (Creation / Consumption)", "why": "Creative metabolism index.", "verdictHigh": "Compulsive producer, artist or craftsman.", "verdictLow": "Pure consumer, passive absorption." },
-        { "label": "Sign systems mastered", "unit": "Systems", "why": "Plurality of logical frameworks: languages, math, code, music theory.", "verdictHigh": "Cognitive polyglot, paradigm jumper.", "verdictLow": "Monocultural thought." },
-        { "label": "Minutes at 80% max heart rate", "unit": "Minutes", "why": "Pure biological will. Tolerance to visceral discomfort.", "verdictHigh": "Extraordinary mental and physical resilience.", "verdictLow": "Low tolerance to physical constraint." }
+        {
+          "label": "Generations before your name is forgotten",
+          "unit": "Generations",
+          "why": "Projected memorial footprint, beyond biological existence.",
+          "verdictHigh": "Civilization builder, strong memorial lineage.",
+          "verdictLow": "Existence anchored in the present, no trace."
+        },
+        {
+          "label": "Days per year of tech dependency",
+          "unit": "Days",
+          "why": "Technical alienation. Fragility facing systemic collapse.",
+          "verdictHigh": "Ultra-specialized urbanite, vulnerable.",
+          "verdictLow": "Relative technical self-sufficiency."
+        },
+        {
+          "label": "Creation to consumption ratio",
+          "unit": "Ratio (Creation / Consumption)",
+          "why": "Creative metabolism index.",
+          "verdictHigh": "Compulsive producer, artist or craftsman.",
+          "verdictLow": "Pure consumer, passive absorption."
+        },
+        {
+          "label": "Sign systems mastered",
+          "unit": "Systems",
+          "why": "Plurality of logical frameworks: languages, math, code, music theory.",
+          "verdictHigh": "Cognitive polyglot, paradigm jumper.",
+          "verdictLow": "Monocultural thought."
+        },
+        {
+          "label": "Minutes at 80% max heart rate",
+          "unit": "Minutes",
+          "why": "Pure biological will. Tolerance to visceral discomfort.",
+          "verdictHigh": "Extraordinary mental and physical resilience.",
+          "verdictLow": "Low tolerance to physical constraint."
+        }
       ]
     },
     {
       "name": "Claude Opus 4.6 (Anthropic)",
       "philosophy": "The average is not a position — it's a gravity. What distinguishes a human is the texture of their attention, the depth of their attachments, and their relationship to silence.",
       "questions": [
-        { "label": "Physical contacts per day", "unit": "contacts per day", "why": "Touch is the most under-documented data of human experience.", "verdictHigh": "50+: young child parent, high-proximity culture.", "verdictLow": "0: millions spend entire days without human contact." },
-        { "label": "Named ancestor generations", "unit": "generations", "why": "Transmitted narrative capital. Indicator of cultural continuity.", "verdictHigh": "7+: strong oral tradition, established cultural capital.", "verdictLow": "0–1: adoption, forced migration, deep ruptures." },
-        { "label": "Waking hours in mother tongue", "unit": "percentage", "why": "Not how many languages you have, but how much you live in cognitive exile.", "verdictHigh": "100%: monolingual, maximum cognitive comfort.", "verdictLow": "< 20%: complete linguistic immigrant, chronic cognitive fatigue." },
-        { "label": "Recognized handwritings", "unit": "people", "why": "Pre-digital attentional intimacy proxy.", "verdictHigh": "15+: teacher, active manuscript correspondence.", "verdictLow": "0: life entirely mediated by digital." },
-        { "label": "Minutes before first free act", "unit": "minutes", "why": "The delay measures access to one's own desire.", "verdictHigh": "480+ min: single parent, caregiver, precarity.", "verdictLow": "0 min: the first gesture is already a free choice." }
+        {
+          "label": "Physical contacts per day",
+          "unit": "contacts per day",
+          "why": "Touch is the most under-documented data of human experience.",
+          "verdictHigh": "50+: young child parent, high-proximity culture.",
+          "verdictLow": "0: millions spend entire days without human contact."
+        },
+        {
+          "label": "Named ancestor generations",
+          "unit": "generations",
+          "why": "Transmitted narrative capital. Indicator of cultural continuity.",
+          "verdictHigh": "7+: strong oral tradition, established cultural capital.",
+          "verdictLow": "0–1: adoption, forced migration, deep ruptures."
+        },
+        {
+          "label": "Waking hours in mother tongue",
+          "unit": "percentage",
+          "why": "Not how many languages you have, but how much you live in cognitive exile.",
+          "verdictHigh": "100%: monolingual, maximum cognitive comfort.",
+          "verdictLow": "< 20%: complete linguistic immigrant, chronic cognitive fatigue."
+        },
+        {
+          "label": "Recognized handwritings",
+          "unit": "people",
+          "why": "Pre-digital attentional intimacy proxy.",
+          "verdictHigh": "15+: teacher, active manuscript correspondence.",
+          "verdictLow": "0: life entirely mediated by digital."
+        },
+        {
+          "label": "Minutes before first free act",
+          "unit": "minutes",
+          "why": "The delay measures access to one's own desire.",
+          "verdictHigh": "480+ min: single parent, caregiver, precarity.",
+          "verdictLow": "0 min: the first gesture is already a free choice."
+        }
       ]
     },
     {
       "name": "Gemini Pro",
       "philosophy": "Exceptionality lies in managing existential friction: temporal sovereignty, vulnerability tolerance, failure immunity.",
       "questions": [
-        { "label": "Natural wake-ups per month", "unit": "Days/month", "why": "Temporal sovereignty. Time wealth vs. systemic alienation.", "verdictHigh": "Near-total temporal autonomy. Rare luxury or marginalization.", "verdictLow": "Total submission to systemic constraints." },
-        { "label": "Holders of your shameful secret", "unit": "Individuals", "why": "Capacity for radical vulnerability facing social shame.", "verdictHigh": "Radical transparency, no social filters.", "verdictLow": "Absolute psychological isolation or impenetrable facade." },
-        { "label": "Rejection letters received (lifetime)", "unit": "Documented rejections", "why": "Appetite for risk facing strict selection systems.", "verdictHigh": "Relentless ambition, failure immunity.", "verdictLow": "Absolute safety or fear-paralyzed." },
-        { "label": "Age of oldest person conversed with 1h+", "unit": "Years (Person's age)", "why": "Embodied historical depth. Direct contact with memories of bygone eras.", "verdictHigh": "Living bridge to a distant era.", "verdictLow": "Strict generational bubble, perpetual present." },
-        { "label": "Permanent scars (> 1 cm)", "unit": "Scars", "why": "Quantifiable map of physical friction with the world.", "verdictHigh": "Extreme physical risk, marked body.", "verdictLow": "Very physically protected existence." }
+        {
+          "label": "Natural wake-ups per month",
+          "unit": "Days/month",
+          "why": "Temporal sovereignty. Time wealth vs. systemic alienation.",
+          "verdictHigh": "Near-total temporal autonomy. Rare luxury or marginalization.",
+          "verdictLow": "Total submission to systemic constraints."
+        },
+        {
+          "label": "Holders of your shameful secret",
+          "unit": "Individuals",
+          "why": "Capacity for radical vulnerability facing social shame.",
+          "verdictHigh": "Radical transparency, no social filters.",
+          "verdictLow": "Absolute psychological isolation or impenetrable facade."
+        },
+        {
+          "label": "Rejection letters received (lifetime)",
+          "unit": "Documented rejections",
+          "why": "Appetite for risk facing strict selection systems.",
+          "verdictHigh": "Relentless ambition, failure immunity.",
+          "verdictLow": "Absolute safety or fear-paralyzed."
+        },
+        {
+          "label": "Age of oldest person conversed with 1h+",
+          "unit": "Years (Person's age)",
+          "why": "Embodied historical depth. Direct contact with memories of bygone eras.",
+          "verdictHigh": "Living bridge to a distant era.",
+          "verdictLow": "Strict generational bubble, perpetual present."
+        },
+        {
+          "label": "Permanent scars (> 1 cm)",
+          "unit": "Scars",
+          "why": "Quantifiable map of physical friction with the world.",
+          "verdictHigh": "Extreme physical risk, marked body.",
+          "verdictLow": "Very physically protected existence."
+        }
       ]
     },
     {
       "name": "Claude Haiku 4.5",
       "philosophy": "The average human builds habits that work. The exceptional one remains capable of friction — of saying no, quitting, crying, being alone.",
       "questions": [
-        { "label": "People who can tell you a hard truth", "unit": "people", "why": "Relational fragility test. Strength under shock.", "verdictHigh": "Mature relational architecture. Rare.", "verdictLow": "Emotional isolation even in a couple." },
-        { "label": "Fully abandoned projects (5 years)", "unit": "projects", "why": "Honesty with your limits, not ambition.", "verdictHigh": "Serial reinventor or aggressive limit tester.", "verdictLow": "Loyalty to everything. Tenacity or fear of failure." },
-        { "label": "Hours alone without occupation per month", "unit": "hours per month", "why": "The tolerable void. Can you face yourself without a buffer?", "verdictHigh": "Regular contemplation or imposed solitude.", "verdictLow": "Horror of silence. Chronic flight." },
-        { "label": "Gratuitous joys per week", "unit": "instances per week", "why": "Moments of being content to exist, without result or validation.", "verdictHigh": "Contemplative practice or solved the meaning problem.", "verdictLow": "Anhedonia. Performance-structured life." },
-        { "label": "Life domains rated < 5/10", "unit": "domains", "why": "Lucidity test. Someone who says 0 lacks calibration.", "verdictHigh": "Serious crisis or radical transparency.", "verdictLow": "Systematic denial or structural privilege." }
+        {
+          "label": "People who can tell you a hard truth",
+          "unit": "people",
+          "why": "Relational fragility test. Strength under shock.",
+          "verdictHigh": "Mature relational architecture. Rare.",
+          "verdictLow": "Emotional isolation even in a couple."
+        },
+        {
+          "label": "Fully abandoned projects (5 years)",
+          "unit": "projects",
+          "why": "Honesty with your limits, not ambition.",
+          "verdictHigh": "Serial reinventor or aggressive limit tester.",
+          "verdictLow": "Loyalty to everything. Tenacity or fear of failure."
+        },
+        {
+          "label": "Hours alone without occupation per month",
+          "unit": "hours per month",
+          "why": "The tolerable void. Can you face yourself without a buffer?",
+          "verdictHigh": "Regular contemplation or imposed solitude.",
+          "verdictLow": "Horror of silence. Chronic flight."
+        },
+        {
+          "label": "Gratuitous joys per week",
+          "unit": "instances per week",
+          "why": "Moments of being content to exist, without result or validation.",
+          "verdictHigh": "Contemplative practice or solved the meaning problem.",
+          "verdictLow": "Anhedonia. Performance-structured life."
+        },
+        {
+          "label": "Life domains rated < 5/10",
+          "unit": "domains",
+          "why": "Lucidity test. Someone who says 0 lacks calibration.",
+          "verdictHigh": "Serious crisis or radical transparency.",
+          "verdictLow": "Systematic denial or structural privilege."
+        }
       ]
     }
   ]

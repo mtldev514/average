@@ -21,7 +21,8 @@
     "verdict45": "Na média. Está no nome.",
     "verdict30": "Abaixo em vários eixos. Um ponto de dados, não um julgamento.",
     "verdictLow": "Estatisticamente notável — de baixo. Ainda assim, notável.",
-    "concept": "Perguntamos a 7 IAs: escolha 5 perguntas para medir o quão médio um humano é. Um modelo base completa o retrato. Aqui estão as respostas."
+    "concept": "Perguntamos a 7 IAs: escolha 5 perguntas para medir o quão médio um humano é. Um modelo base completa o retrato. Aqui estão as respostas.",
+    "whyQuestion": "por que essa pergunta?"
   },
   "models": [
     {

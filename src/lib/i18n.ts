@@ -36,6 +36,7 @@ export interface UIStrings {
   verdict45: string;
   verdict30: string;
   verdictLow: string;
+  whyQuestion: string;
 }
 
 interface QuestionTranslation {

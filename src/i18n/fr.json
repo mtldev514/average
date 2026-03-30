@@ -1,106 +1,329 @@
 {
   "ui": {
-    "subtitle": "Entre tes donn\u00e9es. On te dit \u00e0 quel point tu es normal\u00b7e.",
-    "concept": "On a demand\u00e9 \u00e0 7 IA : choisis 5 questions pour mesurer \u00e0 quel point un humain est moyen. Un mod\u00e8le de base compl\u00e8te le portrait. Voici ce qu\u2019elles ont r\u00e9pondu.",
+    "subtitle": "Entre tes données. On te dit à quel point tu es normal·e.",
+    "concept": "On a demandé à 7 IA : choisis 5 questions pour mesurer à quel point un humain est moyen. Un modèle de base complète le portrait. Voici ce qu’elles ont répondu.",
     "outOf": "sur 100",
     "aheadOf": "devant {n} personnes sur 100",
     "aheadAlmost": "devant presque tout le monde",
     "behindAlmost": "presque tout le monde est devant",
     "middle": "pile au milieu",
-    "aboveMedian": "Au-dessus de la m\u00e9diane.",
+    "aboveMedian": "Au-dessus de la médiane.",
     "average": "Dans la moyenne.",
     "belowMost": "En dessous de la plupart.",
     "clear": "effacer",
     "compositeScore": "SCORE COMPOSITE",
-    "data": "DONN\u00c9ES",
-    "models": "MOD\u00c8LES",
+    "data": "DONNÉES",
+    "models": "MODÈLES",
     "questions": "QUESTIONS",
     "approx": "DISTRIBUTIONS APPROXIMATIVES",
-    "verdictTop": "Statistiquement, tu n\u2019existes presque pas.",
+    "verdictTop": "Statistiquement, tu n’existes presque pas.",
     "verdict75": "Au-dessus de la moyenne sur presque tout. Bravo, ou chance.",
-    "verdict60": "L\u00e9g\u00e8rement au-dessus. Juste assez pour le mentionner.",
-    "verdict45": "Average. C\u2019est dans le nom.",
-    "verdict30": "En dessous sur plusieurs axes. Une donn\u00e9e, pas un jugement.",
-    "verdictLow": "Statistiquement remarquable \u2014 par le bas. \u00c7a reste remarquable."
+    "verdict60": "Légèrement au-dessus. Juste assez pour le mentionner.",
+    "verdict45": "Average. C’est dans le nom.",
+    "verdict30": "En dessous sur plusieurs axes. Une donnée, pas un jugement.",
+    "verdictLow": "Statistiquement remarquable — par le bas. Ça reste remarquable.",
+    "whyQuestion": "pourquoi cette question?"
   },
   "models": [
     {
       "name": "Humain de base",
-      "philosophy": "L\u2019humain moyen est une fiction statistique \u2014 un point sur une courbe que personne n\u2019habite vraiment. L\u2019exceptionnel, c\u2019est juste la queue de la distribution qui refuse de rentrer dans le rang.",
+      "philosophy": "L’humain moyen est une fiction statistique — un point sur une courbe que personne n’habite vraiment. L’exceptionnel, c’est juste la queue de la distribution qui refuse de rentrer dans le rang.",
       "questions": [
-        { "label": "Taille", "unit": "cm", "why": "La m\u00e9trique la plus universelle. G\u00e9n\u00e9tique pure, z\u00e9ro m\u00e9rite.", "verdictHigh": "230+ cm \u2014 territoire NBA, vie de cadres de porte.", "verdictLow": "< 145 cm \u2014 en dessous du 1er percentile mondial." },
-        { "label": "Salaire annuel", "unit": "$", "why": "Position \u00e9conomique brute. Le chiffre que tout le monde compare en secret.", "verdictHigh": "500k+ \u2014 le top 1% canadien.", "verdictLow": "< 20k \u2014 sous le seuil de faible revenu." },
-        { "label": "Langues parl\u00e9es", "unit": "langues", "why": "Fen\u00eatre sur la neuroplasticit\u00e9 et l\u2019exposition culturelle.", "verdictHigh": "6+ \u2014 hyperpolyglotte, cerveau c\u00e2bl\u00e9 diff\u00e9remment.", "verdictLow": "1 \u2014 monolingue, majorit\u00e9 anglophone." },
-        { "label": "Livres par an", "unit": "livres", "why": "Proxy pour la curiosit\u00e9 intellectuelle et la discipline d\u2019attention.", "verdictHigh": "52+ \u2014 un par semaine, biblioth\u00e8que humaine.", "verdictLow": "0 \u2014 la lecture est un choix, pas une obligation." },
-        { "label": "Caf\u00e9s par jour", "unit": "caf\u00e9s", "why": "Marqueur de routine quotidienne et de d\u00e9pendance assum\u00e9e.", "verdictHigh": "6+ \u2014 ton sang est un espresso.", "verdictLow": "0 \u2014 anomalie statistique (ou th\u00e9)." },
-        { "label": "Ami\u00b7es proches", "unit": "amis", "why": "Capital social r\u00e9el. Les gens qui r\u00e9pondent \u00e0 2h du matin.", "verdictHigh": "12+ \u2014 r\u00e9seau profond, statistiquement rare.", "verdictLow": "0 \u2014 la solitude n\u2019est pas un d\u00e9faut." },
-        { "label": "Courriels non lus", "unit": "emails", "why": "Indice de chaos num\u00e9rique et de rapport \u00e0 l\u2019obligation.", "verdictHigh": "10 000+ \u2014 inbox zero est un concept \u00e9tranger.", "verdictLow": "0 \u2014 contr\u00f4le absolu ou compte cr\u00e9\u00e9 hier." }
+        {
+          "label": "Taille",
+          "unit": "cm",
+          "why": "La métrique la plus universelle. Génétique pure, zéro mérite.",
+          "verdictHigh": "230+ cm — territoire NBA, vie de cadres de porte.",
+          "verdictLow": "< 145 cm — en dessous du 1er percentile mondial."
+        },
+        {
+          "label": "Salaire annuel",
+          "unit": "$",
+          "why": "Position économique brute. Le chiffre que tout le monde compare en secret.",
+          "verdictHigh": "500k+ — le top 1% canadien.",
+          "verdictLow": "< 20k — sous le seuil de faible revenu."
+        },
+        {
+          "label": "Langues parlées",
+          "unit": "langues",
+          "why": "Fenêtre sur la neuroplasticité et l’exposition culturelle.",
+          "verdictHigh": "6+ — hyperpolyglotte, cerveau câblé différemment.",
+          "verdictLow": "1 — monolingue, majorité anglophone."
+        },
+        {
+          "label": "Livres par an",
+          "unit": "livres",
+          "why": "Proxy pour la curiosité intellectuelle et la discipline d’attention.",
+          "verdictHigh": "52+ — un par semaine, bibliothèque humaine.",
+          "verdictLow": "0 — la lecture est un choix, pas une obligation."
+        },
+        {
+          "label": "Cafés par jour",
+          "unit": "cafés",
+          "why": "Marqueur de routine quotidienne et de dépendance assumée.",
+          "verdictHigh": "6+ — ton sang est un espresso.",
+          "verdictLow": "0 — anomalie statistique (ou thé)."
+        },
+        {
+          "label": "Ami·es proches",
+          "unit": "amis",
+          "why": "Capital social réel. Les gens qui répondent à 2h du matin.",
+          "verdictHigh": "12+ — réseau profond, statistiquement rare.",
+          "verdictLow": "0 — la solitude n’est pas un défaut."
+        },
+        {
+          "label": "Courriels non lus",
+          "unit": "emails",
+          "why": "Indice de chaos numérique et de rapport à l’obligation.",
+          "verdictHigh": "10 000+ — inbox zero est un concept étranger.",
+          "verdictLow": "0 — contrôle absolu ou compte créé hier."
+        }
       ]
     },
     {
       "name": "GPT-5.4 Thinking",
-      "philosophy": "Un humain moyen ne se d\u00e9finit pas par son corps ou son revenu, mais par la forme statistique de sa vie: qui d\u00e9pend de lui, combien de temps il perd, combien de liens il peut activer.",
+      "philosophy": "Un humain moyen ne se définit pas par son corps ou son revenu, mais par la forme statistique de sa vie: qui dépend de lui, combien de temps il perd, combien de liens il peut activer.",
       "questions": [
-        { "label": "Heures de care non pay\u00e9 / semaine", "unit": "heures/semaine", "why": "L\u2019un des plus gros blocs de travail humain invisible.", "verdictHigh": "Vie orient\u00e9e vers la responsabilit\u00e9, autonomie amput\u00e9e par la charge de soin.", "verdictLow": "Grande libert\u00e9 de temps, ou vie peu ench\u00e2ss\u00e9e dans des obligations." },
-        { "label": "Personnes d\u00e9pendantes de ton revenu", "unit": "personnes", "why": "Le revenu seul dit peu; le nombre de vies qu\u2019il soutient change tout.", "verdictHigh": "R\u00f4le de pilier \u00e9conomique, pression invisible.", "verdictLow": "Grande ind\u00e9pendance mat\u00e9rielle." },
-        { "label": "Adultes appelables \u00e0 3h du matin", "unit": "personnes", "why": "Mesure op\u00e9rationnelle du capital social r\u00e9el.", "verdictHigh": "Capital social dense, confiance r\u00e9ciproque forte.", "verdictLow": "Fragilit\u00e9 structurelle, isolement." },
-        { "label": "Heures de bureaucratie / mois", "unit": "heures/mois", "why": "Friction entre une personne et les syst\u00e8mes qui gouvernent sa vie.", "verdictHigh": "Pr\u00e9carit\u00e9, maladie, migration, statut complexe.", "verdictLow": "Privil\u00e8ge de d\u00e9l\u00e9gation ou simplicit\u00e9 bureaucratique." },
-        { "label": "Distance du lieu de naissance", "unit": "kilom\u00e8tres", "why": "Rapport concret \u00e0 l\u2019origine: enracinement, exil, mobilit\u00e9 choisie.", "verdictHigh": "Rupture biographique, migration, cosmopolitisme.", "verdictLow": "Forte continuit\u00e9 locale, attaches denses." }
+        {
+          "label": "Heures de care non payé / semaine",
+          "unit": "heures/semaine",
+          "why": "L’un des plus gros blocs de travail humain invisible.",
+          "verdictHigh": "Vie orientée vers la responsabilité, autonomie amputée par la charge de soin.",
+          "verdictLow": "Grande liberté de temps, ou vie peu enchâssée dans des obligations."
+        },
+        {
+          "label": "Personnes dépendantes de ton revenu",
+          "unit": "personnes",
+          "why": "Le revenu seul dit peu; le nombre de vies qu’il soutient change tout.",
+          "verdictHigh": "Rôle de pilier économique, pression invisible.",
+          "verdictLow": "Grande indépendance matérielle."
+        },
+        {
+          "label": "Adultes appelables à 3h du matin",
+          "unit": "personnes",
+          "why": "Mesure opérationnelle du capital social réel.",
+          "verdictHigh": "Capital social dense, confiance réciproque forte.",
+          "verdictLow": "Fragilité structurelle, isolement."
+        },
+        {
+          "label": "Heures de bureaucratie / mois",
+          "unit": "heures/mois",
+          "why": "Friction entre une personne et les systèmes qui gouvernent sa vie.",
+          "verdictHigh": "Précarité, maladie, migration, statut complexe.",
+          "verdictLow": "Privilège de délégation ou simplicité bureaucratique."
+        },
+        {
+          "label": "Distance du lieu de naissance",
+          "unit": "kilomètres",
+          "why": "Rapport concret à l’origine: enracinement, exil, mobilité choisie.",
+          "verdictHigh": "Rupture biographique, migration, cosmopolitisme.",
+          "verdictLow": "Forte continuité locale, attaches denses."
+        }
       ]
     },
     {
       "name": "GPT-5.3",
-      "philosophy": "Un humain moyen optimise pour la stabilit\u00e9. Un humain exceptionnel accumule des \u00e9carts mesurables. Ce sont les distributions invisibles qui r\u00e9v\u00e8lent une trajectoire.",
+      "philosophy": "Un humain moyen optimise pour la stabilité. Un humain exceptionnel accumule des écarts mesurables. Ce sont les distributions invisibles qui révèlent une trajectoire.",
       "questions": [
-        { "label": "Changements d\u2019opinion majeurs / an", "unit": "changements/an", "why": "Plasticit\u00e9 cognitive r\u00e9elle. Variable dynamique plut\u00f4t que statique.", "verdictHigh": "Grande adaptabilit\u00e9 ou instabilit\u00e9 cognitive.", "verdictLow": "Rigidit\u00e9 mentale ou forte coh\u00e9rence interne." },
-        { "label": "Minutes de silence pur / jour", "unit": "minutes/jour", "why": "Absence totale de stimulation. Espace mental brut, rarement mesur\u00e9.", "verdictHigh": "Forte capacit\u00e9 contemplative, cr\u00e9ativit\u00e9 ou rumination.", "verdictLow": "Surcharge informationnelle, d\u00e9pendance \u00e0 la stimulation." },
-        { "label": "Projets personnels termin\u00e9s (12 mois)", "unit": "projets/an", "why": "Agentivit\u00e9 sans contrainte. Transformation d\u2019intention en action.", "verdictHigh": "Forte discipline, autonomie.", "verdictLow": "Inertie comportementale." },
-        { "label": "Difficult\u00e9s volontaires / semaine", "unit": "actions/semaine", "why": "Exposition volontaire r\u00e9p\u00e9t\u00e9e \u00e0 l\u2019inconfort.", "verdictHigh": "Tol\u00e9rance \u00e9lev\u00e9e \u00e0 l\u2019effort, croissance rapide.", "verdictLow": "\u00c9vitement, maintien du statu quo." },
-        { "label": "R\u00e9visions de souvenirs / an", "unit": "r\u00e9visions/an", "why": "Capacit\u00e9 active de relecture de soi.", "verdictHigh": "Travail introspectif intense.", "verdictLow": "Faible int\u00e9gration du pass\u00e9, identit\u00e9 rigide." }
+        {
+          "label": "Changements d’opinion majeurs / an",
+          "unit": "changements/an",
+          "why": "Plasticité cognitive réelle. Variable dynamique plutôt que statique.",
+          "verdictHigh": "Grande adaptabilité ou instabilité cognitive.",
+          "verdictLow": "Rigidité mentale ou forte cohérence interne."
+        },
+        {
+          "label": "Minutes de silence pur / jour",
+          "unit": "minutes/jour",
+          "why": "Absence totale de stimulation. Espace mental brut, rarement mesuré.",
+          "verdictHigh": "Forte capacité contemplative, créativité ou rumination.",
+          "verdictLow": "Surcharge informationnelle, dépendance à la stimulation."
+        },
+        {
+          "label": "Projets personnels terminés (12 mois)",
+          "unit": "projets/an",
+          "why": "Agentivité sans contrainte. Transformation d’intention en action.",
+          "verdictHigh": "Forte discipline, autonomie.",
+          "verdictLow": "Inertie comportementale."
+        },
+        {
+          "label": "Difficultés volontaires / semaine",
+          "unit": "actions/semaine",
+          "why": "Exposition volontaire répétée à l’inconfort.",
+          "verdictHigh": "Tolérance élevée à l’effort, croissance rapide.",
+          "verdictLow": "Évitement, maintien du statu quo."
+        },
+        {
+          "label": "Révisions de souvenirs / an",
+          "unit": "révisions/an",
+          "why": "Capacité active de relecture de soi.",
+          "verdictHigh": "Travail introspectif intense.",
+          "verdictLow": "Faible intégration du passé, identité rigide."
+        }
       ]
     },
     {
       "name": "Gemini 3 Flash",
-      "philosophy": "L\u2019humain moyen est un n\u0153ud de r\u00e9p\u00e9titions. L\u2019exceptionnel se d\u00e9finit par sa capacit\u00e9 \u00e0 s\u2019extraire de l\u2019entropie ambiante.",
+      "philosophy": "L’humain moyen est un nœud de répétitions. L’exceptionnel se définit par sa capacité à s’extraire de l’entropie ambiante.",
       "questions": [
-        { "label": "G\u00e9n\u00e9rations avant l\u2019oubli de ton nom", "unit": "G\u00e9n\u00e9rations", "why": "Empreinte m\u00e9morielle projet\u00e9e, au-del\u00e0 de l\u2019existence biologique.", "verdictHigh": "B\u00e2tisseur de civilisation, lign\u00e9e m\u00e9morielle forte.", "verdictLow": "Existence ancr\u00e9e dans le pr\u00e9sent, sans trace." },
-        { "label": "Jours / an de d\u00e9pendance technologique", "unit": "Jours", "why": "Ali\u00e9nation technique. Fragilit\u00e9 face \u00e0 l\u2019effondrement syst\u00e9mique.", "verdictHigh": "Citadin ultra-sp\u00e9cialis\u00e9, vuln\u00e9rable.", "verdictLow": "Autarcie technique relative." },
-        { "label": "Ratio cr\u00e9ation / consommation", "unit": "Ratio (Cr\u00e9ation / Consommation)", "why": "Indice de m\u00e9tabolisme cr\u00e9atif.", "verdictHigh": "Producteur compulsif, artiste ou artisan.", "verdictLow": "Consommateur pur, absorption passive." },
-        { "label": "Syst\u00e8mes de signes ma\u00eetris\u00e9s", "unit": "Syst\u00e8mes", "why": "Pluralit\u00e9 des cadres logiques: langues, math, code, solf\u00e8ge.", "verdictHigh": "Polyglotte cognitif, saute d\u2019un paradigme \u00e0 l\u2019autre.", "verdictLow": "Pens\u00e9e monoculturelle." },
-        { "label": "Minutes \u00e0 80% FC max", "unit": "Minutes", "why": "Volont\u00e9 biologique pure. Tol\u00e9rance \u00e0 l\u2019inconfort visc\u00e9ral.", "verdictHigh": "R\u00e9silience mentale et physique hors norme.", "verdictLow": "Faible tol\u00e9rance \u00e0 la contrainte physique." }
+        {
+          "label": "Générations avant l’oubli de ton nom",
+          "unit": "Générations",
+          "why": "Empreinte mémorielle projetée, au-delà de l’existence biologique.",
+          "verdictHigh": "Bâtisseur de civilisation, lignée mémorielle forte.",
+          "verdictLow": "Existence ancrée dans le présent, sans trace."
+        },
+        {
+          "label": "Jours / an de dépendance technologique",
+          "unit": "Jours",
+          "why": "Aliénation technique. Fragilité face à l’effondrement systémique.",
+          "verdictHigh": "Citadin ultra-spécialisé, vulnérable.",
+          "verdictLow": "Autarcie technique relative."
+        },
+        {
+          "label": "Ratio création / consommation",
+          "unit": "Ratio (Création / Consommation)",
+          "why": "Indice de métabolisme créatif.",
+          "verdictHigh": "Producteur compulsif, artiste ou artisan.",
+          "verdictLow": "Consommateur pur, absorption passive."
+        },
+        {
+          "label": "Systèmes de signes maîtrisés",
+          "unit": "Systèmes",
+          "why": "Pluralité des cadres logiques: langues, math, code, solfège.",
+          "verdictHigh": "Polyglotte cognitif, saute d’un paradigme à l’autre.",
+          "verdictLow": "Pensée monoculturelle."
+        },
+        {
+          "label": "Minutes à 80% FC max",
+          "unit": "Minutes",
+          "why": "Volonté biologique pure. Tolérance à l’inconfort viscéral.",
+          "verdictHigh": "Résilience mentale et physique hors norme.",
+          "verdictLow": "Faible tolérance à la contrainte physique."
+        }
       ]
     },
     {
       "name": "Claude Opus 4.6 (Anthropic)",
-      "philosophy": "La moyenne n\u2019est pas une position \u2014 c\u2019est une gravit\u00e9. Ce qui distingue un humain, c\u2019est la texture de son attention, la profondeur de ses attaches, et son rapport au silence.",
+      "philosophy": "La moyenne n’est pas une position — c’est une gravité. Ce qui distingue un humain, c’est la texture de son attention, la profondeur de ses attaches, et son rapport au silence.",
       "questions": [
-        { "label": "Contacts physiques / jour", "unit": "contacts par jour", "why": "Le toucher est la donn\u00e9e la plus sous-document\u00e9e de l\u2019exp\u00e9rience humaine.", "verdictHigh": "50+ : parent de jeune enfant, culture \u00e0 forte prox\u00e9mie.", "verdictLow": "0 : des millions passent des journ\u00e9es sans contact humain." },
-        { "label": "G\u00e9n\u00e9rations d\u2019anc\u00eatres nomm\u00e9s", "unit": "g\u00e9n\u00e9rations", "why": "Capital narratif transmis. Indicateur de continuit\u00e9 culturelle.", "verdictHigh": "7+ : tradition orale forte, capital culturel \u00e9tabli.", "verdictLow": "0\u20131 : adoption, migration forc\u00e9e, ruptures profondes." },
-        { "label": "Heures \u00e9veill\u00e9es en langue maternelle", "unit": "pourcentage", "why": "Pas combien de langues tu as, mais \u00e0 quel point tu vis en exil cognitif.", "verdictHigh": "100% : monolingue, confort cognitif maximal.", "verdictLow": "< 20% : immigrant linguistique complet, fatigue cognitive chronique." },
-        { "label": "\u00c9critures manuscrites reconnues", "unit": "nombre de personnes", "why": "Proxy d\u2019intimit\u00e9 attentionnelle pr\u00e9-num\u00e9rique.", "verdictHigh": "15+ : enseignant, correspondance manuscrite active.", "verdictLow": "0 : vie enti\u00e8rement m\u00e9di\u00e9e par le num\u00e9rique." },
-        { "label": "Minutes avant le premier acte libre", "unit": "minutes", "why": "Le d\u00e9lai mesure l\u2019acc\u00e8s au d\u00e9sir propre.", "verdictHigh": "480+ min : parent solo, aidant, pr\u00e9carit\u00e9.", "verdictLow": "0 min : le premier geste est d\u00e9j\u00e0 un choix libre." }
+        {
+          "label": "Contacts physiques / jour",
+          "unit": "contacts par jour",
+          "why": "Le toucher est la donnée la plus sous-documentée de l’expérience humaine.",
+          "verdictHigh": "50+ : parent de jeune enfant, culture à forte proxémie.",
+          "verdictLow": "0 : des millions passent des journées sans contact humain."
+        },
+        {
+          "label": "Générations d’ancêtres nommés",
+          "unit": "générations",
+          "why": "Capital narratif transmis. Indicateur de continuité culturelle.",
+          "verdictHigh": "7+ : tradition orale forte, capital culturel établi.",
+          "verdictLow": "0–1 : adoption, migration forcée, ruptures profondes."
+        },
+        {
+          "label": "Heures éveillées en langue maternelle",
+          "unit": "pourcentage",
+          "why": "Pas combien de langues tu as, mais à quel point tu vis en exil cognitif.",
+          "verdictHigh": "100% : monolingue, confort cognitif maximal.",
+          "verdictLow": "< 20% : immigrant linguistique complet, fatigue cognitive chronique."
+        },
+        {
+          "label": "Écritures manuscrites reconnues",
+          "unit": "nombre de personnes",
+          "why": "Proxy d’intimité attentionnelle pré-numérique.",
+          "verdictHigh": "15+ : enseignant, correspondance manuscrite active.",
+          "verdictLow": "0 : vie entièrement médiée par le numérique."
+        },
+        {
+          "label": "Minutes avant le premier acte libre",
+          "unit": "minutes",
+          "why": "Le délai mesure l’accès au désir propre.",
+          "verdictHigh": "480+ min : parent solo, aidant, précarité.",
+          "verdictLow": "0 min : le premier geste est déjà un choix libre."
+        }
       ]
     },
     {
       "name": "Gemini Pro",
-      "philosophy": "L\u2019exceptionnalit\u00e9 r\u00e9side dans la gestion de la friction existentielle: souverainet\u00e9 temporelle, tol\u00e9rance \u00e0 la vuln\u00e9rabilit\u00e9, immunit\u00e9 \u00e0 l\u2019\u00e9chec.",
+      "philosophy": "L’exceptionnalité réside dans la gestion de la friction existentielle: souveraineté temporelle, tolérance à la vulnérabilité, immunité à l’échec.",
       "questions": [
-        { "label": "R\u00e9veils naturels / mois", "unit": "Jours/mois", "why": "Souverainet\u00e9 temporelle. Richesse vs ali\u00e9nation au rythme du syst\u00e8me.", "verdictHigh": "Autonomie temporelle quasi totale. Luxe rare ou marginalisation.", "verdictLow": "Soumission totale aux contraintes syst\u00e9miques." },
-        { "label": "D\u00e9tenteur\u00b7ices de ton secret honteux", "unit": "Individus", "why": "Capacit\u00e9 \u00e0 la vuln\u00e9rabilit\u00e9 radicale face \u00e0 la honte sociale.", "verdictHigh": "Transparence radicale, absence de filtres sociaux.", "verdictLow": "Isolement psychologique ou fa\u00e7ade imp\u00e9n\u00e9trable." },
-        { "label": "Lettres de rejet re\u00e7ues (vie)", "unit": "Rejets document\u00e9s", "why": "App\u00e9tit pour le risque face aux syst\u00e8mes de s\u00e9lection.", "verdictHigh": "Ambition implacable, immunit\u00e9 \u00e0 l\u2019\u00e9chec.", "verdictLow": "S\u00e9curit\u00e9 absolue ou paralysie par la peur." },
-        { "label": "\u00c2ge de la plus vieille personne c\u00f4toy\u00e9e 1h+", "unit": "Ann\u00e9es (\u00c2ge de la personne)", "why": "Profondeur historique incarn\u00e9e. Contact direct avec des m\u00e9moires d\u2019\u00e9poques r\u00e9volues.", "verdictHigh": "Pont vivant vers une \u00e9poque lointaine.", "verdictLow": "Bulle g\u00e9n\u00e9rationnelle stricte, pr\u00e9sent perp\u00e9tuel." },
-        { "label": "Cicatrices permanentes (> 1 cm)", "unit": "Cicatrices", "why": "Cartographie de la friction physique avec le monde.", "verdictHigh": "Risque physique extr\u00eame, corps marqu\u00e9.", "verdictLow": "Existence physiquement tr\u00e8s prot\u00e9g\u00e9e." }
+        {
+          "label": "Réveils naturels / mois",
+          "unit": "Jours/mois",
+          "why": "Souveraineté temporelle. Richesse vs aliénation au rythme du système.",
+          "verdictHigh": "Autonomie temporelle quasi totale. Luxe rare ou marginalisation.",
+          "verdictLow": "Soumission totale aux contraintes systémiques."
+        },
+        {
+          "label": "Détenteur·ices de ton secret honteux",
+          "unit": "Individus",
+          "why": "Capacité à la vulnérabilité radicale face à la honte sociale.",
+          "verdictHigh": "Transparence radicale, absence de filtres sociaux.",
+          "verdictLow": "Isolement psychologique ou façade impénétrable."
+        },
+        {
+          "label": "Lettres de rejet reçues (vie)",
+          "unit": "Rejets documentés",
+          "why": "Appétit pour le risque face aux systèmes de sélection.",
+          "verdictHigh": "Ambition implacable, immunité à l’échec.",
+          "verdictLow": "Sécurité absolue ou paralysie par la peur."
+        },
+        {
+          "label": "Âge de la plus vieille personne côtoyée 1h+",
+          "unit": "Années (Âge de la personne)",
+          "why": "Profondeur historique incarnée. Contact direct avec des mémoires d’époques révolues.",
+          "verdictHigh": "Pont vivant vers une époque lointaine.",
+          "verdictLow": "Bulle générationnelle stricte, présent perpétuel."
+        },
+        {
+          "label": "Cicatrices permanentes (> 1 cm)",
+          "unit": "Cicatrices",
+          "why": "Cartographie de la friction physique avec le monde.",
+          "verdictHigh": "Risque physique extrême, corps marqué.",
+          "verdictLow": "Existence physiquement très protégée."
+        }
       ]
     },
     {
       "name": "Claude Haiku 4.5",
-      "philosophy": "L\u2019humain moyen construit des habitudes qui fonctionnent. L\u2019exceptionnel reste capable de friction \u2014 de dire non, d\u2019abandonner, de pleurer, d\u2019\u00eatre seul.",
+      "philosophy": "L’humain moyen construit des habitudes qui fonctionnent. L’exceptionnel reste capable de friction — de dire non, d’abandonner, de pleurer, d’être seul.",
       "questions": [
-        { "label": "Personnes qui peuvent te dire une v\u00e9rit\u00e9 difficile", "unit": "nombre de personnes", "why": "Test de fragilit\u00e9 relationnelle. Solidit\u00e9 sous choc.", "verdictHigh": "Architecture relationnelle m\u00fbre. Rare.", "verdictLow": "Isolement \u00e9motionnel m\u00eame en couple." },
-        { "label": "Projets abandonn\u00e9s (5 ans)", "unit": "nombre", "why": "Mesure d\u2019honn\u00eatet\u00e9 avec tes limites, pas d\u2019ambition.", "verdictHigh": "Serial reinventor ou test agressif de limites.", "verdictLow": "Fid\u00e9lit\u00e9 \u00e0 tout. T\u00e9nacit\u00e9 ou peur de l\u2019\u00e9chec." },
-        { "label": "Heures seul\u00b7e sans occupation / mois", "unit": "heures par mois", "why": "Le vide tol\u00e9rable. Peux-tu faire face \u00e0 toi-m\u00eame sans amortisseur?", "verdictHigh": "Contemplation r\u00e9guli\u00e8re ou solitude impos\u00e9e.", "verdictLow": "Horreur du silence. Fuite chronique." },
-        { "label": "Joies gratuites / semaine", "unit": "instances par semaine", "why": "Moments o\u00f9 tu es content d\u2019exister, sans r\u00e9sultat ni validation.", "verdictHigh": "Pratique contemplative ou probl\u00e8me du sens r\u00e9solu.", "verdictLow": "Anh\u00e9donie. Vie structur\u00e9e par la performance." },
-        { "label": "Domaines de vie not\u00e9s < 5/10", "unit": "domaines", "why": "Test de lucidit\u00e9. Quelqu\u2019un qui dit 0 manque de calibrage.", "verdictHigh": "Crise s\u00e9rieuse ou transparence radicale.", "verdictLow": "D\u00e9ni syst\u00e9matique ou privil\u00e8ge structurel." }
+        {
+          "label": "Personnes qui peuvent te dire une vérité difficile",
+          "unit": "nombre de personnes",
+          "why": "Test de fragilité relationnelle. Solidité sous choc.",
+          "verdictHigh": "Architecture relationnelle mûre. Rare.",
+          "verdictLow": "Isolement émotionnel même en couple."
+        },
+        {
+          "label": "Projets abandonnés (5 ans)",
+          "unit": "nombre",
+          "why": "Mesure d’honnêteté avec tes limites, pas d’ambition.",
+          "verdictHigh": "Serial reinventor ou test agressif de limites.",
+          "verdictLow": "Fidélité à tout. Ténacité ou peur de l’échec."
+        },
+        {
+          "label": "Heures seul·e sans occupation / mois",
+          "unit": "heures par mois",
+          "why": "Le vide tolérable. Peux-tu faire face à toi-même sans amortisseur?",
+          "verdictHigh": "Contemplation régulière ou solitude imposée.",
+          "verdictLow": "Horreur du silence. Fuite chronique."
+        },
+        {
+          "label": "Joies gratuites / semaine",
+          "unit": "instances par semaine",
+          "why": "Moments où tu es content d’exister, sans résultat ni validation.",
+          "verdictHigh": "Pratique contemplative ou problème du sens résolu.",
+          "verdictLow": "Anhédonie. Vie structurée par la performance."
+        },
+        {
+          "label": "Domaines de vie notés < 5/10",
+          "unit": "domaines",
+          "why": "Test de lucidité. Quelqu’un qui dit 0 manque de calibrage.",
+          "verdictHigh": "Crise sérieuse ou transparence radicale.",
+          "verdictLow": "Déni systématique ou privilège structurel."
+        }
       ]
     }
   ]

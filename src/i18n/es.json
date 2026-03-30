@@ -21,7 +21,8 @@
     "verdict45": "Promedio. Está en el nombre.",
     "verdict30": "Por debajo en varios ejes. Un dato, no un juicio.",
     "verdictLow": "Estadísticamente notable — desde abajo. Igual de notable.",
-    "concept": "Le pedimos a 7 IAs: elegí 5 preguntas para medir qué tan promedio es un humano. Un modelo base completa el cuadro. Esto es lo que respondieron."
+    "concept": "Le pedimos a 7 IAs: elegí 5 preguntas para medir qué tan promedio es un humano. Un modelo base completa el cuadro. Esto es lo que respondieron.",
+    "whyQuestion": "¿por qué esta pregunta?"
   },
   "models": [
     {

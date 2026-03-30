@@ -165,65 +165,97 @@ function StatRow({ stat, value, onChange, result, locale }: { stat: Stat; value:
   const numericValue = value ? parseFloat(value.replace(/\s/g, "")) : null;
   const validNumeric = numericValue !== null && !isNaN(numericValue) ? numericValue : null;
   const setFromNumber = (v: number) => onChange(formatDisplay(v, stat.step));
+  const displayValue = value || "";
 
   return (
-    <div className="stat-row">
-      <div>
-        <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 2, flexWrap: "wrap" }}>
-          <span style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 20, color: "#1a1a1a" }}>{stat.label}</span>
-        </div>
-        <div style={{ fontSize: 11, color: "#b0a898", fontFamily: "'IBM Plex Mono', monospace", fontStyle: "italic", marginBottom: 10, lineHeight: 1.5, maxWidth: 340 }}>
-          {stat.why}
-        </div>
+    <div className="stat-card">
+      {/* Question title */}
+      <h3 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: "clamp(22px, 4vw, 28px)", fontWeight: 400, color: "#1a1a1a", lineHeight: 1.3, marginBottom: 20 }}>
+        {stat.label}
+      </h3>
 
-        {stat.inputType === "pills" && (
-          <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
-            <Chips values={stat.pills} current={validNumeric} step={stat.step} color={stat.color} onSelect={setFromNumber} size="lg" />
-            <TextInput stat={stat} value={value} onChange={onChange} />
-          </div>
-        )}
-
-        {stat.inputType === "slider" && (
-          <>
-            <div style={{ margin: "6px 0 10px" }}>
-              <StatSlider stat={stat} value={validNumeric} onChange={setFromNumber} />
+      {/* Input: slider/pills + value display */}
+      {(stat.inputType === "slider" || stat.inputType === "freeform") && (
+        <>
+          <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 12 }}>
+            <div style={{ flex: 1 }}>
+              {stat.inputType === "slider" ? (
+                <StatSlider stat={stat} value={validNumeric} onChange={setFromNumber} />
+              ) : (
+                <TextInput stat={stat} value={value} onChange={onChange} />
+              )}
             </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
-              <TextInput stat={stat} value={value} onChange={onChange} />
-              <Chips values={stat.presets} current={validNumeric} step={stat.step} color={stat.color} onSelect={setFromNumber} />
+            <div style={{ display: "flex", alignItems: "baseline", gap: 6, flexShrink: 0 }}>
+              {stat.inputType === "slider" ? (
+                <input
+                  type="text"
+                  inputMode="decimal"
+                  value={displayValue}
+                  onChange={(e) => { const raw = e.target.value.replace(/[^0-9.,]/g, "").replace(",", "."); onChange(raw); }}
+                  placeholder={stat.placeholder}
+                  style={{ width: 60, border: "none", background: "transparent", color: "#1a1a1a", fontFamily: "'IBM Plex Mono', monospace", fontSize: 24, fontWeight: 600, outline: "none", textAlign: "right", padding: 0 }}
+                />
+              ) : null}
+              <span style={{ fontSize: 13, color: "#999", fontFamily: "'IBM Plex Mono', monospace" }}>{stat.unit}</span>
             </div>
-          </>
-        )}
-
-        {stat.inputType === "freeform" && (
-          <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
-            <TextInput stat={stat} value={value} onChange={onChange} />
-            <Chips values={stat.presets} current={validNumeric} step={stat.step} color={stat.color} onSelect={setFromNumber} />
           </div>
-        )}
-      </div>
+          <Chips values={stat.inputType === "slider" ? stat.presets : stat.presets} current={validNumeric} step={stat.step} color={stat.color} onSelect={setFromNumber} />
+        </>
+      )}
 
-      <div style={{ minHeight: 70 }}>
-        {pct !== null ? (
-          <div style={{ animation: "fadeIn 0.4s ease" }}>
-            <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 4 }}>
-              <span style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 42, fontWeight: 400, color: "#1a1a1a", lineHeight: 1, letterSpacing: "-1px" }}>
+      {stat.inputType === "pills" && (
+        <>
+          <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 12 }}>
+            <div style={{ flex: 1 }}>
+              <Chips values={stat.pills} current={validNumeric} step={stat.step} color={stat.color} onSelect={setFromNumber} size="lg" />
+            </div>
+            <div style={{ display: "flex", alignItems: "baseline", gap: 6, flexShrink: 0 }}>
+              <input
+                type="text"
+                inputMode="decimal"
+                value={displayValue}
+                onChange={(e) => { const raw = e.target.value.replace(/[^0-9.,]/g, "").replace(",", "."); onChange(raw); }}
+                placeholder={stat.placeholder}
+                style={{ width: 40, border: "none", background: "transparent", color: "#1a1a1a", fontFamily: "'IBM Plex Mono', monospace", fontSize: 24, fontWeight: 600, outline: "none", textAlign: "right", padding: 0 }}
+              />
+              <span style={{ fontSize: 13, color: "#999", fontFamily: "'IBM Plex Mono', monospace" }}>{stat.unit}</span>
+            </div>
+          </div>
+        </>
+      )}
+
+      {/* Result section */}
+      {pct !== null && (
+        <div style={{ marginTop: 24, paddingTop: 20, borderTop: "1px solid #e8e4de", animation: "fadeIn 0.4s ease" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 8 }}>
+            <div style={{ display: "flex", alignItems: "baseline", gap: 6 }}>
+              <span style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 48, fontWeight: 400, color: "#1a1a1a", lineHeight: 1, letterSpacing: "-2px" }}>
                 {formatPct(pct)}
               </span>
-              <span style={{ fontSize: 14, color: "#aaa", fontFamily: "'IBM Plex Mono', monospace" }}>{ui.outOf}</span>
+              <span style={{ fontSize: 16, color: "#aaa", fontFamily: "'IBM Plex Mono', monospace" }}>/ 100</span>
             </div>
-            <div style={{ fontSize: 11, color: "#b0a898", fontFamily: "'IBM Plex Mono', monospace", marginBottom: 8 }}>
+            <span style={{ fontSize: 13, color: "#999", fontFamily: "'IBM Plex Mono', monospace" }}>
               {getScoreLabel(locale, pct, formatPct(pct))}
-            </div>
-            <PercentileBar pct={pct} animate={animate} color={stat.color} />
-            <div style={{ marginTop: 8, fontSize: 13, color: "#777", fontFamily: "'IBM Plex Mono', monospace", fontStyle: "italic", lineHeight: 1.5 }}>
-              {getVerdict(stat, pct)}
-            </div>
+            </span>
           </div>
-        ) : (
-          <div style={{ fontSize: 12, color: "#ccc", fontFamily: "'IBM Plex Mono', monospace", paddingTop: 8 }}>&mdash;</div>
-        )}
-      </div>
+          <div style={{ width: "100%", height: 10, background: "#e8e4de", borderRadius: 5, overflow: "hidden", marginBottom: 16 }}>
+            <div style={{ height: "100%", width: `${animate ? pct : 0}%`, background: "#1a1a1a", borderRadius: 5, transition: "width 0.9s cubic-bezier(0.22, 1, 0.36, 1)" }} />
+          </div>
+          <p style={{ fontSize: 14, color: "#555", fontFamily: "'IBM Plex Mono', monospace", fontStyle: "italic", lineHeight: 1.6, margin: 0 }}>
+            {getVerdict(stat, pct)}
+          </p>
+        </div>
+      )}
+
+      {/* Collapsible why */}
+      <details style={{ marginTop: pct !== null ? 16 : 20 }}>
+        <summary style={{ fontSize: 13, color: "#bbb", fontFamily: "'IBM Plex Mono', monospace", cursor: "pointer", userSelect: "none" }}>
+          {ui.whyQuestion ?? "pourquoi cette question?"}
+        </summary>
+        <p style={{ fontSize: 12, color: "#999", fontFamily: "'IBM Plex Mono', monospace", fontStyle: "italic", lineHeight: 1.6, marginTop: 8 }}>
+          {stat.why}
+        </p>
+      </details>
     </div>
   );
 }
@@ -351,12 +383,12 @@ export default function Home() {
         input::placeholder { color: #ccc; }
         ::selection { background: #1a1a1a22; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        .stat-row {
-          padding: 28px 0; border-bottom: 1px solid #e8e4de;
-          display: grid; grid-template-columns: 1fr 1fr;
-          gap: 12px 32px; align-items: start;
+        .stat-card {
+          background: #faf9f7; border: 1px solid #e8e4de;
+          border-radius: 16px; padding: 28px 32px;
+          margin-bottom: 20px;
         }
-        @media (max-width: 640px) { .stat-row { grid-template-columns: 1fr; gap: 16px; } }
+        @media (max-width: 640px) { .stat-card { padding: 20px 18px; } }
         .stat-slider {
           -webkit-appearance: none; appearance: none;
           width: 100%; height: 4px; border-radius: 2px;

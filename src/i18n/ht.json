@@ -21,7 +21,8 @@
     "verdict45": "Mwayèn. Se sa ki nan non an.",
     "verdict30": "Pi ba sou plizyè aks. Yon done, pa yon jijman.",
     "verdictLow": "Statistikman remakab — soti anba. Remakab kanmenm.",
-    "concept": "Nou mande 7 IA: chwazi 5 kesyon pou mezire jis ki jan yon moun nòmal. Yon modèl debaz konplete pòtre a. Men sa yo reponn."
+    "concept": "Nou mande 7 IA: chwazi 5 kesyon pou mezire jis ki jan yon moun nòmal. Yon modèl debaz konplete pòtre a. Men sa yo reponn.",
+    "whyQuestion": "poukisa kesyon sa a?"
   },
   "models": [
     {
