@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 // ─── Statistical helpers ───────────────────────────────
 
@@ -22,6 +22,31 @@ function logNormalCDF(x: number, mu: number, sigma: number) {
   return normalCDF(Math.log(x), mu, sigma);
 }
 
+// ─── Slider math ───────────────────────────────────────
+
+function posToValue(pos: number, min: number, max: number, exp: number) {
+  return min + (max - min) * Math.pow(pos, exp);
+}
+
+function valueToPos(val: number, min: number, max: number, exp: number) {
+  if (max === min) return 0;
+  const ratio = Math.max(0, Math.min(1, (val - min) / (max - min)));
+  return Math.pow(ratio, 1 / exp);
+}
+
+function formatDisplay(v: number, step: number = 1): string {
+  const rounded = step < 1 ? Math.round(v / step) * step : Math.round(v);
+  if (Math.abs(rounded) >= 10000) return Math.round(rounded).toLocaleString("fr-CA");
+  if (step < 1) return rounded.toFixed(1);
+  return Math.round(rounded).toString();
+}
+
+function fmtPreset(v: number): string {
+  if (v >= 1000000) return `${v / 1000000}M`;
+  if (v >= 1000) return `${v / 1000}k`;
+  return v.toString();
+}
+
 // ─── Types ─────────────────────────────────────────────
 
 type Verdict = [number, string];
@@ -36,6 +61,9 @@ interface Stat {
   calc: (v: number) => number;
   ref: string;
   verdicts: Verdict[];
+  sliderExp?: number;
+  step?: number;
+  presets?: number[];
 }
 
 interface Section {
@@ -51,21 +79,14 @@ interface Section {
 
 const SECTIONS: Section[] = [
   {
-    id: "corps",
-    number: "01",
-    label: "CORPS",
-    subtitle: "ce que la g\u00e9n\u00e9tique t\u2019a donn\u00e9",
-    color: "#b5785a",
+    id: "corps", number: "01", label: "CORPS",
+    subtitle: "ce que la g\u00e9n\u00e9tique t\u2019a donn\u00e9", color: "#b5785a",
     stats: [
       {
-        id: "height",
-        label: "Taille",
-        unit: "cm",
-        placeholder: "175",
-        min: 100,
-        max: 230,
-        calc: (v) => normalCDF(v, 170.5, 9.5),
-        ref: "adultes, mondial",
+        id: "height", label: "Taille", unit: "cm", placeholder: "175",
+        min: 100, max: 230, step: 1, sliderExp: 1,
+        presets: [155, 165, 175, 185, 195],
+        calc: (v) => normalCDF(v, 170.5, 9.5), ref: "adultes, mondial",
         verdicts: [
           [97, "Tu vois les concerts sans te lever sur la pointe."],
           [80, "Au-dessus de la m\u00eal\u00e9e, litt\u00e9ralement."],
@@ -75,14 +96,10 @@ const SECTIONS: Section[] = [
         ],
       },
       {
-        id: "restingHR",
-        label: "Fr\u00e9quence cardiaque au repos",
-        unit: "bpm",
-        placeholder: "68",
-        min: 30,
-        max: 140,
-        calc: (v) => 1 - normalCDF(v, 72, 10),
-        ref: "adultes au repos",
+        id: "restingHR", label: "Fr\u00e9quence cardiaque au repos", unit: "bpm", placeholder: "68",
+        min: 30, max: 140, step: 1, sliderExp: 1,
+        presets: [52, 60, 72, 82, 95],
+        calc: (v) => 1 - normalCDF(v, 72, 10), ref: "adultes au repos",
         verdicts: [
           [95, "Ton c\u0153ur est en mode \u00e9conomie d\u2019\u00e9nergie."],
           [70, "Calme int\u00e9rieur. Ou m\u00e9ditation. Les deux comptent."],
@@ -92,14 +109,10 @@ const SECTIONS: Section[] = [
         ],
       },
       {
-        id: "grip",
-        label: "Force de grip",
-        unit: "kg",
-        placeholder: "42",
-        min: 5,
-        max: 120,
-        calc: (v) => normalCDF(v, 40, 12),
-        ref: "adultes, mixte",
+        id: "grip", label: "Force de grip", unit: "kg", placeholder: "42",
+        min: 5, max: 120, step: 1, sliderExp: 1,
+        presets: [25, 35, 45, 55, 70],
+        calc: (v) => normalCDF(v, 40, 12), ref: "adultes, mixte",
         verdicts: [
           [95, "Tu ouvres les pots pour tout le voisinage."],
           [70, "Poign\u00e9e de main convaincante. On te fait confiance."],
@@ -109,14 +122,10 @@ const SECTIONS: Section[] = [
         ],
       },
       {
-        id: "bench",
-        label: "Bench press",
-        unit: "lbs",
-        placeholder: "135",
-        min: 0,
-        max: 700,
-        calc: (v) => normalCDF(v, 135, 55),
-        ref: "adultes qui s\u2019entra\u00eenent",
+        id: "bench", label: "Bench press", unit: "lbs", placeholder: "135",
+        min: 0, max: 700, step: 5, sliderExp: 1.5,
+        presets: [95, 135, 185, 225, 315],
+        calc: (v) => normalCDF(v, 135, 55), ref: "adultes qui s\u2019entra\u00eenent",
         verdicts: [
           [95, "Les gens te demandent des spots. Et des conseils."],
           [70, "Solide. T\u2019es pas l\u00e0 pour d\u00e9corer."],
@@ -128,21 +137,14 @@ const SECTIONS: Section[] = [
     ],
   },
   {
-    id: "performance",
-    number: "02",
-    label: "PERFORMANCE",
-    subtitle: "ce que t\u2019en fais",
-    color: "#6b8f71",
+    id: "performance", number: "02", label: "PERFORMANCE",
+    subtitle: "ce que t\u2019en fais", color: "#6b8f71",
     stats: [
       {
-        id: "fiveK",
-        label: "5K course",
-        unit: "min",
-        placeholder: "25",
-        min: 10,
-        max: 65,
-        calc: (v) => 1 - normalCDF(v, 28, 6),
-        ref: "coureur\u00b7ses r\u00e9cr\u00e9atif\u00b7ves",
+        id: "fiveK", label: "5K course", unit: "min", placeholder: "25",
+        min: 10, max: 65, step: 0.5, sliderExp: 1,
+        presets: [18, 22, 25, 30, 40],
+        calc: (v) => 1 - normalCDF(v, 28, 6), ref: "coureur\u00b7ses r\u00e9cr\u00e9atif\u00b7ves",
         verdicts: [
           [95, "Sub-20 energy. Les pigeons te voient floue."],
           [70, "Plus vite que la majorit\u00e9. Pas mal."],
@@ -152,14 +154,10 @@ const SECTIONS: Section[] = [
         ],
       },
       {
-        id: "plank",
-        label: "Planche",
-        unit: "sec",
-        placeholder: "60",
-        min: 1,
-        max: 600,
-        calc: (v) => logNormalCDF(v, 3.8, 0.7),
-        ref: "adultes actif\u00b7ves",
+        id: "plank", label: "Planche", unit: "sec", placeholder: "60",
+        min: 1, max: 600, step: 5, sliderExp: 1.5,
+        presets: [30, 60, 90, 120, 180],
+        calc: (v) => logNormalCDF(v, 3.8, 0.7), ref: "adultes actif\u00b7ves",
         verdicts: [
           [95, "Tu pourrais tenir pendant un \u00e9pisode complet."],
           [70, "Solide gainage. Ton physio serait content\u00b7e."],
@@ -169,14 +167,10 @@ const SECTIONS: Section[] = [
         ],
       },
       {
-        id: "pushups",
-        label: "Push-ups d\u2019affil\u00e9e",
-        unit: "reps",
-        placeholder: "20",
-        min: 0,
-        max: 200,
-        calc: (v) => logNormalCDF(v + 1, 2.7, 0.85),
-        ref: "adultes, tous niveaux",
+        id: "pushups", label: "Push-ups d\u2019affil\u00e9e", unit: "reps", placeholder: "20",
+        min: 0, max: 200, step: 1, sliderExp: 1.5,
+        presets: [5, 15, 25, 40, 60],
+        calc: (v) => logNormalCDF(v + 1, 2.7, 0.85), ref: "adultes, tous niveaux",
         verdicts: [
           [95, "Tu fais peur aux militaires."],
           [70, "Au-dessus du lot. Les bras suivent."],
@@ -186,14 +180,10 @@ const SECTIONS: Section[] = [
         ],
       },
       {
-        id: "steps",
-        label: "Pas quotidiens",
-        unit: "pas / jour",
-        placeholder: "8000",
-        min: 0,
-        max: 40000,
-        calc: (v) => normalCDF(v, 7500, 3000),
-        ref: "adultes, mondial",
+        id: "steps", label: "Pas quotidiens", unit: "pas / jour", placeholder: "8000",
+        min: 0, max: 40000, step: 500, sliderExp: 1.5,
+        presets: [3000, 5000, 8000, 10000, 15000],
+        calc: (v) => normalCDF(v, 7500, 3000), ref: "adultes, mondial",
         verdicts: [
           [95, "Tu uses tes souliers en 3 mois."],
           [70, "Actif\u00b7ve. Ton podom\u00e8tre est fier."],
@@ -205,21 +195,14 @@ const SECTIONS: Section[] = [
     ],
   },
   {
-    id: "argent",
-    number: "03",
-    label: "ARGENT",
-    subtitle: "le nerf de la guerre",
-    color: "#b8963e",
+    id: "argent", number: "03", label: "ARGENT",
+    subtitle: "le nerf de la guerre", color: "#b8963e",
     stats: [
       {
-        id: "salary",
-        label: "Salaire annuel",
-        unit: "$",
-        placeholder: "72 000",
-        min: 0,
-        max: 2000000,
-        calc: (v) => logNormalCDF(v, 10.85, 0.75),
-        ref: "revenus canadiens",
+        id: "salary", label: "Salaire annuel", unit: "$", placeholder: "72 000",
+        min: 0, max: 2000000, step: 1000, sliderExp: 3,
+        presets: [40000, 72000, 100000, 150000, 250000],
+        calc: (v) => logNormalCDF(v, 10.85, 0.75), ref: "revenus canadiens",
         verdicts: [
           [99, "Le 1%. Les gens \u00e9crivent des articles sur toi."],
           [85, "Confortable. Tu choisis ton resto."],
@@ -229,14 +212,10 @@ const SECTIONS: Section[] = [
         ],
       },
       {
-        id: "netWorth",
-        label: "Valeur nette",
-        unit: "$",
-        placeholder: "120 000",
-        min: 0,
-        max: 50000000,
-        calc: (v) => logNormalCDF(v, 11.0, 1.3),
-        ref: "adultes 25\u201365",
+        id: "netWorth", label: "Valeur nette", unit: "$", placeholder: "120 000",
+        min: 0, max: 50000000, step: 1000, sliderExp: 3,
+        presets: [10000, 50000, 150000, 500000, 1000000],
+        calc: (v) => logNormalCDF(v, 11.0, 1.3), ref: "adultes 25\u201365",
         verdicts: [
           [95, "Ton comptable a un comptable."],
           [70, "Patrimoine solide. L\u2019avenir te stresse moins."],
@@ -246,14 +225,10 @@ const SECTIONS: Section[] = [
         ],
       },
       {
-        id: "savings",
-        label: "Taux d\u2019\u00e9pargne",
-        unit: "% du revenu",
-        placeholder: "15",
-        min: 0,
-        max: 80,
-        calc: (v) => normalCDF(v, 12, 8),
-        ref: "m\u00e9nages canadiens",
+        id: "savings", label: "Taux d\u2019\u00e9pargne", unit: "% du revenu", placeholder: "15",
+        min: 0, max: 80, step: 1, sliderExp: 1,
+        presets: [5, 10, 15, 20, 30],
+        calc: (v) => normalCDF(v, 12, 8), ref: "m\u00e9nages canadiens",
         verdicts: [
           [90, "Tu te prives pour ton futur toi. Respect."],
           [65, "Au-dessus de la moyenne. Ton REER te remercie."],
@@ -263,14 +238,10 @@ const SECTIONS: Section[] = [
         ],
       },
       {
-        id: "subscriptions",
-        label: "Abonnements actifs",
-        unit: "abos",
-        placeholder: "6",
-        min: 0,
-        max: 30,
-        calc: (v) => normalCDF(v, 6, 3),
-        ref: "consommateur\u00b7ices num\u00e9riques",
+        id: "subscriptions", label: "Abonnements actifs", unit: "abos", placeholder: "6",
+        min: 0, max: 30, step: 1, sliderExp: 1,
+        presets: [2, 4, 6, 8, 12],
+        calc: (v) => normalCDF(v, 6, 3), ref: "consommateur\u00b7ices num\u00e9riques",
         verdicts: [
           [90, "Ton relev\u00e9 bancaire est un catalogue."],
           [60, "Quelques services. Tu sais ce que tu paies (peut-\u00eatre)."],
@@ -282,21 +253,14 @@ const SECTIONS: Section[] = [
     ],
   },
   {
-    id: "cerveau",
-    number: "04",
-    label: "CERVEAU",
-    subtitle: "entre les deux oreilles",
-    color: "#5b7fa5",
+    id: "cerveau", number: "04", label: "CERVEAU",
+    subtitle: "entre les deux oreilles", color: "#5b7fa5",
     stats: [
       {
-        id: "iq",
-        label: "QI",
-        unit: "score",
-        placeholder: "105",
-        min: 55,
-        max: 180,
-        calc: (v) => normalCDF(v, 100, 15),
-        ref: "\u00e9chelle de Wechsler",
+        id: "iq", label: "QI", unit: "score", placeholder: "105",
+        min: 55, max: 180, step: 1, sliderExp: 1,
+        presets: [85, 100, 115, 130, 145],
+        calc: (v) => normalCDF(v, 100, 15), ref: "\u00e9chelle de Wechsler",
         verdicts: [
           [98, "Mensa t\u2019envoie des lettres. Tu les ignores."],
           [80, "Au-dessus de la moyenne. Tes profs l\u2019avaient remarqu\u00e9."],
@@ -306,14 +270,10 @@ const SECTIONS: Section[] = [
         ],
       },
       {
-        id: "languages",
-        label: "Langues parl\u00e9es",
-        unit: "langues",
-        placeholder: "2",
-        min: 1,
-        max: 15,
-        calc: (v) => logNormalCDF(v, 0.5, 0.55),
-        ref: "population mondiale",
+        id: "languages", label: "Langues parl\u00e9es", unit: "langues", placeholder: "2",
+        min: 1, max: 15, step: 1, sliderExp: 1,
+        presets: [1, 2, 3, 4, 5],
+        calc: (v) => logNormalCDF(v, 0.5, 0.55), ref: "population mondiale",
         verdicts: [
           [90, "Polyglotte. Tu penses dans plusieurs langues."],
           [70, "Trilingue. L\u2019Europe est jalouse. Ou tu es Europ\u00e9en\u00b7ne."],
@@ -323,14 +283,10 @@ const SECTIONS: Section[] = [
         ],
       },
       {
-        id: "books",
-        label: "Livres / an",
-        unit: "livres",
-        placeholder: "12",
-        min: 0,
-        max: 300,
-        calc: (v) => logNormalCDF(v + 1, 1.6, 1.1),
-        ref: "lecteur\u00b7ices adultes",
+        id: "books", label: "Livres / an", unit: "livres", placeholder: "12",
+        min: 0, max: 300, step: 1, sliderExp: 2,
+        presets: [2, 5, 12, 24, 52],
+        calc: (v) => logNormalCDF(v + 1, 1.6, 1.1), ref: "lecteur\u00b7ices adultes",
         verdicts: [
           [95, "Biblioth\u00e8que vivante. Les libraires te connaissent."],
           [65, "Lecteur\u00b7ice s\u00e9rieux\u00b7se. Goodreads est content."],
@@ -340,14 +296,10 @@ const SECTIONS: Section[] = [
         ],
       },
       {
-        id: "typing",
-        label: "Vitesse de frappe",
-        unit: "mots / min",
-        placeholder: "55",
-        min: 5,
-        max: 200,
-        calc: (v) => normalCDF(v, 42, 17),
-        ref: "utilisateur\u00b7ices de clavier",
+        id: "typing", label: "Vitesse de frappe", unit: "mots / min", placeholder: "55",
+        min: 5, max: 200, step: 1, sliderExp: 1,
+        presets: [25, 40, 60, 80, 120],
+        calc: (v) => normalCDF(v, 42, 17), ref: "utilisateur\u00b7ices de clavier",
         verdicts: [
           [95, "Tes doigts ont un casier judiciaire. Trop rapides."],
           [70, "Efficace. Le clavier souffre mais suit."],
@@ -359,21 +311,14 @@ const SECTIONS: Section[] = [
     ],
   },
   {
-    id: "habitudes",
-    number: "05",
-    label: "HABITUDES",
-    subtitle: "la routine r\u00e9v\u00e8le tout",
-    color: "#8b6fa5",
+    id: "habitudes", number: "05", label: "HABITUDES",
+    subtitle: "la routine r\u00e9v\u00e8le tout", color: "#8b6fa5",
     stats: [
       {
-        id: "sleep",
-        label: "Sommeil",
-        unit: "h / nuit",
-        placeholder: "7",
-        min: 1,
-        max: 16,
-        calc: (v) => normalCDF(v, 7.0, 1.2),
-        ref: "adultes 18\u201365",
+        id: "sleep", label: "Sommeil", unit: "h / nuit", placeholder: "7",
+        min: 1, max: 16, step: 0.5, sliderExp: 1,
+        presets: [5, 6, 7, 8, 9],
+        calc: (v) => normalCDF(v, 7.0, 1.2), ref: "adultes 18\u201365",
         verdicts: [
           [90, "Tu dors comme un projet de vie."],
           [55, "Zone recommand\u00e9e. Ton cortisol te remercie."],
@@ -383,14 +328,10 @@ const SECTIONS: Section[] = [
         ],
       },
       {
-        id: "coffee",
-        label: "Caf\u00e9s par jour",
-        unit: "caf\u00e9s",
-        placeholder: "2",
-        min: 0,
-        max: 12,
-        calc: (v) => normalCDF(v, 2.2, 1.3),
-        ref: "buveur\u00b7ses de caf\u00e9",
+        id: "coffee", label: "Caf\u00e9s par jour", unit: "caf\u00e9s", placeholder: "2",
+        min: 0, max: 12, step: 1, sliderExp: 1,
+        presets: [0, 1, 2, 3, 5],
+        calc: (v) => normalCDF(v, 2.2, 1.3), ref: "buveur\u00b7ses de caf\u00e9",
         verdicts: [
           [90, "Tes veines transportent de l\u2019espresso."],
           [60, "Amateur\u00b7ice s\u00e9rieux\u00b7se. Le barista conna\u00eet ta commande."],
@@ -400,14 +341,10 @@ const SECTIONS: Section[] = [
         ],
       },
       {
-        id: "shower",
-        label: "Douche",
-        unit: "min",
-        placeholder: "8",
-        min: 1,
-        max: 45,
-        calc: (v) => normalCDF(v, 8, 3),
-        ref: "dur\u00e9e moyenne",
+        id: "shower", label: "Douche", unit: "min", placeholder: "8",
+        min: 1, max: 45, step: 1, sliderExp: 1,
+        presets: [3, 5, 8, 12, 20],
+        calc: (v) => normalCDF(v, 8, 3), ref: "dur\u00e9e moyenne",
         verdicts: [
           [90, "L\u2019environnement pleure. Ta facture aussi."],
           [60, "Confortable. Tu r\u00e9fl\u00e9chis l\u00e0-dedans."],
@@ -417,14 +354,10 @@ const SECTIONS: Section[] = [
         ],
       },
       {
-        id: "alarms",
-        label: "Alarmes le matin",
-        unit: "alarmes",
-        placeholder: "3",
-        min: 0,
-        max: 15,
-        calc: (v) => normalCDF(v, 2.5, 1.5),
-        ref: "adultes avec un emploi",
+        id: "alarms", label: "Alarmes le matin", unit: "alarmes", placeholder: "3",
+        min: 0, max: 15, step: 1, sliderExp: 1,
+        presets: [0, 1, 2, 3, 5],
+        calc: (v) => normalCDF(v, 2.5, 1.5), ref: "adultes avec un emploi",
         verdicts: [
           [90, "Ton t\u00e9l\u00e9phone est traumatis\u00e9."],
           [60, "Quelques alarmes. Juste au cas."],
@@ -436,21 +369,14 @@ const SECTIONS: Section[] = [
     ],
   },
   {
-    id: "social",
-    number: "06",
-    label: "SOCIAL & VIE",
-    subtitle: "ton rapport au monde",
-    color: "#a56b7f",
+    id: "social", number: "06", label: "SOCIAL & VIE",
+    subtitle: "ton rapport au monde", color: "#a56b7f",
     stats: [
       {
-        id: "countries",
-        label: "Pays visit\u00e9s",
-        unit: "pays",
-        placeholder: "8",
-        min: 0,
-        max: 195,
-        calc: (v) => logNormalCDF(v + 1, 1.8, 1.0),
-        ref: "population mondiale",
+        id: "countries", label: "Pays visit\u00e9s", unit: "pays", placeholder: "8",
+        min: 0, max: 195, step: 1, sliderExp: 2,
+        presets: [1, 5, 10, 20, 40],
+        calc: (v) => logNormalCDF(v + 1, 1.8, 1.0), ref: "population mondiale",
         verdicts: [
           [90, "Ton passeport a besoin de pages suppl\u00e9mentaires."],
           [60, "Voyageur\u00b7se honn\u00eate. Tu connais le d\u00e9calage horaire."],
@@ -460,14 +386,10 @@ const SECTIONS: Section[] = [
         ],
       },
       {
-        id: "friends",
-        label: "Ami\u00b7es proches",
-        unit: "amis",
-        placeholder: "4",
-        min: 0,
-        max: 30,
-        calc: (v) => normalCDF(v, 5, 2.5),
-        ref: "adultes, Dunbar",
+        id: "friends", label: "Ami\u00b7es proches", unit: "amis", placeholder: "4",
+        min: 0, max: 30, step: 1, sliderExp: 1,
+        presets: [1, 3, 5, 8, 12],
+        calc: (v) => normalCDF(v, 5, 2.5), ref: "adultes, Dunbar",
         verdicts: [
           [90, "Populaire pour vrai. Pas juste sur Instagram."],
           [60, "Cercle solide. Qualit\u00e9 sur quantit\u00e9."],
@@ -477,14 +399,10 @@ const SECTIONS: Section[] = [
         ],
       },
       {
-        id: "screenTime",
-        label: "Screen time",
-        unit: "h / jour",
-        placeholder: "6",
-        min: 0,
-        max: 20,
-        calc: (v) => normalCDF(v, 7, 2.5),
-        ref: "adultes, tous \u00e9crans",
+        id: "screenTime", label: "Screen time", unit: "h / jour", placeholder: "6",
+        min: 0, max: 20, step: 0.5, sliderExp: 1,
+        presets: [2, 4, 6, 8, 10],
+        calc: (v) => normalCDF(v, 7, 2.5), ref: "adultes, tous \u00e9crans",
         verdicts: [
           [90, "Tes r\u00e9tines \u00e9mettent de la lumi\u00e8re bleue."],
           [60, "Au-dessus de la moyenne. Comme tout le monde."],
@@ -494,14 +412,10 @@ const SECTIONS: Section[] = [
         ],
       },
       {
-        id: "plants",
-        label: "Plantes vivantes chez toi",
-        unit: "plantes",
-        placeholder: "3",
-        min: 0,
-        max: 100,
-        calc: (v) => logNormalCDF(v + 1, 0.8, 1.0),
-        ref: "propri\u00e9taires de plantes",
+        id: "plants", label: "Plantes vivantes chez toi", unit: "plantes", placeholder: "3",
+        min: 0, max: 100, step: 1, sliderExp: 2,
+        presets: [0, 2, 5, 10, 20],
+        calc: (v) => logNormalCDF(v + 1, 0.8, 1.0), ref: "propri\u00e9taires de plantes",
         verdicts: [
           [90, "Jungle urbaine. Tes plantes ont des noms."],
           [60, "Quelques survivantes. Bravo."],
@@ -513,21 +427,14 @@ const SECTIONS: Section[] = [
     ],
   },
   {
-    id: "chaos",
-    number: "07",
-    label: "CHAOS NUM\u00c9RIQUE",
-    subtitle: "l\u2019\u00e9tat de ton \u00e9cosyst\u00e8me digital",
-    color: "#c75b3f",
+    id: "chaos", number: "07", label: "CHAOS NUM\u00c9RIQUE",
+    subtitle: "l\u2019\u00e9tat de ton \u00e9cosyst\u00e8me digital", color: "#c75b3f",
     stats: [
       {
-        id: "tabs",
-        label: "Onglets ouverts",
-        unit: "onglets",
-        placeholder: "14",
-        min: 1,
-        max: 500,
-        calc: (v) => logNormalCDF(v, 2.5, 1.0),
-        ref: "utilisateur\u00b7ices de navigateur",
+        id: "tabs", label: "Onglets ouverts", unit: "onglets", placeholder: "14",
+        min: 1, max: 500, step: 1, sliderExp: 2,
+        presets: [3, 8, 15, 30, 80],
+        calc: (v) => logNormalCDF(v, 2.5, 1.0), ref: "utilisateur\u00b7ices de navigateur",
         verdicts: [
           [90, "Ton navigateur est un cri de d\u00e9tresse."],
           [60, "Disons \u00aborganis\u00e9\u00b7e dans le chaos.\u00bb"],
@@ -537,14 +444,10 @@ const SECTIONS: Section[] = [
         ],
       },
       {
-        id: "emails",
-        label: "Courriels non lus",
-        unit: "emails",
-        placeholder: "342",
-        min: 0,
-        max: 100000,
-        calc: (v) => logNormalCDF(v + 1, 5.5, 2.0),
-        ref: "bo\u00eetes de r\u00e9ception",
+        id: "emails", label: "Courriels non lus", unit: "emails", placeholder: "342",
+        min: 0, max: 100000, step: 1, sliderExp: 3,
+        presets: [0, 50, 500, 5000, 50000],
+        calc: (v) => logNormalCDF(v + 1, 5.5, 2.0), ref: "bo\u00eetes de r\u00e9ception",
         verdicts: [
           [90, "Inbox zero est un mythe pour toi."],
           [65, "Des centaines. Tu tries par survol."],
@@ -554,14 +457,10 @@ const SECTIONS: Section[] = [
         ],
       },
       {
-        id: "passwords",
-        label: "Mots de passe m\u00e9moris\u00e9s",
-        unit: "mdp",
-        placeholder: "8",
-        min: 0,
-        max: 100,
-        calc: (v) => logNormalCDF(v + 1, 2.3, 0.7),
-        ref: "internautes",
+        id: "passwords", label: "Mots de passe m\u00e9moris\u00e9s", unit: "mdp", placeholder: "8",
+        min: 0, max: 100, step: 1, sliderExp: 1.5,
+        presets: [2, 5, 10, 15, 25],
+        calc: (v) => logNormalCDF(v + 1, 2.3, 0.7), ref: "internautes",
         verdicts: [
           [90, "Ton cerveau est un gestionnaire de mots de passe."],
           [60, "Quelques-uns. Le reste c\u2019est \u00abmot de passe oubli\u00e9.\u00bb"],
@@ -571,14 +470,10 @@ const SECTIONS: Section[] = [
         ],
       },
       {
-        id: "photos",
-        label: "Photos dans le t\u00e9l\u00e9phone",
-        unit: "photos",
-        placeholder: "3400",
-        min: 0,
-        max: 200000,
-        calc: (v) => logNormalCDF(v + 1, 7.5, 1.2),
-        ref: "utilisateur\u00b7ices de smartphone",
+        id: "photos", label: "Photos dans le t\u00e9l\u00e9phone", unit: "photos", placeholder: "3400",
+        min: 0, max: 200000, step: 10, sliderExp: 2.5,
+        presets: [100, 500, 2000, 8000, 20000],
+        calc: (v) => logNormalCDF(v + 1, 7.5, 1.2), ref: "utilisateur\u00b7ices de smartphone",
         verdicts: [
           [90, "Ton stockage pleure. 3 GB de screenshots."],
           [65, "Photographe compulsif\u00b7ve. Tu captures tout."],
@@ -616,25 +511,9 @@ function getSectionForStat(statId: string): Section | undefined {
 
 // ─── Components ────────────────────────────────────────
 
-function PercentileBar({
-  pct,
-  animate,
-  color = "#1a1a1a",
-}: {
-  pct: number;
-  animate: boolean;
-  color?: string;
-}) {
+function PercentileBar({ pct, animate, color = "#1a1a1a" }: { pct: number; animate: boolean; color?: string }) {
   return (
-    <div
-      style={{
-        width: "100%",
-        height: 6,
-        background: "#e8e4de",
-        borderRadius: 3,
-        overflow: "hidden",
-      }}
-    >
+    <div style={{ width: "100%", height: 6, background: "#e8e4de", borderRadius: 3, overflow: "hidden" }}>
       <div
         style={{
           height: "100%",
@@ -644,6 +523,89 @@ function PercentileBar({
           transition: "width 0.9s cubic-bezier(0.22, 1, 0.36, 1)",
         }}
       />
+    </div>
+  );
+}
+
+function StatSlider({
+  stat,
+  value,
+  onChange,
+  color,
+}: {
+  stat: Stat;
+  value: number | null;
+  onChange: (v: number) => void;
+  color: string;
+}) {
+  const exp = stat.sliderExp ?? 1;
+  const step = stat.step ?? 1;
+  const hasValue = value !== null;
+  const pos = hasValue ? valueToPos(value, stat.min, stat.max, exp) : 0.5;
+  const fillPct = pos * 100;
+
+  return (
+    <input
+      type="range"
+      className="stat-slider"
+      min={0}
+      max={10000}
+      value={Math.round(pos * 10000)}
+      onChange={(e) => {
+        const rawPos = parseInt(e.target.value) / 10000;
+        const rawValue = posToValue(rawPos, stat.min, stat.max, exp);
+        const snapped = Math.round(rawValue / step) * step;
+        onChange(Math.max(stat.min, Math.min(stat.max, snapped)));
+      }}
+      style={{
+        background: hasValue
+          ? `linear-gradient(to right, ${color} 0%, ${color} ${fillPct}%, #e8e4de ${fillPct}%, #e8e4de 100%)`
+          : "#e8e4de",
+        "--accent": hasValue ? color : "#c8c4bc",
+        opacity: hasValue ? 1 : 0.45,
+      } as React.CSSProperties}
+    />
+  );
+}
+
+function PresetChips({
+  presets,
+  current,
+  step,
+  color,
+  onSelect,
+}: {
+  presets: number[];
+  current: number | null;
+  step: number;
+  color: string;
+  onSelect: (v: number) => void;
+}) {
+  return (
+    <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+      {presets.map((v) => {
+        const active = current !== null && Math.abs(current - v) < (step || 1);
+        return (
+          <button
+            key={v}
+            onClick={() => onSelect(v)}
+            style={{
+              fontFamily: "'IBM Plex Mono', monospace",
+              fontSize: 11,
+              padding: "3px 10px",
+              border: `1px solid ${active ? color : "#ddd8d0"}`,
+              borderRadius: 12,
+              background: active ? `${color}18` : "transparent",
+              color: active ? color : "#aaa",
+              cursor: "pointer",
+              transition: "all 0.15s ease",
+              lineHeight: 1.5,
+            }}
+          >
+            {fmtPreset(v)}
+          </button>
+        );
+      })}
     </div>
   );
 }
@@ -674,6 +636,16 @@ function StatRow({
   }, [result]);
 
   const pct = result !== null ? Math.round(result * 1000) / 10 : null;
+  const numericValue = value ? parseFloat(value.replace(/\s/g, "")) : null;
+  const validNumeric = numericValue !== null && !isNaN(numericValue) ? numericValue : null;
+
+  const handleSlider = (v: number) => {
+    onChange(formatDisplay(v, stat.step ?? 1));
+  };
+
+  const handlePreset = (v: number) => {
+    onChange(formatDisplay(v, stat.step ?? 1));
+  };
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const raw = e.target.value.replace(/[^0-9.,]/g, "").replace(",", ".");
@@ -682,88 +654,68 @@ function StatRow({
 
   return (
     <div className="stat-row">
+      {/* Left: controls */}
       <div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "baseline",
-            gap: 10,
-            marginBottom: 4,
-            flexWrap: "wrap",
-          }}
-        >
-          <span
-            style={{
-              fontFamily: "'DM Serif Display', Georgia, serif",
-              fontSize: 20,
-              color: "#1a1a1a",
-            }}
-          >
+        <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 4, flexWrap: "wrap" }}>
+          <span style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 20, color: "#1a1a1a" }}>
             {stat.label}
           </span>
-          <span
-            style={{
-              fontSize: 11,
-              color: "#aaa",
-              fontFamily: "'IBM Plex Mono', monospace",
-            }}
-          >
+          <span style={{ fontSize: 11, color: "#aaa", fontFamily: "'IBM Plex Mono', monospace" }}>
             {stat.ref}
           </span>
         </div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 8,
-            marginTop: 10,
-          }}
-        >
-          <input
-            type="text"
-            inputMode="decimal"
-            value={value}
-            onChange={handleInput}
-            placeholder={stat.placeholder}
-            style={{
-              width: 120,
-              padding: "8px 0",
-              border: "none",
-              borderBottom: "2px solid #d4d0c8",
-              background: "transparent",
-              color: "#1a1a1a",
-              fontFamily: "'IBM Plex Mono', monospace",
-              fontSize: 18,
-              fontWeight: 600,
-              outline: "none",
-              transition: "border-color 0.2s",
-            }}
-            onFocus={(e) => (e.target.style.borderBottomColor = accentColor)}
-            onBlur={(e) => (e.target.style.borderBottomColor = "#d4d0c8")}
-          />
-          <span
-            style={{
-              fontSize: 13,
-              color: "#999",
-              fontFamily: "'IBM Plex Mono', monospace",
-            }}
-          >
-            {stat.unit}
-          </span>
+
+        {/* Slider */}
+        <div style={{ margin: "14px 0 10px" }}>
+          <StatSlider stat={stat} value={validNumeric} onChange={handleSlider} color={accentColor} />
+        </div>
+
+        {/* Value + presets */}
+        <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
+            <input
+              type="text"
+              inputMode="decimal"
+              value={value}
+              onChange={handleInput}
+              placeholder={stat.placeholder}
+              style={{
+                width: 80,
+                padding: "4px 0",
+                border: "none",
+                borderBottom: "1.5px solid #d4d0c8",
+                background: "transparent",
+                color: "#1a1a1a",
+                fontFamily: "'IBM Plex Mono', monospace",
+                fontSize: 15,
+                fontWeight: 600,
+                outline: "none",
+                transition: "border-color 0.2s",
+              }}
+              onFocus={(e) => (e.target.style.borderBottomColor = accentColor)}
+              onBlur={(e) => (e.target.style.borderBottomColor = "#d4d0c8")}
+            />
+            <span style={{ fontSize: 12, color: "#999", fontFamily: "'IBM Plex Mono', monospace" }}>
+              {stat.unit}
+            </span>
+          </div>
+          {stat.presets && (
+            <PresetChips
+              presets={stat.presets}
+              current={validNumeric}
+              step={stat.step ?? 1}
+              color={accentColor}
+              onSelect={handlePreset}
+            />
+          )}
         </div>
       </div>
 
+      {/* Right: result */}
       <div style={{ minHeight: 70 }}>
         {pct !== null ? (
           <div style={{ animation: "fadeIn 0.4s ease" }}>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "baseline",
-                gap: 6,
-                marginBottom: 10,
-              }}
-            >
+            <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 10 }}>
               <span
                 style={{
                   fontFamily: "'DM Serif Display', Georgia, serif",
@@ -776,13 +728,7 @@ function StatRow({
               >
                 {formatPct(pct)}
               </span>
-              <span
-                style={{
-                  fontSize: 14,
-                  color: "#aaa",
-                  fontFamily: "'IBM Plex Mono', monospace",
-                }}
-              >
+              <span style={{ fontSize: 14, color: "#aaa", fontFamily: "'IBM Plex Mono', monospace" }}>
                 e percentile
               </span>
             </div>
@@ -801,14 +747,7 @@ function StatRow({
             </div>
           </div>
         ) : (
-          <div
-            style={{
-              fontSize: 12,
-              color: "#ccc",
-              fontFamily: "'IBM Plex Mono', monospace",
-              paddingTop: 8,
-            }}
-          >
+          <div style={{ fontSize: 12, color: "#ccc", fontFamily: "'IBM Plex Mono', monospace", paddingTop: 8 }}>
             &mdash;
           </div>
         )}
@@ -820,217 +759,75 @@ function StatRow({
 function SectionHeader({ section }: { section: Section }) {
   return (
     <div style={{ marginTop: 64, marginBottom: 32 }}>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 12,
-          marginBottom: 12,
-        }}
-      >
-        <span
-          style={{
-            fontFamily: "'IBM Plex Mono', monospace",
-            fontSize: 12,
-            fontWeight: 600,
-            color: section.color,
-            letterSpacing: 1,
-          }}
-        >
+      <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
+        <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 12, fontWeight: 600, color: section.color, letterSpacing: 1 }}>
           {section.number}
         </span>
-        <div
-          style={{
-            flex: 1,
-            height: 1,
-            background: `linear-gradient(to right, ${section.color}44, transparent)`,
-          }}
-        />
+        <div style={{ flex: 1, height: 1, background: `linear-gradient(to right, ${section.color}44, transparent)` }} />
       </div>
-      <h2
-        style={{
-          fontFamily: "'DM Serif Display', Georgia, serif",
-          fontSize: 32,
-          fontWeight: 400,
-          color: "#1a1a1a",
-          margin: 0,
-          letterSpacing: "-0.5px",
-        }}
-      >
+      <h2 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 32, fontWeight: 400, color: "#1a1a1a", margin: 0, letterSpacing: "-0.5px" }}>
         {section.label}
       </h2>
-      <p
-        style={{
-          fontFamily: "'IBM Plex Mono', monospace",
-          fontSize: 12,
-          color: "#aaa",
-          marginTop: 6,
-          fontStyle: "italic",
-        }}
-      >
+      <p style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 12, color: "#aaa", marginTop: 6, fontStyle: "italic" }}>
         {section.subtitle}
       </p>
     </div>
   );
 }
 
-function SectionSummaryBar({
-  section,
-  avg,
-}: {
-  section: Section;
-  avg: number;
-}) {
+function SectionSummaryBar({ section, avg }: { section: Section; avg: number }) {
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: 12,
-        marginBottom: 8,
-      }}
-    >
-      <span
-        style={{
-          fontFamily: "'IBM Plex Mono', monospace",
-          fontSize: 11,
-          color: "#999",
-          width: 140,
-          flexShrink: 0,
-          textAlign: "right",
-        }}
-      >
+    <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+      <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, color: "#999", width: 140, flexShrink: 0, textAlign: "right" }}>
         {section.label}
       </span>
-      <div
-        style={{
-          flex: 1,
-          height: 8,
-          background: "#e8e4de",
-          borderRadius: 4,
-          overflow: "hidden",
-        }}
-      >
-        <div
-          style={{
-            height: "100%",
-            width: `${avg}%`,
-            background: section.color,
-            borderRadius: 4,
-            transition: "width 1s cubic-bezier(0.22, 1, 0.36, 1)",
-          }}
-        />
+      <div style={{ flex: 1, height: 8, background: "#e8e4de", borderRadius: 4, overflow: "hidden" }}>
+        <div style={{ height: "100%", width: `${avg}%`, background: section.color, borderRadius: 4, transition: "width 1s cubic-bezier(0.22, 1, 0.36, 1)" }} />
       </div>
-      <span
-        style={{
-          fontFamily: "'IBM Plex Mono', monospace",
-          fontSize: 13,
-          fontWeight: 600,
-          color: "#1a1a1a",
-          width: 32,
-          textAlign: "right",
-        }}
-      >
+      <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 13, fontWeight: 600, color: "#1a1a1a", width: 32, textAlign: "right" }}>
         {Math.round(avg)}
       </span>
     </div>
   );
 }
 
-function Summary({
-  results,
-}: {
-  results: Record<string, number | null>;
-}) {
+function Summary({ results }: { results: Record<string, number | null> }) {
   const allStats = getAllStats();
-  const filled = Object.entries(results).filter(
-    (entry): entry is [string, number] => entry[1] !== null
-  );
+  const filled = Object.entries(results).filter((entry): entry is [string, number] => entry[1] !== null);
   if (filled.length < 3) return null;
 
   const avg = filled.reduce((s, [, v]) => s + v * 100, 0) / filled.length;
 
-  // Per-section averages
   const sectionAverages = SECTIONS.map((section) => {
-    const sectionFilled = filled.filter(([id]) =>
-      section.stats.some((s) => s.id === id)
-    );
+    const sectionFilled = filled.filter(([id]) => section.stats.some((s) => s.id === id));
     if (sectionFilled.length === 0) return null;
-    const sAvg =
-      sectionFilled.reduce((s, [, v]) => s + v * 100, 0) /
-      sectionFilled.length;
+    const sAvg = sectionFilled.reduce((s, [, v]) => s + v * 100, 0) / sectionFilled.length;
     return { section, avg: sAvg };
   }).filter((x): x is { section: Section; avg: number } => x !== null);
 
   let globalVerdict = "";
-  if (avg >= 90)
-    globalVerdict = "Statistiquement, tu n\u2019existes presque pas.";
-  else if (avg >= 75)
-    globalVerdict =
-      "Au-dessus de la moyenne sur presque tout. Bravo, ou chance.";
-  else if (avg >= 60)
-    globalVerdict =
-      "L\u00e9g\u00e8rement au-dessus. Juste assez pour le mentionner.";
-  else if (avg >= 45)
-    globalVerdict = "Average. C\u2019est dans le nom.";
-  else if (avg >= 30)
-    globalVerdict =
-      "En dessous sur plusieurs axes. C\u2019est une donn\u00e9e, pas un jugement.";
-  else
-    globalVerdict =
-      "Statistiquement remarquable \u2014 par le bas. \u00c7a reste remarquable.";
+  if (avg >= 90) globalVerdict = "Statistiquement, tu n\u2019existes presque pas.";
+  else if (avg >= 75) globalVerdict = "Au-dessus de la moyenne sur presque tout. Bravo, ou chance.";
+  else if (avg >= 60) globalVerdict = "L\u00e9g\u00e8rement au-dessus. Juste assez pour le mentionner.";
+  else if (avg >= 45) globalVerdict = "Average. C\u2019est dans le nom.";
+  else if (avg >= 30) globalVerdict = "En dessous sur plusieurs axes. C\u2019est une donn\u00e9e, pas un jugement.";
+  else globalVerdict = "Statistiquement remarquable \u2014 par le bas. \u00c7a reste remarquable.";
 
   return (
-    <div
-      style={{
-        marginTop: 72,
-        paddingTop: 48,
-        borderTop: "2px solid #1a1a1a",
-        animation: "fadeIn 0.6s ease",
-      }}
-    >
-      <div
-        style={{
-          fontSize: 11,
-          color: "#aaa",
-          fontFamily: "'IBM Plex Mono', monospace",
-          letterSpacing: 3,
-          marginBottom: 20,
-          textAlign: "center",
-        }}
-      >
+    <div style={{ marginTop: 72, paddingTop: 48, borderTop: "2px solid #1a1a1a", animation: "fadeIn 0.6s ease" }}>
+      <div style={{ fontSize: 11, color: "#aaa", fontFamily: "'IBM Plex Mono', monospace", letterSpacing: 3, marginBottom: 20, textAlign: "center" }}>
         SCORE COMPOSITE &middot; {filled.length} / {allStats.length} DONN&Eacute;ES
       </div>
 
       <div style={{ textAlign: "center", marginBottom: 48 }}>
-        <div
-          style={{
-            fontFamily: "'DM Serif Display', Georgia, serif",
-            fontSize: "clamp(64px, 12vw, 112px)",
-            color: "#1a1a1a",
-            lineHeight: 1,
-            letterSpacing: "-4px",
-          }}
-        >
+        <div style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: "clamp(64px, 12vw, 112px)", color: "#1a1a1a", lineHeight: 1, letterSpacing: "-4px" }}>
           {Math.round(avg)}
         </div>
-        <div
-          style={{
-            fontFamily: "'IBM Plex Mono', monospace",
-            fontSize: 14,
-            color: "#999",
-            marginTop: 16,
-            fontStyle: "italic",
-            maxWidth: 420,
-            margin: "16px auto 0",
-            lineHeight: 1.6,
-          }}
-        >
+        <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 14, color: "#999", marginTop: 16, fontStyle: "italic", maxWidth: 420, margin: "16px auto 0", lineHeight: 1.6 }}>
           {globalVerdict}
         </div>
       </div>
 
-      {/* Section breakdown */}
       {sectionAverages.length > 1 && (
         <div style={{ maxWidth: 480, margin: "0 auto 40px" }}>
           {sectionAverages.map(({ section, avg: sAvg }) => (
@@ -1039,18 +836,7 @@ function Summary({
         </div>
       )}
 
-      {/* Individual stats */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          flexWrap: "wrap",
-          gap: "6px 16px",
-          fontFamily: "'IBM Plex Mono', monospace",
-          fontSize: 12,
-          color: "#bbb",
-        }}
-      >
+      <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "6px 16px", fontFamily: "'IBM Plex Mono', monospace", fontSize: 12, color: "#bbb" }}>
         {filled.map(([id, val]) => {
           const stat = allStats.find((s) => s.id === id)!;
           const section = getSectionForStat(id);
@@ -1074,31 +860,53 @@ export default function Home() {
   const [values, setValues] = useState<Record<string, string>>({});
   const [results, setResults] = useState<Record<string, number | null>>({});
 
-  const handleChange = (id: string, val: string) => {
+  const handleChange = useCallback((id: string, val: string) => {
     setValues((prev) => ({ ...prev, [id]: val }));
     const stat = getAllStats().find((s) => s.id === id)!;
-    const num = parseFloat(val);
+    const num = parseFloat(val.replace(/\s/g, ""));
     if (!isNaN(num) && num >= stat.min && num <= stat.max) {
-      setResults((prev) => ({
-        ...prev,
-        [id]: Math.max(0, Math.min(1, stat.calc(num))),
-      }));
+      setResults((prev) => ({ ...prev, [id]: Math.max(0, Math.min(1, stat.calc(num))) }));
     } else {
       setResults((prev) => ({ ...prev, [id]: null }));
     }
+  }, []);
+
+  const fillRandom = () => {
+    const allStats = getAllStats();
+    allStats.forEach((stat, i) => {
+      setTimeout(() => {
+        const mid = parseFloat(stat.placeholder.replace(/\s/g, "")) || (stat.min + stat.max) / 2;
+        const spread = (stat.max - stat.min) * 0.18;
+        const raw = mid + (Math.random() + Math.random() + Math.random() - 1.5) * spread;
+        const step = stat.step ?? 1;
+        const snapped = Math.round(Math.max(stat.min, Math.min(stat.max, raw)) / step) * step;
+        handleChange(stat.id, formatDisplay(snapped, step));
+      }, i * 60);
+    });
+  };
+
+  const fillMean = () => {
+    const allStats = getAllStats();
+    allStats.forEach((stat, i) => {
+      setTimeout(() => {
+        const mid = parseFloat(stat.placeholder.replace(/\s/g, "")) || (stat.min + stat.max) / 2;
+        const step = stat.step ?? 1;
+        const snapped = Math.round(mid / step) * step;
+        handleChange(stat.id, formatDisplay(snapped, step));
+      }, i * 40);
+    });
+  };
+
+  const clearAll = () => {
+    setValues({});
+    setResults({});
   };
 
   const filledCount = Object.values(results).filter((v) => v !== null).length;
   const totalCount = getAllStats().length;
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "#f5f2ec",
-        padding: "60px 24px 120px",
-      }}
-    >
+    <div style={{ minHeight: "100vh", background: "#f5f2ec", padding: "60px 24px 120px" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&display=swap');
         @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
@@ -1114,10 +922,71 @@ export default function Home() {
           align-items: start;
         }
         @media (max-width: 640px) {
-          .stat-row {
-            grid-template-columns: 1fr;
-            gap: 16px;
-          }
+          .stat-row { grid-template-columns: 1fr; gap: 16px; }
+        }
+
+        /* Slider styling */
+        .stat-slider {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 100%;
+          height: 4px;
+          border-radius: 2px;
+          outline: none;
+          cursor: grab;
+          transition: opacity 0.2s ease;
+        }
+        .stat-slider:active { cursor: grabbing; }
+        .stat-slider::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background: var(--accent, #ccc);
+          border: 3px solid #f5f2ec;
+          box-shadow: 0 1px 5px rgba(0,0,0,0.12);
+          cursor: grab;
+          transition: transform 0.12s ease, box-shadow 0.12s ease;
+        }
+        .stat-slider::-webkit-slider-thumb:hover {
+          transform: scale(1.15);
+          box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+        }
+        .stat-slider:active::-webkit-slider-thumb {
+          cursor: grabbing;
+          transform: scale(1.08);
+        }
+        .stat-slider::-moz-range-thumb {
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background: var(--accent, #ccc);
+          border: 3px solid #f5f2ec;
+          box-shadow: 0 1px 5px rgba(0,0,0,0.12);
+          cursor: grab;
+        }
+        .stat-slider::-moz-range-track {
+          height: 4px;
+          border-radius: 2px;
+          background: #e8e4de;
+        }
+
+        /* Meta button styles */
+        .meta-btn {
+          font-family: 'IBM Plex Mono', monospace;
+          font-size: 11px;
+          letter-spacing: 0.5px;
+          padding: 6px 16px;
+          border: 1px solid #d4d0c8;
+          border-radius: 20px;
+          background: transparent;
+          color: #999;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+        .meta-btn:hover {
+          border-color: #1a1a1a;
+          color: #1a1a1a;
         }
       `}</style>
 
@@ -1136,33 +1005,27 @@ export default function Home() {
           >
             average.
           </h1>
-          <p
-            style={{
-              fontFamily: "'IBM Plex Mono', monospace",
-              fontSize: 13,
-              color: "#999",
-              marginTop: 14,
-              lineHeight: 1.7,
-              maxWidth: 440,
-            }}
-          >
+          <p style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 13, color: "#999", marginTop: 14, lineHeight: 1.7, maxWidth: 440 }}>
             28 mesures. 7 dimensions de ta vie.
             <br />
-            On te dit &agrave; quel point tu es normal&middot;e.
+            Glisse, tape, explore &mdash; on te dit o&ugrave; tu te situes.
           </p>
-          {filledCount > 0 && (
-            <div
-              style={{
-                marginTop: 16,
-                fontFamily: "'IBM Plex Mono', monospace",
-                fontSize: 11,
-                color: "#bbb",
-                letterSpacing: 1,
-              }}
-            >
-              {filledCount} / {totalCount} REMPLI{filledCount > 1 ? "S" : ""}
-            </div>
-          )}
+
+          {/* Meta buttons */}
+          <div style={{ display: "flex", gap: 8, marginTop: 20, flexWrap: "wrap", alignItems: "center" }}>
+            <button className="meta-btn" onClick={fillRandom}>au hasard</button>
+            <button className="meta-btn" onClick={fillMean}>tout moyen</button>
+            {filledCount > 0 && (
+              <button className="meta-btn" onClick={clearAll} style={{ borderColor: "#e8e4de", color: "#ccc" }}>
+                effacer
+              </button>
+            )}
+            {filledCount > 0 && (
+              <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, color: "#ccc", letterSpacing: 1, marginLeft: 4 }}>
+                {filledCount}/{totalCount}
+              </span>
+            )}
+          </div>
         </div>
 
         {/* Sections */}
@@ -1185,19 +1048,8 @@ export default function Home() {
         <Summary results={results} />
 
         {/* Footer */}
-        <div
-          style={{
-            marginTop: 72,
-            fontSize: 10,
-            color: "#ccc",
-            fontFamily: "'IBM Plex Mono', monospace",
-            letterSpacing: 1.5,
-            textAlign: "center",
-            lineHeight: 2,
-          }}
-        >
-          DISTRIBUTIONS APPROXIMATIVES &middot; R&Eacute;CR&Eacute;ATIF &middot;
-          PAS UN DIAGNOSTIC
+        <div style={{ marginTop: 72, fontSize: 10, color: "#ccc", fontFamily: "'IBM Plex Mono', monospace", letterSpacing: 1.5, textAlign: "center", lineHeight: 2 }}>
+          DISTRIBUTIONS APPROXIMATIVES &middot; R&Eacute;CR&Eacute;ATIF &middot; PAS UN DIAGNOSTIC
           <br />
           28 STATISTIQUES &middot; 7 CAT&Eacute;GORIES &middot; 0 JUGEMENT
         </div>
