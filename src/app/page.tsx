@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import allModels from "@/data.json";
 import {
   buildSections,
@@ -14,13 +14,36 @@ import {
   type Section,
   type ModelData,
 } from "@/lib/questions";
+import {
+  LOCALES,
+  RTL_LOCALES,
+  getUI,
+  getCompositeVerdict,
+  getScoreLabel,
+  translateSections,
+} from "@/lib/i18n";
 
-// ─── Build sections from all models ────────────────────
+// ─── Build base sections (French, from data.json) ──────
 
-const SECTIONS = buildSections(allModels as ModelData[]);
-const ALL_STATS = SECTIONS.flatMap((s) => s.stats);
+const BASE_SECTIONS = buildSections(allModels as ModelData[]);
 
 // ─── Components ────────────────────────────────────────
+
+function LanguageBar({ locale, setLocale }: { locale: string; setLocale: (l: string) => void }) {
+  return (
+    <div className="lang-bar">
+      {Object.entries(LOCALES).map(([code, label]) => (
+        <button
+          key={code}
+          onClick={() => setLocale(code)}
+          className={`lang-btn ${code === locale ? "lang-active" : ""}`}
+        >
+          {label}
+        </button>
+      ))}
+    </div>
+  );
+}
 
 function PercentileBar({ pct, animate, color }: { pct: number; animate: boolean; color: string }) {
   return (
@@ -124,9 +147,10 @@ function TextInput({ stat, value, onChange }: { stat: Stat; value: string; onCha
   );
 }
 
-function StatRow({ stat, value, onChange, result }: { stat: Stat; value: string; onChange: (v: string) => void; result: number | null }) {
+function StatRow({ stat, value, onChange, result, locale }: { stat: Stat; value: string; onChange: (v: string) => void; result: number | null; locale: string }) {
   const [animate, setAnimate] = useState(false);
   const prev = useRef<number | null>(null);
+  const ui = getUI(locale);
 
   useEffect(() => {
     if (result !== null && result !== prev.current) {
@@ -152,7 +176,6 @@ function StatRow({ stat, value, onChange, result }: { stat: Stat; value: string;
           {stat.why}
         </div>
 
-        {/* ── Pills: large tappable buttons ── */}
         {stat.inputType === "pills" && (
           <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
             <Chips values={stat.pills} current={validNumeric} step={stat.step} color={stat.color} onSelect={setFromNumber} size="lg" />
@@ -160,7 +183,6 @@ function StatRow({ stat, value, onChange, result }: { stat: Stat; value: string;
           </div>
         )}
 
-        {/* ── Slider: drag + presets ── */}
         {stat.inputType === "slider" && (
           <>
             <div style={{ margin: "6px 0 10px" }}>
@@ -173,7 +195,6 @@ function StatRow({ stat, value, onChange, result }: { stat: Stat; value: string;
           </>
         )}
 
-        {/* ── Freeform: text input + presets only ── */}
         {stat.inputType === "freeform" && (
           <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
             <TextInput stat={stat} value={value} onChange={onChange} />
@@ -189,13 +210,10 @@ function StatRow({ stat, value, onChange, result }: { stat: Stat; value: string;
               <span style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 42, fontWeight: 400, color: "#1a1a1a", lineHeight: 1, letterSpacing: "-1px" }}>
                 {formatPct(pct)}
               </span>
-              <span style={{ fontSize: 14, color: "#aaa", fontFamily: "'IBM Plex Mono', monospace" }}>sur 100</span>
+              <span style={{ fontSize: 14, color: "#aaa", fontFamily: "'IBM Plex Mono', monospace" }}>{ui.outOf}</span>
             </div>
             <div style={{ fontSize: 11, color: "#b0a898", fontFamily: "'IBM Plex Mono', monospace", marginBottom: 8 }}>
-              {pct >= 99 ? "devant presque tout le monde" :
-               pct <= 1 ? "presque tout le monde est devant" :
-               pct >= 45 && pct <= 55 ? "pile au milieu" :
-               `devant ${formatPct(pct)} personnes sur 100`}
+              {getScoreLabel(locale, pct, formatPct(pct))}
             </div>
             <PercentileBar pct={pct} animate={animate} color={stat.color} />
             <div style={{ marginTop: 8, fontSize: 13, color: "#777", fontFamily: "'IBM Plex Mono', monospace", fontStyle: "italic", lineHeight: 1.5 }}>
@@ -212,7 +230,7 @@ function StatRow({ stat, value, onChange, result }: { stat: Stat; value: string;
 
 function SectionHeader({ section }: { section: Section }) {
   return (
-    <div id={section.id} style={{ marginTop: 64, marginBottom: 32, scrollMarginTop: 60 }}>
+    <div id={section.id} style={{ marginTop: 64, marginBottom: 32, scrollMarginTop: 100 }}>
       <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
         <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 12, fontWeight: 600, color: section.color, letterSpacing: 1 }}>
           {section.number}
@@ -245,31 +263,25 @@ function SectionSummaryBar({ section, avg }: { section: Section; avg: number }) 
   );
 }
 
-function Summary({ results }: { results: Record<string, number | null> }) {
+function Summary({ sections, results, locale }: { sections: Section[]; results: Record<string, number | null>; locale: string }) {
+  const allStats = sections.flatMap((s) => s.stats);
   const filled = Object.entries(results).filter((e): e is [string, number] => e[1] !== null);
   if (filled.length < 2) return null;
 
+  const ui = getUI(locale);
   const avg = filled.reduce((s, [, v]) => s + v * 100, 0) / filled.length;
 
-  const sectionAverages = SECTIONS.map((section) => {
+  const sectionAverages = sections.map((section) => {
     const sectionFilled = filled.filter(([id]) => section.stats.some((s) => s.id === id));
     if (sectionFilled.length === 0) return null;
     const sAvg = sectionFilled.reduce((s, [, v]) => s + v * 100, 0) / sectionFilled.length;
     return { section, avg: sAvg };
   }).filter((x): x is { section: Section; avg: number } => x !== null);
 
-  let verdict = "";
-  if (avg >= 90) verdict = "Statistiquement, tu n\u2019existes presque pas.";
-  else if (avg >= 75) verdict = "Au-dessus de la moyenne sur presque tout. Bravo, ou chance.";
-  else if (avg >= 60) verdict = "L\u00e9g\u00e8rement au-dessus. Juste assez pour le mentionner.";
-  else if (avg >= 45) verdict = "Average. C\u2019est dans le nom.";
-  else if (avg >= 30) verdict = "En dessous sur plusieurs axes. Une donn\u00e9e, pas un jugement.";
-  else verdict = "Statistiquement remarquable \u2014 par le bas. \u00c7a reste remarquable.";
-
   return (
     <div style={{ marginTop: 72, paddingTop: 48, borderTop: "2px solid #1a1a1a", animation: "fadeIn 0.6s ease" }}>
       <div style={{ fontSize: 11, color: "#aaa", fontFamily: "'IBM Plex Mono', monospace", letterSpacing: 3, marginBottom: 20, textAlign: "center" }}>
-        SCORE COMPOSITE &middot; {filled.length} / {ALL_STATS.length} DONN&Eacute;ES
+        {ui.compositeScore} &middot; {filled.length} / {allStats.length} {ui.data}
       </div>
 
       <div style={{ textAlign: "center", marginBottom: 48 }}>
@@ -277,7 +289,7 @@ function Summary({ results }: { results: Record<string, number | null> }) {
           {Math.round(avg)}
         </div>
         <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 14, color: "#999", marginTop: 16, fontStyle: "italic", maxWidth: 420, margin: "16px auto 0", lineHeight: 1.6 }}>
-          {verdict}
+          {getCompositeVerdict(locale, avg)}
         </div>
       </div>
 
@@ -291,7 +303,7 @@ function Summary({ results }: { results: Record<string, number | null> }) {
 
       <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "6px 16px", fontFamily: "'IBM Plex Mono', monospace", fontSize: 12, color: "#bbb" }}>
         {filled.map(([id, val]) => {
-          const stat = ALL_STATS.find((s) => s.id === id)!;
+          const stat = allStats.find((s) => s.id === id)!;
           return (
             <span key={id}>
               {stat.label}{" "}
@@ -307,12 +319,18 @@ function Summary({ results }: { results: Record<string, number | null> }) {
 // ─── Page ──────────────────────────────────────────────
 
 export default function Home() {
+  const [locale, setLocale] = useState("fr");
   const [values, setValues] = useState<Record<string, string>>({});
   const [results, setResults] = useState<Record<string, number | null>>({});
 
+  const sections = useMemo(() => translateSections(BASE_SECTIONS, locale), [locale]);
+  const allStats = useMemo(() => sections.flatMap((s) => s.stats), [sections]);
+  const ui = getUI(locale);
+  const isRTL = RTL_LOCALES.includes(locale);
+
   const handleChange = useCallback((id: string, val: string) => {
     setValues((prev) => ({ ...prev, [id]: val }));
-    const stat = ALL_STATS.find((s) => s.id === id)!;
+    const stat = BASE_SECTIONS.flatMap((s) => s.stats).find((s) => s.id === id)!;
     const num = parseFloat(val.replace(/\s/g, ""));
     if (!isNaN(num) && num >= stat.min && num <= stat.max) {
       setResults((prev) => ({ ...prev, [id]: Math.max(0, Math.min(1, stat.calc(num))) }));
@@ -326,7 +344,7 @@ export default function Home() {
   const filledCount = Object.values(results).filter((v) => v !== null).length;
 
   return (
-    <div style={{ minHeight: "100vh", background: "#f5f2ec", padding: "60px 24px 120px" }}>
+    <div style={{ minHeight: "100vh", background: "#f5f2ec" }} dir={isRTL ? "rtl" : undefined}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&display=swap');
         @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
@@ -366,6 +384,21 @@ export default function Home() {
           text-decoration: none;
         }
         .meta-btn:hover { border-color: #1a1a1a; color: #1a1a1a; }
+        .lang-bar {
+          width: 100%; padding: 10px 24px;
+          display: flex; justify-content: center; gap: 4px; flex-wrap: wrap;
+          border-bottom: 1px solid #e8e4de;
+          background: #f5f2ec;
+          direction: ltr;
+        }
+        .lang-btn {
+          font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+          padding: 4px 12px; border: none; border-radius: 3px;
+          background: transparent; color: #bbb; cursor: pointer;
+          transition: all 0.15s ease; letter-spacing: 0.3px;
+        }
+        .lang-btn:hover { color: #1a1a1a; }
+        .lang-active { color: #1a1a1a; font-weight: 600; background: #e8e4de88; }
         .sticky-nav {
           position: sticky; top: 0; z-index: 50;
           background: #f5f2ecee; backdrop-filter: blur(12px);
@@ -376,67 +409,73 @@ export default function Home() {
         }
       `}</style>
 
-      <div style={{ maxWidth: 720, margin: "0 auto" }}>
-        {/* Header */}
-        <div style={{ marginBottom: 16 }}>
-          <h1 style={{
-            fontFamily: "'DM Serif Display', Georgia, serif",
-            fontSize: "clamp(52px, 9vw, 80px)", fontWeight: 400,
-            color: "#1a1a1a", lineHeight: 1, letterSpacing: "-3px",
-          }}>
-            average.
-          </h1>
-          <p style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 13, color: "#999", marginTop: 14, lineHeight: 1.7, maxWidth: 440 }}>
-            Entre tes donn&eacute;es. On te dit &agrave; quel point tu es normal&middot;e.
-          </p>
-        </div>
+      {/* Language bar — full width, always LTR */}
+      <LanguageBar locale={locale} setLocale={setLocale} />
 
-        {/* Sticky nav */}
-        <nav className="sticky-nav">
-          <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center", maxWidth: 720, margin: "0 auto" }}>
-            {SECTIONS.map((s) => (
-              <a
-                key={s.id}
-                href={`#${s.id}`}
-                className="meta-btn"
-                style={{ borderColor: s.color + "55", color: s.color }}
-              >
-                {s.label.toLowerCase()}
-              </a>
-            ))}
-            {filledCount > 0 && (
-              <>
-                <span style={{ color: "#ddd", margin: "0 2px" }}>&middot;</span>
-                <button className="meta-btn" onClick={clearAll} style={{ borderColor: "#e8e4de", color: "#ccc" }}>effacer</button>
-                <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, color: "#ccc", letterSpacing: 1, marginLeft: 2 }}>
-                  {filledCount}/{ALL_STATS.length}
-                </span>
-              </>
-            )}
+      <div style={{ padding: "60px 24px 120px" }}>
+        <div style={{ maxWidth: 720, margin: "0 auto" }}>
+          {/* Header */}
+          <div style={{ marginBottom: 16 }}>
+            <h1 style={{
+              fontFamily: "'DM Serif Display', Georgia, serif",
+              fontSize: "clamp(52px, 9vw, 80px)", fontWeight: 400,
+              color: "#1a1a1a", lineHeight: 1, letterSpacing: "-3px",
+            }}>
+              average.
+            </h1>
+            <p style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 13, color: "#999", marginTop: 14, lineHeight: 1.7, maxWidth: 440 }}>
+              {ui.subtitle}
+            </p>
           </div>
-        </nav>
 
-        {/* Sections (one per model) */}
-        {SECTIONS.map((section) => (
-          <div key={section.id}>
-            <SectionHeader section={section} />
-            {section.stats.map((stat) => (
-              <StatRow
-                key={stat.id}
-                stat={stat}
-                value={values[stat.id] || ""}
-                onChange={(v) => handleChange(stat.id, v)}
-                result={results[stat.id] ?? null}
-              />
-            ))}
+          {/* Sticky nav */}
+          <nav className="sticky-nav">
+            <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center", maxWidth: 720, margin: "0 auto" }}>
+              {sections.map((s) => (
+                <a
+                  key={s.id}
+                  href={`#${s.id}`}
+                  className="meta-btn"
+                  style={{ borderColor: s.color + "55", color: s.color }}
+                >
+                  {s.label.toLowerCase()}
+                </a>
+              ))}
+              {filledCount > 0 && (
+                <>
+                  <span style={{ color: "#ddd", margin: "0 2px" }}>&middot;</span>
+                  <button className="meta-btn" onClick={clearAll} style={{ borderColor: "#e8e4de", color: "#ccc" }}>{ui.clear}</button>
+                  <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, color: "#ccc", letterSpacing: 1, marginLeft: 2 }}>
+                    {filledCount}/{allStats.length}
+                  </span>
+                </>
+              )}
+            </div>
+          </nav>
+
+          {/* Sections */}
+          {sections.map((section) => (
+            <div key={section.id}>
+              <SectionHeader section={section} />
+              {section.stats.map((stat) => (
+                <StatRow
+                  key={stat.id}
+                  stat={stat}
+                  value={values[stat.id] || ""}
+                  onChange={(v) => handleChange(stat.id, v)}
+                  result={results[stat.id] ?? null}
+                  locale={locale}
+                />
+              ))}
+            </div>
+          ))}
+
+          <Summary sections={sections} results={results} locale={locale} />
+
+          {/* Footer */}
+          <div style={{ marginTop: 72, fontSize: 10, color: "#ccc", fontFamily: "'IBM Plex Mono', monospace", letterSpacing: 1.5, textAlign: "center", lineHeight: 2 }}>
+            {sections.length} {ui.models} &middot; {allStats.length} {ui.questions} &middot; {ui.approx}
           </div>
-        ))}
-
-        <Summary results={results} />
-
-        {/* Footer */}
-        <div style={{ marginTop: 72, fontSize: 10, color: "#ccc", fontFamily: "'IBM Plex Mono', monospace", letterSpacing: 1.5, textAlign: "center", lineHeight: 2 }}>
-          {SECTIONS.length} MOD&Egrave;LE{SECTIONS.length > 1 ? "S" : ""} &middot; {ALL_STATS.length} QUESTIONS &middot; DISTRIBUTIONS APPROXIMATIVES
         </div>
       </div>
     </div>
