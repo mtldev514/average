@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import allModels from "@/data.json";
+import analysisData from "@/analysis.json";
 import {
   buildSections,
   getVerdict,
@@ -26,6 +27,20 @@ import {
 // ─── Build base sections (French, from data.json) ──────
 
 const BASE_SECTIONS = buildSections(allModels as ModelData[]);
+
+// ─── Analysis helper ───────────────────────────────────
+
+interface VerdictLevels { high: string; above: string; average: string; below: string; low: string }
+interface ModelAnalysis { model: string; section: VerdictLevels; composite: VerdictLevels }
+const ANALYSIS = analysisData as ModelAnalysis[];
+
+function pickVerdict(levels: VerdictLevels, score: number): string {
+  if (score >= 85) return levels.high;
+  if (score >= 60) return levels.above;
+  if (score >= 40) return levels.average;
+  if (score >= 15) return levels.below;
+  return levels.low;
+}
 
 // ─── Components ────────────────────────────────────────
 
@@ -279,18 +294,26 @@ function SectionHeader({ section }: { section: Section }) {
   );
 }
 
-function SectionSummaryBar({ section, avg }: { section: Section; avg: number }) {
+function SectionSummaryBar({ section, avg, modelIndex }: { section: Section; avg: number; modelIndex: number }) {
+  const analysis = ANALYSIS[modelIndex];
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
-      <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, color: "#999", width: 160, flexShrink: 0, textAlign: "right" }}>
-        {section.label}
-      </span>
-      <div style={{ flex: 1, height: 8, background: "#e8e4de", borderRadius: 4, overflow: "hidden" }}>
-        <div style={{ height: "100%", width: `${avg}%`, background: section.color, borderRadius: 4, transition: "width 1s cubic-bezier(0.22, 1, 0.36, 1)" }} />
+    <div style={{ marginBottom: 20 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 4 }}>
+        <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, color: "#999", width: 160, flexShrink: 0, textAlign: "right" }}>
+          {section.label}
+        </span>
+        <div style={{ flex: 1, height: 8, background: "#e8e4de", borderRadius: 4, overflow: "hidden" }}>
+          <div style={{ height: "100%", width: `${avg}%`, background: section.color, borderRadius: 4, transition: "width 1s cubic-bezier(0.22, 1, 0.36, 1)" }} />
+        </div>
+        <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 13, fontWeight: 600, color: "#1a1a1a", width: 32, textAlign: "right" }}>
+          {Math.round(avg)}
+        </span>
       </div>
-      <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 13, fontWeight: 600, color: "#1a1a1a", width: 32, textAlign: "right" }}>
-        {Math.round(avg)}
-      </span>
+      {analysis && (
+        <div style={{ marginLeft: 172, fontSize: 12, color: "#999", fontFamily: "'IBM Plex Mono', monospace", fontStyle: "italic", lineHeight: 1.5 }}>
+          {pickVerdict(analysis.section, avg)}
+        </div>
+      )}
     </div>
   );
 }
@@ -303,12 +326,12 @@ function Summary({ sections, results, locale }: { sections: Section[]; results: 
   const ui = getUI(locale);
   const avg = filled.reduce((s, [, v]) => s + v * 100, 0) / filled.length;
 
-  const sectionAverages = sections.map((section) => {
+  const sectionAverages = sections.map((section, mi) => {
     const sectionFilled = filled.filter(([id]) => section.stats.some((s) => s.id === id));
     if (sectionFilled.length === 0) return null;
     const sAvg = sectionFilled.reduce((s, [, v]) => s + v * 100, 0) / sectionFilled.length;
-    return { section, avg: sAvg };
-  }).filter((x): x is { section: Section; avg: number } => x !== null);
+    return { section, avg: sAvg, modelIndex: mi };
+  }).filter((x): x is { section: Section; avg: number; modelIndex: number } => x !== null);
 
   return (
     <div style={{ marginTop: 72, paddingTop: 48, borderTop: "2px solid #1a1a1a", animation: "fadeIn 0.6s ease" }}>
@@ -326,12 +349,29 @@ function Summary({ sections, results, locale }: { sections: Section[]; results: 
       </div>
 
       {sectionAverages.length > 1 && (
-        <div style={{ maxWidth: 480, margin: "0 auto 40px" }}>
-          {sectionAverages.map(({ section, avg: sAvg }) => (
-            <SectionSummaryBar key={section.id} section={section} avg={sAvg} />
+        <div style={{ maxWidth: 520, margin: "0 auto 40px" }}>
+          {sectionAverages.map(({ section, avg: sAvg, modelIndex }) => (
+            <SectionSummaryBar key={section.id} section={section} avg={sAvg} modelIndex={modelIndex} />
           ))}
         </div>
       )}
+
+      {/* Composite analysis — each model's take */}
+      <div style={{ maxWidth: 520, margin: "0 auto 40px" }}>
+        {ANALYSIS.map((a, i) => {
+          const insight = pickVerdict(a.composite, avg);
+          return (
+            <div key={a.model} style={{ marginBottom: 16, padding: "12px 16px", background: "#faf9f7", borderRadius: 10, border: "1px solid #e8e4de" }}>
+              <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, color: "#bbb", letterSpacing: 1 }}>
+                {a.model.toUpperCase()}
+              </span>
+              <p style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 13, color: "#666", fontStyle: "italic", lineHeight: 1.5, marginTop: 4 }}>
+                {insight}
+              </p>
+            </div>
+          );
+        })}
+      </div>
 
       <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "6px 16px", fontFamily: "'IBM Plex Mono', monospace", fontSize: 12, color: "#bbb" }}>
         {filled.map(([id, val]) => {

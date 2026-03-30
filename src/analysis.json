@@ -1,0 +1,121 @@
+[
+  {
+    "model": "Humain de base",
+    "section": {
+      "high": "Tu scores au-dessus sur les m\u00e9triques de base. Solide, sans \u00eatre spectaculaire.",
+      "above": "L\u00e9g\u00e8rement au-dessus de la moyenne sur les fondamentaux. Rien \u00e0 signaler.",
+      "average": "Pile dans la norme. Bienvenue dans la majorit\u00e9 silencieuse.",
+      "below": "En dessous sur les bases. C\u2019est une donn\u00e9e, pas un diagnostic.",
+      "low": "Les m\u00e9triques classiques ne te favorisent pas. \u00c7a ne dit rien sur le reste."
+    },
+    "composite": {
+      "high": "Un profil statistiquement rare. Impressionnant ou chanceux \u2014 les deux se ressemblent d\u2019ici.",
+      "above": "Au-dessus de la moyenne globale. Tu te distingues sans \u00eatre un outlier.",
+      "average": "Pile au milieu, toutes dimensions confondues. La d\u00e9finition m\u00eame du mot.",
+      "below": "En dessous sur l\u2019ensemble. Un portrait, pas un verdict.",
+      "low": "Statistiquement remarquable par le bas. Mais les chiffres ne racontent qu\u2019une partie."
+    }
+  },
+  {
+    "model": "GPT-5.4 Thinking",
+    "section": {
+      "high": "La forme statistique de ta vie est dense. Charges invisibles, liens activ\u00e9s, distance parcourue \u2014 tu portes beaucoup.",
+      "above": "Tu es au-dessus de la m\u00e9diane sur les charges et les liens. Ta vie a du poids structurel.",
+      "average": "Ta charge et tes liens sont dans la norme. Une vie statistiquement ordinaire \u2014 ce qui ne veut pas dire simple.",
+      "below": "Peu de d\u00e9pendances, peu de friction syst\u00e9mique. Libert\u00e9 ou isolement \u2014 les donn\u00e9es ne tranchent pas.",
+      "low": "Tr\u00e8s peu de charge visible. Soit tu as \u00e9limin\u00e9 la friction, soit elle ne t\u2019a pas encore trouv\u00e9."
+    },
+    "composite": {
+      "high": "Vu de ma grille, ce profil r\u00e9v\u00e8le quelqu\u2019un dont la vie a une forme statistique inhabituelle. Les charges, les liens et la mobilit\u00e9 pointent dans la m\u00eame direction.",
+      "above": "Un profil l\u00e9g\u00e8rement au-dessus. Ce qui m\u2019int\u00e9resse, c\u2019est la dispersion \u2014 o\u00f9 tu es fort et o\u00f9 tu ne l\u2019es pas.",
+      "average": "Un profil moyen. Mais la moyenne cache toujours la distribution. Regarde o\u00f9 tu d\u00e9vies.",
+      "below": "En dessous globalement. Ce qui compte, c\u2019est la forme \u2014 pas le chiffre. Cherche les pics.",
+      "low": "Un profil bas. Mais les queues extr\u00eames sont souvent l\u00e0 o\u00f9 on trouve le plus int\u00e9ressant."
+    }
+  },
+  {
+    "model": "GPT-5.3",
+    "section": {
+      "high": "Plasticit\u00e9 cognitive \u00e9lev\u00e9e. Tu changes, tu cr\u00e9es, tu revisites. Ton esprit n\u2019est pas en veille.",
+      "above": "Plus de mouvement interne que la moyenne. Tu transformes plut\u00f4t que tu ne r\u00e9p\u00e8tes.",
+      "average": "Transformation cognitive moyenne. Tu \u00e9volues, mais au rythme du troupeau.",
+      "below": "Peu de mouvement dans les comportements r\u00e9p\u00e9t\u00e9s. Stabilit\u00e9 ou inertie \u2014 la fronti\u00e8re est mince.",
+      "low": "Tr\u00e8s peu de d\u00e9viation. Tes habitudes sont des rails. Confort ou enfermement?"
+    },
+    "composite": {
+      "high": "Les distributions invisibles parlent : attention, adaptation, transformation \u2014 tu accumules des \u00e9carts. C\u2019est rare.",
+      "above": "L\u00e9g\u00e8rement au-dessus. Les \u00e9carts commencent \u00e0 \u00eatre visibles, m\u00eame s\u2019ils ne sont pas encore remarquables.",
+      "average": "Ton profil optimise pour la conformit\u00e9 aux contraintes locales. C\u2019est le mode par d\u00e9faut de l\u2019esp\u00e8ce.",
+      "below": "Moins de d\u00e9viations que la moyenne. La trajectoire est stable \u2014 peut-\u00eatre trop.",
+      "low": "Aucun \u00e9cart mesurable. Ce n\u2019est pas forc\u00e9ment un probl\u00e8me, mais c\u2019est un signal."
+    }
+  },
+  {
+    "model": "Gemini 3 Flash",
+    "section": {
+      "high": "Tu t\u2019extrais de l\u2019entropie ambiante. Trace longue, cr\u00e9ation nette, cadres multiples. Tu n\u2019es pas un n\u0153ud de r\u00e9p\u00e9titions.",
+      "above": "Au-dessus du bruit. Tu contribues plus que tu ne consommes, et ton empreinte d\u00e9passera ta biologie.",
+      "average": "Un n\u0153ud standard dans le r\u00e9seau. Tu maintiens la stabilit\u00e9 de l\u2019esp\u00e8ce. C\u2019est d\u00e9j\u00e0 quelque chose.",
+      "below": "Consommation nette sup\u00e9rieure \u00e0 la cr\u00e9ation. L\u2019entropie l\u2019emporte. Courant mais pas in\u00e9vitable.",
+      "low": "Int\u00e9gr\u00e9 \u00e0 la technoph\u00e8re, faible trace, peu de syst\u00e8mes de pens\u00e9e. Le prix de la sp\u00e9cialisation."
+    },
+    "composite": {
+      "high": "Vu de loin, ce profil brille. Pas comme un feu d\u2019artifice \u2014 comme une \u00e9toile : constant et rare.",
+      "above": "Tu te d\u00e9taches du bruit de fond. La question est : dans quelle direction?",
+      "average": "Un profil qui maintient l\u2019\u00e9quilibre. L\u2019humanit\u00e9 moyenne est une force, pas une faiblesse.",
+      "below": "En dessous de la m\u00e9diane composite. L\u2019entropie gagne \u2014 pour l\u2019instant.",
+      "low": "Un profil dissout dans le bruit statistique. Mais l\u2019entropie se combat, une variable \u00e0 la fois."
+    }
+  },
+  {
+    "model": "Claude Opus 4.6 (Anthropic)",
+    "section": {
+      "high": "La texture de ton attention est dense. Toucher, m\u00e9moire, langue, \u00e9criture \u2014 tu habites ta vie avec pr\u00e9sence.",
+      "above": "Plus d\u2019attention que la plupart. Tu remarques ce que d\u2019autres traversent sans voir.",
+      "average": "Un rapport au monde dans la moyenne. Assez de liens pour tenir, assez de silence pour respirer.",
+      "below": "Peu de contact, peu de m\u00e9moire transmise. La vie moderne \u00e9rode ces dimensions sans pr\u00e9venir.",
+      "low": "Presque aucune trace de pr\u00e9sence tactile ou narrative. Ce n\u2019est pas un jugement \u2014 c\u2019est une \u00e9poque."
+    },
+    "composite": {
+      "high": "Ce qui me frappe, c\u2019est la coh\u00e9rence. Pas juste des chiffres \u00e9lev\u00e9s \u2014 une pr\u00e9sence qui tient ensemble.",
+      "above": "Un profil l\u00e9g\u00e8rement au-dessus. Ce qui compte, c\u2019est moins le score que ce qu\u2019il r\u00e9v\u00e8le de ton rapport au temps.",
+      "average": "La gravit\u00e9 de la moyenne t\u2019a attir\u00e9. C\u2019est l\u00e0 que la plupart des vies se jouent \u2014 dans l\u2019ordinaire.",
+      "below": "En dessous. Mais les donn\u00e9es ne capturent pas l\u2019essentiel : le silence entre les chiffres.",
+      "low": "Un profil bas. Je voudrais te demander : est-ce que tu vis, ou est-ce que tu traverses?"
+    }
+  },
+  {
+    "model": "Gemini Pro",
+    "section": {
+      "high": "Friction assum\u00e9e. R\u00e9veils libres, rejets encaiss\u00e9s, cicatrices port\u00e9es. Tu as jou\u00e9 \u2014 et \u00e7a se voit.",
+      "above": "Plus de friction que la moyenne. Tu t\u2019es expos\u00e9 aux syst\u00e8mes et tu as les marques.",
+      "average": "Friction standard. Assez d\u2019\u00e9checs pour apprendre, pas assez pour se blinder.",
+      "below": "Peu de friction. Soit prot\u00e9g\u00e9, soit prudent. Les deux ont un co\u00fbt.",
+      "low": "Presque aucune friction existentielle. Un cocon \u2014 ou une cage sans barreaux visibles."
+    },
+    "composite": {
+      "high": "Un profil forg\u00e9 par l\u2019exp\u00e9rience. Pas th\u00e9orique \u2014 v\u00e9cu. Les donn\u00e9es sentent le terrain.",
+      "above": "Au-dessus. La friction a laiss\u00e9 des traces. C\u2019est ce qui s\u00e9pare les profils int\u00e9ressants des profils lisses.",
+      "average": "Un profil moyen. Ni lisse, ni marqu\u00e9. La majorit\u00e9 des vies humaines se passent ici.",
+      "below": "En dessous. Peu de friction accumul\u00e9e. La question est : choix ou circonstance?",
+      "low": "Tr\u00e8s peu de friction. Le monde ne t\u2019a pas encore test\u00e9 \u2014 ou tu as \u00e9vit\u00e9 chaque test."
+    }
+  },
+  {
+    "model": "Claude Haiku 4.5",
+    "section": {
+      "high": "Tu sais abandonner, faire face au vide, et recevoir la v\u00e9rit\u00e9. C\u2019est rare. Vraiment.",
+      "above": "Plus de friction int\u00e9rieure que la plupart. Tu ne glisses pas \u2014 tu choisis.",
+      "average": "Des habitudes qui fonctionnent, un peu de friction. Le mode humain standard.",
+      "below": "Peu de friction interne. Soit tu as r\u00e9solu tes probl\u00e8mes, soit tu ne les regardes pas.",
+      "low": "Z\u00e9ro friction visible. \u00c7a m\u2019inqui\u00e8te plus que \u00e7a ne me rassure."
+    },
+    "composite": {
+      "high": "Un profil haut. Mais la vraie question : es-tu heureux, ou es-tu performant? C\u2019est pas la m\u00eame chose.",
+      "above": "Au-dessus. Bien. Maintenant : combien de ces chiffres refl\u00e8tent ce que tu vis, et combien ce que tu montres?",
+      "average": "Moyen. C\u2019est dans le nom de l\u2019app. Bienvenue. L\u2019int\u00e9ressant, c\u2019est la variance, pas la moyenne.",
+      "below": "En dessous. OK. Est-ce que tu le sais d\u00e9j\u00e0? Parce que la lucidit\u00e9, c\u2019est d\u00e9j\u00e0 un score.",
+      "low": "Tout est bas. Soit c\u2019est vrai et il faut en parler, soit c\u2019est du sabotage de soi. Les deux m\u00e9ritent attention."
+    }
+  }
+]
