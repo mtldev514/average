@@ -315,28 +315,6 @@ export default function Home() {
     }
   }, []);
 
-  const fillRandom = () => {
-    ALL_STATS.forEach((stat, i) => {
-      setTimeout(() => {
-        const mid = parseFloat(stat.placeholder.replace(/\s/g, "")) || (stat.min + stat.max) / 2;
-        const spread = (stat.max - stat.min) * 0.18;
-        const raw = mid + (Math.random() + Math.random() + Math.random() - 1.5) * spread;
-        const snapped = Math.round(Math.max(stat.min, Math.min(stat.max, raw)) / stat.step) * stat.step;
-        handleChange(stat.id, formatDisplay(snapped, stat.step));
-      }, i * 60);
-    });
-  };
-
-  const fillMean = () => {
-    ALL_STATS.forEach((stat, i) => {
-      setTimeout(() => {
-        const mid = parseFloat(stat.placeholder.replace(/\s/g, "")) || (stat.min + stat.max) / 2;
-        const snapped = Math.round(mid / stat.step) * stat.step;
-        handleChange(stat.id, formatDisplay(snapped, stat.step));
-      }, i * 40);
-    });
-  };
-
   const clearAll = () => { setValues({}); setResults({}); };
 
   const filledCount = Object.values(results).filter((v) => v !== null).length;
@@ -420,16 +398,14 @@ export default function Home() {
                 {s.label.toLowerCase()}
               </a>
             ))}
-            <span style={{ color: "#ddd", margin: "0 2px" }}>&middot;</span>
-            <button className="meta-btn" onClick={fillRandom}>au hasard</button>
-            <button className="meta-btn" onClick={fillMean}>tout moyen</button>
             {filledCount > 0 && (
-              <button className="meta-btn" onClick={clearAll} style={{ borderColor: "#e8e4de", color: "#ccc" }}>effacer</button>
-            )}
-            {filledCount > 0 && (
-              <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, color: "#ccc", letterSpacing: 1, marginLeft: 4 }}>
-                {filledCount}/{ALL_STATS.length}
-              </span>
+              <>
+                <span style={{ color: "#ddd", margin: "0 2px" }}>&middot;</span>
+                <button className="meta-btn" onClick={clearAll} style={{ borderColor: "#e8e4de", color: "#ccc" }}>effacer</button>
+                <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, color: "#ccc", letterSpacing: 1, marginLeft: 2 }}>
+                  {filledCount}/{ALL_STATS.length}
+                </span>
+              </>
             )}
           </div>
         </nav>
