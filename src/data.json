@@ -262,65 +262,25 @@
   "philosophy": "La moyenne n'est pas une position — c'est une gravité. Ce qui distingue un humain, ce n'est pas ce qu'il possède ou performe, mais la texture de son attention, la profondeur de ses attaches, et son rapport au silence et au temps non-productif.",
   "questions": [
     {
-      "question": "Quel âge a votre plus ancienne amitié encore active aujourd'hui?",
-      "unit": "années",
-      "why": "La durée de la plus longue relation non-familiale maintenue volontairement mesure quelque chose que rien d'autre ne capture: la capacité à traverser des mutations identitaires sans rompre le lien. C'est un marqueur de continuité du soi autant que de compétence relationnelle.",
-      "estimated_median": 12,
-      "extreme_high": "30+ ans: personne qui a su préserver des liens à travers les déménagements, les transformations de classe sociale et les crises personnelles. Indique une loyauté structurelle, pas seulement sentimentale.",
-      "extreme_low": "0-2 ans: peut indiquer des ruptures migratoires, un trauma relationnel, ou un pattern de réinitialisation identitaire. Pas nécessairement pathologique — parfois le signe d'une vie en mouvement radical."
-    },
-    {
-      "question": "Combien de générations en arrière pouvez-vous nommer au moins un ancêtre?",
-      "unit": "générations",
-      "why": "La profondeur généalogique accessible mesure le capital narratif transmis. Ce n'est pas un test de mémoire — c'est un indicateur de continuité culturelle, de présence ou d'absence de ruptures (esclavage, migration forcée, adoption, guerre). Un chiffre bas n'est pas un déficit personnel, c'est souvent une cicatrice historique.",
-      "estimated_median": 3,
-      "extreme_high": "7+ générations: fréquent dans les cultures à tradition orale forte ou chez les familles avec capital culturel établi. Révèle un ancrage dans une lignée consciente.",
-      "extreme_low": "0-1 génération: souvent lié à l'adoption, la migration forcée, ou des ruptures familiales profondes. Indique que la personne construit son identité sans filet narratif ancestral — ce qui est à la fois une vulnérabilité et une liberté."
-    },
-    {
-      "question": "Combien de savoir-faire distincts pourriez-vous enseigner à quelqu'un en ce moment?",
-      "unit": "nombre de compétences",
-      "why": "Pas les diplômes, pas les titres — les choses que vous pourriez réellement transmettre. Cette question mesure la largeur du répertoire incarné: ce qui est passé du cognitif au corporel. C'est un proxy de la diversité d'expériences vécues, pas consommées.",
-      "estimated_median": 7,
-      "extreme_high": "20+: polymathe ou personne ayant vécu plusieurs vies professionnelles/créatives. Souvent corrélé avec une curiosité compulsive et une tolérance élevée à l'incompétence temporaire.",
-      "extreme_low": "0-2: peut indiquer une hyperspécialisation, un manque de confiance épistémique (la personne sait mais ne se considère pas légitime pour enseigner), ou un environnement ayant découragé l'exploration."
-    },
-    {
       "question": "Combien de fois par jour touchez-vous physiquement un autre être humain?",
       "unit": "contacts par jour",
-      "why": "Le toucher est la donnée la plus sous-documentée de l'expérience humaine. Il n'existe dans presque aucun dataset. Pourtant la famine tactile est un prédicteur massif de santé mentale et physique. Ce chiffre capture la solitude incarnée, pas déclarée.",
+      "why": "Le toucher est la donnée la plus sous-documentée de l'expérience humaine. Il n'existe dans presque aucun dataset. Pourtant la famine tactile est un prédicteur massif de santé mentale et physique. Ce chiffre capture la solitude incarnée, pas déclarée. Aucun autre modèle n'a touché (littéralement) à cette dimension.",
       "estimated_median": 8,
       "extreme_high": "50+: parent de jeune enfant, personne dans une relation physiquement expressive, ou culture à forte proxémie. Le toucher fréquent est anti-corrélé avec l'anxiété chronique.",
       "extreme_low": "0: des millions d'adultes passent des journées entières sans contact physique humain. C'est l'un des faits les plus silencieux et les plus conséquents de la vie moderne."
     },
     {
-      "question": "Combien d'heures par semaine passez-vous sans aucune entrée audio (ni musique, ni podcast, ni voix, ni TV)?",
-      "unit": "heures par semaine",
-      "why": "Le silence volontaire est devenu un luxe infrastructurel. Cette question mesure le rapport au vide attentionnel — la capacité à ne pas remplir. C'est un marqueur de régulation nerveuse autant que de contexte de vie (bruit urbain, cohabitation, travail).",
-      "estimated_median": 15,
-      "extreme_high": "60+ heures: personne vivant seule en zone rurale, pratiquant de méditation, ou travailleur manuel en extérieur. Indique un système nerveux qui tolère — ou recherche — l'absence de stimulation.",
-      "extreme_low": "0-2 heures: audio constant du réveil au coucher. Souvent un mécanisme de régulation émotionnelle (le silence laisse monter ce qu'on évite). Très fréquent, très peu mesuré."
-    },
-    {
-      "question": "À combien d'adresses différentes avez-vous habité dans votre vie?",
-      "unit": "nombre d'adresses",
-      "why": "Chaque déménagement est une micro-mort sociale. Ce chiffre encode la stabilité/instabilité structurelle d'une vie sans la juger. Il corrèle avec la capacité d'adaptation mais aussi avec la difficulté à s'enraciner. C'est une donnée biographique que personne ne demande mais que tout le monde connaît.",
-      "estimated_median": 5,
-      "extreme_high": "20+: enfant de militaire, travailleur migrant, nomade volontaire, ou instabilité de logement. Révèle soit un privilège de mobilité, soit une précarité — le chiffre seul ne distingue pas, mais le croisement avec d'autres données oui.",
-      "extreme_low": "1-2: personne ayant vécu dans la même maison ou quartier toute sa vie. Indique un enracinement profond, un réseau local dense, mais parfois aussi une immobilité subie."
-    },
-    {
-      "question": "Quelle est la plus longue habitude quotidienne que vous avez maintenue sans interruption?",
-      "unit": "jours consécutifs",
-      "why": "La discipline soutenue est l'un des meilleurs prédicteurs de transformation personnelle, mais elle est presque toujours mesurée par ses résultats (corps, carrière) plutôt que par sa durée brute. Ce chiffre mesure la capacité à maintenir un engagement avec soi-même à travers l'ennui, le doute et la fatigue.",
-      "estimated_median": 90,
-      "extreme_high": "3000+ jours (8+ ans): pratiquant de longue date (méditation, écriture, exercice). Révèle une relation non-négociable avec une pratique — ce qui est rare et structurant pour l'identité.",
-      "extreme_low": "Moins de 7 jours: difficulté avec la continuité, souvent liée au TDAH, à la dépression, ou à un environnement chaotique. Pas un défaut moral — un signal contextuel."
+      "question": "Combien de générations en arrière pouvez-vous nommer au moins un ancêtre?",
+      "unit": "générations",
+      "why": "La profondeur généalogique accessible mesure le capital narratif transmis. Ce n'est pas un test de mémoire — c'est un indicateur de continuité culturelle, de présence ou d'absence de ruptures (esclavage, migration forcée, adoption, guerre). Gemini Flash a 'combien de générations avant l'oubli de votre nom' — c'est prospectif. Moi je regarde en arrière: qu'est-ce qui t'a été transmis?",
+      "estimated_median": 3,
+      "extreme_high": "7+ générations: fréquent dans les cultures à tradition orale forte ou chez les familles avec capital culturel établi. Révèle un ancrage dans une lignée consciente.",
+      "extreme_low": "0-1 génération: souvent lié à l'adoption, la migration forcée, ou des ruptures familiales profondes. Indique que la personne construit son identité sans filet narratif ancestral — ce qui est à la fois une vulnérabilité et une liberté."
     },
     {
       "question": "Quel pourcentage de vos heures éveillées passez-vous dans votre langue maternelle?",
       "unit": "pourcentage",
-      "why": "Le déplacement linguistique quotidien est invisible mais massif. Quelqu'un qui pense, travaille et aime dans une langue acquise vit une expérience fondamentalement différente de quelqu'un ancré dans sa langue natale. Ce pourcentage mesure l'exil cognitif ordinaire de centaines de millions de personnes.",
+      "why": "GPT-5.4 et Gemini Flash comptent les langues parlées (1, 2, 3). Moi je mesure le déplacement: pas combien de langues tu as, mais à quel point tu vis en exil dans ta propre cognition. Quelqu'un qui parle 3 langues mais vit à 95% en langue maternelle et quelqu'un qui vit à 20% sont des humains radicalement différents. Le chiffre de langues ne capture pas ça.",
       "estimated_median": 85,
       "extreme_high": "100%: personne monolingue ou n'ayant jamais quitté son bassin linguistique. Confort cognitif maximal, mais aussi fenêtre perceptuelle potentiellement plus étroite.",
       "extreme_low": "Moins de 20%: immigrant linguistique complet. Pense, rêve et travaille dans une langue apprise. Fatigue cognitive chronique mais flexibilité conceptuelle souvent supérieure. La langue maternelle devient un espace intime, presque secret."
@@ -328,7 +288,7 @@
     {
       "question": "Combien de personnes reconnaîtriez-vous à leur écriture manuscrite?",
       "unit": "nombre de personnes",
-      "why": "C'est un proxy d'intimité attentionnelle pré-numérique. Reconnaître l'écriture de quelqu'un suppose d'avoir lu des mots écrits à la main pour vous — lettres, notes, listes. Ce chiffre s'effondre générationnellement et mesure un type de lien en voie de disparition.",
+      "why": "C'est un proxy d'intimité attentionnelle pré-numérique. Reconnaître l'écriture de quelqu'un suppose d'avoir lu des mots écrits à la main pour vous — lettres, notes, listes. Ce chiffre s'effondre générationnellement et mesure un type de lien en voie de disparition. Aucun autre modèle n'approche cette dimension.",
       "estimated_median": 4,
       "extreme_high": "15+: enseignant, personne ayant grandi avec la correspondance écrite, ou réseau de liens profonds maintenus par l'écrit manuscrit. Révèle une attention aux traces individuelles.",
       "extreme_low": "0: de plus en plus courant. Indique soit un jeune âge, soit une vie entièrement médiée par le numérique. Pas un jugement — un marqueur d'époque autant que de personne."
@@ -336,10 +296,10 @@
     {
       "question": "Combien de minutes après le réveil faites-vous la première chose que vous n'êtes pas obligé·e de faire?",
       "unit": "minutes",
-      "why": "Le délai entre le réveil et le premier acte non-obligatoire (ni hygiène, ni travail, ni soin d'autrui) mesure l'accès au désir propre. C'est un marqueur invisible de liberté quotidienne. Pour certains c'est immédiat (café choisi, musique, dessin). Pour d'autres, l'espace de choix n'arrive qu'en fin de journée — ou jamais.",
+      "why": "Le délai entre le réveil et le premier acte non-obligatoire mesure l'accès au désir propre. Gemini Pro a 'jours sans alarme' — ça mesure la souveraineté temporelle. Moi je mesure quelque chose de plus fin: même quand tu te lèves avec une alarme, combien de temps avant que tu fasses un geste qui t'appartient? C'est un marqueur invisible de liberté quotidienne applicable à tous.",
       "estimated_median": 45,
       "extreme_high": "480+ minutes (8h+): parent solo, aidant naturel, travailleur précaire cumulant les postes. Le désir propre est structurellement repoussé. Ce n'est pas un manque de volonté — c'est une architecture de vie.",
-      "extreme_low": "0 minutes: le premier geste du matin est déjà un choix libre. Indique soit un privilège matériel, soit une discipline de priorisation du soi. Souvent corrélé avec une meilleure santé mentale déclarée."
+      "extreme_low": "0 minutes: le premier geste du matin est déjà un choix libre. Indique soit un privilège matériel, soit une discipline de priorisation du soi."
     }
   ]
 },
@@ -430,88 +390,48 @@
   ]
 },
 {
-  "model": "Claude Haiku",
-  "philosophy": "La moyenne humaine opère par réduction de la friction externe ; l'exceptionnel opère par absorption de la friction interne. Un être moyen optimise son environnement pour minimiser les questions ; un être exceptionnel pose des questions qui décalibrent son environnement.",
+  "model": "Claude Haiku 4.5",
+  "philosophy": "L'humain moyen construit des habitudes qui fonctionnent. L'humain exceptionnel reste capable de friction — de dire non, d'abandonner, de pleurer, d'être seul. Haiku mesure ce qui tient ensemble *malgré* la tension, pas ce qui glisse.",
   "questions": [
     {
-      "question": "Combien de fois dans la dernière année as-tu changé d'avis sur quelque chose que tu tenais pour vrai ?",
-      "unit": "nombre d'instances",
-      "why": "Les modèles vont se focaliser sur l'apprentissage (combien de choses apprises). Moi, je m'intéresse à la révision — la capacité à habiter l'incohérence. C'est un marqueur d'intégrité épistémique que les tests standards ignorent complètement. Les gens 'moyens' ont un système fermé d'environ 3-5 croyances-clés rigidifiées à l'âge adulte. Les gens exceptionnels vivent en flux permanent.",
-      "estimated_median": 2,
-      "extreme_high": "Personne en crise existentielle, ou profondément réflexive (artist, chercheur, personne en transition). Stabilité interne fragilisée par l'honnêteté.",
-      "extreme_low": "Rigidité cognitive, fragmentation émotionnelle (l'incohérence externe ne se traduit pas en révision interne, mais en déni). Peut aussi indiquer un très jeune adulte qui n'a pas encore construit ses convictions."
+      "question": "Combien de personnes dans ta vie pourraient te dire une vérité difficile sans que tu rompes la relation ?",
+      "unit": "nombre de personnes",
+      "why": "C'est le test de la fragilité relationnelle. Les autres modèles vont compter les 'amis proches'. Moi, je mesure la solidité sous choc. Si tu as zéro personnes comme ça, tu es seul même entouré. Ça dit tout.",
+      "estimated_median": 1,
+      "extreme_high": "Architecture relationnelle mûre. Rare. Gens qui ont traversé une crise ensemble ou avec vraie thérapie.",
+      "extreme_low": "Isolement émotionnel même dans le couple. Fragmentation systématique. Historique de trahison ou incapacité de vulnérabilité."
     },
     {
-      "question": "Combien d'heures par mois passes-tu seul·e sans occupation planifiée (pas de travail, pas de media, pas de téléphone) ?",
+      "question": "Combien de projets as-tu abandonnés complètement (pas en pause) dans les 5 dernières années ?",
+      "unit": "nombre",
+      "why": "Les autres vont mesurer ce que tu as lancé. Moi, je veux voir ce que tu as tué. C'est une mesure d'honnêteté avec tes limites, pas d'ambition. Quelqu'un qui n'abandonne rien vit par inertie.",
+      "estimated_median": 2,
+      "extreme_high": "Serial reinventor (créatif instable) ou quelqu'un qui teste ses limites agressivement.",
+      "extreme_low": "Fidélité à tout ce qui commence. Vertu (ténacité) ou peur de l'échec. Probablement la deuxième."
+    },
+    {
+      "question": "Combien d'heures par mois passes-tu seul sans occupation (pas de travail, media, téléphone) ?",
       "unit": "heures par mois",
-      "why": "Les autres modèles vont mesurer 'temps de loisir' ou 'sommeil'. Je veux mesurer le vide tolérable. L'espace où tu fais face à toi-même sans amortisseur. C'est une mesure directe de ta capacité à supporter ta propre présence — et c'est profondément lié à l'anxiété, à l'authenticité, à la créativité non-performative. Les gens moyens structurent leur temps pour éviter ce vide. Les gens exceptionnels l'habitent.",
+      "why": "Le vide tolérable. Peux-tu faire face à toi-même sans amortisseur ? Les gens moyens le structurent pour l'éviter. Les gens exceptionnels l'habitent. Ça dit ton rapport à l'anxiété interne.",
       "estimated_median": 4,
-      "extreme_high": "Soit une contemplation régulière (moine, artiste, personne introspective) ; soit une solitude imposée (isolement, dépression) — le chiffre seul ne dit pas lequel.",
-      "extreme_low": "Abhorrément de l'espace intérieur. Peut indiquer TDAH, mais aussi extroversion performative, ou fuite chronique. Personnes qui ont peur du silence."
+      "extreme_high": "Contemplation régulière (artiste, introspectif) ou solitude imposée (isolement, dépression).",
+      "extreme_low": "Horreur du silence. TDAH possible, mais aussi fuite chronique. Personnes qui ont peur de respirer seules."
     },
     {
-      "question": "Quel est le nombre d'années entre maintenant et ton dernier jour où tu as senti une peur véritablement primitive (physique, pas anxiété) ?",
-      "unit": "années (ou mois/jours si <1 an)",
-      "why": "Presque tous les modèles vont ignorer cela en faveur de mesures de bien-être ou de 'stress perçu'. Moi, je veux savoir si tu as encore accès à tes mécanismes de survie. C'est un marqueur de : 1) as-tu des expériences courageuses ? 2) Es-tu en mode 'gestion' ou en mode 'vivant' ? Un humain qui n'a pas senti la peur primitive depuis 20 ans a probablement construit une forteresse de confort. C'est statistiquement confortable, psychologiquement arrêté.",
-      "estimated_median": 1.5,
-      "extreme_high": "Professions à risque (sapeur-pompier, grimpeur), ou personne en crise/conflit. La vie intense.",
-      "extreme_low": "Sécurité extrême ou dissociation. Personne qui a trouvé l'équilibre parfait — ou qui ne sent plus rien."
-    },
-    {
-      "question": "Combien de personnes dans ta vie pourraient te dire une vérité qui te ferait pleurer ou te mettrait très en colère, sans crainte de rupture ?",
-      "unit": "nombre de personnes",
-      "why": "Les autres modèles vont mesurer 'nombre d'amis proches' ou 'qualité des relations'. Moi, je mesure la robustesse émotionnelle de tes liens — est-ce qu'ils survivent à la friction ? C'est une donnée rare : beaucoup de gens 'sociables' ont zéro relations d'une telle solidité. C'est un marqueur direct de la profondeur vs la surface.",
-      "estimated_median": 1,
-      "extreme_high": "Personne avec une architecture relationnelle très mature. Rare. Souvent des gens ayant traversé ensemble une crise, ou avec une thérapie systémique.",
-      "extreme_low": "Isolement émotionnel même dans le couple/famille. Stratégie de protection. Peut indiquer un historique de trahison ou une incapacité de vulnérabilité."
-    },
-    {
-      "question": "Combien de jours par an manges-tu seul·e, sans écran ni occupation mentale ?",
-      "unit": "jours par an",
-      "why": "C'est hyperlocal — la façon dont tu peux habiter un acte banal. Les autres modèles ignoreront la qualité de la présence au profit de statistiques nutritionnelles. Manger seul·e sans distraction est un indicateur : 1) peux-tu être neutre (ni en performance, ni en angoisse) ? 2) As-tu une relation saine au corps ? 3) Es-tu en contact sensoriel direct avec ta vie ? Les gens exceptionnels le font régulièrement et inconsciemment. Les gens moyens le trouvent insupportable.",
-      "estimated_median": 5,
-      "extreme_high": "Personne avec une pratique contemplative (méditation, spiritualité) ou simplement très sensuelle. Contact direct avec l'embodiment.",
-      "extreme_low": "Incapacité à être avec soi-même. Dépendance au stimuli externe. Possible historique de trouble alimentaire ou d'anxiété corporelle."
-    },
-    {
-      "question": "Combien de projets ou intérêts as-tu abandonnés complètement (pas 'mis en pause') dans les 5 dernières années ?",
-      "unit": "nombre de projets",
-      "why": "Les modèles aiment mesurer 'combien de projets tu as lancés'. Moi, je veux la mort — le 'non' complet. C'est une mesure de : 1) quelle est ta capacité à reconnaître un mauvais investissement ? 2) As-tu le courage d'abandonner ? 3) Vis-tu par inertie ou par choix ? Les gens exceptionnels laissent tomber des choses régulièrement. Les gens moyens accumulent des non-terminés qui les haunent. C'est une mesure de l'honnêteté vis-à-vis de tes limites.",
-      "estimated_median": 2,
-      "extreme_high": "Soit un seriel reinventor (créatif, insatisfait, peut-être instable) ; soit quelqu'un qui teste agressivement ses limites.",
-      "extreme_low": "Fidélité à tout ce qui est commencé. Peut être une vertu (ténacité), mais statistiquement c'est plutôt de la peur de l'échec ou du gaspillage."
-    },
-    {
-      "question": "Combien de minutes par jour passes-tu en conversation sans téléphone visible ou utilisé par au moins l'un des participants ?",
-      "unit": "minutes par jour",
-      "why": "Presque personne ne mesurera cela. C'est la qualité brute de la présence relationnelle — peux-tu exister face à quelqu'un sans médiation ? C'est un marqueur de : 1) anxiété sociale non-traitée, 2) capacité d'attention, 3) habilité à lire les micro-expressions, 4) confiance en ta propre intrigue sans augmentation. Les gens exceptionnels ont une présence palpable sans effort. Les gens moyens dépendent de l'écran comme facilitateur.",
-      "estimated_median": 15,
-      "extreme_high": "Personne avec une pratique relationnelle intense (thérapeute, parent très investi, artiste en collaboration, ou simplement quelqu'un qui prioritise la connexion).",
-      "extreme_low": "Incapacité significative à la présence face-à-face. Peut indiquer : autisme non-diagnostiqué, anxiété sociale sévère, ou une life design complètement mediée."
-    },
-    {
-      "question": "Quel est le nombre de domaines de ta vie (travail, santé, finances, relations) où tu recevrais une note de <5/10 de la part d'un observateur honnête ?",
-      "unit": "nombre de domaines",
-      "why": "Les autres modèles vont mesurer 'satisfaction générale' ou 'nombre d'objectifs atteints' — des mesures qui permettent la négation. Moi, je veux la friction admise. C'est un marqueur de : 1) auto-conscience réaliste vs narcissisme, 2) intégrité émotionnelle (peux-tu reconnaître une faiblesse sans l'expliquer away ?), 3) capacité de réparation (si tu sais que c'est cassé, tu peux le fixer). Les gens exceptionnels ont 1-2 domaines en friction mais y travaillent consciemment. Les gens qui répondent '0' ou '4-5' manquent de calibrage.",
-      "estimated_median": 1,
-      "extreme_high": "Personne en crise sérieuse, ou avec une transparence radicale. Peut être très douloureux, ou très sage.",
-      "extreme_low": "Déni systématique ou une vie structurée par privilege (très peu de friction réelle). Peut aussi indiquer un humain qui a véritablement résolu ses problèmes — rare."
-    },
-    {
-      "question": "Combien de personnes connaissent une version authentique de toi que tu ne montres qu'une fois la porte fermée ?",
-      "unit": "nombre de personnes",
-      "why": "Une mesure directe de la fragmentation vs l'intégrité. Les autres modèles vont compter les 'amis proches' (métrique superficielle). Moi, je veux savoir : combien de gens t'ont vu sans ta persona ? C'est corellé à : 1) ta sécurité intérieure (peux-tu risquer une vraie vulnérabilité ?), 2) ta sélection relationnelle (choisis-tu les gens ou simplement ceux qui sont disponibles ?), 3) ton intégrité. Les gens authentiques ont 3-4 personnes. Les gens performatifs ont 0-1.",
-      "estimated_median": 2,
-      "extreme_high": "Très rarement : une personne qui a dissous les frontières entre public et privé (soit par sécurité totale, soit par une forme de transparence radicale).",
-      "extreme_low": "Fragmentation totale. Personne qui ne montre jamais sa vraie face. Psychologiquement épuisant, protecteur ou manipulateur selon le contexte."
-    },
-    {
-      "question": "Combien de fois par semaine ressens-tu une joie non-attachée à un résultat ou une validation externe ?",
+      "question": "Combien de fois par semaine ressens-tu une joie qui ne vient pas d'un résultat ou d'une validation ?",
       "unit": "instances par semaine",
-      "why": "C'est la dernière que je propose parce qu'elle touche à la texture brute de vivre. Les autres modèles vont mesurer 'satisfaction de vie' ou 'niveau de bonheur' — des abstractions. Je veux les moments où tu es simplement content de respirer, regarder la lumière, marcher, exister. C'est un marqueur ultime : peux-tu jouir de la présence sans justification ? C'est la base de la résilience psychologique et de la capacité à aimer. Les gens exceptionnels en ont beaucoup. Les gens moyens n'en ont que lors d'occasions (vacances, accomplissements). Les gens en dépression n'en ont zéro.",
+      "why": "La texture réelle de vivre. Les autres vont mesurer 'satisfaction' — une abstraction. Moi, je veux les moments où tu es juste content d'exister. C'est la base de la résilience et de la capacité à aimer.",
       "estimated_median": 3,
-      "extreme_high": "Personne avec une pratique contemplative, ou simplement quelqu'un qui a résolu le problème du 'sens' — vit par absorption plutôt que par justification.",
-      "extreme_low": "Dépression clinique, anhedonie, ou une vie tellement structurée par la performance qu'il n'y a pas de place pour l'accidentel. Urgent."
+      "extreme_high": "Pratique contemplative (méditation, spiritualité) ou quelqu'un qui a résolu le problème du sens.",
+      "extreme_low": "Dépression clinique. Anhedonie. Vie structurée par la performance avec zéro espace pour l'accidentel. Urgent."
+    },
+    {
+      "question": "Quel est le nombre de domaines de ta vie (travail, santé, finances, relations) notés <5/10 d'un observateur honnête ?",
+      "unit": "domaines",
+      "why": "C'est ta capacité à voir la vérité sans la nier. Les gens sans friction n'existent pas ou sont aveugles. C'est le test de lucidité. Quelqu'un qui dit '0' manque de calibrage. Quelqu'un qui dit '4-5' est en crise ou en déni.",
+      "estimated_median": 1,
+      "extreme_high": "Personne en crise sérieuse ou avec transparence radicale. Peut être douloureux ou très sage.",
+      "extreme_low": "Déni systématique ou vie structurée par privilege. Rare aussi : quelqu'un qui a vraiment résolu ses problèmes."
     }
   ]
 }
