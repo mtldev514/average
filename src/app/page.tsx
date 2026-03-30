@@ -185,14 +185,20 @@ function StatRow({ stat, value, onChange, result }: { stat: Stat; value: string;
       <div style={{ minHeight: 70 }}>
         {pct !== null ? (
           <div style={{ animation: "fadeIn 0.4s ease" }}>
-            <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 10 }}>
+            <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 4 }}>
               <span style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 42, fontWeight: 400, color: "#1a1a1a", lineHeight: 1, letterSpacing: "-1px" }}>
                 {formatPct(pct)}
               </span>
-              <span style={{ fontSize: 14, color: "#aaa", fontFamily: "'IBM Plex Mono', monospace" }}>e percentile</span>
+              <span style={{ fontSize: 14, color: "#aaa", fontFamily: "'IBM Plex Mono', monospace" }}>sur 100</span>
+            </div>
+            <div style={{ fontSize: 11, color: "#b0a898", fontFamily: "'IBM Plex Mono', monospace", marginBottom: 8 }}>
+              {pct >= 99 ? "devant presque tout le monde" :
+               pct <= 1 ? "presque tout le monde est devant" :
+               pct >= 45 && pct <= 55 ? "pile au milieu" :
+               `devant ${formatPct(pct)} personnes sur 100`}
             </div>
             <PercentileBar pct={pct} animate={animate} color={stat.color} />
-            <div style={{ marginTop: 10, fontSize: 13, color: "#777", fontFamily: "'IBM Plex Mono', monospace", fontStyle: "italic", lineHeight: 1.5 }}>
+            <div style={{ marginTop: 8, fontSize: 13, color: "#777", fontFamily: "'IBM Plex Mono', monospace", fontStyle: "italic", lineHeight: 1.5 }}>
               {getVerdict(stat, pct)}
             </div>
           </div>
