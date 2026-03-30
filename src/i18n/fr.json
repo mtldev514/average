@@ -1,6 +1,7 @@
 {
   "ui": {
     "subtitle": "Entre tes donn\u00e9es. On te dit \u00e0 quel point tu es normal\u00b7e.",
+    "concept": "On a demand\u00e9 \u00e0 7 IA : choisis 5 questions pour mesurer \u00e0 quel point un humain est moyen. Un mod\u00e8le de base compl\u00e8te le portrait. Voici ce qu\u2019elles ont r\u00e9pondu.",
     "outOf": "sur 100",
     "aheadOf": "devant {n} personnes sur 100",
     "aheadAlmost": "devant presque tout le monde",

@@ -15,6 +15,7 @@ import type { Section, Verdict } from "./questions";
 
 export interface UIStrings {
   subtitle: string;
+  concept: string;
   outOf: string;
   aheadOf: string;
   aheadAlmost: string;

@@ -423,7 +423,10 @@ export default function Home() {
             }}>
               average.
             </h1>
-            <p style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 13, color: "#999", marginTop: 14, lineHeight: 1.7, maxWidth: 440 }}>
+            <p style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 14, color: "#777", marginTop: 16, lineHeight: 1.8, maxWidth: 500 }}>
+              {ui.concept}
+            </p>
+            <p style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 12, color: "#aaa", marginTop: 10, lineHeight: 1.6 }}>
               {ui.subtitle}
             </p>
           </div>

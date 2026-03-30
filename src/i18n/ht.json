@@ -20,86 +20,309 @@
     "verdict60": "Yon ti jan pi wo. Ase pou mansyone l.",
     "verdict45": "Mwayèn. Se sa ki nan non an.",
     "verdict30": "Pi ba sou plizyè aks. Yon done, pa yon jijman.",
-    "verdictLow": "Statistikman remakab — soti anba. Remakab kanmenm."
+    "verdictLow": "Statistikman remakab — soti anba. Remakab kanmenm.",
+    "concept": "Nou mande 7 IA: chwazi 5 kesyon pou mezire jis ki jan yon moun nòmal. Yon modèl debaz konplete pòtre a. Men sa yo reponn."
   },
   "models": [
     {
       "name": "Moun Debaz",
       "philosophy": "Moun mwayèn nan se yon fiksyon statistik — yon pwen sou yon koub pèsonn pa vrèman rete. Sa ki eksepsyonèl la se jis ke bout distribisyon an ki refize tonbe nan liy.",
       "questions": [
-        { "label": "Wotè", "unit": "cm", "why": "Mezi ki pi inivèsèl. Jenetik pi, zewo merite.", "verdictHigh": "230+ cm — teritwa NBA, lavi kadpòt.", "verdictLow": "< 145 cm — pi ba pase 1ye pousan mondyal la." },
-        { "label": "Salè chak ane", "unit": "$", "why": "Pozisyon ekonomik brit. Nimewo tout moun konpare an kachèt.", "verdictHigh": "500k+ — nan 1% ki pi wo nan Kanada.", "verdictLow": "< 20k — pi ba pase limit revni fèb la." },
-        { "label": "Lang ou pale", "unit": "lang", "why": "Fenèt sou newoplastisite ak ekspozisyon kiltirèl.", "verdictHigh": "6+ — ipèpoliglòt, sèvo ki konekte yon lòt jan.", "verdictLow": "1 — yon sèl lang." },
-        { "label": "Liv pa ane", "unit": "liv", "why": "Endis kiryozite entelektyèl ak disiplin atansyon.", "verdictHigh": "52+ — youn pa semèn, bibliyotèk ki mache.", "verdictLow": "0 — lekti se yon chwa, pa yon obligasyon." },
-        { "label": "Kafe pa jou", "unit": "kafe", "why": "Makè woutin chak jou ak depandans sipoze.", "verdictHigh": "6+ — san w se espreso.", "verdictLow": "0 — anomali statistik (oswa te)." },
-        { "label": "Zanmi pwòch", "unit": "zanmi", "why": "Vrè kapital sosyal. Moun ki reponn a 2è dimaten.", "verdictHigh": "12+ — rezo pwofon, statistikman ra.", "verdictLow": "0 — solitud pa yon defo." },
-        { "label": "Imèl ou pa li", "unit": "imèl", "why": "Endèks kaos nimerik ak relasyon ak obligasyon.", "verdictHigh": "10,000+ — bwat vid se yon konsèp etranje.", "verdictLow": "0 — kontwòl absoli oswa kont tou nèf." }
+        {
+          "label": "Wotè",
+          "unit": "cm",
+          "why": "Mezi ki pi inivèsèl. Jenetik pi, zewo merite.",
+          "verdictHigh": "230+ cm — teritwa NBA, lavi kadpòt.",
+          "verdictLow": "< 145 cm — pi ba pase 1ye pousan mondyal la."
+        },
+        {
+          "label": "Salè chak ane",
+          "unit": "$",
+          "why": "Pozisyon ekonomik brit. Nimewo tout moun konpare an kachèt.",
+          "verdictHigh": "500k+ — nan 1% ki pi wo nan Kanada.",
+          "verdictLow": "< 20k — pi ba pase limit revni fèb la."
+        },
+        {
+          "label": "Lang ou pale",
+          "unit": "lang",
+          "why": "Fenèt sou newoplastisite ak ekspozisyon kiltirèl.",
+          "verdictHigh": "6+ — ipèpoliglòt, sèvo ki konekte yon lòt jan.",
+          "verdictLow": "1 — yon sèl lang."
+        },
+        {
+          "label": "Liv pa ane",
+          "unit": "liv",
+          "why": "Endis kiryozite entelektyèl ak disiplin atansyon.",
+          "verdictHigh": "52+ — youn pa semèn, bibliyotèk ki mache.",
+          "verdictLow": "0 — lekti se yon chwa, pa yon obligasyon."
+        },
+        {
+          "label": "Kafe pa jou",
+          "unit": "kafe",
+          "why": "Makè woutin chak jou ak depandans sipoze.",
+          "verdictHigh": "6+ — san w se espreso.",
+          "verdictLow": "0 — anomali statistik (oswa te)."
+        },
+        {
+          "label": "Zanmi pwòch",
+          "unit": "zanmi",
+          "why": "Vrè kapital sosyal. Moun ki reponn a 2è dimaten.",
+          "verdictHigh": "12+ — rezo pwofon, statistikman ra.",
+          "verdictLow": "0 — solitud pa yon defo."
+        },
+        {
+          "label": "Imèl ou pa li",
+          "unit": "imèl",
+          "why": "Endèks kaos nimerik ak relasyon ak obligasyon.",
+          "verdictHigh": "10,000+ — bwat vid se yon konsèp etranje.",
+          "verdictLow": "0 — kontwòl absoli oswa kont tou nèf."
+        }
       ]
     },
     {
       "name": "GPT-5.4 Thinking",
       "philosophy": "Yon moun mwayèn pa defini pa kò l oswa revni l sèlman, men pa fòm statistik lavi l: kilès ki depann de li, konbyen tan li pèdi, konbyen lyen li ka aktive.",
       "questions": [
-        { "label": "Èdtan swen gratis pa semèn", "unit": "èdtan/semèn", "why": "Youn nan pi gwo blòk travay envizib moun fè.", "verdictHigh": "Lavi oriyante nan direksyon responsablite, otonomi koupe pa swen.", "verdictLow": "Anpil libète tan, oswa ti kras obligasyon domestik." },
-        { "label": "Moun ki depann de revni w", "unit": "moun", "why": "Revni pa di anpil; kantite lavi li sipòte chanje tout bagay.", "verdictHigh": "Pilye ekonomik, presyon envizib.", "verdictLow": "Gwo endepandans materyèl." },
-        { "label": "Granmoun ou ta ka rele a 3è dimaten", "unit": "moun", "why": "Mezi operasyonèl vrè kapital sosyal.", "verdictHigh": "Kapital sosyal dans, konfyans resiprwòk fò.", "verdictLow": "Frajilite estriktirèl, izolasyon." },
-        { "label": "Èdtan biwokarasi pa mwa", "unit": "èdtan/mwa", "why": "Friksyon ant yon moun ak sistèm ki gouvène lavi l.", "verdictHigh": "Prekarite, maladi, migrasyon, estati konplèks.", "verdictLow": "Privilèj delegasyon oswa senplicite biwokratik." },
-        { "label": "Distans ak kote w fèt", "unit": "kilomèt", "why": "Relasyon konkrè ak orijin: anrasinman, egzil, mobilite chwazi.", "verdictHigh": "Rititr byografik, migrasyon, kosmopolitis.", "verdictLow": "Kontinyite lokal fò, lyen dans." }
+        {
+          "label": "Èdtan swen gratis pa semèn",
+          "unit": "èdtan/semèn",
+          "why": "Youn nan pi gwo blòk travay envizib moun fè.",
+          "verdictHigh": "Lavi oriyante nan direksyon responsablite, otonomi koupe pa swen.",
+          "verdictLow": "Anpil libète tan, oswa ti kras obligasyon domestik."
+        },
+        {
+          "label": "Moun ki depann de revni w",
+          "unit": "moun",
+          "why": "Revni pa di anpil; kantite lavi li sipòte chanje tout bagay.",
+          "verdictHigh": "Pilye ekonomik, presyon envizib.",
+          "verdictLow": "Gwo endepandans materyèl."
+        },
+        {
+          "label": "Granmoun ou ta ka rele a 3è dimaten",
+          "unit": "moun",
+          "why": "Mezi operasyonèl vrè kapital sosyal.",
+          "verdictHigh": "Kapital sosyal dans, konfyans resiprwòk fò.",
+          "verdictLow": "Frajilite estriktirèl, izolasyon."
+        },
+        {
+          "label": "Èdtan biwokarasi pa mwa",
+          "unit": "èdtan/mwa",
+          "why": "Friksyon ant yon moun ak sistèm ki gouvène lavi l.",
+          "verdictHigh": "Prekarite, maladi, migrasyon, estati konplèks.",
+          "verdictLow": "Privilèj delegasyon oswa senplicite biwokratik."
+        },
+        {
+          "label": "Distans ak kote w fèt",
+          "unit": "kilomèt",
+          "why": "Relasyon konkrè ak orijin: anrasinman, egzil, mobilite chwazi.",
+          "verdictHigh": "Rititr byografik, migrasyon, kosmopolitis.",
+          "verdictLow": "Kontinyite lokal fò, lyen dans."
+        }
       ]
     },
     {
       "name": "GPT-5.3",
       "philosophy": "Yon moun mwayèn optimize pou estabilite. Yon moun eksepsyonèl akimile devyasyon mezab. Distribisyon envizib yo revele yon trajektwa.",
       "questions": [
-        { "label": "Gwo chanjman opinyon pa ane", "unit": "chanjman/ane", "why": "Vrè plastisite konitif. Varyab dinamik olye estatik.", "verdictHigh": "Gwo kapasite adaptasyon oswa enstabilite konitif.", "verdictLow": "Rijidite mantal oswa koherans entèn fò." },
-        { "label": "Minit silans total pa jou", "unit": "minit/jou", "why": "Absans total estimilasyon. Espas mantal brit, raman mezire.", "verdictHigh": "Gwo kapasite kontanplasyon, kreyativite oswa reyiminasyon.", "verdictLow": "Twòp enfòmasyon, depandans estimilasyon." },
-        { "label": "Pwojè pèsonèl fini (12 mwa)", "unit": "pwojè/ane", "why": "Ajans san kontrent. Entansyon transfòme an aksyon.", "verdictHigh": "Gwo disiplin, otonomi.", "verdictLow": "Inèrsi konpòtmantal." },
-        { "label": "Difikilte volontè pa semèn", "unit": "aksyon/semèn", "why": "Ekspozisyon volontè repete a enkonfo.", "verdictHigh": "Tolerans efò wo, kwasans rapid.", "verdictLow": "Evitman, kenbe statu quo." },
-        { "label": "Revizyon memwa pa ane", "unit": "revizyon/ane", "why": "Kapasite aktif pou relekti tèt ou.", "verdictHigh": "Travay entwospeksyon entans.", "verdictLow": "Entegrasyon pase fèb, idantite rijid." }
+        {
+          "label": "Gwo chanjman opinyon pa ane",
+          "unit": "chanjman/ane",
+          "why": "Vrè plastisite konitif. Varyab dinamik olye estatik.",
+          "verdictHigh": "Gwo kapasite adaptasyon oswa enstabilite konitif.",
+          "verdictLow": "Rijidite mantal oswa koherans entèn fò."
+        },
+        {
+          "label": "Minit silans total pa jou",
+          "unit": "minit/jou",
+          "why": "Absans total estimilasyon. Espas mantal brit, raman mezire.",
+          "verdictHigh": "Gwo kapasite kontanplasyon, kreyativite oswa reyiminasyon.",
+          "verdictLow": "Twòp enfòmasyon, depandans estimilasyon."
+        },
+        {
+          "label": "Pwojè pèsonèl fini (12 mwa)",
+          "unit": "pwojè/ane",
+          "why": "Ajans san kontrent. Entansyon transfòme an aksyon.",
+          "verdictHigh": "Gwo disiplin, otonomi.",
+          "verdictLow": "Inèrsi konpòtmantal."
+        },
+        {
+          "label": "Difikilte volontè pa semèn",
+          "unit": "aksyon/semèn",
+          "why": "Ekspozisyon volontè repete a enkonfo.",
+          "verdictHigh": "Tolerans efò wo, kwasans rapid.",
+          "verdictLow": "Evitman, kenbe statu quo."
+        },
+        {
+          "label": "Revizyon memwa pa ane",
+          "unit": "revizyon/ane",
+          "why": "Kapasite aktif pou relekti tèt ou.",
+          "verdictHigh": "Travay entwospeksyon entans.",
+          "verdictLow": "Entegrasyon pase fèb, idantite rijid."
+        }
       ]
     },
     {
       "name": "Gemini 3 Flash",
       "philosophy": "Moun mwayèn nan se yon nod repeti syon. Sa ki eksepsyonèl la defini pa kapasite pou soti nan antwopi anbyant.",
       "questions": [
-        { "label": "Jenerasyon anvan yo bliye non w", "unit": "Jenerasyon", "why": "Anprent memoryèl pwojte, pi lwen pase egzistans byolojik.", "verdictHigh": "Bilisè sivilizasyon, gwo liyaj memoryèl.", "verdictLow": "Egzistans ankre nan prezan an, okenn tras." },
-        { "label": "Jou pa ane depandans teknolojik", "unit": "Jou", "why": "Alyenasyon teknik. Frajilite fas a efondman sistemik.", "verdictHigh": "Moun lavil iltra-espesyalize, vilnerab.", "verdictLow": "Otonomi teknik relatif." },
-        { "label": "Rapò kreyasyon ak konsomayson", "unit": "Rapò (Kreyasyon / Konsomayson)", "why": "Endèks metabolis kreyatif.", "verdictHigh": "Pwodiktè konpilsif, atis oswa atizanal.", "verdictLow": "Konsomatè pi, absòpsyon pasif." },
-        { "label": "Sistèm siy ou metrize", "unit": "Sistèm", "why": "Pliralite kad lojik: lang, matematik, kòd, teyori mizik.", "verdictHigh": "Poliglòt konitif, sote paradigm.", "verdictLow": "Panse monokiltirel." },
-        { "label": "Minit a 80% ritm kadyak maksimòm", "unit": "Minit", "why": "Volonte byolojik pi. Tolerans a enkonfo viseral.", "verdictHigh": "Rezilyans mantal ak fizik ekstraòdinè.", "verdictLow": "Tolerans ba a kontrent fizik." }
+        {
+          "label": "Jenerasyon anvan yo bliye non w",
+          "unit": "Jenerasyon",
+          "why": "Anprent memoryèl pwojte, pi lwen pase egzistans byolojik.",
+          "verdictHigh": "Bilisè sivilizasyon, gwo liyaj memoryèl.",
+          "verdictLow": "Egzistans ankre nan prezan an, okenn tras."
+        },
+        {
+          "label": "Jou pa ane depandans teknolojik",
+          "unit": "Jou",
+          "why": "Alyenasyon teknik. Frajilite fas a efondman sistemik.",
+          "verdictHigh": "Moun lavil iltra-espesyalize, vilnerab.",
+          "verdictLow": "Otonomi teknik relatif."
+        },
+        {
+          "label": "Rapò kreyasyon ak konsomayson",
+          "unit": "Rapò (Kreyasyon / Konsomayson)",
+          "why": "Endèks metabolis kreyatif.",
+          "verdictHigh": "Pwodiktè konpilsif, atis oswa atizanal.",
+          "verdictLow": "Konsomatè pi, absòpsyon pasif."
+        },
+        {
+          "label": "Sistèm siy ou metrize",
+          "unit": "Sistèm",
+          "why": "Pliralite kad lojik: lang, matematik, kòd, teyori mizik.",
+          "verdictHigh": "Poliglòt konitif, sote paradigm.",
+          "verdictLow": "Panse monokiltirel."
+        },
+        {
+          "label": "Minit a 80% ritm kadyak maksimòm",
+          "unit": "Minit",
+          "why": "Volonte byolojik pi. Tolerans a enkonfo viseral.",
+          "verdictHigh": "Rezilyans mantal ak fizik ekstraòdinè.",
+          "verdictLow": "Tolerans ba a kontrent fizik."
+        }
       ]
     },
     {
       "name": "Claude Opus 4.6 (Anthropic)",
       "philosophy": "Mwayèn nan pa yon pozisyon — se yon gravite. Sa ki distenge yon moun se teksti atansyon li, pwofondè atachman li, ak relasyon li ak silans.",
       "questions": [
-        { "label": "Kontak fizik pa jou", "unit": "kontak pa jou", "why": "Touche se done ki pi mal dokimante nan eksperyans moun.", "verdictHigh": "50+: paran timoun piti, kilti pwoksinite wo.", "verdictLow": "0: dè milyon moun pase jounen antye san kontak imen." },
-        { "label": "Jenerasyon zansèt ou konnen pa non", "unit": "jenerasyon", "why": "Kapital naratif transmèt. Endikatè kontinyite kiltirèl.", "verdictHigh": "7+: gwo tradisyon oral, kapital kiltirèl etabli.", "verdictLow": "0–1: adopsyon, migrasyon fòse, rititi pwofon." },
-        { "label": "Èdtan revèye nan lang manman w", "unit": "pousan", "why": "Pa konbyen lang ou genyen, men konbyen w ap viv nan egzil konitif.", "verdictHigh": "100%: yon sèl lang, konfo konitif maksimòm.", "verdictLow": "< 20%: imigran lengwistik konplè, fatig konitif kwonik." },
-        { "label": "Ekriti men ou rekonèt", "unit": "moun", "why": "Endis entimite atansyon avan epòk nimerik.", "verdictHigh": "15+: pwofesè, korespondans manyiskri aktif.", "verdictLow": "0: lavi ki antiyèman medye pa nimerik." },
-        { "label": "Minit anvan premye ak lib", "unit": "minit", "why": "Reta a mezire aksè a pwòp dezi w.", "verdictHigh": "480+ min: paran sèl, moun k ap bay swen, prekarite.", "verdictLow": "0 min: premye jès la se deja yon chwa lib." }
+        {
+          "label": "Kontak fizik pa jou",
+          "unit": "kontak pa jou",
+          "why": "Touche se done ki pi mal dokimante nan eksperyans moun.",
+          "verdictHigh": "50+: paran timoun piti, kilti pwoksinite wo.",
+          "verdictLow": "0: dè milyon moun pase jounen antye san kontak imen."
+        },
+        {
+          "label": "Jenerasyon zansèt ou konnen pa non",
+          "unit": "jenerasyon",
+          "why": "Kapital naratif transmèt. Endikatè kontinyite kiltirèl.",
+          "verdictHigh": "7+: gwo tradisyon oral, kapital kiltirèl etabli.",
+          "verdictLow": "0–1: adopsyon, migrasyon fòse, rititi pwofon."
+        },
+        {
+          "label": "Èdtan revèye nan lang manman w",
+          "unit": "pousan",
+          "why": "Pa konbyen lang ou genyen, men konbyen w ap viv nan egzil konitif.",
+          "verdictHigh": "100%: yon sèl lang, konfo konitif maksimòm.",
+          "verdictLow": "< 20%: imigran lengwistik konplè, fatig konitif kwonik."
+        },
+        {
+          "label": "Ekriti men ou rekonèt",
+          "unit": "moun",
+          "why": "Endis entimite atansyon avan epòk nimerik.",
+          "verdictHigh": "15+: pwofesè, korespondans manyiskri aktif.",
+          "verdictLow": "0: lavi ki antiyèman medye pa nimerik."
+        },
+        {
+          "label": "Minit anvan premye ak lib",
+          "unit": "minit",
+          "why": "Reta a mezire aksè a pwòp dezi w.",
+          "verdictHigh": "480+ min: paran sèl, moun k ap bay swen, prekarite.",
+          "verdictLow": "0 min: premye jès la se deja yon chwa lib."
+        }
       ]
     },
     {
       "name": "Gemini Pro",
       "philosophy": "Eksepsyonalite a chita nan jesyon friksyon egzistansyèl: souvrènte tanporèl, tolerans vilnerabilite, iminite echèk.",
       "questions": [
-        { "label": "Revèy natirèl pa mwa", "unit": "Jou/mwa", "why": "Souvrènte tanporèl. Richès tan kont alyenasyon sistemik.", "verdictHigh": "Otonomi tanporèl prèske total. Lik ra oswa majinalizasyon.", "verdictLow": "Soumisyon total a kontrent sistemik." },
-        { "label": "Moun ki konnen sekrè wont ou", "unit": "Moun", "why": "Kapasite pou vilnerabilite radikal fas a wont sosyal.", "verdictHigh": "Transparans radikal, okenn filt sosyal.", "verdictLow": "Izolasyon sikolojik absoli oswa fasad enpenetrab." },
-        { "label": "Lèt refi ou resevwa (tout lavi w)", "unit": "Refi dokimante", "why": "Apeti pou risk fas a sistèm seleksyon strik.", "verdictHigh": "Anbisyon san rete, iminite echèk.", "verdictLow": "Sekirite absoli oswa paralize pa laperèz." },
-        { "label": "Laj pi gran moun ou pale avèk 1è+", "unit": "Ane (Laj moun nan)", "why": "Pwofondè istorik ankadrè. Kontak dirèk ak memwa epòk ki pase.", "verdictHigh": "Pon vivan ak yon epòk lwen.", "verdictLow": "Bil jenerasyonèl strik, prezan pèpetyèl." },
-        { "label": "Sikatris pèmanan (> 1 cm)", "unit": "Sikatris", "why": "Kat kantifyab friksyon fizik ak mond lan.", "verdictHigh": "Risk fizik ekstrèm, kò make.", "verdictLow": "Egzistans trè pwoteje fizikman." }
+        {
+          "label": "Revèy natirèl pa mwa",
+          "unit": "Jou/mwa",
+          "why": "Souvrènte tanporèl. Richès tan kont alyenasyon sistemik.",
+          "verdictHigh": "Otonomi tanporèl prèske total. Lik ra oswa majinalizasyon.",
+          "verdictLow": "Soumisyon total a kontrent sistemik."
+        },
+        {
+          "label": "Moun ki konnen sekrè wont ou",
+          "unit": "Moun",
+          "why": "Kapasite pou vilnerabilite radikal fas a wont sosyal.",
+          "verdictHigh": "Transparans radikal, okenn filt sosyal.",
+          "verdictLow": "Izolasyon sikolojik absoli oswa fasad enpenetrab."
+        },
+        {
+          "label": "Lèt refi ou resevwa (tout lavi w)",
+          "unit": "Refi dokimante",
+          "why": "Apeti pou risk fas a sistèm seleksyon strik.",
+          "verdictHigh": "Anbisyon san rete, iminite echèk.",
+          "verdictLow": "Sekirite absoli oswa paralize pa laperèz."
+        },
+        {
+          "label": "Laj pi gran moun ou pale avèk 1è+",
+          "unit": "Ane (Laj moun nan)",
+          "why": "Pwofondè istorik ankadrè. Kontak dirèk ak memwa epòk ki pase.",
+          "verdictHigh": "Pon vivan ak yon epòk lwen.",
+          "verdictLow": "Bil jenerasyonèl strik, prezan pèpetyèl."
+        },
+        {
+          "label": "Sikatris pèmanan (> 1 cm)",
+          "unit": "Sikatris",
+          "why": "Kat kantifyab friksyon fizik ak mond lan.",
+          "verdictHigh": "Risk fizik ekstrèm, kò make.",
+          "verdictLow": "Egzistans trè pwoteje fizikman."
+        }
       ]
     },
     {
       "name": "Claude Haiku 4.5",
       "philosophy": "Moun mwayèn nan bati abitid ki mache. Moun eksepsyonèl la rete kapab friksyon — di non, abandone, kriye, rete pou kont li.",
       "questions": [
-        { "label": "Moun ki ka di w yon verite di", "unit": "moun", "why": "Tès frajilite relasyonèl. Fòs anba chòk.", "verdictHigh": "Achitekti relasyonèl mi. Ra.", "verdictLow": "Izolasyon emosyonèl menm nan yon koup." },
-        { "label": "Pwojè ou abandone nèt (5 ane)", "unit": "pwojè", "why": "Onètete ak limit ou, pa anbisyon.", "verdictHigh": "Reinvantè an seri oswa testè limit agresif.", "verdictLow": "Fidelite a tout bagay. Tanlasite oswa pè echèk." },
-        { "label": "Èdtan pou kont ou san okipasyon pa mwa", "unit": "èdtan pa mwa", "why": "Vid tolerab la. Èske w ka fè fas a tèt ou san yon tanpon?", "verdictHigh": "Kontanplasyon regilye oswa solitud enpoze.", "verdictLow": "Laperèz silans. Fuit kwonik." },
-        { "label": "Jwa gratis pa semèn", "unit": "fwa pa semèn", "why": "Moman kote w kontan egziste, san rezilta oswa validasyon.", "verdictHigh": "Pratik kontanplasyon oswa rezoud pwoblèm sans la.", "verdictLow": "Anedoni. Lavi estrikti pa pèfòmans." },
-        { "label": "Domèn lavi ou bay < 5/10", "unit": "domèn", "why": "Tès lisidite. Yon moun ki di 0 manke kalibrasyon.", "verdictHigh": "Kriz grav oswa transparans radikal.", "verdictLow": "Deni sistematik oswa privilèj estriktirèl." }
+        {
+          "label": "Moun ki ka di w yon verite di",
+          "unit": "moun",
+          "why": "Tès frajilite relasyonèl. Fòs anba chòk.",
+          "verdictHigh": "Achitekti relasyonèl mi. Ra.",
+          "verdictLow": "Izolasyon emosyonèl menm nan yon koup."
+        },
+        {
+          "label": "Pwojè ou abandone nèt (5 ane)",
+          "unit": "pwojè",
+          "why": "Onètete ak limit ou, pa anbisyon.",
+          "verdictHigh": "Reinvantè an seri oswa testè limit agresif.",
+          "verdictLow": "Fidelite a tout bagay. Tanlasite oswa pè echèk."
+        },
+        {
+          "label": "Èdtan pou kont ou san okipasyon pa mwa",
+          "unit": "èdtan pa mwa",
+          "why": "Vid tolerab la. Èske w ka fè fas a tèt ou san yon tanpon?",
+          "verdictHigh": "Kontanplasyon regilye oswa solitud enpoze.",
+          "verdictLow": "Laperèz silans. Fuit kwonik."
+        },
+        {
+          "label": "Jwa gratis pa semèn",
+          "unit": "fwa pa semèn",
+          "why": "Moman kote w kontan egziste, san rezilta oswa validasyon.",
+          "verdictHigh": "Pratik kontanplasyon oswa rezoud pwoblèm sans la.",
+          "verdictLow": "Anedoni. Lavi estrikti pa pèfòmans."
+        },
+        {
+          "label": "Domèn lavi ou bay < 5/10",
+          "unit": "domèn",
+          "why": "Tès lisidite. Yon moun ki di 0 manke kalibrasyon.",
+          "verdictHigh": "Kriz grav oswa transparans radikal.",
+          "verdictLow": "Deni sistematik oswa privilèj estriktirèl."
+        }
       ]
     }
   ]

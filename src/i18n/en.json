@@ -1,6 +1,7 @@
 {
   "ui": {
     "subtitle": "Enter your data. We'll tell you how normal you are.",
+    "concept": "We asked 7 AIs: pick 5 questions to measure how average a human is. A baseline model completes the picture. Here\u2019s what they answered.",
     "outOf": "out of 100",
     "aheadOf": "ahead of {n} people out of 100",
     "aheadAlmost": "ahead of almost everyone",
