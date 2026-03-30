@@ -164,7 +164,7 @@ function StatRow({ stat, value, onChange, result }: { stat: Stat; value: string;
 
 function SectionHeader({ section }: { section: Section }) {
   return (
-    <div id={section.id} style={{ marginTop: 64, marginBottom: 32, scrollMarginTop: 24 }}>
+    <div id={section.id} style={{ marginTop: 64, marginBottom: 32, scrollMarginTop: 60 }}>
       <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
         <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 12, fontWeight: 600, color: section.color, letterSpacing: 1 }}>
           {section.number}
@@ -337,8 +337,17 @@ export default function Home() {
           letter-spacing: 0.5px; padding: 6px 16px;
           border: 1px solid #d4d0c8; border-radius: 20px;
           background: transparent; color: #999; cursor: pointer; transition: all 0.2s ease;
+          text-decoration: none;
         }
         .meta-btn:hover { border-color: #1a1a1a; color: #1a1a1a; }
+        .sticky-nav {
+          position: sticky; top: 0; z-index: 50;
+          background: #f5f2ecee; backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          padding: 12px 24px; margin: 0 -24px 8px;
+          border-bottom: 1px solid #e8e4de00;
+          transition: border-color 0.2s;
+        }
       `}</style>
 
       <div style={{ maxWidth: 720, margin: "0 auto" }}>
@@ -354,8 +363,11 @@ export default function Home() {
           <p style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 13, color: "#999", marginTop: 14, lineHeight: 1.7, maxWidth: 440 }}>
             Entre tes donn&eacute;es. On te dit &agrave; quel point tu es normal&middot;e.
           </p>
-          {/* Model nav */}
-          <nav style={{ display: "flex", gap: 6, marginTop: 20, flexWrap: "wrap", alignItems: "center" }}>
+        </div>
+
+        {/* Sticky nav */}
+        <nav className="sticky-nav">
+          <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center", maxWidth: 720, margin: "0 auto" }}>
             {SECTIONS.map((s) => (
               <a
                 key={s.id}
@@ -377,8 +389,8 @@ export default function Home() {
                 {filledCount}/{ALL_STATS.length}
               </span>
             )}
-          </nav>
-        </div>
+          </div>
+        </nav>
 
         {/* Sections (one per model) */}
         {SECTIONS.map((section) => (
