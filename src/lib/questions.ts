@@ -21,6 +21,7 @@ export function logNormalCDF(x: number, mu: number, sigma: number) {
 // ─── Types ─────────────────────────────────────────────
 
 export type Verdict = [number, string];
+export type InputType = "pills" | "slider" | "freeform";
 
 export interface Stat {
   id: string;
@@ -35,6 +36,8 @@ export interface Stat {
   sliderExp: number;
   step: number;
   presets: number[];
+  pills: number[];
+  inputType: InputType;
   color: string;
 }
 
@@ -75,7 +78,7 @@ function inferRange(median: number, unit: string) {
     return { min: 100, max: 230, step: 1, sliderExp: 1 };
   if ((u.includes("jour") || u.includes("day")) && median > 300)
     return { min: 0, max: 366, step: 1, sliderExp: 1 };
-  if ((u.includes("jour") || u.includes("day")) && median <= 30)
+  if ((u.includes("jour") || u.includes("day")) && median <= 31)
     return { min: 0, max: 31, step: 1, sliderExp: 1 };
   if (u.includes("km") || u.includes("kilomètre"))
     return { min: 0, max: 20000, step: 1, sliderExp: 3 };
@@ -84,7 +87,6 @@ function inferRange(median: number, unit: string) {
   if (u.includes("génération"))
     return { min: 0, max: 10, step: 1, sliderExp: 1 };
 
-  // Generic: scale from median
   if (median >= 1000)
     return { min: 0, max: Math.ceil(median * 20), step: Math.max(1, Math.round(median / 100)), sliderExp: 3 };
   if (median >= 50)
@@ -93,25 +95,65 @@ function inferRange(median: number, unit: string) {
     return { min: 0, max: Math.ceil(median * 5), step: 1, sliderExp: 1.5 };
   if (median >= 1)
     return { min: 0, max: Math.max(15, Math.ceil(median * 6)), step: 1, sliderExp: 1 };
-  // median < 1
   return { min: 0, max: Math.max(5, Math.ceil(median * 30)), step: 0.1, sliderExp: 1.5 };
 }
+
+// ─── Input type detection ──────────────────────────────
+
+function detectInput(
+  median: number,
+  min: number,
+  max: number,
+  step: number,
+  sliderExp: number,
+): { inputType: InputType; pills: number[] } {
+  const range = max - min;
+  const isInt = step >= 1;
+
+  // Small discrete integers → pills
+  if (isInt && median <= 7 && range <= 12) {
+    const pills: number[] = [];
+    for (let v = min; v <= max && pills.length < 9; v += step) pills.push(v);
+    return { inputType: "pills", pills };
+  }
+
+  // Slightly wider but still discrete and low median → pills with cutoff
+  if (isInt && median <= 7 && range <= 40) {
+    const cutoff = Math.min(max, Math.max(Math.ceil(median * 2.5), median + 4));
+    const pills: number[] = [];
+    for (let v = min; v <= cutoff && pills.length < 8; v += step) pills.push(v);
+    return { inputType: "pills", pills };
+  }
+
+  // Check if slider puts median too far left (>50% skew on the visual)
+  const medianPos = Math.pow(
+    Math.max(0, Math.min(1, (median - min) / (max - min))),
+    1 / sliderExp,
+  );
+  if (medianPos < 0.12 && max - min > 20) {
+    return { inputType: "freeform", pills: [] };
+  }
+
+  return { inputType: "slider", pills: [] };
+}
+
+// ─── Distribution ──────────────────────────────────────
 
 function buildCalc(median: number, min: number, max: number): (v: number) => number {
   const range = max - min;
   const relPos = range > 0 ? (median - min) / range : 0.5;
 
   if (relPos < 0.3 && median > 0) {
-    // Right-skewed → lognormal
     const mu = Math.log(Math.max(median, 0.01));
     const sigma = Math.max(0.4, Math.min(2.0, Math.log(Math.max(max, median * 3) / Math.max(median, 0.01)) / 2.5));
     return (v: number) => logNormalCDF(Math.max(v, 0.001), mu, sigma);
   }
 
-  // Normal
   const sd = Math.max(range / 6, Math.abs(median) * 0.3, 0.5);
   return (v: number) => normalCDF(v, median, sd);
 }
+
+// ─── Presets (for slider/freeform) ─────────────────────
 
 function buildPresets(median: number, min: number, max: number, step: number): number[] {
   const snap = (v: number) => Math.round(Math.max(min, Math.min(max, v)) / step) * step;
@@ -125,6 +167,8 @@ function buildPresets(median: number, min: number, max: number, step: number): n
   const unique = [...new Set(values)].sort((a, b) => a - b);
   return unique.length >= 3 ? unique : [snap(min), snap(median), snap(max)];
 }
+
+// ─── Verdicts ──────────────────────────────────────────
 
 function firstSentence(text: string): string {
   const match = text.match(/^[^.!?]+[.!?]?/);
@@ -160,6 +204,7 @@ export function buildSections(models: ModelData[]): Section[] {
       color,
       stats: model.questions.map((q, qi) => {
         const { min, max, step, sliderExp } = inferRange(q.estimated_median, q.unit);
+        const { inputType, pills } = detectInput(q.estimated_median, min, max, step, sliderExp);
         return {
           id: `${mi}-${qi}`,
           label: q.question,
@@ -170,7 +215,9 @@ export function buildSections(models: ModelData[]): Section[] {
           max,
           step,
           sliderExp,
-          presets: buildPresets(q.estimated_median, min, max, step),
+          inputType,
+          pills,
+          presets: inputType === "pills" ? [] : buildPresets(q.estimated_median, min, max, step),
           calc: buildCalc(q.estimated_median, min, max),
           verdicts: buildVerdicts(q.extreme_high, q.extreme_low),
           color,
@@ -180,7 +227,7 @@ export function buildSections(models: ModelData[]): Section[] {
   });
 }
 
-// ─── Helpers (re-exported for page) ────────────────────
+// ─── Helpers ───────────────────────────────────────────
 
 export function getVerdict(stat: Stat, pct: number) {
   for (const [threshold, text] of stat.verdicts) {

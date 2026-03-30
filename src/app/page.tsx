@@ -59,27 +59,67 @@ function StatSlider({ stat, value, onChange }: { stat: Stat; value: number | nul
   );
 }
 
-function PresetChips({ stat, current, onSelect }: { stat: Stat; current: number | null; onSelect: (v: number) => void }) {
+function Chips({ values, current, step, color, onSelect, size = "sm" }: {
+  values: number[];
+  current: number | null;
+  step: number;
+  color: string;
+  onSelect: (v: number) => void;
+  size?: "sm" | "lg";
+}) {
+  const lg = size === "lg";
   return (
-    <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-      {stat.presets.map((v) => {
-        const active = current !== null && Math.abs(current - v) < stat.step;
+    <div style={{ display: "flex", gap: lg ? 8 : 6, flexWrap: "wrap" }}>
+      {values.map((v) => {
+        const active = current !== null && Math.abs(current - v) < Math.max(step, 0.5);
         return (
           <button
             key={v}
             onClick={() => onSelect(v)}
             style={{
-              fontFamily: "'IBM Plex Mono', monospace", fontSize: 11,
-              padding: "3px 10px", border: `1px solid ${active ? stat.color : "#ddd8d0"}`,
-              borderRadius: 12, background: active ? `${stat.color}18` : "transparent",
-              color: active ? stat.color : "#aaa", cursor: "pointer",
-              transition: "all 0.15s ease", lineHeight: 1.5,
+              fontFamily: "'IBM Plex Mono', monospace",
+              fontSize: lg ? 14 : 11,
+              padding: lg ? "7px 16px" : "3px 10px",
+              border: `1.5px solid ${active ? color : "#ddd8d0"}`,
+              borderRadius: lg ? 14 : 12,
+              background: active ? `${color}20` : "transparent",
+              color: active ? color : "#999",
+              fontWeight: active ? 600 : 400,
+              cursor: "pointer",
+              transition: "all 0.15s ease",
+              lineHeight: 1.5,
             }}
           >
             {fmtPreset(v)}
           </button>
         );
       })}
+    </div>
+  );
+}
+
+function TextInput({ stat, value, onChange }: { stat: Stat; value: string; onChange: (v: string) => void }) {
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+      <input
+        type="text"
+        inputMode="decimal"
+        value={value}
+        onChange={(e) => {
+          const raw = e.target.value.replace(/[^0-9.,]/g, "").replace(",", ".");
+          onChange(raw);
+        }}
+        placeholder={stat.placeholder}
+        style={{
+          width: 80, padding: "4px 0", border: "none",
+          borderBottom: "1.5px solid #d4d0c8", background: "transparent",
+          color: "#1a1a1a", fontFamily: "'IBM Plex Mono', monospace",
+          fontSize: 15, fontWeight: 600, outline: "none", transition: "border-color 0.2s",
+        }}
+        onFocus={(e) => (e.target.style.borderBottomColor = stat.color)}
+        onBlur={(e) => (e.target.style.borderBottomColor = "#d4d0c8")}
+      />
+      <span style={{ fontSize: 12, color: "#999", fontFamily: "'IBM Plex Mono', monospace" }}>{stat.unit}</span>
     </div>
   );
 }
@@ -108,36 +148,38 @@ function StatRow({ stat, value, onChange, result }: { stat: Stat; value: string;
         <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 2, flexWrap: "wrap" }}>
           <span style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 20, color: "#1a1a1a" }}>{stat.label}</span>
         </div>
-        <div style={{ fontSize: 11, color: "#b0a898", fontFamily: "'IBM Plex Mono', monospace", fontStyle: "italic", marginBottom: 8, lineHeight: 1.5, maxWidth: 340 }}>
+        <div style={{ fontSize: 11, color: "#b0a898", fontFamily: "'IBM Plex Mono', monospace", fontStyle: "italic", marginBottom: 10, lineHeight: 1.5, maxWidth: 340 }}>
           {stat.why}
         </div>
-        <div style={{ margin: "10px 0 10px" }}>
-          <StatSlider stat={stat} value={validNumeric} onChange={setFromNumber} />
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
-            <input
-              type="text"
-              inputMode="decimal"
-              value={value}
-              onChange={(e) => {
-                const raw = e.target.value.replace(/[^0-9.,]/g, "").replace(",", ".");
-                onChange(raw);
-              }}
-              placeholder={stat.placeholder}
-              style={{
-                width: 80, padding: "4px 0", border: "none",
-                borderBottom: "1.5px solid #d4d0c8", background: "transparent",
-                color: "#1a1a1a", fontFamily: "'IBM Plex Mono', monospace",
-                fontSize: 15, fontWeight: 600, outline: "none", transition: "border-color 0.2s",
-              }}
-              onFocus={(e) => (e.target.style.borderBottomColor = stat.color)}
-              onBlur={(e) => (e.target.style.borderBottomColor = "#d4d0c8")}
-            />
-            <span style={{ fontSize: 12, color: "#999", fontFamily: "'IBM Plex Mono', monospace" }}>{stat.unit}</span>
+
+        {/* ── Pills: large tappable buttons ── */}
+        {stat.inputType === "pills" && (
+          <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+            <Chips values={stat.pills} current={validNumeric} step={stat.step} color={stat.color} onSelect={setFromNumber} size="lg" />
+            <TextInput stat={stat} value={value} onChange={onChange} />
           </div>
-          <PresetChips stat={stat} current={validNumeric} onSelect={setFromNumber} />
-        </div>
+        )}
+
+        {/* ── Slider: drag + presets ── */}
+        {stat.inputType === "slider" && (
+          <>
+            <div style={{ margin: "6px 0 10px" }}>
+              <StatSlider stat={stat} value={validNumeric} onChange={setFromNumber} />
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+              <TextInput stat={stat} value={value} onChange={onChange} />
+              <Chips values={stat.presets} current={validNumeric} step={stat.step} color={stat.color} onSelect={setFromNumber} />
+            </div>
+          </>
+        )}
+
+        {/* ── Freeform: text input + presets only ── */}
+        {stat.inputType === "freeform" && (
+          <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+            <TextInput stat={stat} value={value} onChange={onChange} />
+            <Chips values={stat.presets} current={validNumeric} step={stat.step} color={stat.color} onSelect={setFromNumber} />
+          </div>
+        )}
       </div>
 
       <div style={{ minHeight: 70 }}>
