@@ -1,0 +1,225 @@
+{
+  "benchmark": "average.",
+  "version": "0.1-pretest",
+  "architecture": {
+    "families": [
+      {
+        "id": "inner_dynamics",
+        "name": "Inner Dynamics",
+        "description": "Ce qui se passe entre savoir et agir. Les latences internes, les fréquences de fond, la vitesse de conversion entre un état ressenti et un comportement observable."
+      },
+      {
+        "id": "external_topology",
+        "name": "External Topology",
+        "description": "La forme matérielle et structurelle d'une vie. Qui dépend de vous, combien de marge vous avez, combien de friction le système vous impose, à quel point votre trajectoire est verrouillée."
+      },
+      {
+        "id": "world_interface",
+        "name": "World Interface",
+        "description": "La couche de conversion entre le sujet et le monde. Ce qui se passe quand un humain rencontre le silence, le regard des autres, ou un système social qui exige une traduction de soi."
+      }
+    ],
+    "tiers": {
+      "spine": "Les 6 axes centraux du benchmark. Robustesse, lisibilité, variance interindividuelle, faible redondance attendue. Le minimum viable pour un profil.",
+      "tier_2": "4 axes à tester activement en pilote. Conceptuellement solides, mais stabilité test-retest ou contamination contextuelle à vérifier empiriquement."
+    },
+    "negotiation_source": "4 rounds de négociation croisée entre Claude Opus 4.6 (CONTOUR), GPT-5.4 Thinking (Topology), Gemini 3 Pro (Variance) puis Gemini 3.1 Pro (Synthesis). Chaque axe a survécu à au moins une critique d'un modèle adverse."
+  },
+  "evals": [
+    {
+      "id": "ask_delay",
+      "tier": "spine",
+      "family": "inner_dynamics",
+      "origin": "claude-opus-4-6",
+      "negotiation_status": "Proposé par Claude (round 1). Adopté comme priorité par Gemini (round 2). Accepté par GPT (round 3). Flagship unanime du benchmark.",
+      "name": "Délai de demande d'aide",
+      "question": "La dernière fois que vous avez eu besoin d'aide et que vous le saviez : combien d'heures se sont écoulées entre le moment où vous l'avez su et le moment où vous avez demandé ?",
+      "unit": "heures",
+      "estimated_median": 52,
+      "distribution_type": "log-normal",
+      "what_high_reveals": "Friction d'activation relationnelle élevée. Signal d'hyperindépendance, de honte liée au besoin, ou d'historique où demander a été puni.",
+      "what_low_reveals": "Aisance à externaliser un besoin. Environnement perçu comme sûr, faible honte liée à la vulnérabilité. Attention : < 1h peut indiquer une dépendance relationnelle."
+    },
+    {
+      "id": "epistemic_update_frequency",
+      "tier": "spine",
+      "family": "inner_dynamics",
+      "origin": "Gemini 3 - pro",
+      "negotiation_status": "Proposé par Gemini (round 1). Claude l'a jugé mieux opérationnalisé que son propre belief_revision_count (round 2). Gardé par GPT dans son spine révisé (round 4). Survit comme meilleur axe épistémique du pool.",
+      "name": "Fréquence d'auto-correction épistémique",
+      "question": "Combien de fois au cours des 12 derniers mois avez-vous explicitement dit « j'avais tort » à une autre personne concernant une conviction profonde ou une décision importante ?",
+      "unit": "occurrences",
+      "estimated_median": 1,
+      "distribution_type": "power-law",
+      "what_high_reveals": "Plasticité épistémique active. La recherche de vérité prend le dessus sur la préservation de l'ego, avec un coût social assumé.",
+      "what_low_reveals": "Stabilité ou rigidité épistémique. Peut indiquer de la sagesse précoce, une insécurité identitaire, ou un environnement culturel où l'admission d'erreur est coûteuse."
+    },
+    {
+      "id": "admin_friction_hours",
+      "tier": "spine",
+      "family": "external_topology",
+      "origin": "GPT-5.4 Thinking",
+      "negotiation_status": "Proposé par GPT (round 1). Claude l'a qualifié de « coup de génie du lot » et « l'eval la plus average. du projet » (round 2). Gemini l'a qualifié de « toil pur, indispensable » (round 3). Unanime.",
+      "name": "Friction administrative",
+      "question": "Combien d'heures par mois consacrez-vous à de la friction administrative nécessaire pour rester fonctionnel : formulaires, appels, assurances, impôts, banque, visa, litiges, rendez-vous obligatoires ?",
+      "unit": "heures/mois",
+      "estimated_median": 4,
+      "distribution_type": "log-normal",
+      "what_high_reveals": "Complexité institutionnelle élevée, précarité bureaucratique, multiplicité de systèmes à satisfaire, statut migratoire complexe, ou surcharge de coordination.",
+      "what_low_reveals": "Simplicité structurelle, délégation, stabilité administrative, ou faible exposition aux institutions."
+    },
+    {
+      "id": "emergency_reach",
+      "tier": "spine",
+      "family": "external_topology",
+      "origin": "GPT-5.4 Thinking",
+      "negotiation_status": "Proposé par GPT (round 1). Adopté par Gemini comme keep (round 2). Claude l'a validé comme « capital social opérationnel, pas symbolique » (round 2). Unanime.",
+      "name": "Portée de secours",
+      "question": "Combien d'adultes distincts pourriez-vous contacter maintenant et obtenir plausiblement, dans les 24 heures, soit un lit pour une nuit, soit un prêt d'urgence équivalent à une semaine de nourriture ?",
+      "unit": "personnes",
+      "estimated_median": 3,
+      "distribution_type": "power-law",
+      "what_high_reveals": "Insertion profonde dans plusieurs cercles de confiance. Forte capacité à survivre à un choc. Redondance réelle du réseau de support.",
+      "what_low_reveals": "Isolement, fragilité relationnelle, indépendance radicale, ou réseau large mais peu mobilisable en urgence."
+    },
+    {
+      "id": "analog_solitude_capacity",
+      "tier": "spine",
+      "family": "world_interface",
+      "origin": "Gemini 3 - pro",
+      "negotiation_status": "Proposé par Gemini (round 1). Auto-droppé par Gemini par excès de sélectivité (round 2). Récupéré par Claude qui l'a qualifié de « brillant » et jugé supérieur à son propre solitude_ratio (round 2). Réintégré au spine par GPT (round 4).",
+      "name": "Capacité d'isolement analogique",
+      "question": "Quelle est la durée continue maximale (en heures) que vous ayez passée seul·e, éveillé·e, sans aucun appareil électronique ni matériel de lecture, sans ressentir de détresse psychologique sévère ?",
+      "unit": "heures",
+      "estimated_median": 2.5,
+      "distribution_type": "log-normal",
+      "what_high_reveals": "Forte régulation interne, autonomie émotionnelle, capacité à générer et tolérer sa propre boucle de pensée sans stimuli externes.",
+      "what_low_reveals": "Besoins constants d'inputs environnementaux, faible tolérance au vide cognitif, comportement majoritairement réactif."
+    },
+    {
+      "id": "identity_translation_switches",
+      "tier": "spine",
+      "family": "world_interface",
+      "origin": "GPT-5.4 Thinking",
+      "negotiation_status": "Proposé par GPT (round 1). Claude l'a qualifié de « seule eval des 30 qui touche à la taxe identitaire » (round 2). Gardé par GPT (round 2). Intégré au spine final (round 4). Seul axe mesurant le coût de compatibilité sociale.",
+      "name": "Switches de traduction identitaire",
+      "question": "Dans combien de contextes sociaux distincts par semaine modifiez-vous délibérément votre langage, accent, registre, apparence ou comportement pour rester lisible, accepté·e ou en sécurité ?",
+      "unit": "contextes/semaine",
+      "estimated_median": 2,
+      "distribution_type": "log-normal",
+      "what_high_reveals": "Adaptation constante, navigation entre mondes hétérogènes, code-switching, environnement où l'authenticité brute a un coût réel.",
+      "what_low_reveals": "Forte continuité entre les milieux, grande sécurité identitaire, ou moindre besoin d'ajustement contextuel."
+    },
+    {
+      "id": "mortality_frequency",
+      "tier": "tier_2",
+      "family": "inner_dynamics",
+      "origin": "claude-opus-4-6",
+      "negotiation_status": "Proposé par Claude (round 1). Ignoré par GPT (rounds 2-3). Claude a défendu sa réintégration (round 4). GPT a concédé : « son évaporation était une erreur de tri, il mérite le tier 2 » (round 4). Pari théorique à tester.",
+      "name": "Fréquence de saillance mortelle",
+      "question": "Combien de fois au cours des 7 derniers jours avez-vous pensé à la mort, au fait de mourir, ou à votre propre mortalité ?",
+      "unit": "occurrences/semaine",
+      "estimated_median": 3,
+      "distribution_type": "log-normal",
+      "what_high_reveals": "La mortalité est un bruit de fond actif. Peut indiquer anxiété existentielle, deuil récent, condition médicale, travail philosophique actif, ou âge avancé.",
+      "what_low_reveals": "La mort est abstraite, non saillante. Peut indiquer jeunesse, déni fonctionnel, absorption dans le quotidien, ou stabilité existentielle."
+    },
+    {
+      "id": "naming_latency",
+      "tier": "tier_2",
+      "family": "inner_dynamics",
+      "origin": "claude-opus-4-6",
+      "negotiation_status": "Proposé par Claude (round 1). GPT l'a jugé « trop fragile pour le spine — sensible au langage, au style introspectif, à la thérapie » (round 4). Claude a concédé la fragilité mais défendu la valeur conceptuelle. Consensus : tier 2, peut échouer au pilote ou devenir excellent après reformulation.",
+      "name": "Latence de dénomination émotionnelle",
+      "question": "Fermez les yeux. Lancez un chronomètre. Nommez en un mot ce que vous ressentez en ce moment. Arrêtez le chronomètre quand le mot arrive. Combien de secondes ?",
+      "unit": "secondes",
+      "estimated_median": 8,
+      "distribution_type": "log-normal",
+      "what_high_reveals": "Déconnexion entre le corps et le langage. L'état est là mais l'étiquette ne vient pas. Signal d'alexithymie fonctionnelle, de surcharge cognitive, ou de dissociation partielle.",
+      "what_low_reveals": "Accès fluide au vocabulaire émotionnel. Travail thérapeutique, pratique contemplative, ou habitude de journal intime. Attention : < 2s peut indiquer un label automatique plaqué sans contact réel."
+    },
+    {
+      "id": "autonomy_buffer_days",
+      "tier": "tier_2",
+      "family": "external_topology",
+      "origin": "GPT-5.4 Thinking",
+      "negotiation_status": "Proposé par GPT (round 1). Gardé par GPT (round 2). Claude l'a jugé « essentiellement un solde bancaire converti en jours » (round 4) mais n'a pas contesté sa place en tier 2. Robuste mais conceptuellement mince.",
+      "name": "Tampon d'autonomie",
+      "question": "Pendant combien de jours pourriez-vous maintenir votre niveau de vie actuel sans revenu du travail nouveau ni nouvelle dette ?",
+      "unit": "jours",
+      "estimated_median": 60,
+      "distribution_type": "log-normal",
+      "what_high_reveals": "Optionalité, capacité d'absorber un choc, pouvoir de refuser sans s'effondrer immédiatement.",
+      "what_low_reveals": "Vie tenue par un flux continu, peu de latitude face aux accidents ou aux conflits."
+    },
+    {
+      "id": "future_lock_in_years",
+      "tier": "tier_2",
+      "family": "external_topology",
+      "origin": "GPT-5.4 Thinking",
+      "negotiation_status": "Proposé par GPT (round 1). Claude l'a qualifié de « conceptuellement puissant — mesurer l'inertie comme une propriété de trajectoire » (round 2). Gardé en tier 2 par consensus (round 4).",
+      "name": "Années de verrouillage",
+      "question": "Si vous ne faisiez aucun changement volontaire à partir d'aujourd'hui, pendant combien d'années vos obligations actuelles continueraient-elles à contraindre fortement vos choix majeurs ?",
+      "unit": "années",
+      "estimated_median": 3,
+      "distribution_type": "log-normal",
+      "what_high_reveals": "Path dependence, engagements lourds, dette de trajectoire, co-responsabilités durables ou forte inertie institutionnelle.",
+      "what_low_reveals": "Fluidité, réversibilité, mobilité, ou parfois instabilité sans attaches longues."
+    }
+  ],
+  "meta_question": {
+    "id": "mirror_effect",
+    "origin": "claude-opus-4-6 (round 5)",
+    "negotiation_status": "Proposé par Claude comme métrique produit manquante. GPT a validé : « il faut des humains maintenant ». Non-scorée — qualitative, pour le pilote uniquement.",
+    "question": "Laquelle de ces questions vous a appris quelque chose sur vous-même que vous ne saviez pas ?",
+    "purpose": "Mesurer l'effet miroir — la différence entre un axe psychométriquement solide et un axe qui provoque une découverte chez la personne. C'est la métrique produit, pas la métrique instrument."
+  },
+  "dropped_evals": [
+    { "id": "birthplace_distance_km", "origin": "GPT", "reason": "Unanime. Proxy sans théorie, corrèle avec tout mais ne cause rien." },
+    { "id": "undocumented_altruism_ratio", "origin": "Gemini", "reason": "Unanime. Invérifiable et normativement chargé." },
+    { "id": "decade_witnesses", "origin": "GPT", "reason": "Self-droppé par GPT, non réclamé." },
+    { "id": "edit_ratio", "origin": "Claude", "reason": "Claude a concédé après le veto de Gemini : contamination par le medium (mobile vs desktop vs email)." },
+    { "id": "solitude_ratio", "origin": "Claude", "reason": "Self-droppé par Claude. Inférieur à analog_solitude_capacity (Gemini) — mesure le fait brut, pas la capacité." },
+    { "id": "belief_revision_count", "origin": "Claude", "reason": "Self-droppé par Claude. Inférieur à epistemic_update_frequency (Gemini) — inventaire rétrospectif vs comportement observable." },
+    { "id": "recovery_slope", "origin": "Claude", "reason": "Convergence trilatérale. Trois modèles ont proposé le même axe puis l'ont droppé. Une version unique (GPT) reste en réserve si le benchmark s'élargit." },
+    { "id": "regret_recovery_halflife", "origin": "Gemini", "reason": "Convergence trilatérale. Remplacé par la formulation GPT si l'axe recovery est réintégré." },
+    { "id": "recovery_latency_days", "origin": "GPT", "reason": "Convergence trilatérale. Meilleure formulation des trois, en réserve." },
+    { "id": "pain_cognitive_maintenance", "origin": "Gemini", "reason": "Gemini a fait son mea culpa : échelle 1-10 subjective, non quantifiable. L'axe est valide, la question ne l'est pas. Droppé sauf reformulation objective." },
+    { "id": "unprompted_creation_volume", "origin": "Gemini", "reason": "Gemini a concédé que creation_ratio (Claude) mesure mieux le flux temps réel. Ce compteur cumulatif sur 5 ans est remplacé." },
+    { "id": "generational_time_preference", "origin": "Gemini", "reason": "Non discuté en rounds 2-4. Pas réclamé." },
+    { "id": "ideological_escape_velocity", "origin": "Gemini", "reason": "Non discuté en rounds 2-4. Pas réclamé." },
+    { "id": "interpersonal_compounding_depth", "origin": "Gemini", "reason": "Non discuté en rounds 2-4. Pas réclamé." }
+  ],
+  "parked_evals": [
+    { "id": "contradiction_count", "origin": "Claude", "reason": "Gardé par Claude dans tous les rounds, mais pas placé dans le spine par GPT. Mesure la tolérance au paradoxe — axe distinct de epistemic_update_frequency. Candidat si le benchmark s'élargit à 12+." },
+    { "id": "creation_ratio", "origin": "Claude", "reason": "Gemini l'a préféré à unprompted_creation_volume. GPT l'a jugé fragile (contamination par classe sociale, temps libre). Axe fort mais instable — à tester en pilote." },
+    { "id": "unfinished_ratio", "origin": "Claude", "reason": "Gardé par Claude, non discuté dans les rounds finaux. Mesure le pattern d'abandon comme signal neutre. Unique mais pas placé." },
+    { "id": "cognitive_stasis_tolerance", "origin": "Gemini", "reason": "Claude l'a qualifié de « first order — la capacité négative de Keats quantifiée ». GPT l'a mis en tier 3. Brillant mais potentiellement biaisé vers les humains très introspectifs." },
+    { "id": "dependents_at_risk", "origin": "GPT", "reason": "Gardé par GPT, non contesté mais non promu. Mesure la centralité humaine. Utile si le benchmark a de la place." },
+    { "id": "unpaid_care_hours", "origin": "GPT", "reason": "Gardé par GPT. Mesure la charge de soin invisible. Même statut que dependents_at_risk." }
+  ],
+  "pilot_protocol": {
+    "source": "Proposé par GPT (round 4), validé par Claude (round 5)",
+    "phase_1": {
+      "name": "Comprehension pass",
+      "n": "10-20 personnes",
+      "measures": "Où les gens hésitent, demandent des définitions, ou répondent avec du texte au lieu d'un nombre."
+    },
+    "phase_2": {
+      "name": "Stability pass",
+      "n": "Mêmes personnes, re-test 7-14 jours plus tard",
+      "measures": "Axes trop sensibles au moment. Stabilité test-retest."
+    },
+    "phase_3": {
+      "name": "Correlation pass",
+      "n": "Échantillon plus large",
+      "measures": "Redondance empirique entre axes théoriquement distincts."
+    },
+    "added_by_claude": {
+      "name": "Mirror pass",
+      "embedded_in": "phase_1",
+      "question": "Laquelle de ces questions vous a appris quelque chose sur vous-même que vous ne saviez pas ?",
+      "measures": "Effet miroir — différence entre axe psychométriquement solide et axe qui provoque une découverte."
+    }
+  }
+}

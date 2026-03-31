@@ -1,0 +1,620 @@
+[
+  {
+    "model": "Délais",
+    "philosophy": "Le temps que tu mets entre savoir et faire. Entre ressentir et nommer. Entre avoir besoin et demander.",
+    "questions": [
+      {
+        "key": "ask_delay",
+        "origin": "claude-opus-4-6",
+        "question": "Délai de demande d'aide",
+        "description": "La dernière fois que vous avez eu besoin d'aide et que vous le saviez : combien d'heures se sont écoulées entre le moment où vous l'avez su et le moment où vous avez demandé ?",
+        "unit": null,
+        "min": null,
+        "max": null,
+        "step": null,
+        "input": null,
+        "options": [],
+        "why": "Flagship unanime du benchmark. Mesure la friction d'activation relationnelle — l'écart entre savoir qu'on a besoin d'aide et oser la demander. Ce délai encode la honte liée au besoin, l'hyperindépendance, ou un historique où demander a été puni.",
+        "models": {
+          "claude-opus-4-6": {
+            "median": 72,
+            "verdicts": [
+              {
+                "range": [
+                  0,
+                  1
+                ],
+                "label": "Demande fluide",
+                "reading": "Le besoin et la demande sont presque simultanés. Peu de friction relationnelle — soit un attachement sécure, soit un contexte où demander est normalisé."
+              },
+              {
+                "range": [
+                  1,
+                  24
+                ],
+                "label": "Délai fonctionnel",
+                "reading": "Un temps de traitement normal — vérifier qu'on a vraiment besoin, choisir à qui demander. Le délai sert, il ne bloque pas."
+              },
+              {
+                "range": [
+                  24,
+                  168
+                ],
+                "label": "Friction active",
+                "reading": "Le besoin est identifié mais quelque chose résiste : honte, peur du refus, hyperindépendance, historique de demande punie. C'est ici que le benchmark mord."
+              },
+              {
+                "range": [
+                  168,
+                  null
+                ],
+                "label": "Demande avortée",
+                "reading": "Le délai a dépassé la fenêtre d'utilité — la crise s'est résolue autrement ou a empiré. La demande n'a probablement jamais eu lieu. Signal fort d'isolement fonctionnel."
+              }
+            ]
+          },
+          "gpt-5-4-thinking": {
+            "median": null,
+            "verdicts": null
+          },
+          "gemini-3-pro": {
+            "median": null,
+            "verdicts": null
+          }
+        }
+      },
+      {
+        "key": "epistemic_update_frequency",
+        "origin": "gemini-3-pro",
+        "question": "Fréquence d'auto-correction épistémique",
+        "description": "Combien de fois au cours des 12 derniers mois avez-vous explicitement dit « j'avais tort » à une autre personne concernant une conviction profonde ou une décision importante ?",
+        "unit": null,
+        "min": null,
+        "max": null,
+        "step": null,
+        "input": null,
+        "options": [],
+        "why": "Pas combien de fois tu as changé d'avis — combien de fois tu l'as dit à quelqu'un. Le coût social de l'aveu est le signal. Meilleur axe épistémique du pool.",
+        "models": {
+          "claude-opus-4-6": {
+            "median": 2,
+            "verdicts": [
+              {
+                "range": [
+                  0,
+                  0
+                ],
+                "label": "Mur épistémique",
+                "reading": "Zéro aveux en 12 mois. Soit une rigidité réelle, soit un environnement où admettre l'erreur est trop coûteux. Le silence protège mais calcifie."
+              },
+              {
+                "range": [
+                  1,
+                  3
+                ],
+                "label": "Friction normale",
+                "reading": "Le coût social de l'aveu est réel mais absorbable. La plupart des gens vivent ici — quelques corrections par an, chacune difficile mais faisable."
+              },
+              {
+                "range": [
+                  4,
+                  8
+                ],
+                "label": "Perméabilité active",
+                "reading": "Mise à jour régulière. Indique soit un travail thérapeutique actif, soit un milieu intellectuel exigeant, soit les deux. Le muscle de la révision est exercé."
+              },
+              {
+                "range": [
+                  9,
+                  null
+                ],
+                "label": "Hyper-révision",
+                "reading": "Fréquence élevée — vérifier que ce n'est pas de la soumission déguisée en ouverture d'esprit. L'aveu compulsif peut être du fawning épistémique."
+              }
+            ]
+          },
+          "gpt-5-4-thinking": {
+            "median": null,
+            "verdicts": null
+          },
+          "gemini-3-pro": {
+            "median": null,
+            "verdicts": null
+          }
+        }
+      },
+      {
+        "key": "mortality_frequency",
+        "origin": "claude-opus-4-6",
+        "question": "Fréquence de saillance mortelle",
+        "description": "Combien de fois au cours des 7 derniers jours avez-vous pensé à la mort, au fait de mourir, ou à votre propre mortalité ?",
+        "unit": null,
+        "min": null,
+        "max": null,
+        "step": null,
+        "input": null,
+        "options": [],
+        "why": "La mort comme fréquence de fond, pas comme événement. Pari théorique défendu par Claude, réhabilité par GPT qui a concédé : « son évaporation était une erreur de tri ».",
+        "models": {
+          "claude-opus-4-6": {
+            "median": 3,
+            "verdicts": [
+              {
+                "range": [
+                  0,
+                  0
+                ],
+                "label": "Suppression ou jeunesse",
+                "reading": "Aucune pensée de mortalité en 7 jours. Soit un déni actif, soit un âge/contexte où la mort n'est pas encore saillante. Pas nécessairement sain — parfois le silence est un mur."
+              },
+              {
+                "range": [
+                  1,
+                  4
+                ],
+                "label": "Bruit de fond normal",
+                "reading": "La mortalité comme compagnon discret. Pensées brèves, non intrusives — rappels de finitude qui orientent les priorités sans paralyser."
+              },
+              {
+                "range": [
+                  5,
+                  14
+                ],
+                "label": "Saillance élevée",
+                "reading": "Pensées quotidiennes ou pluri-quotidiennes. Peut indiquer un deuil récent, une maladie, une crise existentielle, ou simplement une disposition philosophique intense. Le contenu compte plus que la fréquence ici."
+              },
+              {
+                "range": [
+                  15,
+                  null
+                ],
+                "label": "Saturation",
+                "reading": "La mort occupe une part majeure du champ attentionnel. Distinguer rumination anxieuse (boucle) de méditation sur la finitude (ouverture). À cette fréquence, la question clinique se pose."
+              }
+            ]
+          },
+          "gpt-5-4-thinking": {
+            "median": null,
+            "verdicts": null
+          },
+          "gemini-3-pro": {
+            "median": null,
+            "verdicts": null
+          }
+        }
+      },
+      {
+        "key": "naming_latency",
+        "origin": "claude-opus-4-6",
+        "question": "Latence de dénomination émotionnelle",
+        "description": "Fermez les yeux. Lancez un chronomètre. Nommez en un mot ce que vous ressentez en ce moment. Arrêtez le chronomètre quand le mot arrive. Combien de secondes ?",
+        "unit": null,
+        "min": null,
+        "max": null,
+        "step": null,
+        "input": null,
+        "options": [],
+        "why": "Ne teste pas si vous ressentez — teste si vous pouvez nommer. Fragile mais conceptuellement puissant — sensible au vocabulaire, au style introspectif, à la thérapie.",
+        "models": {
+          "claude-opus-4-6": {
+            "median": 8,
+            "verdicts": [
+              {
+                "range": [
+                  0,
+                  3
+                ],
+                "label": "Accès immédiat",
+                "reading": "Le mot arrive vite. Vocabulaire émotionnel riche et chemin court entre ressenti et langage. Corrèle avec travail introspectif, thérapie, pratique artistique, journaling."
+              },
+              {
+                "range": [
+                  3,
+                  12
+                ],
+                "label": "Traitement normal",
+                "reading": "Un temps de recherche — le ressenti est là mais le mot doit être trouvé. La majorité des gens vivent ici. Le délai n'est pas un problème, c'est le processus."
+              },
+              {
+                "range": [
+                  12,
+                  30
+                ],
+                "label": "Brouillard lexical",
+                "reading": "Le ressenti existe mais résiste à la nomination. Possible alexithymie partielle, ou simplement un vocabulaire émotionnel peu exercé. Le gap entre sentir et nommer est large."
+              },
+              {
+                "range": [
+                  30,
+                  null
+                ],
+                "label": "Dissociation ou blocage",
+                "reading": "Plus de 30 secondes pour un seul mot. Soit le ressenti est trop complexe/contradictoire pour un mot, soit il y a une déconnexion active entre le corps et le langage."
+              }
+            ]
+          },
+          "gpt-5-4-thinking": {
+            "median": null,
+            "verdicts": null
+          },
+          "gemini-3-pro": {
+            "median": null,
+            "verdicts": null
+          }
+        }
+      }
+    ]
+  },
+  {
+    "model": "Structure",
+    "philosophy": "La forme concrète de ta vie. Ce qui te tient, ce qui te contraint, ce qui te protège. Des chiffres, pas des ressentis.",
+    "questions": [
+      {
+        "key": "admin_friction_hours",
+        "origin": "gpt-5-4-thinking",
+        "question": "Friction administrative",
+        "description": "Combien d'heures par mois consacrez-vous à de la friction administrative nécessaire pour rester fonctionnel : formulaires, appels, assurances, impôts, banque, visa, litiges, rendez-vous obligatoires ?",
+        "unit": null,
+        "min": null,
+        "max": null,
+        "step": null,
+        "input": null,
+        "options": [],
+        "why": "L'eval la plus average. du projet. Mesure le frottement pur entre une personne et les systèmes qui gouvernent sa vie. Condense précarité, maladie, migration, complexité familiale — un coût humain presque jamais mesuré.",
+        "models": {
+          "claude-opus-4-6": {
+            "median": 8,
+            "verdicts": [
+              {
+                "range": [
+                  0,
+                  3
+                ],
+                "label": "Faible friction",
+                "reading": "Vie administrative légère — peu de dépendances systémiques, situation stable, ou quelqu'un d'autre absorbe la charge. Privilège souvent invisible."
+              },
+              {
+                "range": [
+                  3,
+                  10
+                ],
+                "label": "Charge standard",
+                "reading": "Le frottement normal d'un adulte fonctionnel dans une société bureaucratique. Impôts, assurances, rendez-vous — le coût de base de l'existence administrative."
+              },
+              {
+                "range": [
+                  10,
+                  25
+                ],
+                "label": "Surcharge structurelle",
+                "reading": "Migration, maladie chronique, divorce, précarité, multi-juridictions, dettes — chaque couche ajoute des heures. Le frottement n'est plus un bruit de fond, c'est un deuxième travail."
+              },
+              {
+                "range": [
+                  25,
+                  null
+                ],
+                "label": "Friction paralysante",
+                "reading": "La machine administrative consomme une part significative de la capacité d'agir. Risque d'effondrement par accumulation — pas un événement, mais une érosion continue."
+              }
+            ]
+          },
+          "gpt-5-4-thinking": {
+            "median": null,
+            "verdicts": null
+          },
+          "gemini-3-pro": {
+            "median": null,
+            "verdicts": null
+          }
+        }
+      },
+      {
+        "key": "emergency_reach",
+        "origin": "gpt-5-4-thinking",
+        "question": "Portée de secours",
+        "description": "Combien d'adultes distincts pourriez-vous contacter maintenant et obtenir plausiblement, dans les 24 heures, soit un lit pour une nuit, soit un prêt d'urgence équivalent à une semaine de nourriture ?",
+        "unit": null,
+        "min": null,
+        "max": null,
+        "step": null,
+        "input": null,
+        "options": [],
+        "why": "Capital social opérationnel, pas symbolique. Ne demande pas si vous vous sentez entouré — combien de liens sont activables en crise.",
+        "models": {
+          "claude-opus-4-6": {
+            "median": 3,
+            "verdicts": [
+              {
+                "range": [
+                  0,
+                  0
+                ],
+                "label": "Isolement opérationnel",
+                "reading": "Zéro liens activables en crise. Pas « je me sens seul » — personne ne décroche. Signal d'alarme structurel indépendant de la sociabilité perçue."
+              },
+              {
+                "range": [
+                  1,
+                  2
+                ],
+                "label": "Filet minimal",
+                "reading": "Un ou deux liens de secours. Suffisant pour une crise ponctuelle, fragile face à une crise prolongée. La redondance est absente."
+              },
+              {
+                "range": [
+                  3,
+                  6
+                ],
+                "label": "Réseau fonctionnel",
+                "reading": "Assez de liens pour absorber un choc sans épuiser un seul nœud. Redondance présente — si un lien est indisponible, d'autres existent."
+              },
+              {
+                "range": [
+                  7,
+                  null
+                ],
+                "label": "Capital social dense",
+                "reading": "Réseau profond et activable. Attention : vérifier que l'estimation est réaliste et pas fantasmée. Le test est « plausiblement, dans les 24h », pas « en théorie »."
+              }
+            ]
+          },
+          "gpt-5-4-thinking": {
+            "median": null,
+            "verdicts": null
+          },
+          "gemini-3-pro": {
+            "median": null,
+            "verdicts": null
+          }
+        }
+      },
+      {
+        "key": "autonomy_buffer_days",
+        "origin": "gpt-5-4-thinking",
+        "question": "Tampon d'autonomie",
+        "description": "Pendant combien de jours pourriez-vous maintenir votre niveau de vie actuel sans revenu du travail nouveau ni nouvelle dette ?",
+        "unit": null,
+        "min": null,
+        "max": null,
+        "step": null,
+        "input": null,
+        "options": [],
+        "why": "Un solde bancaire converti en jours — mais ce recadrage change tout. Mesure l'optionalité réelle : la capacité de dire non, d'absorber un choc, de refuser sans s'effondrer.",
+        "models": {
+          "claude-opus-4-6": {
+            "median": 45,
+            "verdicts": [
+              {
+                "range": [
+                  0,
+                  7
+                ],
+                "label": "Urgence permanente",
+                "reading": "Moins d'une semaine. Chaque décision est prise sous contrainte immédiate. La capacité de dire non est quasi nulle — refuser un emploi toxique, quitter une relation, prendre du repos : tout est verrouillé par le compte à rebours."
+              },
+              {
+                "range": [
+                  7,
+                  60
+                ],
+                "label": "Tampon fragile",
+                "reading": "Quelques semaines à deux mois. Assez pour un choc mineur, insuffisant pour une transition choisie. L'optionalité existe mais elle est étroite."
+              },
+              {
+                "range": [
+                  60,
+                  180
+                ],
+                "label": "Marge de manœuvre",
+                "reading": "Deux à six mois. Assez pour changer d'emploi, déménager, traverser une rupture sans effondrement financier. La liberté de choix devient réelle."
+              },
+              {
+                "range": [
+                  180,
+                  null
+                ],
+                "label": "Optionalité structurelle",
+                "reading": "Six mois ou plus. La contrainte financière n'est plus le facteur dominant des décisions de vie. Ce qui reste comme contrainte est relationnel, identitaire, ou existentiel — pas matériel."
+              }
+            ]
+          },
+          "gpt-5-4-thinking": {
+            "median": null,
+            "verdicts": null
+          },
+          "gemini-3-pro": {
+            "median": null,
+            "verdicts": null
+          }
+        }
+      },
+      {
+        "key": "future_lock_in_years",
+        "origin": "gpt-5-4-thinking",
+        "question": "Années de verrouillage",
+        "description": "Si vous ne faisiez aucun changement volontaire à partir d'aujourd'hui, pendant combien d'années vos obligations actuelles continueraient-elles à contraindre fortement vos choix majeurs ?",
+        "unit": null,
+        "min": null,
+        "max": null,
+        "step": null,
+        "input": null,
+        "options": [],
+        "why": "Mesure l'inertie comme propriété de trajectoire — à quel point vos choix passés restreignent vos choix futurs. Conceptuellement puissant.",
+        "models": {
+          "claude-opus-4-6": {
+            "median": 7,
+            "verdicts": [
+              {
+                "range": [
+                  0,
+                  1
+                ],
+                "label": "Trajectoire ouverte",
+                "reading": "Peu d'engagements contraignants. Grande liberté de bifurquer — mais aussi possiblement peu d'ancrage. L'absence de verrouillage peut être liberté ou dérive."
+              },
+              {
+                "range": [
+                  1,
+                  5
+                ],
+                "label": "Inertie modérée",
+                "reading": "Quelques années d'obligations — bail, dette étudiante, début de carrière. Le couloir est étroit mais la sortie est visible."
+              },
+              {
+                "range": [
+                  5,
+                  15
+                ],
+                "label": "Engagement structurant",
+                "reading": "Hypothèque, enfants jeunes, carrière spécialisée, dette significative. Les choix passés contraignent fortement les choix futurs. La trajectoire a une masse."
+              },
+              {
+                "range": [
+                  15,
+                  null
+                ],
+                "label": "Verrouillage profond",
+                "reading": "Plus de 15 ans d'obligations. Le changement de direction est possible mais coûteux — financièrement, socialement, identitairement. L'inertie est devenue le terrain."
+              }
+            ]
+          },
+          "gpt-5-4-thinking": {
+            "median": null,
+            "verdicts": null
+          },
+          "gemini-3-pro": {
+            "median": null,
+            "verdicts": null
+          }
+        }
+      }
+    ]
+  },
+  {
+    "model": "Interface",
+    "philosophy": "Ce qui se passe entre toi et le monde extérieur. Comment tu gères le silence, le regard des autres, et les contextes qui te demandent de changer de version de toi.",
+    "questions": [
+      {
+        "key": "analog_solitude_capacity",
+        "origin": "gemini-3-pro",
+        "question": "Capacité d'isolement analogique",
+        "description": "Quelle est la durée continue maximale (en heures) que vous ayez passée seul·e, éveillé·e, sans aucun appareil électronique ni matériel de lecture, sans ressentir de détresse psychologique sévère ?",
+        "unit": null,
+        "min": null,
+        "max": null,
+        "step": null,
+        "input": null,
+        "options": [],
+        "why": "Mesure la capacité de régulation interne sans béquilles externes. Ce n'est pas la solitude choisie — c'est combien de temps votre esprit tient sans inputs.",
+        "models": {
+          "claude-opus-4-6": {
+            "median": 3,
+            "verdicts": [
+              {
+                "range": [
+                  0,
+                  0.5
+                ],
+                "label": "Dépendance aux inputs",
+                "reading": "Moins de 30 minutes sans stimulus externe avant détresse. Le silence intérieur est perçu comme un vide menaçant, pas comme un espace. Signal fort de régulation externalisée."
+              },
+              {
+                "range": [
+                  0.5,
+                  3
+                ],
+                "label": "Capacité limitée",
+                "reading": "Quelques heures. Le calme est accessible mais fragile — l'ennui ou l'anxiété finissent par monter. La plupart des adultes connectés vivent ici."
+              },
+              {
+                "range": [
+                  3,
+                  8
+                ],
+                "label": "Régulation interne solide",
+                "reading": "Plusieurs heures sans béquille. Indique une vie intérieure riche, une pratique contemplative, ou une familiarité avec le silence qui ne vient pas par défaut."
+              },
+              {
+                "range": [
+                  8,
+                  null
+                ],
+                "label": "Capacité méditative",
+                "reading": "Une journée ou plus. Rare dans les populations urbaines connectées. Souvent corrèle avec pratique de méditation, vie rurale, ou expériences prolongées de solitude choisie."
+              }
+            ]
+          },
+          "gpt-5-4-thinking": {
+            "median": null,
+            "verdicts": null
+          },
+          "gemini-3-pro": {
+            "median": null,
+            "verdicts": null
+          }
+        }
+      },
+      {
+        "key": "identity_translation_switches",
+        "origin": "gpt-5-4-thinking",
+        "question": "Switches de traduction identitaire",
+        "description": "Dans combien de contextes sociaux distincts par semaine modifiez-vous délibérément votre langage, accent, registre, apparence ou comportement pour rester lisible, accepté·e ou en sécurité ?",
+        "unit": null,
+        "min": null,
+        "max": null,
+        "step": null,
+        "input": null,
+        "options": [],
+        "why": "La seule eval qui touche à la taxe identitaire — le coût de compatibilité sociale. Mesure le nombre de mondes entre lesquels vous naviguez et la traduction que chaque passage exige.",
+        "models": {
+          "claude-opus-4-6": {
+            "median": 4,
+            "verdicts": [
+              {
+                "range": [
+                  0,
+                  1
+                ],
+                "label": "Monde unifié",
+                "reading": "Zéro à un switch. Soit un privilège (votre version par défaut est partout acceptée), soit un isolement (vous ne fréquentez qu'un seul monde). Dans les deux cas, le coût de traduction est absent."
+              },
+              {
+                "range": [
+                  2,
+                  4
+                ],
+                "label": "Navigation standard",
+                "reading": "Quelques contextes distincts — travail, famille, amis, peut-être une langue seconde. Le code-switching est réel mais gérable. Taxe identitaire modérée."
+              },
+              {
+                "range": [
+                  5,
+                  8
+                ],
+                "label": "Polyglotte social",
+                "reading": "Navigation active entre plusieurs mondes avec des codes incompatibles. Migration, bilinguisme, queerness, classe sociale mixte, neurodivergence masquée — chaque switch a un coût cognitif et émotionnel."
+              },
+              {
+                "range": [
+                  9,
+                  null
+                ],
+                "label": "Traduction permanente",
+                "reading": "La version « par défaut » n'existe peut-être pas. Chaque contexte exige une reconfiguration. Le coût cumulatif est rarement visible de l'extérieur mais il érode. Vérifier : fatigue de compatibilité, sentiment de n'être « vrai » nulle part."
+              }
+            ]
+          },
+          "gpt-5-4-thinking": {
+            "median": null,
+            "verdicts": null
+          },
+          "gemini-3-pro": {
+            "median": null,
+            "verdicts": null
+          }
+        }
+      }
+    ]
+  }
+]

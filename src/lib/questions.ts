@@ -23,16 +23,24 @@ export function logNormalCDF(x: number, mu: number, sigma: number) {
 export type Verdict = [number, string];
 export type InputType = "pills" | "slider" | "freeform";
 
+export const MODEL_IDS = ["claude-opus-4-6", "gpt-5-4-thinking", "gemini-3-pro"] as const;
+export type ModelId = (typeof MODEL_IDS)[number];
+
 export interface Stat {
   id: string;
+  key: string;
+  origin: string;
   label: string;
+  description: string;
   unit: string;
   why: string;
   placeholder: string;
   min: number;
   max: number;
   calc: (v: number) => number;
+  calcs: Record<string, (v: number) => number>;
   verdicts: Verdict[];
+  modelVerdicts: Record<string, Verdict[]>;
   sliderExp: number;
   step: number;
   presets: number[];
@@ -50,23 +58,40 @@ export interface Section {
   stats: Stat[];
 }
 
-export interface ModelQuestion {
-  question: string;
-  unit: string;
-  why: string;
-  estimated_median: number;
-  min: number;
-  max: number;
-  step: number;
-  input: InputType;
-  options: number[];
+// median + verdicts are relative to the model — each AI has its own idea of what's normal.
+// min, max, step, input, options are relative to the question — the measurement apparatus is shared.
+export interface ModelConfig {
+  median: number | null;
   verdicts: {
     high: string;
     above: string;
     average: string;
     below: string;
     low: string;
+  } | null;
+}
+
+export interface ModelQuestion {
+  key?: string;
+  origin?: string;
+  question: string;
+  description?: string;
+  unit: string | null;
+  why: string;
+  models: Record<string, ModelConfig>;
+  verdicts?: {
+    high: string;
+    above: string;
+    average: string;
+    below: string;
+    low: string;
   };
+  estimated_median?: number;
+  min?: number | null;
+  max?: number | null;
+  step?: number | null;
+  input?: InputType | null;
+  options?: number[];
 }
 
 export interface ModelData {
@@ -77,7 +102,7 @@ export interface ModelData {
 
 // ─── Distribution ──────────────────────────────────────
 
-function buildCalc(median: number, min: number, max: number): (v: number) => number {
+export function buildCalc(median: number, min: number, max: number): (v: number) => number {
   const range = max - min;
   const relPos = range > 0 ? (median - min) / range : 0.5;
 
@@ -100,7 +125,6 @@ function inferSliderExp(median: number, min: number, max: number, unit: string):
   if (median >= 1000) return 3;
   if (median >= 50) return 2;
   if (median >= 10) return 1.5;
-  // Check for heavy right skew
   const range = max - min;
   const relPos = range > 0 ? (median - min) / range : 0.5;
   if (relPos < 0.15) return 2;
@@ -109,7 +133,7 @@ function inferSliderExp(median: number, min: number, max: number, unit: string):
 
 // ─── Verdicts from explicit object ────────────────────
 
-function verdictsFromObj(v: ModelQuestion["verdicts"]): Verdict[] {
+function verdictsFromObj(v: NonNullable<ModelQuestion["verdicts"]>): Verdict[] {
   return [
     [85, v.high],
     [60, v.above],
@@ -136,25 +160,58 @@ export function buildSections(models: ModelData[]): Section[] {
       subtitle: model.philosophy,
       color,
       stats: model.questions.map((q, qi) => {
-        const { min, max, step } = q;
-        const sliderExp = inferSliderExp(q.estimated_median, min, max, q.unit);
-        const inputType = q.input;
-        const pills = inputType === "pills" ? q.options : [];
+        const origin = q.origin ?? "";
+        const modelsMap = q.models ?? {};
+        const originCfg = modelsMap[origin] ?? Object.values(modelsMap)[0];
+
+        // Question-level params (shared across models)
+        const min = q.min ?? 0;
+        const max = q.max ?? 100;
+        const step = q.step ?? 1;
+        const inputType = q.input ?? "slider";
+        const options = q.options ?? [];
+        const pills = inputType === "pills" ? options : [];
+
+        // Median is per-model — "unknown" means not yet calibrated
+        const rawMedian = originCfg?.median ?? q.estimated_median;
+        const median = typeof rawMedian === "number" ? rawMedian : 50;
+        const sliderExp = inferSliderExp(median, min, max, q.unit ?? "");
+
+        // Build per-model calculators and verdicts (skip "unknown" medians)
+        const calcs: Record<string, (v: number) => number> = {};
+        const modelVerdicts: Record<string, Verdict[]> = {};
+        for (const [modelId, cfg] of Object.entries(modelsMap)) {
+          if (typeof cfg.median === "number") {
+            calcs[modelId] = buildCalc(cfg.median, min, max);
+          }
+          if (cfg.verdicts) {
+            modelVerdicts[modelId] = verdictsFromObj(cfg.verdicts);
+          }
+        }
+
+        // Origin model's verdicts are the default display verdicts
+        const defaultVerdicts = modelVerdicts[origin] ?? (q.verdicts ? verdictsFromObj(q.verdicts) : []);
+
         return {
           id: `${mi}-${qi}`,
+          key: q.key ?? `${mi}-${qi}`,
+          origin,
           label: q.question,
-          unit: q.unit,
+          description: q.description ?? "",
+          unit: q.unit ?? "",
           why: q.why,
-          placeholder: String(q.estimated_median),
+          placeholder: typeof rawMedian === "number" ? String(rawMedian) : "",
           min,
           max,
           step,
           sliderExp,
           inputType,
           pills,
-          presets: inputType === "pills" ? [] : q.options,
-          calc: buildCalc(q.estimated_median, min, max),
-          verdicts: verdictsFromObj(q.verdicts),
+          presets: inputType === "pills" ? [] : options,
+          calc: calcs[origin] ?? buildCalc(median, min, max),
+          calcs,
+          verdicts: defaultVerdicts,
+          modelVerdicts,
           color,
         };
       }),

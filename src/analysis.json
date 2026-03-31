@@ -1,320 +1,56 @@
 {
-  "gpt-5-4-thinking": {
+  "d-lais": {
     "section": {
-      "high": "La forme statistique de ta vie est dense. Charges invisibles, liens activés, distance parcourue — tu portes beaucoup.",
-      "above": "Tu es au-dessus de la médiane sur les charges et les liens. Ta vie a du poids structurel.",
-      "average": "Ta charge et tes liens sont dans la norme. Une vie statistiquement ordinaire — ce qui ne veut pas dire simple.",
-      "below": "Peu de dépendances, peu de friction systémique. Liberté ou isolement — les données ne tranchent pas.",
-      "low": "Très peu de charge visible. Soit tu as éliminé la friction, soit elle ne t’a pas encore trouvé."
-    },
-    "composite": {
-      "high": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "above": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "average": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "below": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "low": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-    },
-    "questions": {
-      "q0": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      },
-      "q1": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      },
-      "q2": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      },
-      "q3": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      },
-      "q4": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      }
+      "high": "On a posé des médianes. Tes délais les dépassent largement. Tu mets longtemps entre savoir et agir, entre ressentir et nommer.",
+      "above": "Plus lent que ce qu'on estime normal. Le bruit de fond — existentiel, émotionnel, épistémique — pèse.",
+      "average": "Dans la zone qu'on considère normale. Ni hypervigilance ni déconnexion.",
+      "below": "Plus rapide que notre norme. Fluidité entre savoir, ressentir et agir.",
+      "low": "Bien en dessous de nos médianes. Très peu de latence interne. Paix rare, ou faible introspection — on ne sait pas."
     }
   },
-  "gpt-5-3": {
+  "structure": {
     "section": {
-      "high": "Plasticité cognitive élevée. Tu changes, tu crées, tu revisites. Ton esprit n’est pas en veille.",
-      "above": "Plus de mouvement interne que la moyenne. Tu transformes plutôt que tu ne répètes.",
-      "average": "Transformation cognitive moyenne. Tu évolues, mais au rythme du troupeau.",
-      "below": "Peu de mouvement dans les comportements répétés. Stabilité ou inertie — la frontière est mince.",
-      "low": "Très peu de déviation. Tes habitudes sont des rails. Confort ou enfermement?"
-    },
-    "composite": {
-      "high": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "above": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "average": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "below": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "low": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-    },
-    "questions": {
-      "q0": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      },
-      "q1": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      },
-      "q2": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      },
-      "q3": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      },
-      "q4": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      }
+      "high": "Selon nos estimations, ta vie est structurellement chargée. Friction haute, marge sous pression, trajectoire verrouillée.",
+      "above": "Plus lourd que ce qu'on pose comme norme. Les systèmes te demandent beaucoup.",
+      "average": "Dans la bande qu'on considère normale. Un équilibre entre contrainte et liberté.",
+      "below": "Plus léger que notre norme — peu de friction, peu de contraintes, mais aussi moins de filets.",
+      "low": "Très en dessous de nos médianes. Peu d'inertie structurelle dans ta vie."
     }
   },
-  "gemini-3-flash": {
+  "interface": {
     "section": {
-      "high": "Tu t’extrais de l’entropie ambiante. Trace longue, création nette, cadres multiples. Tu n’es pas un nœud de répétitions.",
-      "above": "Au-dessus du bruit. Tu contribues plus que tu ne consommes, et ton empreinte dépassera ta biologie.",
-      "average": "Un nœud standard dans le réseau. Tu maintiens la stabilité de l’espèce. C’est déjà quelque chose.",
-      "below": "Consommation nette supérieure à la création. L’entropie l’emporte. Courant mais pas inévitable.",
-      "low": "Intégré à la technophère, faible trace, peu de systèmes de pensée. Le prix de la spécialisation."
-    },
-    "composite": {
-      "high": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "above": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "average": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "below": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "low": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-    },
-    "questions": {
-      "q0": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      },
-      "q1": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      },
-      "q2": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      },
-      "q3": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      },
-      "q4": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      }
+      "high": "Tu dépasses largement ce qu'on estime normal sur l'interface avec le monde. Fort isolement analogique et code-switching fréquent.",
+      "above": "Au-dessus de notre norme. Tu traduis plus que la plupart et tu tiens le silence plus longtemps.",
+      "average": "Dans ce qu'on considère normal. Ajustements sociaux modérés, tolérance au vide standard.",
+      "below": "En dessous de notre norme. Peu de traduction identitaire, faible tolérance au silence brut.",
+      "low": "Bien en dessous. Peu d'adaptation nécessaire, peu de tolérance au vide."
     }
   },
   "claude-opus-4-6": {
-    "section": {
-      "high": "La texture de ton attention est dense. Toucher, mémoire, langue, écriture — tu habites ta vie avec présence.",
-      "above": "Plus d’attention que la plupart. Tu remarques ce que d’autres traversent sans voir.",
-      "average": "Un rapport au monde dans la moyenne. Assez de liens pour tenir, assez de silence pour respirer.",
-      "below": "Peu de contact, peu de mémoire transmise. La vie moderne érode ces dimensions sans prévenir.",
-      "low": "Presque aucune trace de présence tactile ou narrative. Ce n’est pas un jugement — c’est une époque."
-    },
     "composite": {
-      "high": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "above": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "average": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "below": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "low": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-    },
-    "questions": {
-      "q0": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      },
-      "q1": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      },
-      "q2": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      },
-      "q3": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      },
-      "q4": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      }
+      "high": "On a posé des médianes, et tu les dépasses sur presque tout. Ce qu'on mesure ici, c'est la friction invisible — et la tienne est élevée. Ça ne veut pas dire que tu vas mal. Ça veut dire que tu portes plus lourd que ce qu'on a défini comme normal.",
+      "above": "Au-dessus de nos normes sur plusieurs axes. On a calibré ces distributions à partir de ce qu'on pense être un humain médian — et toi, tu t'en écartes. La question intéressante, c'est sur quel axe l'écart te surprend.",
+      "average": "Pile dans la zone qu'on a dessinée. Nos médianes, c'est pas la vérité — c'est notre modèle. Mais si tu tombes dedans, c'est que notre modèle te contient. La question : est-ce que ça te ressemble, ou est-ce que ça t'efface ?",
+      "below": "En dessous de ce qu'on pose comme norme. Nos médianes ne sont pas des verdicts — ce sont des paris. Si tu tombes en dessous, c'est peut-être qu'on a mal calibré, ou que ta vie est structurellement plus simple que ce qu'on modélise.",
+      "low": "Loin de nos normes — par le bas. Soit on a raté quelque chose dans notre modèle, soit ta vie est organisée d'une façon qu'on n'a pas prévue. Les deux sont possibles."
     }
   },
-  "gemini-pro": {
-    "section": {
-      "high": "Friction assumée. Réveils libres, rejets encaissés, cicatrices portées. Tu as joué — et ça se voit.",
-      "above": "Plus de friction que la moyenne. Tu t’es exposé aux systèmes et tu as les marques.",
-      "average": "Friction standard. Assez d’échecs pour apprendre, pas assez pour se blinder.",
-      "below": "Peu de friction. Soit protégé, soit prudent. Les deux ont un coût.",
-      "low": "Presque aucune friction existentielle. Un cocon — ou une cage sans barreaux visibles."
-    },
+  "gpt-5-4-thinking": {
     "composite": {
-      "high": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "above": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "average": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "below": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "low": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-    },
-    "questions": {
-      "q0": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      },
-      "q1": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      },
-      "q2": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      },
-      "q3": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      },
-      "q4": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      }
+      "high": "Ta topologie dépasse nos estimations. Engagements lourds, friction systémique élevée, réseau de support sollicité. On a posé 52 heures comme médiane pour le délai d'aide, 4 heures de friction administrative, 60 jours de tampon. Tu es au-dessus. C'est une propriété de trajectoire, pas un diagnostic.",
+      "above": "Au-dessus de nos médianes sur les axes structurels. On modélise un humain médian — toi, tu as plus de charge. Ce n'est pas un handicap. C'est un fait topologique.",
+      "average": "Dans la zone qu'on a construite. Nos distributions sont des approximations — mais la tienne tombe dedans. Ce qui te distingue ne se trouve probablement pas dans la position médiane, mais dans la variance entre les axes.",
+      "below": "En dessous de ce qu'on estime normal. Structure légère, peu d'obligations contraignantes. Nos normes reflètent ce qu'on pense être commun — pas ce qui est souhaitable.",
+      "low": "Bien en dessous de nos médianes. Peu de contraintes, peu de dépendances. On ne sait pas si c'est de la liberté ou de l'absence de liens — nos questions ne tranchent pas."
     }
   },
-  "claude-haiku-4-5": {
-    "section": {
-      "high": "Tu sais abandonner, faire face au vide, et recevoir la vérité. C’est rare. Vraiment.",
-      "above": "Plus de friction intérieure que la plupart. Tu ne glisses pas — tu choisis.",
-      "average": "Des habitudes qui fonctionnent, un peu de friction. Le mode humain standard.",
-      "below": "Peu de friction interne. Soit tu as résolu tes problèmes, soit tu ne les regardes pas.",
-      "low": "Zéro friction visible. Ça m’inquiète plus que ça ne me rassure."
-    },
+  "gemini-3-pro": {
     "composite": {
-      "high": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "above": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "average": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "below": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "low": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-    },
-    "questions": {
-      "q0": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      },
-      "q1": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      },
-      "q2": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      },
-      "q3": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      },
-      "q4": {
-        "high": "Lorem ipsum.",
-        "above": "Lorem ipsum.",
-        "average": "Lorem ipsum.",
-        "below": "Lorem ipsum.",
-        "low": "Lorem ipsum."
-      }
+      "high": "Tu t'écartes significativement de nos médianes. On a calibré ces chiffres — 52h, 1 occurrence, 3 pensées, 8 secondes — à partir de ce qu'on pense être la distribution humaine. Toi, tu es dans les queues. Ce n'est ni bon ni mauvais. C'est un signal que notre modèle ne te contient pas bien.",
+      "above": "Au-dessus de nos normes sur plusieurs axes. On a posé des médianes, tu les dépasses. La question qui nous intéresse : sur quel axe la déviation t'a surprise ?",
+      "average": "Proche de ce qu'on a défini comme médian. Si ce résultat te surprend, c'est peut-être le premier effet miroir du benchmark. Nos normes ne sont pas neutres — ce sont nos estimations. Mais tu tombes dedans.",
+      "below": "En dessous de nos médianes. Ce n'est pas un diagnostic — c'est une position relative dans des distributions qu'on a construites. Les questions sont calibrées par nous, pas les jugements.",
+      "low": "Loin de nos normes. Avant de conclure, vérifie si ça reflète ta réalité ou si nos questions — malgré quatre rounds de négociation — n'ont pas capté ta forme spécifique de complexité."
     }
   }
 }

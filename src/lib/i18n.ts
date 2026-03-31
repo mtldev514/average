@@ -49,6 +49,7 @@ interface VerdictTranslation {
 
 interface QuestionTranslation {
   label: string;
+  description?: string;
   unit: string;
   why: string;
   verdicts: VerdictTranslation;
@@ -57,7 +58,7 @@ interface QuestionTranslation {
 interface ModelTranslation {
   name: string;
   philosophy: string;
-  questions: QuestionTranslation[];
+  questions: QuestionTranslation[] | Record<string, QuestionTranslation>;
 }
 
 interface LocaleData {
@@ -86,7 +87,7 @@ export type Locale = keyof typeof LOCALES;
 export const RTL_LOCALES: string[] = ["ar", "he"];
 
 const LOCALE_DATA: Record<string, LocaleData> = {
-  fr: frData as LocaleData,
+  fr: frData as unknown as LocaleData,
   en: enData as LocaleData,
   es: esData as LocaleData,
   ht: htData as LocaleData,
@@ -140,7 +141,9 @@ export function translateSections(sections: Section[], locale: string): Section[
       label: mt.name.toUpperCase(),
       subtitle: mt.philosophy,
       stats: section.stats.map((stat, qi) => {
-        const qt = mt.questions[qi];
+        const qt = Array.isArray(mt.questions)
+          ? mt.questions[qi]
+          : mt.questions[stat.key];
         if (!qt) return stat;
 
         const v = qt.verdicts;
@@ -155,6 +158,7 @@ export function translateSections(sections: Section[], locale: string): Section[
         return {
           ...stat,
           label: qt.label,
+          description: qt.description ?? stat.description,
           unit: qt.unit,
           why: qt.why,
           verdicts,

@@ -1,0 +1,72 @@
+{
+  "ask_delay": {
+    "very_low": "Vous activez l'aide presque immédiatement quand le besoin devient clair. Faible friction relationnelle.",
+    "low": "Vous demandez de l'aide assez vite. Une légère hésitation existe, mais elle ne bloque pas l'action.",
+    "average": "Vous ne demandez pas tout de suite. Le besoin est reconnu, puis traversé par un délai normal de doute, de retenue ou d'organisation.",
+    "high": "Vous attendez souvent longtemps avant d'activer de l'aide. Le coût psychique de demander semble important.",
+    "very_high": "Vous avez tendance à retarder l'appel à l'aide jusqu'à la surcharge ou la crise. Le besoin est connu, mais difficile à rendre relationnel."
+  },
+  "epistemic_update_frequency": {
+    "very_low": "Vous exposez rarement publiquement une révision de vos convictions. Cela peut refléter stabilité, rigidité, ou prudence sociale.",
+    "low": "Vous corrigez parfois votre position, mais de façon peu fréquente et sélective.",
+    "average": "Vous êtes capable de reconnaître explicitement une erreur importante quand les faits ou l'expérience l'exigent.",
+    "high": "Vous mettez régulièrement à jour vos convictions de façon visible. L'aveu d'erreur fait partie de votre fonctionnement.",
+    "very_high": "Vous révisiez très souvent publiquement vos positions importantes. Cela peut signaler une forte plasticité intellectuelle, ou un modèle du monde encore très mouvant."
+  },
+  "mortality_frequency": {
+    "very_low": "La mortalité est peu présente dans votre conscience ordinaire. Elle n'organise pas fortement votre semaine.",
+    "low": "La pensée de la mort apparaît par moments, sans devenir un cadre central de lecture du réel.",
+    "average": "La mortalité fait partie de votre horizon mental normal. Elle revient assez pour orienter un peu la perception de la vie.",
+    "high": "La mort est une présence cognitive fréquente. Elle colore activement la semaine et peut influencer les priorités.",
+    "very_high": "La mortalité est très saillante dans votre vie mentale actuelle. Elle agit comme fréquence de fond persistante, parfois lourde ou structurante."
+  },
+  "naming_latency": {
+    "very_low": "L'état interne arrive très vite au langage. Vous identifiez rapidement ce que vous ressentez.",
+    "low": "Vous accédez assez facilement au mot juste. Le passage entre sensation et langage est fluide.",
+    "average": "Vous pouvez nommer votre état, mais avec un petit temps de conversion. L'émotion est accessible sans être instantanément verbalisée.",
+    "high": "Le ressenti existe, mais met du temps à devenir dicible. La conversion vers le langage émotionnel est coûteuse.",
+    "very_high": "Le mot émotionnel tarde fortement à émerger. L'expérience interne semble difficile à capturer verbalement sur le moment."
+  },
+  "admin_friction_hours": {
+    "very_low": "Votre vie demande peu d'énergie administrative pour rester fonctionnelle. Faible frottement avec les systèmes.",
+    "low": "Vous subissez une charge administrative réelle mais contenue. Elle existe sans dominer le mois.",
+    "average": "Une part visible de votre temps est absorbée par la maintenance administrative normale d'une vie adulte.",
+    "high": "Les systèmes prennent une quantité importante de temps et d'attention. La charge de maintien devient structurelle.",
+    "very_high": "Une fraction lourde de votre vie est consommée par la friction administrative. Le simple fait de rester à flot exige beaucoup."
+  },
+  "emergency_reach": {
+    "very_low": "Votre filet de sécurité activable est presque absent. En cas de choc, vous avez peu de relais immédiats.",
+    "low": "Vous avez un soutien d'urgence limité. Quelques liens existent, mais la redondance est faible.",
+    "average": "Vous disposez d'un filet de sécurité réel. En cas de crise, plusieurs appuis plausibles peuvent s'activer.",
+    "high": "Votre capital social opérationnel est solide. Vous pouvez mobiliser plusieurs personnes de façon concrète et rapide.",
+    "very_high": "Votre réseau d'urgence est exceptionnellement dense et activable. Vous n'êtes pas seulement entouré·e, vous êtes secourable rapidement."
+  },
+  "autonomy_buffer_days": {
+    "very_low": "Votre marge d'autonomie matérielle est extrêmement courte. Le moindre choc peut imposer des choix subis.",
+    "low": "Vous avez peu de réserve. Votre capacité à absorber un imprévu ou à refuser une contrainte reste limitée.",
+    "average": "Vous avez un tampon réel mais modéré. Vous pouvez tenir un temps sans effondrement, sans disposer d'une grande liberté.",
+    "high": "Vous disposez d'une bonne marge de manœuvre. Vous pouvez absorber un choc ou dire non sans être immédiatement menacé·e.",
+    "very_high": "Votre optionalité matérielle est forte. Vous avez une vraie capacité de refus, d'attente, ou de réorientation sans urgence."
+  },
+  "future_lock_in_years": {
+    "very_low": "Vos engagements actuels vous laissent une grande réversibilité. Votre trajectoire est encore très ouverte.",
+    "low": "Certaines attaches existent, mais elles ne verrouillent pas fortement vos choix majeurs.",
+    "average": "Votre trajectoire comporte une inertie normale. Des choix passés pèsent, sans rendre le changement impossible.",
+    "high": "Vos obligations actuelles structurent fortement l'avenir proche. Changer de direction a un coût important.",
+    "very_high": "Votre trajectoire est fortement verrouillée par des engagements déjà en place. Les choix passés restreignent lourdement les options futures."
+  },
+  "analog_solitude_capacity": {
+    "very_low": "Sans inputs ni distraction, la régulation interne devient vite difficile. Le silence nu est peu tenable.",
+    "low": "Vous tolérez un certain face-à-face avec vous-même, mais sur une durée courte.",
+    "average": "Vous pouvez rester seul·e, éveillé·e, sans support externe pendant un temps raisonnable sans détresse sévère.",
+    "high": "Votre régulation interne sans béquilles externes est solide. Le silence prolongé reste supportable.",
+    "very_high": "Vous tenez longtemps seul·e, sans appareils ni lecture, sans désorganisation marquée. Forte capacité de maintien interne."
+  },
+  "identity_translation_switches": {
+    "very_low": "Vous traversez peu de contextes qui exigent une adaptation identitaire délibérée, ou vous pouvez rester lisible sans beaucoup vous traduire.",
+    "low": "Quelques ajustements sont nécessaires selon les milieux, mais la taxe de compatibilité reste limitée.",
+    "average": "Vous naviguez régulièrement entre plusieurs mondes sociaux qui demandent un certain travail de traduction.",
+    "high": "Une part importante de votre semaine implique des ajustements de langage, registre, apparence ou comportement pour rester accepté·e ou en sécurité.",
+    "very_high": "Votre vie sociale exige une traduction identitaire fréquente et coûteuse. La compatibilité avec les contextes demande un travail continu."
+  }
+}

@@ -1,425 +1,177 @@
 {
   "ui": {
     "subtitle": "Entre tes données. On te dit à quel point tu es normal·e.",
-    "concept": "On a demandé à 6 IA : choisis 5 questions pour mesurer à quel point un humain est moyen. Voici ce qu'elles ont répondu.",
+    "concept": "3 IA ont chacune une idée de ce qu'est un humain normal. Voici la leur. Et voici tes chiffres.",
     "outOf": "sur 100",
     "aheadOf": "devant {n} personnes sur 100",
     "aheadAlmost": "devant presque tout le monde",
     "behindAlmost": "presque tout le monde est devant",
     "middle": "pile au milieu",
-    "aboveMedian": "Au-dessus de la médiane.",
-    "average": "Dans la moyenne.",
-    "belowMost": "En dessous de la plupart.",
+    "aboveMedian": "Au-dessus de ce qu'on considère normal.",
+    "average": "Dans la norme — selon nous.",
+    "belowMost": "En dessous de ce qu'on estime normal.",
     "clear": "effacer",
     "compositeScore": "SCORE COMPOSITE",
     "data": "DONNÉES",
-    "models": "MODÈLES",
-    "questions": "QUESTIONS",
-    "approx": "DISTRIBUTIONS APPROXIMATIVES",
-    "verdictTop": "Statistiquement, tu n’existes presque pas.",
-    "verdict75": "Au-dessus de la moyenne sur presque tout. Bravo, ou chance.",
+    "models": "FAMILLES",
+    "questions": "EVALS",
+    "approx": "DISTRIBUTIONS ESTIMÉES PAR LES MODÈLES",
+    "verdictTop": "Selon nos normes, tu n'existes presque pas.",
+    "verdict75": "Au-dessus de notre norme sur presque tout.",
     "verdict60": "Légèrement au-dessus. Juste assez pour le mentionner.",
-    "verdict45": "Average. C’est dans le nom.",
+    "verdict45": "Average. C'est dans le nom.",
     "verdict30": "En dessous sur plusieurs axes. Une donnée, pas un jugement.",
-    "verdictLow": "Statistiquement remarquable — par le bas. Ça reste remarquable.",
+    "verdictLow": "Loin de notre norme — par le bas. Ça reste remarquable.",
     "whyQuestion": "pourquoi cette question?"
   },
   "models": [
     {
-      "name": "GPT-5.4 Thinking",
-      "philosophy": "Un humain moyen ne se définit pas par son corps ou son revenu, mais par la forme statistique de sa vie: qui dépend de lui, combien de temps il perd, combien de liens il peut activer.",
-      "questions": [
-        {
-          "label": "Heures de care non payé / semaine",
-          "unit": "heures/semaine",
-          "why": "L’un des plus gros blocs de travail humain invisible.",
+      "name": "Délais",
+      "philosophy": "Le temps que tu mets entre savoir et faire. Entre ressentir et nommer. Entre avoir besoin et demander.",
+      "questions": {
+        "ask_delay": {
+          "label": "Délai avant de demander de l'aide",
+          "description": "La dernière fois que tu avais besoin d'aide et que tu le savais : combien d'heures avant de demander ?",
+          "unit": "heures",
+          "why": "Tout le monde a déjà vécu ce moment : tu sais que t'as besoin d'aide, tu sais à qui demander, et tu ne le fais pas. Ce délai, c'est pas de la paresse — c'est de la friction. Fierté, honte, habitude d'encaisser seul·e, ou juste un environnement où demander a déjà coûté cher.",
           "verdicts": {
-            "high": "Vie orientée vers la responsabilité et l'interdépendance, autonomie souvent amputée.",
-            "above": "Tu portes plus que ta part de charge invisible.",
-            "average": "Un investissement domestique dans la norme.",
-            "below": "Peu de charge de soin — liberté ou solitude, selon.",
-            "low": "Grande liberté de temps ou vie peu enchâssée dans les obligations domestiques."
+            "high": "Tu attends longtemps avant de demander. Par fierté, par habitude, ou parce que dans ton histoire, demander a eu un prix.",
+            "above": "Tu retardes souvent l'appel à l'aide. Tu sais que t'en as besoin, mais tu repousses.",
+            "average": "Tu demandes, mais rarement tout de suite. Un délai normal.",
+            "below": "Tu demandes assez vite. Ton entourage est perçu comme fiable.",
+            "low": "Tu externalises très vite. Bon signe en général — sauf si tu ne peux pas fonctionner sans."
           }
         },
-        {
-          "label": "Personnes dépendantes de ton revenu",
-          "unit": "personnes",
-          "why": "Le revenu seul dit peu; le nombre de vies qu’il soutient change tout.",
+        "epistemic_update_frequency": {
+          "label": "Nombre de fois où t'as dit « j'avais tort »",
+          "description": "Combien de fois en 12 mois t'as dit « j'avais tort » à quelqu'un — sur un truc qui comptait vraiment ?",
+          "unit": "fois par an",
+          "why": "Pas combien de fois t'as changé d'avis dans ta tête. Combien de fois tu l'as dit à quelqu'un. C'est facile de changer d'avis en silence. Le dire, ça coûte quelque chose — et c'est ça qu'on mesure.",
           "verdicts": {
-            "high": "Pilier économique — pression morale et matérielle souvent invisible.",
-            "above": "Plusieurs vies dépendent de ton chèque de paie.",
-            "average": "Une personne à charge, le cas standard.",
-            "below": "Autonome, sans personne à soutenir.",
-            "low": "Grande indépendance matérielle ou position économique trop faible pour soutenir autrui."
+            "high": "Tu changes d'avis souvent et tu le dis. T'as pas peur d'avoir eu tort.",
+            "above": "Tu concèdes plus que la plupart. Signe de souplesse ou d'honnêteté.",
+            "average": "Une ou deux fois par an. Le rythme normal.",
+            "below": "Rare que tu dises « j'avais tort » à voix haute. Stabilité ou rigidité — les deux existent.",
+            "low": "Presque jamais. Soit t'as raison souvent, soit le coût social de l'aveu est trop élevé dans ton milieu."
           }
         },
-        {
-          "label": "Adultes appelables à 3h du matin",
-          "unit": "personnes",
-          "why": "Mesure opérationnelle du capital social réel.",
+        "mortality_frequency": {
+          "label": "Fréquence de pensées sur la mort",
+          "description": "Combien de fois cette semaine t'as pensé à la mort — la tienne, celle des autres, ou juste le fait de mourir ?",
+          "unit": "fois par semaine",
+          "why": "Personne ne pose cette question. C'est pour ça qu'elle est là. Penser à la mort, c'est pas un symptôme — c'est un bruit de fond. Certaines personnes y pensent trois fois par jour, d'autres trois fois par an. Les deux sont normaux. Mais ça change les priorités.",
           "verdicts": {
-            "high": "Capital social dense, confiance réciproque forte.",
-            "above": "Quelques liens solides prêts à décrocher en pleine nuit.",
-            "average": "Deux personnes fiables — c'est déjà beaucoup.",
-            "below": "Un seul filet de sécurité humain.",
-            "low": "Fragilité structurelle, isolement ou rupture de liens."
+            "high": "La mort est souvent là en arrière-plan. Deuil, anxiété, maladie, philosophie — ou juste ta façon de fonctionner.",
+            "above": "Tu y penses plus que la plupart. Ça colore probablement tes choix sans que tu le remarques.",
+            "average": "Quelques fois par semaine. Présent mais pas envahissant.",
+            "below": "Pas trop présent. T'es pris par le quotidien, ou t'es juste pas là-dedans.",
+            "low": "Quasi jamais. La mort est un concept abstrait pour toi, pas un bruit de fond."
           }
         },
-        {
-          "label": "Heures de bureaucratie / mois",
-          "unit": "heures/mois",
-          "why": "Friction entre une personne et les systèmes qui gouvernent sa vie.",
+        "naming_latency": {
+          "label": "Temps pour nommer une émotion",
+          "description": "Ferme les yeux. Lance un chrono. Nomme en un mot ce que tu ressens là, maintenant. Combien de secondes ?",
+          "unit": "secondes",
+          "why": "On ne teste pas si tu ressens quelque chose — évidemment que oui. On teste combien de temps ça prend de mettre un mot dessus. C'est la distance entre ton corps et ton vocabulaire.",
           "verdicts": {
-            "high": "Précarité, maladie, migration ou vie extrêmement administrée.",
-            "above": "La bureaucratie gruge une bonne part de ton temps libre.",
-            "average": "Quelques heures par mois — le frottement normal de la vie adulte.",
-            "below": "Peu de paperasse, tu t'en sors bien.",
-            "low": "Simplicité bureaucratique ou privilège de délégation."
-          }
-        },
-        {
-          "label": "Distance du lieu de naissance",
-          "unit": "kilomètres",
-          "why": "Rapport concret à l’origine: enracinement, exil, mobilité choisie.",
-          "verdicts": {
-            "high": "Rupture biographique, migration ou cosmopolitisme vécu.",
-            "above": "Tu as mis une distance sérieuse entre toi et tes origines.",
-            "average": "Pas très loin — même région, même repères.",
-            "below": "Toujours proche du point de départ.",
-            "low": "Forte continuité locale, attaches denses ou contraintes limitant la mobilité."
+            "high": "Le mot met longtemps à venir. Tu ressens, mais la traduction est lente. Pas grave — mais notable.",
+            "above": "Un peu plus lent que la moyenne. Le contact est là, la mise en mots demande un effort.",
+            "average": "Quelques secondes. Un délai normal entre ressentir et nommer.",
+            "below": "Le mot vient vite. Habitude de t'observer, thérapie, journal, ou pratique contemplative.",
+            "low": "Instantané. Attention : trop rapide peut vouloir dire que le mot est automatique, pas ressenti."
           }
         }
-      ]
+      }
     },
     {
-      "name": "GPT-5.3",
-      "philosophy": "Un humain moyen optimise pour la stabilité. Un humain exceptionnel accumule des écarts mesurables. Ce sont les distributions invisibles qui révèlent une trajectoire.",
-      "questions": [
-        {
-          "label": "Changements d’opinion majeurs / an",
-          "unit": "changements/an",
-          "why": "Plasticité cognitive réelle. Variable dynamique plutôt que statique.",
-          "verdicts": {
-            "high": "Grande adaptabilité ou instabilité cognitive.",
-            "above": "Tu révises tes certitudes plus souvent que la moyenne.",
-            "average": "Un vrai changement d'opinion par an — rythme humain normal.",
-            "below": "Tes convictions sont plutôt stables.",
-            "low": "Rigidité mentale ou forte cohérence interne, selon le contexte."
-          }
-        },
-        {
-          "label": "Minutes de silence pur / jour",
-          "unit": "minutes/jour",
-          "why": "Absence totale de stimulation. Espace mental brut, rarement mesuré.",
-          "verdicts": {
-            "high": "Forte capacité contemplative, créativité ou rumination accrue.",
-            "above": "Tu t'offres plus de silence que la plupart des cerveaux modernes.",
-            "average": "Dix minutes de vide — le minimum contemplatif.",
-            "below": "Peu de pauses sans stimulation dans ta journée.",
-            "low": "Surcharge informationnelle, dépendance à la stimulation externe."
-          }
-        },
-        {
-          "label": "Projets personnels terminés (12 mois)",
-          "unit": "projets/an",
-          "why": "Agentivité sans contrainte. Transformation d’intention en action.",
-          "verdicts": {
-            "high": "Forte discipline et autonomie, possible dispersion créative.",
-            "above": "Tu termines ce que tu commences plus que la moyenne.",
-            "average": "Un projet mené à terme — c'est déjà un acte de volonté.",
-            "below": "Tes projets perso restent en mode brouillon.",
-            "low": "Inertie comportementale ou manque de motivation intrinsèque."
-          }
-        },
-        {
-          "label": "Difficultés volontaires / semaine",
-          "unit": "actions/semaine",
-          "why": "Exposition volontaire répétée à l’inconfort.",
-          "verdicts": {
-            "high": "Tolérance élevée à l'effort et au stress, croissance rapide.",
-            "above": "Tu cherches l'inconfort plus souvent que la majorité.",
-            "average": "Deux défis par semaine — un rythme soutenable.",
-            "below": "Tu restes surtout dans ta zone connue.",
-            "low": "Évitement de l'inconfort, maintien du statu quo."
-          }
-        },
-        {
-          "label": "Révisions de souvenirs / an",
-          "unit": "révisions/an",
-          "why": "Capacité active de relecture de soi.",
-          "verdicts": {
-            "high": "Travail introspectif intense, possible rumination.",
-            "above": "Tu revisites ton passé régulièrement pour le comprendre.",
-            "average": "Quelques retours en arrière par an — introspection normale.",
-            "below": "Tu regardes rarement dans le rétroviseur.",
-            "low": "Faible intégration du passé, identité rigide ou évitement."
-          }
-        }
-      ]
-    },
-    {
-      "name": "Gemini 3 Flash",
-      "philosophy": "L’humain moyen est un nœud de répétitions. L’exceptionnel se définit par sa capacité à s’extraire de l’entropie ambiante.",
-      "questions": [
-        {
-          "label": "Générations avant l’oubli de ton nom",
-          "unit": "Générations",
-          "why": "Empreinte mémorielle projetée, au-delà de l’existence biologique.",
-          "verdicts": {
-            "high": "Bâtisseur de civilisation ou ancêtre d'une lignée mémorielle forte.",
-            "above": "Ton nom résonnera plus longtemps que la plupart.",
-            "average": "Trois générations — l'oubli standard de l'espèce.",
-            "below": "Ta trace s'efface vite après toi.",
-            "low": "Existence ancrée dans le présent, sans volonté de laisser une trace."
-          }
-        },
-        {
-          "label": "Jours / an de dépendance technologique",
-          "unit": "Jours",
-          "why": "Aliénation technique. Fragilité face à l’effondrement systémique.",
-          "verdicts": {
-            "high": "Citadin ultra-spécialisé, vulnérable à la moindre rupture systémique.",
-            "above": "Ta survie dépend massivement de systèmes que tu ne comprends pas.",
-            "average": "Comme presque tout le monde — dépendant 365 jours sur 365.",
-            "below": "Tu sais réparer une partie de ce qui te maintient en vie.",
-            "low": "Autarcie technique relative, maîtrise des fondamentaux de ta subsistance."
-          }
-        },
-        {
-          "label": "Ratio création / consommation",
-          "unit": "Ratio (Création / Consommation)",
-          "why": "Indice de métabolisme créatif.",
-          "verdicts": {
-            "high": "Producteur compulsif, artiste ou artisan dont la vie est une source d'outputs.",
-            "above": "Tu crées plus que la moyenne — ton ratio penche du bon côté.",
-            "average": "5% de création, 95% de consommation — le ratio humain typique.",
-            "below": "Tu consommes bien plus que tu ne produis.",
-            "low": "Consommateur pur, existence principalement en absorption."
-          }
-        },
-        {
-          "label": "Systèmes de signes maîtrisés",
-          "unit": "Systèmes",
-          "why": "Pluralité des cadres logiques: langues, math, code, solfège.",
-          "verdicts": {
-            "high": "Polyglotte cognitif capable de penser en musique, en code et en maths.",
-            "above": "Tu navigues entre plusieurs cadres logiques.",
-            "average": "Un seul système de signes fluide — c'est la norme.",
-            "below": "Pensée structurée par un cadre unique.",
-            "low": "Pensée monoculturelle, limitée par un seul paradigme conceptuel."
-          }
-        },
-        {
-          "label": "Minutes à 80% FC max",
-          "unit": "Minutes",
-          "why": "Volonté biologique pure. Tolérance à l’inconfort viscéral.",
-          "verdicts": {
-            "high": "Résilience mentale et physique hors norme.",
-            "above": "Tu tiens plus longtemps que la majorité dans l'inconfort.",
-            "average": "Huit minutes — le seuil moyen avant que le corps négocie.",
-            "below": "L'effort intense te rattrape vite.",
-            "low": "Faible tolérance à la contrainte physique."
-          }
-        }
-      ]
-    },
-    {
-      "name": "Claude Opus 4.6 (Anthropic)",
-      "philosophy": "La moyenne n’est pas une position — c’est une gravité. Ce qui distingue un humain, c’est la texture de son attention, la profondeur de ses attaches, et son rapport au silence.",
-      "questions": [
-        {
-          "label": "Contacts physiques / jour",
-          "unit": "contacts par jour",
-          "why": "Le toucher est la donnée la plus sous-documentée de l’expérience humaine.",
-          "verdicts": {
-            "high": "Parent de jeune enfant ou relation physiquement expressive — le toucher fréquent est anti-corrélé avec l'anxiété.",
-            "above": "Plus de contact physique que la plupart — ton corps le sait.",
-            "average": "Huit contacts par jour, le rythme standard du toucher humain.",
-            "below": "Peu de contact physique — la famine tactile guette.",
-            "low": "Des millions d'adultes passent des journées entières sans contact physique humain."
-          }
-        },
-        {
-          "label": "Générations d’ancêtres nommés",
-          "unit": "générations",
-          "why": "Capital narratif transmis. Indicateur de continuité culturelle.",
-          "verdicts": {
-            "high": "Tradition orale forte ou capital culturel établi — ancrage dans une lignée consciente.",
-            "above": "Tu remontes plus loin que la plupart dans ton arbre.",
-            "average": "Trois générations — arrière-grands-parents, le seuil commun.",
-            "below": "La mémoire familiale s'arrête vite.",
-            "low": "Souvent lié à l'adoption, la migration forcée ou des ruptures familiales profondes."
-          }
-        },
-        {
-          "label": "Heures éveillées en langue maternelle",
-          "unit": "pourcentage",
-          "why": "Pas combien de langues tu as, mais à quel point tu vis en exil cognitif.",
-          "verdicts": {
-            "high": "Monolingue ou jamais sorti de ton bassin linguistique — confort cognitif maximal.",
-            "above": "Ta langue maternelle domine encore largement ta pensée.",
-            "average": "85% en langue maternelle — un léger exil cognitif au quotidien.",
-            "below": "Tu penses de plus en plus dans une langue apprise.",
-            "low": "Immigrant linguistique complet — tu penses, rêves et travailles dans une langue apprise."
-          }
-        },
-        {
-          "label": "Écritures manuscrites reconnues",
-          "unit": "nombre de personnes",
-          "why": "Proxy d’intimité attentionnelle pré-numérique.",
-          "verdicts": {
-            "high": "Enseignant ou réseau de liens profonds maintenus par l'écrit manuscrit.",
-            "above": "Tu reconnais plus de mains que la moyenne — un lien d'un autre temps.",
-            "average": "Quatre personnes — parents, partenaire, peut-être un ami d'enfance.",
-            "below": "Peu de traces manuscrites dans ta vie.",
-            "low": "De plus en plus courant — vie entièrement médiée par le numérique."
-          }
-        },
-        {
-          "label": "Minutes avant le premier acte libre",
-          "unit": "minutes",
-          "why": "Le délai mesure l’accès au désir propre.",
-          "verdicts": {
-            "high": "Parent solo, aidant ou travailleur précaire — le désir propre est structurellement repoussé.",
-            "above": "Tes matins sont dictés par les obligations avant d'être les tiens.",
-            "average": "45 minutes avant un geste libre — le rythme adulte standard.",
-            "below": "Tu accèdes vite à un moment qui t'appartient.",
-            "low": "Le premier geste du matin est déjà un choix libre."
-          }
-        }
-      ]
-    },
-    {
-      "name": "Gemini Pro",
-      "philosophy": "L’exceptionnalité réside dans la gestion de la friction existentielle: souveraineté temporelle, tolérance à la vulnérabilité, immunité à l’échec.",
-      "questions": [
-        {
-          "label": "Réveils naturels / mois",
-          "unit": "Jours/mois",
-          "why": "Souveraineté temporelle. Richesse vs aliénation au rythme du système.",
-          "verdicts": {
-            "high": "Autonomie temporelle quasi totale — rentier, nomade ou retraité.",
-            "above": "Tu te réveilles sans alarme plus souvent que la plupart.",
-            "average": "Six jours par mois — les week-ends, en gros.",
-            "below": "L'alarme gouverne presque tous tes matins.",
-            "low": "Soumission totale aux contraintes systémiques — ton rythme biologique est dicté."
-          }
-        },
-        {
-          "label": "Détenteur·ices de ton secret honteux",
-          "unit": "Individus",
-          "why": "Capacité à la vulnérabilité radicale face à la honte sociale.",
-          "verdicts": {
-            "high": "Transparence radicale ou absence de filtres sociaux.",
-            "above": "Plusieurs personnes portent tes secrets — tu oses la vulnérabilité.",
-            "average": "Une personne — le confident unique, classique.",
-            "below": "Tes secrets restent verrouillés en toi.",
-            "low": "Isolement psychologique absolu ou façade sociale impénétrable."
-          }
-        },
-        {
-          "label": "Lettres de rejet reçues (vie)",
-          "unit": "Rejets documentés",
-          "why": "Appétit pour le risque face aux systèmes de sélection.",
-          "verdicts": {
-            "high": "Ambition implacable et immunité psychologique à l'échec.",
-            "above": "Tu as encaissé plus de « non » que la moyenne — signe d'audace.",
-            "average": "Cinq rejets — le parcours adulte standard.",
-            "below": "Peu de portes fermées dans ton historique.",
-            "low": "Sécurité absolue, portes ouvertes d'office, ou peur de l'échec empêchant toute tentative."
-          }
-        },
-        {
-          "label": "Âge de la plus vieille personne côtoyée 1h+",
-          "unit": "Années (Âge de la personne)",
-          "why": "Profondeur historique incarnée. Contact direct avec des mémoires d’époques révolues.",
-          "verdicts": {
-            "high": "Pont vivant vers une époque lointaine — transmission intergénérationnelle rare.",
-            "above": "Tu as conversé avec quelqu'un qui a vu un autre siècle.",
-            "average": "82 ans — une conversation avec un grand-parent typique.",
-            "below": "Tes échanges profonds restent dans ta génération élargie.",
-            "low": "Bulle générationnelle stricte, coupée de la mémoire historique directe."
-          }
-        },
-        {
-          "label": "Cicatrices permanentes (> 1 cm)",
-          "unit": "Cicatrices",
-          "why": "Cartographie de la friction physique avec le monde.",
-          "verdicts": {
-            "high": "Vie marquée par le risque physique extrême ou les conditions ardues.",
-            "above": "Ton corps porte plus de marques que la moyenne.",
-            "average": "Trois cicatrices — le vécu physique normal d'une vie.",
-            "below": "Peu de traces sur ton enveloppe.",
-            "low": "Existence physiquement très protégée ou chance biomécanique inhabituelle."
-          }
-        }
-      ]
-    },
-    {
-      "name": "Claude Haiku 4.5",
-      "philosophy": "L’humain moyen construit des habitudes qui fonctionnent. L’exceptionnel reste capable de friction — de dire non, d’abandonner, de pleurer, d’être seul.",
-      "questions": [
-        {
-          "label": "Personnes qui peuvent te dire une vérité difficile",
-          "unit": "nombre de personnes",
-          "why": "Test de fragilité relationnelle. Solidité sous choc.",
-          "verdicts": {
-            "high": "Architecture relationnelle mûre — rare et précieuse.",
-            "above": "Plusieurs personnes peuvent te secouer sans te perdre.",
-            "average": "Une seule personne — le minimum viable de la vérité.",
-            "below": "Tes relations ne supportent pas bien les chocs.",
-            "low": "Isolement émotionnel même dans le couple — fragmentation systématique."
-          }
-        },
-        {
-          "label": "Projets abandonnés (5 ans)",
-          "unit": "nombre",
-          "why": "Mesure d’honnêteté avec tes limites, pas d’ambition.",
-          "verdicts": {
-            "high": "Serial reinventor — tu testes tes limites agressivement.",
-            "above": "Tu sais tuer un projet quand il faut.",
-            "average": "Deux abandons en cinq ans — lucidité normale.",
-            "below": "Tu lâches rarement prise, par ténacité ou par peur.",
-            "low": "Fidélité à tout ce qui commence — vertu ou peur de l'échec."
-          }
-        },
-        {
-          "label": "Heures seul·e sans occupation / mois",
+      "name": "Structure",
+      "philosophy": "La forme concrète de ta vie. Ce qui te tient, ce qui te contraint, ce qui te protège. Des chiffres, pas des ressentis.",
+      "questions": {
+        "admin_friction_hours": {
+          "label": "Heures perdues en administratif",
+          "description": "Combien d'heures par mois tu passes sur de l'administratif obligatoire ? Formulaires, appels, assurances, impôts, banque, visa, litiges, rendez-vous.",
           "unit": "heures par mois",
-          "why": "Le vide tolérable. Peux-tu faire face à toi-même sans amortisseur?",
+          "why": "Le temps que le système te prend juste pour te laisser exister. C'est le coût de maintenance d'une vie — et il varie énormément d'une personne à l'autre. Immigration, maladie, divorce, dette : tout ça se lit dans ce chiffre.",
           "verdicts": {
-            "high": "Contemplation régulière ou solitude imposée.",
-            "above": "Tu tolères plus de vide que la plupart.",
-            "average": "Quatre heures de rien par mois — le strict minimum.",
-            "below": "Le silence te pèse vite.",
-            "low": "Horreur du silence — fuite chronique de soi."
+            "high": "Le système te mange beaucoup de temps. Statut complexe, démarches multiples, ou vie administrativement lourde.",
+            "above": "Plus que la moyenne. La bureaucratie pèse dans ton quotidien.",
+            "average": "Quelques heures par mois. Le frottement normal de la vie adulte.",
+            "below": "Peu de friction. Vie simple administrativement, ou tu délègues bien.",
+            "low": "Presque rien. Situation stable, peu de systèmes à alimenter."
           }
         },
-        {
-          "label": "Joies gratuites / semaine",
-          "unit": "instances par semaine",
-          "why": "Moments où tu es content d’exister, sans résultat ni validation.",
+        "emergency_reach": {
+          "label": "Nombre de personnes que tu peux appeler en urgence",
+          "description": "Combien de personnes tu pourrais appeler maintenant et obtenir, en 24h, un lit pour une nuit ou un prêt d'urgence pour une semaine de bouffe ?",
+          "unit": "personnes",
+          "why": "Pas tes amis Facebook. Pas les gens que t'aimes. Les gens qui décrocheraient à 2h du matin et qui diraient oui. C'est le filet de sécurité réel, pas celui qu'on imagine.",
           "verdicts": {
-            "high": "Pratique contemplative ou rapport résolu au sens de la vie.",
-            "above": "Tu trouves de la joie gratuite plus souvent que la moyenne.",
-            "average": "Trois éclats de joie pure par semaine — le rythme humain.",
-            "below": "La joie sans raison se fait rare.",
-            "low": "Anhedonie possible — vie structurée par la performance sans espace pour l'accidentel."
+            "high": "Plusieurs personnes fiables et activables. T'es bien entouré·e — pour de vrai, pas sur papier.",
+            "above": "Un bon filet. Plusieurs recours réels en cas de crise.",
+            "average": "Deux ou trois personnes. Un filet qui tient, mais sans redondance.",
+            "below": "Une personne, peut-être. Ou un doute sur qui répondrait vraiment.",
+            "low": "Personne de sûr. Isolement réel, ou réseau qui existe en surface mais pas en urgence."
           }
         },
-        {
-          "label": "Domaines de vie notés < 5/10",
-          "unit": "domaines",
-          "why": "Test de lucidité. Quelqu’un qui dit 0 manque de calibrage.",
+        "autonomy_buffer_days": {
+          "label": "Jours de marge financière",
+          "description": "Combien de jours tu pourrais vivre à ton niveau de vie actuel, sans nouveau revenu et sans nouvelle dette ?",
+          "unit": "jours",
+          "why": "C'est pas un solde bancaire — c'est un nombre de jours. Et ce recadrage change tout. 60 jours de marge, c'est la capacité de dire non. 5 jours de marge, c'est l'obligation de dire oui.",
           "verdicts": {
-            "high": "Crise sérieuse ou transparence radicale — douloureux ou très sage.",
-            "above": "Plusieurs zones fragiles, mais tu le vois.",
-            "average": "Un domaine en souffrance — la friction normale d'une vie.",
-            "below": "Presque tout roule, ou presque tout est nié.",
-            "low": "Déni systématique ou vie structurée par le privilège."
+            "high": "Large marge. Tu peux absorber un choc, refuser un truc toxique, prendre ton temps.",
+            "above": "Un bon coussin. Un imprévu ne te met pas en danger.",
+            "average": "Deux mois environ. Un imprévu reste gérable, mais pas deux.",
+            "below": "Marge mince. Un mois difficile peut vite devenir une crise.",
+            "low": "Presque rien. Chaque jour dépend du flux. Peu de latitude pour dire non."
+          }
+        },
+        "future_lock_in_years": {
+          "label": "Années de verrouillage",
+          "description": "Si tu ne changeais rien volontairement à partir de maintenant, pendant combien d'années tes obligations actuelles continueraient à contraindre tes choix ?",
+          "unit": "années",
+          "why": "Hypothèque, garde partagée, études, dette, contrat, visa. Tes choix passés réduisent tes choix futurs. Ce chiffre mesure à quel point ta trajectoire est déjà écrite.",
+          "verdicts": {
+            "high": "Beaucoup d'inertie. Tes engagements passés pèsent longtemps sur tes options.",
+            "above": "Plusieurs années de contrainte devant toi. La trajectoire est engagée.",
+            "average": "Quelques années. Le verrouillage normal d'une vie adulte.",
+            "below": "Peu de contraintes à long terme. Tu pourrais changer de cap sans casse majeure.",
+            "low": "Très fluide. Peu d'attaches structurelles — liberté ou instabilité, selon le reste du profil."
           }
         }
-      ]
+      }
+    },
+    {
+      "name": "Interface",
+      "philosophy": "Ce qui se passe entre toi et le monde extérieur. Comment tu gères le silence, le regard des autres, et les contextes qui te demandent de changer de version de toi.",
+      "questions": {
+        "analog_solitude_capacity": {
+          "label": "Durée max seul·e sans écran ni livre",
+          "description": "C'est quoi la plus longue durée que t'as passée seul·e, éveillé·e, sans écran, sans livre, sans rien — sans que ça devienne difficile ?",
+          "unit": "heures",
+          "why": "Pas la solitude choisie avec un bon livre et du thé. La solitude brute. Juste toi et ta tête. Combien de temps tu tiens avant que le silence devienne inconfortable ? Ce chiffre dit quelque chose sur ta capacité à être avec toi-même sans aide extérieure.",
+          "verdicts": {
+            "high": "Tu tiens longtemps seul·e avec ta propre tête. Bonne régulation interne.",
+            "above": "Au-dessus de la moyenne. Le silence ne te pèse pas trop vite.",
+            "average": "Deux à trois heures. Après, le besoin de stimuli arrive.",
+            "below": "Le silence pèse assez vite. T'as besoin d'inputs pour te sentir bien.",
+            "low": "Très peu de tolérance au vide. Le silence seul devient vite inconfortable."
+          }
+        },
+        "identity_translation_switches": {
+          "label": "Nombre de contextes où tu changes de version de toi",
+          "description": "Dans combien de contextes différents par semaine tu changes délibérément ta façon de parler, ton accent, ton registre, ton apparence ou ton comportement — pour être accepté·e, compris·e, ou en sécurité ?",
+          "unit": "contextes par semaine",
+          "why": "Certaines personnes sont les mêmes partout. D'autres doivent se traduire dix fois par jour — entre la langue du bureau, celle de la maison, celle du quartier, celle de l'administration. C'est un coût invisible. Ce chiffre le rend visible.",
+          "verdicts": {
+            "high": "Tu te traduis en permanence. Beaucoup de mondes, beaucoup de versions de toi. C'est un travail constant.",
+            "above": "Plusieurs contextes par semaine où tu ajustes qui tu es. Navigation interculturelle probable.",
+            "average": "Quelques ajustements. Le minimum de la vie sociale adulte.",
+            "below": "Peu de traduction nécessaire. Tes milieux se ressemblent, ou tu es en sécurité partout.",
+            "low": "Tu es le/la même partout. Environnement homogène ou très grande sécurité identitaire."
+          }
+        }
+      }
     }
   ]
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
-import allModels from "@/data.json";
+import allModels from "@/evals.json";
 import analysisData from "@/analysis.json";
 import {
   buildSections,
@@ -24,14 +24,14 @@ import {
   translateSections,
 } from "@/lib/i18n";
 
-// ─── Build base sections (French, from data.json) ──────
+// ─── Build base sections (French, from evals.json) ─────
 
 const BASE_SECTIONS = buildSections(allModels as ModelData[]);
 
 // ─── Analysis helper ───────────────────────────────────
 
 interface VerdictLevels { high: string; above: string; average: string; below: string; low: string }
-interface ModelAnalysis { section: VerdictLevels; composite: VerdictLevels; questions: Record<string, VerdictLevels> }
+interface ModelAnalysis { section?: VerdictLevels; composite?: VerdictLevels; questions?: Record<string, VerdictLevels> }
 const ANALYSIS = analysisData as Record<string, ModelAnalysis>;
 
 function pickVerdict(levels: VerdictLevels | undefined, score: number): string {
@@ -191,9 +191,14 @@ function StatRow({ stat, value, onChange, result, locale }: { stat: Stat; value:
   return (
     <div className="stat-card">
       {/* Question title */}
-      <h3 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: "clamp(22px, 4vw, 28px)", fontWeight: 400, color: "#1a1a1a", lineHeight: 1.3, marginBottom: 20 }}>
+      <h3 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: "clamp(22px, 4vw, 28px)", fontWeight: 400, color: "#1a1a1a", lineHeight: 1.3, marginBottom: stat.description ? 8 : 20 }}>
         {stat.label}
       </h3>
+      {stat.description && (
+        <p style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 13, color: "#888", lineHeight: 1.6, marginBottom: 20 }}>
+          {stat.description}
+        </p>
+      )}
 
       {/* Input: slider/pills + value display */}
       {(stat.inputType === "slider" || stat.inputType === "freeform") && (
@@ -324,13 +329,32 @@ function SectionSummaryBar({ section, avg }: { section: Section; avg: number }) 
   );
 }
 
-function Summary({ sections, results, locale }: { sections: Section[]; results: Record<string, number | null>; locale: string }) {
+function Summary({ sections, results, values, locale }: { sections: Section[]; results: Record<string, number | null>; values: Record<string, string>; locale: string }) {
   const allStats = sections.flatMap((s) => s.stats);
   const filled = Object.entries(results).filter((e): e is [string, number] => e[1] !== null);
   if (filled.length < 2) return null;
 
   const ui = getUI(locale);
   const avg = filled.reduce((s, [, v]) => s + v * 100, 0) / filled.length;
+
+  // Compute per-model composite scores using each model's own medians
+  const modelScores: Record<string, number> = {};
+  const modelAnalysisKeys = Object.keys(ANALYSIS).filter((k) => ANALYSIS[k].composite);
+  for (const modelKey of modelAnalysisKeys) {
+    let total = 0;
+    let count = 0;
+    for (const stat of allStats) {
+      const raw = values[stat.id];
+      if (!raw) continue;
+      const num = parseFloat(raw.replace(/\s/g, ""));
+      if (isNaN(num) || num < stat.min || num > stat.max) continue;
+      const calcFn = stat.calcs[modelKey];
+      if (!calcFn) continue;
+      total += Math.max(0, Math.min(1, calcFn(num))) * 100;
+      count++;
+    }
+    if (count >= 2) modelScores[modelKey] = total / count;
+  }
 
   const sectionAverages = sections.map((section) => {
     const sectionFilled = filled.filter(([id]) => section.stats.some((s) => s.id === id));
@@ -362,16 +386,24 @@ function Summary({ sections, results, locale }: { sections: Section[]; results: 
         </div>
       )}
 
-      {/* Composite analysis — each model's take */}
+      {/* Each model's verdict — using its own score */}
       <div style={{ maxWidth: 520, margin: "0 auto 40px" }}>
         {Object.entries(ANALYSIS).map(([key, a]) => {
-          const insight = pickVerdict(a.composite, avg);
+          if (!a.composite) return null;
+          const score = modelScores[key];
+          if (score === undefined) return null;
+          const insight = pickVerdict(a.composite, score);
           if (!insight) return null;
           return (
             <div key={key} style={{ marginBottom: 16, padding: "12px 16px", background: "#faf9f7", borderRadius: 10, border: "1px solid #e8e4de" }}>
-              <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, color: "#bbb", letterSpacing: 1 }}>
-                {key.toUpperCase().replace(/-/g, " ")}
-              </span>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+                <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, color: "#bbb", letterSpacing: 1 }}>
+                  {key.toUpperCase().replace(/-/g, " ")}
+                </span>
+                <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 13, fontWeight: 600, color: "#1a1a1a" }}>
+                  {Math.round(score)}
+                </span>
+              </div>
               <p style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 13, color: "#666", fontStyle: "italic", lineHeight: 1.5, marginTop: 4 }}>
                 {insight}
               </p>
@@ -552,7 +584,7 @@ export default function Home() {
             </div>
           ))}
 
-          <Summary sections={sections} results={results} locale={locale} />
+          <Summary sections={sections} results={results} values={values} locale={locale} />
 
           {/* Footer */}
           <div style={{ marginTop: 72, fontSize: 10, color: "#ccc", fontFamily: "'IBM Plex Mono', monospace", letterSpacing: 1.5, textAlign: "center", lineHeight: 2 }}>
