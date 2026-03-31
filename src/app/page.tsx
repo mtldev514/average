@@ -382,7 +382,7 @@ function Summary({ sections, results, values, locale }: { sections: Section[]; r
 // ─── Page ──────────────────────────────────────────────
 
 export default function Home() {
-  const [locale, setLocale] = useState("fr");
+  const [locale, setLocale] = useState("en");
   const [values, setValues] = useState<Record<string, string>>({});
   const [results, setResults] = useState<Record<string, number | null>>({});
 
