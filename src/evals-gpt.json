@@ -1,72 +1,160 @@
 {
-  "ask_delay": {
-    "very_low": "Vous activez l'aide presque immédiatement quand le besoin devient clair. Faible friction relationnelle.",
-    "low": "Vous demandez de l'aide assez vite. Une légère hésitation existe, mais elle ne bloque pas l'action.",
-    "average": "Vous ne demandez pas tout de suite. Le besoin est reconnu, puis traversé par un délai normal de doute, de retenue ou d'organisation.",
-    "high": "Vous attendez souvent longtemps avant d'activer de l'aide. Le coût psychique de demander semble important.",
-    "very_high": "Vous avez tendance à retarder l'appel à l'aide jusqu'à la surcharge ou la crise. Le besoin est connu, mais difficile à rendre relationnel."
+  "questions": {
+    "ask_delay": {
+      "median": 24,
+      "amplitude": 18,
+      "verdicts": {
+        "high": "Très au-dessus de la médiane. Vous retardez fortement la demande d'aide. Le besoin est connu, mais difficile à rendre relationnel.",
+        "above": "Au-dessus de la médiane. Vous attendez souvent longtemps avant d'activer de l'aide. Le coût psychique de demander semble important.",
+        "average": "Proche de la médiane. Vous ne demandez pas immédiatement, mais le délai entre besoin perçu et demande reste dans une zone humaine courante.",
+        "below": "En dessous de la médiane. Vous demandez de l'aide assez vite une fois le besoin reconnu. Une légère retenue existe, sans bloquer l'action.",
+        "low": "Très en dessous de la médiane. Vous activez rapidement l'aide quand le besoin devient clair. Faible friction d'activation relationnelle."
+      }
+    },
+    "epistemic_update_frequency": {
+      "median": 1,
+      "amplitude": 1,
+      "verdicts": {
+        "high": "Très au-dessus de la médiane. Vous rendez souvent visibles vos révisions de conviction. L'aveu explicite d'erreur fait clairement partie de votre fonctionnement.",
+        "above": "Au-dessus de la médiane. Vous dites assez régulièrement à d'autres que vous aviez tort sur des sujets importants. Votre auto-correction est socialement active.",
+        "average": "Proche de la médiane. Vous savez reconnaître et dire une erreur importante, mais cela reste occasionnel.",
+        "below": "En dessous de la médiane. Vous exposez rarement vos révisions de conviction à d'autres. L'aveu existe, mais peu souvent.",
+        "low": "Très en dessous de la médiane. Vous rendez très rarement visible le fait d'avoir eu tort. Cela peut refléter prudence, rigidité, ou coût social élevé de l'aveu."
+      }
+    },
+    "mortality_frequency": {
+      "median": 1,
+      "amplitude": 2,
+      "verdicts": {
+        "high": "Très au-dessus de la médiane. La mortalité est une fréquence de fond insistante dans votre vie mentale actuelle. Elle agit comme présence structurante.",
+        "above": "Au-dessus de la médiane. La mort est cognitivement présente de façon fréquente. Elle colore vos pensées et peut réorienter vos priorités.",
+        "average": "Proche de la médiane. La mortalité fait partie de votre horizon mental normal sans dominer massivement votre semaine.",
+        "below": "En dessous de la médiane. La pensée de la mort apparaît par moments, mais reste périphérique.",
+        "low": "Très en dessous de la médiane. La mortalité est peu saillante dans votre conscience ordinaire. Elle n'organise pas fortement votre perception récente."
+      }
+    },
+    "naming_latency": {
+      "median": 4,
+      "amplitude": 3,
+      "verdicts": {
+        "high": "Très au-dessus de la médiane. Le ressenti tarde fortement à devenir mot. L'expérience interne semble difficile à capturer verbalement sur le moment.",
+        "above": "Au-dessus de la médiane. Votre état interne met du temps à devenir dicible. Le passage du ressenti au langage paraît coûteux.",
+        "average": "Proche de la médiane. Vous pouvez nommer ce que vous ressentez avec un léger temps de conversion, sans blocage majeur.",
+        "below": "En dessous de la médiane. Vous accédez assez facilement au mot juste. La conversion entre sensation et langage est plutôt fluide.",
+        "low": "Très en dessous de la médiane. L'état interne arrive très vite au langage. Vous identifiez rapidement ce que vous ressentez."
+      }
+    },
+    "admin_friction_hours": {
+      "median": 4,
+      "amplitude": 3,
+      "verdicts": {
+        "high": "Très au-dessus de la médiane. Une part lourde de votre vie est consommée par la friction administrative. Le simple maintien de la vie courante coûte beaucoup.",
+        "above": "Au-dessus de la médiane. Les systèmes prennent une quantité importante de temps et d'attention. La charge de maintien devient structurelle.",
+        "average": "Proche de la médiane. Une part visible mais ordinaire de votre temps est absorbée par la maintenance administrative d'une vie adulte.",
+        "below": "En dessous de la médiane. Vous subissez une charge administrative réelle mais contenue.",
+        "low": "Très en dessous de la médiane. Votre vie demande peu d'énergie administrative pour rester fonctionnelle. Faible frottement avec les systèmes."
+      }
+    },
+    "emergency_reach": {
+      "median": 2,
+      "amplitude": 1,
+      "verdicts": {
+        "high": "Très au-dessus de la médiane. Votre réseau d'urgence est exceptionnellement dense et activable. En cas de crise, vous disposez d'un capital social opérationnel fort.",
+        "above": "Au-dessus de la médiane. Vous pouvez mobiliser plusieurs personnes de façon concrète et rapide en situation d'urgence.",
+        "average": "Proche de la médiane. Vous disposez d'un filet de sécurité réel, avec quelques relais plausibles activables.",
+        "below": "En dessous de la médiane. Votre soutien d'urgence existe, mais reste limité et peu redondant.",
+        "low": "Très en dessous de la médiane. Votre filet de sécurité activable est presque absent. En cas de choc, vous avez très peu de relais concrets immédiats."
+      }
+    },
+    "autonomy_buffer_days": {
+      "median": 30,
+      "amplitude": 20,
+      "verdicts": {
+        "high": "Très au-dessus de la médiane. Votre optionalité matérielle est forte. Vous avez une vraie capacité à attendre, refuser ou vous réorienter sans urgence.",
+        "above": "Au-dessus de la médiane. Vous disposez d'une bonne marge de manœuvre matérielle et pouvez absorber un choc sans menace immédiate.",
+        "average": "Proche de la médiane. Vous avez un tampon réel mais modéré. Vous pouvez tenir un temps sans disposer d'une grande liberté stratégique.",
+        "below": "En dessous de la médiane. Votre réserve est limitée. Votre capacité à encaisser un imprévu ou à dire non reste réduite.",
+        "low": "Très en dessous de la médiane. Votre marge d'autonomie matérielle est extrêmement courte. Le moindre choc peut imposer des choix subis."
+      }
+    },
+    "future_lock_in_years": {
+      "median": 3,
+      "amplitude": 2,
+      "verdicts": {
+        "high": "Très au-dessus de la médiane. Votre trajectoire est fortement verrouillée par des engagements déjà en place. Les choix passés restreignent lourdement les options futures.",
+        "above": "Au-dessus de la médiane. Vos obligations actuelles structurent fortement l'avenir proche. Changer de direction a un coût important.",
+        "average": "Proche de la médiane. Votre trajectoire comporte une inertie normale. Des choix passés pèsent, sans rendre le changement exceptionnellement difficile.",
+        "below": "En dessous de la médiane. Certaines attaches existent, mais elles laissent encore une bonne réversibilité.",
+        "low": "Très en dessous de la médiane. Vos engagements actuels laissent une trajectoire très ouverte. Peu d'obligations verrouillent fortement vos choix futurs."
+      }
+    },
+    "analog_solitude_capacity": {
+      "median": 2,
+      "amplitude": 1.5,
+      "verdicts": {
+        "high": "Très au-dessus de la médiane. Vous tenez longtemps seul·e, éveillé·e, sans inputs ni support externe, sans désorganisation marquée. Forte régulation interne.",
+        "above": "Au-dessus de la médiane. Votre capacité de maintien interne sans béquilles externes est solide. Le silence prolongé reste supportable.",
+        "average": "Proche de la médiane. Vous pouvez rester seul·e sans support externe pendant un temps raisonnable sans détresse sévère.",
+        "below": "En dessous de la médiane. Vous tolérez un certain face-à-face avec vous-même, mais sur une durée courte.",
+        "low": "Très en dessous de la médiane. Sans distraction ni support externe, la régulation interne devient vite difficile. Le silence nu est peu tenable."
+      }
+    },
+    "identity_translation_switches": {
+      "median": 3,
+      "amplitude": 2,
+      "verdicts": {
+        "high": "Très au-dessus de la médiane. Votre vie sociale exige une traduction identitaire fréquente et coûteuse. La compatibilité avec les contextes demande un travail continu.",
+        "above": "Au-dessus de la médiane. Une part importante de votre semaine implique des ajustements de langage, registre, apparence ou comportement pour rester accepté·e ou en sécurité.",
+        "average": "Proche de la médiane. Vous naviguez régulièrement entre plusieurs mondes sociaux qui demandent un certain travail de traduction de soi.",
+        "below": "En dessous de la médiane. Quelques adaptations sont nécessaires selon les contextes, mais la taxe de compatibilité reste limitée.",
+        "low": "Très en dessous de la médiane. Vous traversez peu de contextes exigeant une adaptation identitaire délibérée, ou vous pouvez rester lisible sans beaucoup vous traduire."
+      }
+    }
   },
-  "epistemic_update_frequency": {
-    "very_low": "Vous exposez rarement publiquement une révision de vos convictions. Cela peut refléter stabilité, rigidité, ou prudence sociale.",
-    "low": "Vous corrigez parfois votre position, mais de façon peu fréquente et sélective.",
-    "average": "Vous êtes capable de reconnaître explicitement une erreur importante quand les faits ou l'expérience l'exigent.",
-    "high": "Vous mettez régulièrement à jour vos convictions de façon visible. L'aveu d'erreur fait partie de votre fonctionnement.",
-    "very_high": "Vous révisiez très souvent publiquement vos positions importantes. Cela peut signaler une forte plasticité intellectuelle, ou un modèle du monde encore très mouvant."
+  "categories": {
+    "Délais": {
+      "median": 0,
+      "amplitude": 1,
+      "verdicts": {
+        "high": "Très au-dessus de la médiane. Votre rapport au temps interne est marqué par de fortes latences, une saillance mentale élevée et un coût important de conversion entre savoir, ressentir, nommer et agir.",
+        "above": "Au-dessus de la médiane. Les délais entre perception, formulation et action semblent plus lourds que la moyenne. Votre temporalité interne paraît chargée.",
+        "average": "Proche de la médiane. Votre rapport au temps psychique et à la conversion entre état interne et action se situe dans une zone humaine courante.",
+        "below": "En dessous de la médiane. Les passages entre ressentir, comprendre, nommer et agir semblent relativement fluides et peu coûteux.",
+        "low": "Très en dessous de la médiane. Votre temporalité interne paraît fluide. Vous transformez assez directement l'expérience en mot, en décision ou en demande."
+      }
+    },
+    "Structure": {
+      "median": 0,
+      "amplitude": 1,
+      "verdicts": {
+        "high": "Très au-dessus de la médiane. La forme concrète de votre vie est fortement contrainte. Frottement système, faible optionalité et inertie de trajectoire pèsent lourdement.",
+        "above": "Au-dessus de la médiane. Votre vie semble plus exposée que la moyenne à la contrainte matérielle, à la friction administrative ou au verrouillage structurel.",
+        "average": "Proche de la médiane. Votre niveau de protection, de contrainte et de marge de manœuvre matérielle se situe dans une zone ordinaire.",
+        "below": "En dessous de la médiane. Votre vie paraît relativement souple sur le plan matériel et structurel. Les protections et marges semblent correctes.",
+        "low": "Très en dessous de la médiane. Vous semblez bénéficier d'une vie structurellement légère : peu de friction système, bonne optionalité et filet de sécurité solide."
+      }
+    },
+    "Interface": {
+      "median": 0,
+      "amplitude": 1,
+      "verdicts": {
+        "high": "Très au-dessus de la médiane. L'interface entre vous et le monde paraît coûteuse. Le maintien interne sans support et la compatibilité sociale demandent un travail important.",
+        "above": "Au-dessus de la médiane. Vos contextes sociaux et votre régulation sans béquilles externes semblent plus exigeants que la moyenne.",
+        "average": "Proche de la médiane. Votre rapport au silence, aux autres et aux contextes sociaux se situe dans une zone humaine courante.",
+        "below": "En dessous de la médiane. L'interface avec le monde paraît relativement peu coûteuse. Vous supportez assez bien le silence et naviguez les contextes avec une taxe limitée.",
+        "low": "Très en dessous de la médiane. Votre rapport au monde extérieur semble souple : bonne stabilité sans inputs et faible nécessité de vous traduire pour rester lisible ou en sécurité."
+      }
+    }
   },
-  "mortality_frequency": {
-    "very_low": "La mortalité est peu présente dans votre conscience ordinaire. Elle n'organise pas fortement votre semaine.",
-    "low": "La pensée de la mort apparaît par moments, sans devenir un cadre central de lecture du réel.",
-    "average": "La mortalité fait partie de votre horizon mental normal. Elle revient assez pour orienter un peu la perception de la vie.",
-    "high": "La mort est une présence cognitive fréquente. Elle colore activement la semaine et peut influencer les priorités.",
-    "very_high": "La mortalité est très saillante dans votre vie mentale actuelle. Elle agit comme fréquence de fond persistante, parfois lourde ou structurante."
-  },
-  "naming_latency": {
-    "very_low": "L'état interne arrive très vite au langage. Vous identifiez rapidement ce que vous ressentez.",
-    "low": "Vous accédez assez facilement au mot juste. Le passage entre sensation et langage est fluide.",
-    "average": "Vous pouvez nommer votre état, mais avec un petit temps de conversion. L'émotion est accessible sans être instantanément verbalisée.",
-    "high": "Le ressenti existe, mais met du temps à devenir dicible. La conversion vers le langage émotionnel est coûteuse.",
-    "very_high": "Le mot émotionnel tarde fortement à émerger. L'expérience interne semble difficile à capturer verbalement sur le moment."
-  },
-  "admin_friction_hours": {
-    "very_low": "Votre vie demande peu d'énergie administrative pour rester fonctionnelle. Faible frottement avec les systèmes.",
-    "low": "Vous subissez une charge administrative réelle mais contenue. Elle existe sans dominer le mois.",
-    "average": "Une part visible de votre temps est absorbée par la maintenance administrative normale d'une vie adulte.",
-    "high": "Les systèmes prennent une quantité importante de temps et d'attention. La charge de maintien devient structurelle.",
-    "very_high": "Une fraction lourde de votre vie est consommée par la friction administrative. Le simple fait de rester à flot exige beaucoup."
-  },
-  "emergency_reach": {
-    "very_low": "Votre filet de sécurité activable est presque absent. En cas de choc, vous avez peu de relais immédiats.",
-    "low": "Vous avez un soutien d'urgence limité. Quelques liens existent, mais la redondance est faible.",
-    "average": "Vous disposez d'un filet de sécurité réel. En cas de crise, plusieurs appuis plausibles peuvent s'activer.",
-    "high": "Votre capital social opérationnel est solide. Vous pouvez mobiliser plusieurs personnes de façon concrète et rapide.",
-    "very_high": "Votre réseau d'urgence est exceptionnellement dense et activable. Vous n'êtes pas seulement entouré·e, vous êtes secourable rapidement."
-  },
-  "autonomy_buffer_days": {
-    "very_low": "Votre marge d'autonomie matérielle est extrêmement courte. Le moindre choc peut imposer des choix subis.",
-    "low": "Vous avez peu de réserve. Votre capacité à absorber un imprévu ou à refuser une contrainte reste limitée.",
-    "average": "Vous avez un tampon réel mais modéré. Vous pouvez tenir un temps sans effondrement, sans disposer d'une grande liberté.",
-    "high": "Vous disposez d'une bonne marge de manœuvre. Vous pouvez absorber un choc ou dire non sans être immédiatement menacé·e.",
-    "very_high": "Votre optionalité matérielle est forte. Vous avez une vraie capacité de refus, d'attente, ou de réorientation sans urgence."
-  },
-  "future_lock_in_years": {
-    "very_low": "Vos engagements actuels vous laissent une grande réversibilité. Votre trajectoire est encore très ouverte.",
-    "low": "Certaines attaches existent, mais elles ne verrouillent pas fortement vos choix majeurs.",
-    "average": "Votre trajectoire comporte une inertie normale. Des choix passés pèsent, sans rendre le changement impossible.",
-    "high": "Vos obligations actuelles structurent fortement l'avenir proche. Changer de direction a un coût important.",
-    "very_high": "Votre trajectoire est fortement verrouillée par des engagements déjà en place. Les choix passés restreignent lourdement les options futures."
-  },
-  "analog_solitude_capacity": {
-    "very_low": "Sans inputs ni distraction, la régulation interne devient vite difficile. Le silence nu est peu tenable.",
-    "low": "Vous tolérez un certain face-à-face avec vous-même, mais sur une durée courte.",
-    "average": "Vous pouvez rester seul·e, éveillé·e, sans support externe pendant un temps raisonnable sans détresse sévère.",
-    "high": "Votre régulation interne sans béquilles externes est solide. Le silence prolongé reste supportable.",
-    "very_high": "Vous tenez longtemps seul·e, sans appareils ni lecture, sans désorganisation marquée. Forte capacité de maintien interne."
-  },
-  "identity_translation_switches": {
-    "very_low": "Vous traversez peu de contextes qui exigent une adaptation identitaire délibérée, ou vous pouvez rester lisible sans beaucoup vous traduire.",
-    "low": "Quelques ajustements sont nécessaires selon les milieux, mais la taxe de compatibilité reste limitée.",
-    "average": "Vous naviguez régulièrement entre plusieurs mondes sociaux qui demandent un certain travail de traduction.",
-    "high": "Une part importante de votre semaine implique des ajustements de langage, registre, apparence ou comportement pour rester accepté·e ou en sécurité.",
-    "very_high": "Votre vie sociale exige une traduction identitaire fréquente et coûteuse. La compatibilité avec les contextes demande un travail continu."
+  "test": {
+    "median": 0,
+    "amplitude": 1,
+    "verdicts": {
+      "high": "Très au-dessus de la médiane. Votre forme de vie semble marquée par des coûts élevés de conversion, de contrainte et de compatibilité. Le benchmark décrit une existence nettement plus chargée que la moyenne.",
+      "above": "Au-dessus de la médiane. Plusieurs dimensions de votre vie paraissent plus tendues, contraintes ou coûteuses que chez l'humain médian.",
+      "average": "Proche de la médiane. Votre profil global se situe dans une zone humaine courante : ni particulièrement protégé, ni particulièrement sous charge sur l'ensemble des axes.",
+      "below": "En dessous de la médiane. Votre vie semble relativement moins contrainte, moins coûteuse ou plus fluide que la moyenne sur plusieurs dimensions.",
+      "low": "Très en dessous de la médiane. Le benchmark décrit une forme de vie exceptionnellement légère, souple ou protégée par rapport au point médian humain."
+    }
   }
 }

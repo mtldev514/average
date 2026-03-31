@@ -1,425 +1,177 @@
 {
   "ui": {
     "subtitle": "Enter your data. We'll tell you how normal you are.",
-    "concept": "We asked 6 AIs: pick 5 questions to measure how average a human is. Here's what they answered.",
+    "concept": "3 AIs each have their own idea of what a normal human looks like. Here's theirs. And here are your numbers.",
     "outOf": "out of 100",
     "aheadOf": "ahead of {n} people out of 100",
     "aheadAlmost": "ahead of almost everyone",
     "behindAlmost": "almost everyone is ahead",
     "middle": "right in the middle",
-    "aboveMedian": "Above the median.",
-    "average": "Average.",
-    "belowMost": "Below most.",
+    "aboveMedian": "Above what we consider normal.",
+    "average": "Within the norm — according to us.",
+    "belowMost": "Below what we consider normal.",
     "clear": "clear",
     "compositeScore": "COMPOSITE SCORE",
     "data": "DATA",
-    "models": "MODELS",
-    "questions": "QUESTIONS",
-    "approx": "APPROXIMATE DISTRIBUTIONS",
-    "verdictTop": "Statistically, you barely exist.",
-    "verdict75": "Above average on almost everything. Impressive, or lucky.",
+    "models": "FAMILIES",
+    "questions": "EVALS",
+    "approx": "MODEL-ESTIMATED DISTRIBUTIONS",
+    "verdictTop": "By our standards, you barely exist.",
+    "verdict75": "Above our norm on almost everything.",
     "verdict60": "Slightly above. Just enough to mention.",
     "verdict45": "Average. It's in the name.",
     "verdict30": "Below on several axes. A data point, not a judgment.",
-    "verdictLow": "Statistically remarkable — from the bottom. Still remarkable.",
+    "verdictLow": "Far from our norm — from the bottom. Still remarkable.",
     "whyQuestion": "why this question?"
   },
   "models": [
     {
-      "name": "GPT-5.4 Thinking",
-      "philosophy": "An average human isn't defined by body or income alone, but by the statistical shape of their life: who depends on them, how much time they lose, how many bonds they can activate.",
-      "questions": [
-        {
-          "label": "Unpaid care hours per week",
-          "unit": "hours/week",
-          "why": "One of the biggest invisible blocks of human labor.",
+      "name": "Delays",
+      "philosophy": "The time you take between knowing and doing. Between feeling and naming. Between needing and asking.",
+      "questions": {
+        "ask_delay": {
+          "label": "Delay before asking for help",
+          "description": "Last time you needed help and you knew it: how many hours before you actually asked?",
+          "unit": "hours",
+          "why": "Everyone's been there: you know you need help, you know who to ask, and you don't do it. That delay isn't laziness — it's friction. Pride, shame, a habit of toughing it out, or just an environment where asking has already cost you.",
           "verdicts": {
-            "high": "Life oriented toward responsibility, autonomy amputated by care.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "Great time freedom, or few domestic obligations."
+            "high": "You wait a long time before asking. Out of pride, habit, or because in your experience, asking has come at a price.",
+            "above": "You often delay reaching out. You know you need it, but you keep pushing it back.",
+            "average": "You ask, but rarely right away. A normal delay.",
+            "below": "You ask fairly quickly. Your circle feels reliable to you.",
+            "low": "You externalize very fast. Usually a good sign — unless you can't function without it."
           }
         },
-        {
-          "label": "People dependent on your income",
-          "unit": "people",
-          "why": "Income says little; the number of lives it supports changes everything.",
+        "epistemic_update_frequency": {
+          "label": "Times you've said 'I was wrong'",
+          "description": "How many times in 12 months have you told someone 'I was wrong' — about something that actually mattered?",
+          "unit": "times per year",
+          "why": "Not how many times you changed your mind silently. How many times you said it out loud to someone. Changing your mind in private is easy. Saying it costs something — and that's what we're measuring.",
           "verdicts": {
-            "high": "Economic pillar, invisible pressure.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "Great material independence."
+            "high": "You change your mind often and you say it. You're not afraid of having been wrong.",
+            "above": "You concede more than most. A sign of flexibility or honesty.",
+            "average": "Once or twice a year. The normal pace.",
+            "below": "Rare that you say 'I was wrong' out loud. Stability or rigidity — both exist.",
+            "low": "Almost never. Either you're right a lot, or the social cost of admitting it is too high in your world."
           }
         },
-        {
-          "label": "Adults you could call at 3am",
-          "unit": "people",
-          "why": "Operational measure of real social capital.",
+        "mortality_frequency": {
+          "label": "How often you think about death",
+          "description": "How many times this week have you thought about death — yours, someone else's, or just the fact of dying?",
+          "unit": "times per week",
+          "why": "Nobody asks this question. That's why it's here. Thinking about death isn't a symptom — it's background noise. Some people think about it three times a day, others three times a year. Both are normal. But it changes your priorities.",
           "verdicts": {
-            "high": "Dense social capital, strong reciprocal trust.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "Structural fragility, isolation."
+            "high": "Death is often there in the background. Grief, anxiety, illness, philosophy — or just how you're wired.",
+            "above": "You think about it more than most. It probably colors your choices without you noticing.",
+            "average": "A few times a week. Present but not overwhelming.",
+            "below": "Not much on your mind. You're caught up in daily life, or it's just not your thing.",
+            "low": "Almost never. Death is an abstract concept for you, not background noise."
           }
         },
-        {
-          "label": "Bureaucracy hours per month",
-          "unit": "hours/month",
-          "why": "Friction between a person and the systems governing their life.",
+        "naming_latency": {
+          "label": "Time to name an emotion",
+          "description": "Close your eyes. Start a timer. Name in one word what you're feeling right now. How many seconds?",
+          "unit": "seconds",
+          "why": "We're not testing whether you feel something — of course you do. We're testing how long it takes to put a word on it. It's the distance between your body and your vocabulary.",
           "verdicts": {
-            "high": "Precarity, illness, migration, complex status.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "Delegation privilege or bureaucratic simplicity."
-          }
-        },
-        {
-          "label": "Distance from birthplace",
-          "unit": "kilometers",
-          "why": "Concrete relationship to origin: rootedness, exile, chosen mobility.",
-          "verdicts": {
-            "high": "Biographical rupture, migration, cosmopolitanism.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "Strong local continuity, dense ties."
+            "high": "The word takes a while to come. You feel things, but the translation is slow. Not a big deal — but notable.",
+            "above": "A bit slower than average. The connection is there, but putting it into words takes effort.",
+            "average": "A few seconds. A normal delay between feeling and naming.",
+            "below": "The word comes fast. A habit of self-observation, therapy, journaling, or contemplative practice.",
+            "low": "Instant. Careful: too fast can mean the word is automatic, not actually felt."
           }
         }
-      ]
+      }
     },
     {
-      "name": "GPT-5.3",
-      "philosophy": "An average human optimizes for stability. An exceptional human accumulates measurable deviations. The invisible distributions reveal a trajectory.",
-      "questions": [
-        {
-          "label": "Major opinion changes per year",
-          "unit": "changes/year",
-          "why": "Real cognitive plasticity. Dynamic rather than static variable.",
-          "verdicts": {
-            "high": "Great adaptability or cognitive instability.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "Mental rigidity or strong internal coherence."
-          }
-        },
-        {
-          "label": "Minutes of pure silence per day",
-          "unit": "minutes/day",
-          "why": "Total absence of stimulation. Raw mental space, rarely measured.",
-          "verdicts": {
-            "high": "Strong contemplative capacity, creativity or rumination.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "Information overload, stimulation dependency."
-          }
-        },
-        {
-          "label": "Personal projects completed (12 months)",
-          "unit": "projects/year",
-          "why": "Agency without constraint. Intention transformed into action.",
-          "verdicts": {
-            "high": "Strong discipline, autonomy.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "Behavioral inertia."
-          }
-        },
-        {
-          "label": "Voluntary difficulties per week",
-          "unit": "actions/week",
-          "why": "Repeated voluntary exposure to discomfort.",
-          "verdicts": {
-            "high": "High effort tolerance, rapid growth.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "Avoidance, status quo maintenance."
-          }
-        },
-        {
-          "label": "Memory revisions per year",
-          "unit": "revisions/year",
-          "why": "Active capacity for self-re-reading.",
-          "verdicts": {
-            "high": "Intense introspective work.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "Weak past integration, rigid identity."
-          }
-        }
-      ]
-    },
-    {
-      "name": "Gemini 3 Flash",
-      "philosophy": "The average human is a node of repetitions. The exceptional is defined by the capacity to extract oneself from ambient entropy.",
-      "questions": [
-        {
-          "label": "Generations before your name is forgotten",
-          "unit": "Generations",
-          "why": "Projected memorial footprint, beyond biological existence.",
-          "verdicts": {
-            "high": "Civilization builder, strong memorial lineage.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "Existence anchored in the present, no trace."
-          }
-        },
-        {
-          "label": "Days per year of tech dependency",
-          "unit": "Days",
-          "why": "Technical alienation. Fragility facing systemic collapse.",
-          "verdicts": {
-            "high": "Ultra-specialized urbanite, vulnerable.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "Relative technical self-sufficiency."
-          }
-        },
-        {
-          "label": "Creation to consumption ratio",
-          "unit": "Ratio (Creation / Consumption)",
-          "why": "Creative metabolism index.",
-          "verdicts": {
-            "high": "Compulsive producer, artist or craftsman.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "Pure consumer, passive absorption."
-          }
-        },
-        {
-          "label": "Sign systems mastered",
-          "unit": "Systems",
-          "why": "Plurality of logical frameworks: languages, math, code, music theory.",
-          "verdicts": {
-            "high": "Cognitive polyglot, paradigm jumper.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "Monocultural thought."
-          }
-        },
-        {
-          "label": "Minutes at 80% max heart rate",
-          "unit": "Minutes",
-          "why": "Pure biological will. Tolerance to visceral discomfort.",
-          "verdicts": {
-            "high": "Extraordinary mental and physical resilience.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "Low tolerance to physical constraint."
-          }
-        }
-      ]
-    },
-    {
-      "name": "Claude Opus 4.6 (Anthropic)",
-      "philosophy": "The average is not a position — it's a gravity. What distinguishes a human is the texture of their attention, the depth of their attachments, and their relationship to silence.",
-      "questions": [
-        {
-          "label": "Physical contacts per day",
-          "unit": "contacts per day",
-          "why": "Touch is the most under-documented data of human experience.",
-          "verdicts": {
-            "high": "50+: young child parent, high-proximity culture.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "0: millions spend entire days without human contact."
-          }
-        },
-        {
-          "label": "Named ancestor generations",
-          "unit": "generations",
-          "why": "Transmitted narrative capital. Indicator of cultural continuity.",
-          "verdicts": {
-            "high": "7+: strong oral tradition, established cultural capital.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "0–1: adoption, forced migration, deep ruptures."
-          }
-        },
-        {
-          "label": "Waking hours in mother tongue",
-          "unit": "percentage",
-          "why": "Not how many languages you have, but how much you live in cognitive exile.",
-          "verdicts": {
-            "high": "100%: monolingual, maximum cognitive comfort.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "< 20%: complete linguistic immigrant, chronic cognitive fatigue."
-          }
-        },
-        {
-          "label": "Recognized handwritings",
-          "unit": "people",
-          "why": "Pre-digital attentional intimacy proxy.",
-          "verdicts": {
-            "high": "15+: teacher, active manuscript correspondence.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "0: life entirely mediated by digital."
-          }
-        },
-        {
-          "label": "Minutes before first free act",
-          "unit": "minutes",
-          "why": "The delay measures access to one's own desire.",
-          "verdicts": {
-            "high": "480+ min: single parent, caregiver, precarity.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "0 min: the first gesture is already a free choice."
-          }
-        }
-      ]
-    },
-    {
-      "name": "Gemini Pro",
-      "philosophy": "Exceptionality lies in managing existential friction: temporal sovereignty, vulnerability tolerance, failure immunity.",
-      "questions": [
-        {
-          "label": "Natural wake-ups per month",
-          "unit": "Days/month",
-          "why": "Temporal sovereignty. Time wealth vs. systemic alienation.",
-          "verdicts": {
-            "high": "Near-total temporal autonomy. Rare luxury or marginalization.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "Total submission to systemic constraints."
-          }
-        },
-        {
-          "label": "Holders of your shameful secret",
-          "unit": "Individuals",
-          "why": "Capacity for radical vulnerability facing social shame.",
-          "verdicts": {
-            "high": "Radical transparency, no social filters.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "Absolute psychological isolation or impenetrable facade."
-          }
-        },
-        {
-          "label": "Rejection letters received (lifetime)",
-          "unit": "Documented rejections",
-          "why": "Appetite for risk facing strict selection systems.",
-          "verdicts": {
-            "high": "Relentless ambition, failure immunity.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "Absolute safety or fear-paralyzed."
-          }
-        },
-        {
-          "label": "Age of oldest person conversed with 1h+",
-          "unit": "Years (Person's age)",
-          "why": "Embodied historical depth. Direct contact with memories of bygone eras.",
-          "verdicts": {
-            "high": "Living bridge to a distant era.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "Strict generational bubble, perpetual present."
-          }
-        },
-        {
-          "label": "Permanent scars (> 1 cm)",
-          "unit": "Scars",
-          "why": "Quantifiable map of physical friction with the world.",
-          "verdicts": {
-            "high": "Extreme physical risk, marked body.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "Very physically protected existence."
-          }
-        }
-      ]
-    },
-    {
-      "name": "Claude Haiku 4.5",
-      "philosophy": "The average human builds habits that work. The exceptional one remains capable of friction — of saying no, quitting, crying, being alone.",
-      "questions": [
-        {
-          "label": "People who can tell you a hard truth",
-          "unit": "people",
-          "why": "Relational fragility test. Strength under shock.",
-          "verdicts": {
-            "high": "Mature relational architecture. Rare.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "Emotional isolation even in a couple."
-          }
-        },
-        {
-          "label": "Fully abandoned projects (5 years)",
-          "unit": "projects",
-          "why": "Honesty with your limits, not ambition.",
-          "verdicts": {
-            "high": "Serial reinventor or aggressive limit tester.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "Loyalty to everything. Tenacity or fear of failure."
-          }
-        },
-        {
-          "label": "Hours alone without occupation per month",
+      "name": "Structure",
+      "philosophy": "The concrete shape of your life. What holds you up, what constrains you, what protects you. Numbers, not feelings.",
+      "questions": {
+        "admin_friction_hours": {
+          "label": "Hours lost to admin",
+          "description": "How many hours per month do you spend on mandatory paperwork? Forms, calls, insurance, taxes, banking, visas, disputes, appointments.",
           "unit": "hours per month",
-          "why": "The tolerable void. Can you face yourself without a buffer?",
+          "why": "The time the system takes from you just to let you exist. It's the maintenance cost of a life — and it varies enormously from person to person. Immigration, illness, divorce, debt: it all shows up in this number.",
           "verdicts": {
-            "high": "Regular contemplation or imposed solitude.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "Horror of silence. Chronic flight."
+            "high": "The system eats a lot of your time. Complex status, multiple processes, or an administratively heavy life.",
+            "above": "More than average. Bureaucracy weighs on your daily life.",
+            "average": "A few hours a month. The normal friction of adult life.",
+            "below": "Little friction. Administratively simple life, or you delegate well.",
+            "low": "Almost nothing. Stable situation, few systems to feed."
           }
         },
-        {
-          "label": "Gratuitous joys per week",
-          "unit": "instances per week",
-          "why": "Moments of being content to exist, without result or validation.",
+        "emergency_reach": {
+          "label": "People you can call in an emergency",
+          "description": "How many people could you call right now and get, within 24 hours, a bed for the night or an emergency loan for a week of food?",
+          "unit": "people",
+          "why": "Not your Facebook friends. Not the people you love. The people who'd pick up at 2am and say yes. This is the real safety net, not the one you imagine.",
           "verdicts": {
-            "high": "Contemplative practice or solved the meaning problem.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "Anhedonia. Performance-structured life."
+            "high": "Several reliable, activatable people. You're well surrounded — for real, not on paper.",
+            "above": "A solid net. Multiple real options in a crisis.",
+            "average": "Two or three people. A net that holds, but no redundancy.",
+            "below": "One person, maybe. Or doubt about who'd actually come through.",
+            "low": "Nobody for sure. Real isolation, or a network that exists on the surface but not in a crisis."
           }
         },
-        {
-          "label": "Life domains rated < 5/10",
-          "unit": "domains",
-          "why": "Lucidity test. Someone who says 0 lacks calibration.",
+        "autonomy_buffer_days": {
+          "label": "Days of financial runway",
+          "description": "How many days could you live at your current standard of living, with no new income and no new debt?",
+          "unit": "days",
+          "why": "It's not a bank balance — it's a number of days. And that reframe changes everything. 60 days of runway is the ability to say no. 5 days of runway is the obligation to say yes.",
           "verdicts": {
-            "high": "Serious crisis or radical transparency.",
-            "above": "Above the median.",
-            "average": "Average.",
-            "below": "Below most.",
-            "low": "Systematic denial or structural privilege."
+            "high": "Wide margin. You can absorb a shock, refuse something toxic, take your time.",
+            "above": "A good cushion. An unexpected expense won't put you at risk.",
+            "average": "About two months. One surprise is manageable, but not two.",
+            "below": "Thin margin. One tough month can quickly become a crisis.",
+            "low": "Almost nothing. Every day depends on cash flow. Little room to say no."
+          }
+        },
+        "future_lock_in_years": {
+          "label": "Years of lock-in",
+          "description": "If you changed nothing voluntarily from now on, how many years would your current obligations keep constraining your choices?",
+          "unit": "years",
+          "why": "Mortgage, shared custody, studies, debt, contract, visa. Your past choices narrow your future ones. This number measures how much of your trajectory is already written.",
+          "verdicts": {
+            "high": "A lot of inertia. Your past commitments weigh on your options for a long time.",
+            "above": "Several years of constraint ahead. The trajectory is set.",
+            "average": "A few years. The normal lock-in of adult life.",
+            "below": "Few long-term constraints. You could change course without major fallout.",
+            "low": "Very fluid. Few structural ties — freedom or instability, depending on the rest of your profile."
           }
         }
-      ]
+      }
+    },
+    {
+      "name": "Interface",
+      "philosophy": "What happens between you and the outside world. How you handle silence, the gaze of others, and contexts that ask you to switch versions of yourself.",
+      "questions": {
+        "analog_solitude_capacity": {
+          "label": "Max time alone with no screen or book",
+          "description": "What's the longest you've spent alone, awake, with no screen, no book, nothing — without it getting hard?",
+          "unit": "hours",
+          "why": "Not the cozy kind of solitude with a good book and tea. Raw solitude. Just you and your head. How long before the silence gets uncomfortable? This number says something about your ability to be with yourself without external help.",
+          "verdicts": {
+            "high": "You can sit with your own head for a long time. Good internal regulation.",
+            "above": "Above average. Silence doesn't weigh on you too quickly.",
+            "average": "Two to three hours. After that, you need stimulation.",
+            "below": "Silence gets heavy fairly fast. You need inputs to feel okay.",
+            "low": "Very low tolerance for emptiness. Silence alone quickly becomes uncomfortable."
+          }
+        },
+        "identity_translation_switches": {
+          "label": "Contexts where you switch versions of yourself",
+          "description": "In how many different contexts per week do you deliberately change how you talk, your accent, register, appearance, or behavior — to be accepted, understood, or safe?",
+          "unit": "contexts per week",
+          "why": "Some people are the same everywhere. Others have to translate themselves ten times a day — between the language of the office, of home, of the neighborhood, of the administration. It's an invisible cost. This number makes it visible.",
+          "verdicts": {
+            "high": "You're constantly translating yourself. Many worlds, many versions of you. It's a full-time job.",
+            "above": "Several contexts a week where you adjust who you are. Likely cross-cultural navigation.",
+            "average": "A few adjustments. The minimum of adult social life.",
+            "below": "Little translation needed. Your circles are similar, or you feel safe everywhere.",
+            "low": "You're the same everywhere. Homogeneous environment or very strong sense of identity."
+          }
+        }
+      }
     }
   ]
 }

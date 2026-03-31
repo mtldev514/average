@@ -1,425 +1,177 @@
 {
   "ui": {
-    "subtitle": "Antre done w yo. N ap di w jis ki jan w nòmal.",
+    "subtitle": "Antre done ou yo. Nou di ou jis ki jan ou nòmal.",
+    "concept": "3 IA chak gen yon lide sou kisa yon moun nòmal ye. Men pa yo a. Epi men chif pa ou yo.",
     "outOf": "sou 100",
     "aheadOf": "devan {n} moun sou 100",
     "aheadAlmost": "devan prèske tout moun",
-    "behindAlmost": "prèske tout moun devan w",
+    "behindAlmost": "prèske tout moun devan ou",
     "middle": "egzakteman nan mitan",
-    "aboveMedian": "Pi wo pase medyàn nan.",
-    "average": "Mwayèn.",
-    "belowMost": "Pi ba pase pifò.",
+    "aboveMedian": "Pi wo pase sa nou konsidere nòmal.",
+    "average": "Nan nòm lan — dapre nou.",
+    "belowMost": "Pi ba pase sa nou estime nòmal.",
     "clear": "efase",
-    "compositeScore": "NÒTT KONPOZE",
+    "compositeScore": "SKÒ KONPOZE",
     "data": "DONE",
-    "models": "MODÈL",
-    "questions": "KESYON",
-    "approx": "DISTRIBISYON APWOKSIMATIF",
-    "verdictTop": "Statistikman, ou prèske pa egziste.",
-    "verdict75": "Pi wo pase mwayèn nan prèske tout bagay. Enpresyonan, oswa chans.",
-    "verdict60": "Yon ti jan pi wo. Ase pou mansyone l.",
-    "verdict45": "Mwayèn. Se sa ki nan non an.",
+    "models": "FANMI",
+    "questions": "EVALYASYON",
+    "approx": "DISTRIBISYON MODÈL YO ESTIME",
+    "verdictTop": "Dapre nòm nou yo, ou prèske pa egziste.",
+    "verdict75": "Pi wo pase nòm nou an sou prèske tout bagay.",
+    "verdict60": "Yon ti jan pi wo. Jis ase pou mansyone l.",
+    "verdict45": "Average. Se nan non an li ye.",
     "verdict30": "Pi ba sou plizyè aks. Yon done, pa yon jijman.",
-    "verdictLow": "Statistikman remakab — soti anba. Remakab kanmenm.",
-    "concept": "Nou mande 6 IA: chwazi 5 kesyon pou mezire jis ki jan yon moun nòmal. Men sa yo reponn.",
+    "verdictLow": "Lwen nòm nou an — pa anba. Sa rete remakab.",
     "whyQuestion": "poukisa kesyon sa a?"
   },
   "models": [
     {
-      "name": "GPT-5.4 Thinking",
-      "philosophy": "Yon moun mwayèn pa defini pa kò l oswa revni l sèlman, men pa fòm statistik lavi l: kilès ki depann de li, konbyen tan li pèdi, konbyen lyen li ka aktive.",
-      "questions": [
-        {
-          "label": "Èdtan swen gratis pa semèn",
-          "unit": "èdtan/semèn",
-          "why": "Youn nan pi gwo blòk travay envizib moun fè.",
+      "name": "Delè",
+      "philosophy": "Tan ou pran ant konnen ak fè. Ant santi ak bay non. Ant bezwen ak mande.",
+      "questions": {
+        "ask_delay": {
+          "label": "Delè anvan mande èd",
+          "description": "Dènye fwa ou te bezwen èd e ou te konnen sa: konbyen èdtan anvan ou mande?",
+          "unit": "èdtan",
+          "why": "Tout moun deja viv moman sa a: ou konnen ou bezwen èd, ou konnen ki moun pou mande, epi ou pa fè l. Delè sa a, se pa parès — se friksyon. Fyète, wont, abitid pran sou kont ou, oswa jis yon anviwònman kote mande te deja koute chè.",
           "verdicts": {
-            "high": "Lavi oriyante nan direksyon responsablite, otonomi koupe pa swen.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "Anpil libète tan, oswa ti kras obligasyon domestik."
+            "high": "Ou tann lontan anvan ou mande. Pa fyète, pa abitid, oswa paske nan istwa ou, mande te gen yon pri.",
+            "above": "Ou souvan ralanti apèl èd la. Ou konnen ou bezwen l, men ou pouse l pita.",
+            "average": "Ou mande, men raramn touswit. Yon delè nòmal.",
+            "below": "Ou mande ase vit. Antouraj ou parèt fyab.",
+            "low": "Ou esternalize trè vit. Bon siy an jeneral — sof si ou pa ka fonksyone san sa."
           }
         },
-        {
-          "label": "Moun ki depann de revni w",
-          "unit": "moun",
-          "why": "Revni pa di anpil; kantite lavi li sipòte chanje tout bagay.",
+        "epistemic_update_frequency": {
+          "label": "Konbyen fwa ou di « mwen te gen tò »",
+          "description": "Konbyen fwa nan 12 mwa ou di « mwen te gen tò » bay yon moun — sou yon bagay ki te vrèman enpòtan?",
+          "unit": "fwa pa ane",
+          "why": "Pa konbyen fwa ou chanje lide nan tèt ou. Konbyen fwa ou di l bay yon moun. Li fasil pou chanje lide an silans. Di l, sa koute yon bagay — e se sa n ap mezire.",
           "verdicts": {
-            "high": "Pilye ekonomik, presyon envizib.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "Gwo endepandans materyèl."
+            "high": "Ou chanje lide souvan e ou di l. Ou pa pè te gen tò.",
+            "above": "Ou konsede plis pase pifò moun. Siy souples oswa onètete.",
+            "average": "Yonn oswa de fwa pa ane. Ritm nòmal la.",
+            "below": "Rar ou di « mwen te gen tò » avwa. Estabilite oswa rijidite — toude egziste.",
+            "low": "Prèske jamè. Swa ou gen rezon souvan, swa pri sosyal avè a twò wo nan anviwònman ou."
           }
         },
-        {
-          "label": "Granmoun ou ta ka rele a 3è dimaten",
-          "unit": "moun",
-          "why": "Mezi operasyonèl vrè kapital sosyal.",
-          "verdicts": {
-            "high": "Kapital sosyal dans, konfyans resiprwòk fò.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "Frajilite estriktirèl, izolasyon."
-          }
-        },
-        {
-          "label": "Èdtan biwokarasi pa mwa",
-          "unit": "èdtan/mwa",
-          "why": "Friksyon ant yon moun ak sistèm ki gouvène lavi l.",
-          "verdicts": {
-            "high": "Prekarite, maladi, migrasyon, estati konplèks.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "Privilèj delegasyon oswa senplicite biwokratik."
-          }
-        },
-        {
-          "label": "Distans ak kote w fèt",
-          "unit": "kilomèt",
-          "why": "Relasyon konkrè ak orijin: anrasinman, egzil, mobilite chwazi.",
-          "verdicts": {
-            "high": "Rititr byografik, migrasyon, kosmopolitis.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "Kontinyite lokal fò, lyen dans."
-          }
-        }
-      ]
-    },
-    {
-      "name": "GPT-5.3",
-      "philosophy": "Yon moun mwayèn optimize pou estabilite. Yon moun eksepsyonèl akimile devyasyon mezab. Distribisyon envizib yo revele yon trajektwa.",
-      "questions": [
-        {
-          "label": "Gwo chanjman opinyon pa ane",
-          "unit": "chanjman/ane",
-          "why": "Vrè plastisite konitif. Varyab dinamik olye estatik.",
-          "verdicts": {
-            "high": "Gwo kapasite adaptasyon oswa enstabilite konitif.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "Rijidite mantal oswa koherans entèn fò."
-          }
-        },
-        {
-          "label": "Minit silans total pa jou",
-          "unit": "minit/jou",
-          "why": "Absans total estimilasyon. Espas mantal brit, raman mezire.",
-          "verdicts": {
-            "high": "Gwo kapasite kontanplasyon, kreyativite oswa reyiminasyon.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "Twòp enfòmasyon, depandans estimilasyon."
-          }
-        },
-        {
-          "label": "Pwojè pèsonèl fini (12 mwa)",
-          "unit": "pwojè/ane",
-          "why": "Ajans san kontrent. Entansyon transfòme an aksyon.",
-          "verdicts": {
-            "high": "Gwo disiplin, otonomi.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "Inèrsi konpòtmantal."
-          }
-        },
-        {
-          "label": "Difikilte volontè pa semèn",
-          "unit": "aksyon/semèn",
-          "why": "Ekspozisyon volontè repete a enkonfo.",
-          "verdicts": {
-            "high": "Tolerans efò wo, kwasans rapid.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "Evitman, kenbe statu quo."
-          }
-        },
-        {
-          "label": "Revizyon memwa pa ane",
-          "unit": "revizyon/ane",
-          "why": "Kapasite aktif pou relekti tèt ou.",
-          "verdicts": {
-            "high": "Travay entwospeksyon entans.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "Entegrasyon pase fèb, idantite rijid."
-          }
-        }
-      ]
-    },
-    {
-      "name": "Gemini 3 Flash",
-      "philosophy": "Moun mwayèn nan se yon nod repeti syon. Sa ki eksepsyonèl la defini pa kapasite pou soti nan antwopi anbyant.",
-      "questions": [
-        {
-          "label": "Jenerasyon anvan yo bliye non w",
-          "unit": "Jenerasyon",
-          "why": "Anprent memoryèl pwojte, pi lwen pase egzistans byolojik.",
-          "verdicts": {
-            "high": "Bilisè sivilizasyon, gwo liyaj memoryèl.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "Egzistans ankre nan prezan an, okenn tras."
-          }
-        },
-        {
-          "label": "Jou pa ane depandans teknolojik",
-          "unit": "Jou",
-          "why": "Alyenasyon teknik. Frajilite fas a efondman sistemik.",
-          "verdicts": {
-            "high": "Moun lavil iltra-espesyalize, vilnerab.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "Otonomi teknik relatif."
-          }
-        },
-        {
-          "label": "Rapò kreyasyon ak konsomayson",
-          "unit": "Rapò (Kreyasyon / Konsomayson)",
-          "why": "Endèks metabolis kreyatif.",
-          "verdicts": {
-            "high": "Pwodiktè konpilsif, atis oswa atizanal.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "Konsomatè pi, absòpsyon pasif."
-          }
-        },
-        {
-          "label": "Sistèm siy ou metrize",
-          "unit": "Sistèm",
-          "why": "Pliralite kad lojik: lang, matematik, kòd, teyori mizik.",
-          "verdicts": {
-            "high": "Poliglòt konitif, sote paradigm.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "Panse monokiltirel."
-          }
-        },
-        {
-          "label": "Minit a 80% ritm kadyak maksimòm",
-          "unit": "Minit",
-          "why": "Volonte byolojik pi. Tolerans a enkonfo viseral.",
-          "verdicts": {
-            "high": "Rezilyans mantal ak fizik ekstraòdinè.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "Tolerans ba a kontrent fizik."
-          }
-        }
-      ]
-    },
-    {
-      "name": "Claude Opus 4.6 (Anthropic)",
-      "philosophy": "Mwayèn nan pa yon pozisyon — se yon gravite. Sa ki distenge yon moun se teksti atansyon li, pwofondè atachman li, ak relasyon li ak silans.",
-      "questions": [
-        {
-          "label": "Kontak fizik pa jou",
-          "unit": "kontak pa jou",
-          "why": "Touche se done ki pi mal dokimante nan eksperyans moun.",
-          "verdicts": {
-            "high": "50+: paran timoun piti, kilti pwoksinite wo.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "0: dè milyon moun pase jounen antye san kontak imen."
-          }
-        },
-        {
-          "label": "Jenerasyon zansèt ou konnen pa non",
-          "unit": "jenerasyon",
-          "why": "Kapital naratif transmèt. Endikatè kontinyite kiltirèl.",
-          "verdicts": {
-            "high": "7+: gwo tradisyon oral, kapital kiltirèl etabli.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "0–1: adopsyon, migrasyon fòse, rititi pwofon."
-          }
-        },
-        {
-          "label": "Èdtan revèye nan lang manman w",
-          "unit": "pousan",
-          "why": "Pa konbyen lang ou genyen, men konbyen w ap viv nan egzil konitif.",
-          "verdicts": {
-            "high": "100%: yon sèl lang, konfo konitif maksimòm.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "< 20%: imigran lengwistik konplè, fatig konitif kwonik."
-          }
-        },
-        {
-          "label": "Ekriti men ou rekonèt",
-          "unit": "moun",
-          "why": "Endis entimite atansyon avan epòk nimerik.",
-          "verdicts": {
-            "high": "15+: pwofesè, korespondans manyiskri aktif.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "0: lavi ki antiyèman medye pa nimerik."
-          }
-        },
-        {
-          "label": "Minit anvan premye ak lib",
-          "unit": "minit",
-          "why": "Reta a mezire aksè a pwòp dezi w.",
-          "verdicts": {
-            "high": "480+ min: paran sèl, moun k ap bay swen, prekarite.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "0 min: premye jès la se deja yon chwa lib."
-          }
-        }
-      ]
-    },
-    {
-      "name": "Gemini Pro",
-      "philosophy": "Eksepsyonalite a chita nan jesyon friksyon egzistansyèl: souvrènte tanporèl, tolerans vilnerabilite, iminite echèk.",
-      "questions": [
-        {
-          "label": "Revèy natirèl pa mwa",
-          "unit": "Jou/mwa",
-          "why": "Souvrènte tanporèl. Richès tan kont alyenasyon sistemik.",
-          "verdicts": {
-            "high": "Otonomi tanporèl prèske total. Lik ra oswa majinalizasyon.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "Soumisyon total a kontrent sistemik."
-          }
-        },
-        {
-          "label": "Moun ki konnen sekrè wont ou",
-          "unit": "Moun",
-          "why": "Kapasite pou vilnerabilite radikal fas a wont sosyal.",
-          "verdicts": {
-            "high": "Transparans radikal, okenn filt sosyal.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "Izolasyon sikolojik absoli oswa fasad enpenetrab."
-          }
-        },
-        {
-          "label": "Lèt refi ou resevwa (tout lavi w)",
-          "unit": "Refi dokimante",
-          "why": "Apeti pou risk fas a sistèm seleksyon strik.",
-          "verdicts": {
-            "high": "Anbisyon san rete, iminite echèk.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "Sekirite absoli oswa paralize pa laperèz."
-          }
-        },
-        {
-          "label": "Laj pi gran moun ou pale avèk 1è+",
-          "unit": "Ane (Laj moun nan)",
-          "why": "Pwofondè istorik ankadrè. Kontak dirèk ak memwa epòk ki pase.",
-          "verdicts": {
-            "high": "Pon vivan ak yon epòk lwen.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "Bil jenerasyonèl strik, prezan pèpetyèl."
-          }
-        },
-        {
-          "label": "Sikatris pèmanan (> 1 cm)",
-          "unit": "Sikatris",
-          "why": "Kat kantifyab friksyon fizik ak mond lan.",
-          "verdicts": {
-            "high": "Risk fizik ekstrèm, kò make.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "Egzistans trè pwoteje fizikman."
-          }
-        }
-      ]
-    },
-    {
-      "name": "Claude Haiku 4.5",
-      "philosophy": "Moun mwayèn nan bati abitid ki mache. Moun eksepsyonèl la rete kapab friksyon — di non, abandone, kriye, rete pou kont li.",
-      "questions": [
-        {
-          "label": "Moun ki ka di w yon verite di",
-          "unit": "moun",
-          "why": "Tès frajilite relasyonèl. Fòs anba chòk.",
-          "verdicts": {
-            "high": "Achitekti relasyonèl mi. Ra.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "Izolasyon emosyonèl menm nan yon koup."
-          }
-        },
-        {
-          "label": "Pwojè ou abandone nèt (5 ane)",
-          "unit": "pwojè",
-          "why": "Onètete ak limit ou, pa anbisyon.",
-          "verdicts": {
-            "high": "Reinvantè an seri oswa testè limit agresif.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "Fidelite a tout bagay. Tanlasite oswa pè echèk."
-          }
-        },
-        {
-          "label": "Èdtan pou kont ou san okipasyon pa mwa",
-          "unit": "èdtan pa mwa",
-          "why": "Vid tolerab la. Èske w ka fè fas a tèt ou san yon tanpon?",
-          "verdicts": {
-            "high": "Kontanplasyon regilye oswa solitud enpoze.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "Laperèz silans. Fuit kwonik."
-          }
-        },
-        {
-          "label": "Jwa gratis pa semèn",
+        "mortality_frequency": {
+          "label": "Frekans panse sou lanmò",
+          "description": "Konbyen fwa semèn sa a ou te panse sou lanmò — pa ou, pa lòt moun, oswa jis lefètke moun mouri?",
           "unit": "fwa pa semèn",
-          "why": "Moman kote w kontan egziste, san rezilta oswa validasyon.",
+          "why": "Pèsonn pa poze kesyon sa a. Se poutèt sa li la. Panse sou lanmò, se pa yon sentòm — se yon bri defon. Gen moun ki panse sou li twa fwa pa jou, lòt twa fwa pa ane. Toude nòmal. Men sa chanje priyorite yo.",
           "verdicts": {
-            "high": "Pratik kontanplasyon oswa rezoud pwoblèm sans la.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "Anedoni. Lavi estrikti pa pèfòmans."
+            "high": "Lanmò souvan la an aryè-plan. Dèy, anksyete, maladi, filozofi — oswa jis fason ou fonksyone.",
+            "above": "Ou panse sou li plis pase pifò moun. Sa kolore chwa ou san ou pa remake.",
+            "average": "Kèk fwa pa semèn. Prezan men pa anvayisan.",
+            "below": "Pa twò prezan. Ou okipe ak lavi chak jou, oswa ou jis pa nan sa.",
+            "low": "Prèske jamè. Lanmò se yon konsèp abstrè pou ou, pa yon bri defon."
           }
         },
-        {
-          "label": "Domèn lavi ou bay < 5/10",
-          "unit": "domèn",
-          "why": "Tès lisidite. Yon moun ki di 0 manke kalibrasyon.",
+        "naming_latency": {
+          "label": "Tan pou bay yon emosyon non",
+          "description": "Fèmen je ou. Lanse yon kwonom. Bay non an yon sèl mo sa ou santi la a, kounye a. Konbyen segonn?",
+          "unit": "segonn",
+          "why": "Nou pa teste si ou santi yon bagay — natirèlman wi. Nou teste konbyen tan sa pran pou mete yon mo sou li. Se distans ant kò ou ak vokabilè ou.",
           "verdicts": {
-            "high": "Kriz grav oswa transparans radikal.",
-            "above": "Pi wo pase medyàn nan.",
-            "average": "Mwayèn.",
-            "below": "Pi ba pase pifò.",
-            "low": "Deni sistematik oswa privilèj estriktirèl."
+            "high": "Mo a pran tan pou vini. Ou santi, men tradiksyon an lan. Pa grav — men remakab.",
+            "above": "Yon ti jan pi lan pase mwayèn nan. Kontak la la, mete mo sou li mande yon efò.",
+            "average": "Kèk segonn. Yon delè nòmal ant santi ak bay non.",
+            "below": "Mo a vini vit. Abitid obsève tèt ou, terapi, jounal, oswa pratik kontanplativ.",
+            "low": "Enstantane. Atansyon: twò vit ka vle di mo a otomatik, pa vrèman santi."
           }
         }
-      ]
+      }
+    },
+    {
+      "name": "Estrikti",
+      "philosophy": "Fòm konkrè lavi ou. Sa ki kenbe ou, sa ki kontrenn ou, sa ki pwoteje ou. Chif, pa santiman.",
+      "questions": {
+        "admin_friction_hours": {
+          "label": "Èdtan pèdi nan administratif",
+          "description": "Konbyen èdtan pa mwa ou pase sou administratif obligatwa? Fòmilè, apèl, asirans, taks, bank, viza, litij, randevou.",
+          "unit": "èdtan pa mwa",
+          "why": "Tan sistèm nan pran ou jis pou kite ou egziste. Se pri antretyen yon lavi — e li varye anpil ant yon moun ak yon lòt. Imigrasyon, maladi, divòs, dèt: tout sa li nan chif sa a.",
+          "verdicts": {
+            "high": "Sistèm nan manje anpil tan ou. Estati konplèks, demach miltip, oswa lavi administrativman lou.",
+            "above": "Plis pase mwayèn nan. Birokrasi peze nan lavi chak jou ou.",
+            "average": "Kèk èdtan pa mwa. Friksyon nòmal lavi granmoun.",
+            "below": "Ti kras friksyon. Lavi senp administrativman, oswa ou delege byen.",
+            "low": "Prèske anyen. Sitiyasyon estab, pa anpil sistèm pou alimante."
+          }
+        },
+        "emergency_reach": {
+          "label": "Kantite moun ou ka rele an ijans",
+          "description": "Konbyen moun ou ta ka rele kounye a epi jwenn, nan 24è, yon kabann pou yon nuit oswa yon prè ijans pou yon semèn manje?",
+          "unit": "moun",
+          "why": "Pa zanmi Facebook ou. Pa moun ou renmen yo. Moun ki ta dekwoche a 2è dimaten e ki ta di wi. Se filè sekirite reyèl la, pa sa ou imajine.",
+          "verdicts": {
+            "high": "Plizyè moun fyab e aktivab. Ou byen antoure — pou tout bon, pa sou papye.",
+            "above": "Yon bon filè. Plizyè rekò reyèl an ka kriz.",
+            "average": "De oswa twa moun. Yon filè ki kenbe, men san redondans.",
+            "below": "Yon moun, petèt. Oswa yon dout sou kilès ki ta vrèman reponn.",
+            "low": "Pèsonn ki si. Izolman reyèl, oswa rezo ki egziste sou sifas men pa an ijans."
+          }
+        },
+        "autonomy_buffer_days": {
+          "label": "Jou maj finansyè",
+          "description": "Konbyen jou ou ta ka viv nan nivo lavi aktyèl ou, san nouvo revni e san nouvo dèt?",
+          "unit": "jou",
+          "why": "Se pa yon balans labank — se yon kantite jou. E chanjman pèspektiv sa a chanje tout bagay. 60 jou maj, se kapasite pou di non. 5 jou maj, se obligasyon pou di wi.",
+          "verdicts": {
+            "high": "Gwo maj. Ou ka absòbe yon chòk, refize yon bagay toksik, pran tan ou.",
+            "above": "Yon bon kousen. Yon enprevwa pa mete ou an danje.",
+            "average": "Anviwon de mwa. Yon enprevwa rete jerab, men pa de.",
+            "below": "Maj mens. Yon mwa difisil ka vit tounen yon kriz.",
+            "low": "Prèske anyen. Chak jou depann de fliks la. Trè ti kras latitid pou di non."
+          }
+        },
+        "future_lock_in_years": {
+          "label": "Ane vèwouyaj",
+          "description": "Si ou pa t chanje anyen volontèman apati kounye a, pandan konbyen ane obligasyon aktyèl ou yo ta kontinye kontrenn chwa ou?",
+          "unit": "ane",
+          "why": "Ipotèk, gad pataje, etid, dèt, kontra, viza. Chwa pase ou yo redui chwa fiti ou yo. Chif sa a mezire jis ki jan trajektwa ou deja ekri.",
+          "verdicts": {
+            "high": "Anpil inèsi. Angajman pase ou yo peze lontan sou opsyon ou yo.",
+            "above": "Plizyè ane kontrènt devan ou. Trajektwa a deja angaje.",
+            "average": "Kèk ane. Vèwouyaj nòmal yon lavi granmoun.",
+            "below": "Ti kras kontrènt alontèm. Ou ta ka chanje direksyon san gwo kase.",
+            "low": "Trè fliwid. Ti kras atach estriktirèl — libète oswa enstabilite, selon rès pwofil la."
+          }
+        }
+      }
+    },
+    {
+      "name": "Entèfas",
+      "philosophy": "Sa ki pase ant ou ak mond deyò a. Kijan ou jere silans, rega lòt moun, ak kontèks ki mande ou chanje vèsyon de ou.",
+      "questions": {
+        "analog_solitude_capacity": {
+          "label": "Dire maksimòm pou kont ou san ekran ni liv",
+          "description": "Ki pi long dire ou pase pou kont ou, je klè, san ekran, san liv, san anyen — san sa vin difisil?",
+          "unit": "èdtan",
+          "why": "Pa soliti ou chwazi ak yon bon liv ak te. Soliti brit. Jis ou ak tèt ou. Konbyen tan ou kenbe anvan silans lan vin enkonfòtab? Chif sa a di yon bagay sou kapasite ou pou rete ak tèt ou san èd deyò.",
+          "verdicts": {
+            "high": "Ou kenbe lontan pou kont ou ak pwòp tèt ou. Bon regilasyon entèn.",
+            "above": "Pi wo pase mwayèn nan. Silans lan pa peze ou twò vit.",
+            "average": "De a twa zèdtan. Apre, bezwen estimilis la rive.",
+            "below": "Silans lan peze ase vit. Ou bezwen input pou santi ou byen.",
+            "low": "Trè ti kras tolerans pou vid la. Silans pou kont ou vin vit enkonfòtab."
+          }
+        },
+        "identity_translation_switches": {
+          "label": "Kantite kontèks kote ou chanje vèsyon de ou",
+          "description": "Nan konbyen kontèks diferan pa semèn ou chanje espre fason ou pale, aksan ou, rejis ou, aparans ou oswa konpòtman ou — pou yo aksepte ou, konprann ou, oswa pou ou an sekirite?",
+          "unit": "kontèks pa semèn",
+          "why": "Gen moun ki menm jan tout kote. Lòt oblije tradui tèt yo dis fwa pa jou — ant lang biwo a, sa lakay la, sa katye a, sa administrasyon an. Se yon pri envizib. Chif sa a rann li vizib.",
+          "verdicts": {
+            "high": "Ou ap tradui tèt ou tout tan. Anpil mond, anpil vèsyon de ou. Se yon travay konstan.",
+            "above": "Plizyè kontèks pa semèn kote ou ajiste kilès ou ye. Navigasyon entèkiltirèl pwobab.",
+            "average": "Kèk ajisteman. Minimòm lavi sosyal granmoun.",
+            "below": "Ti kras tradiksyon nesesè. Milye ou yo sanble, oswa ou an sekirite tout kote.",
+            "low": "Ou menm jan tout kote. Anviwònman omojèn oswa trè gwo sekirite idantitè."
+          }
+        }
+      }
     }
   ]
 }

@@ -88,16 +88,16 @@ export const RTL_LOCALES: string[] = ["ar", "he"];
 
 const LOCALE_DATA: Record<string, LocaleData> = {
   fr: frData as unknown as LocaleData,
-  en: enData as LocaleData,
-  es: esData as LocaleData,
-  ht: htData as LocaleData,
-  hi: hiData as LocaleData,
-  ar: arData as LocaleData,
-  he: heData as LocaleData,
-  zh: zhData as LocaleData,
-  ja: jaData as LocaleData,
-  iu: iuData as LocaleData,
-  pt: ptData as LocaleData,
+  en: enData as unknown as LocaleData,
+  es: esData as unknown as LocaleData,
+  ht: htData as unknown as LocaleData,
+  hi: hiData as unknown as LocaleData,
+  ar: arData as unknown as LocaleData,
+  he: heData as unknown as LocaleData,
+  zh: zhData as unknown as LocaleData,
+  ja: jaData as unknown as LocaleData,
+  iu: iuData as unknown as LocaleData,
+  pt: ptData as unknown as LocaleData,
 };
 
 // ─── Accessors ─────────────────────────────────────────

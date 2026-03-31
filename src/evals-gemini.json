@@ -1,150 +1,160 @@
 [
   {
-    "model": "Délais",
-    "philosophy": "Le temps que tu mets entre savoir et faire. Entre ressentir et nommer. Entre avoir besoin et demander.",
-    "questions": [
-      {
-        "key": "ask_delay",
-        "origin": "claude-opus-4-6",
-        "question": "Délai de demande d'aide",
-        "description": "La dernière fois que vous avez eu besoin d'aide et que vous le saviez : combien d'heures se sont écoulées entre le moment où vous l'avez su et le moment où vous avez demandé ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "Flagship unanime du benchmark. Mesure la friction d'activation relationnelle — l'écart entre savoir qu'on a besoin d'aide et oser la demander. Ce délai encode la honte liée au besoin, l'hyperindépendance, ou un historique où demander a été puni.",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
-      },
-      {
-        "key": "epistemic_update_frequency",
-        "origin": "gemini-3-pro",
-        "question": "Fréquence d'auto-correction épistémique",
-        "description": "Combien de fois au cours des 12 derniers mois avez-vous explicitement dit « j'avais tort » à une autre personne concernant une conviction profonde ou une décision importante ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "Pas combien de fois tu as changé d'avis — combien de fois tu l'as dit à quelqu'un. Le coût social de l'aveu est le signal. Meilleur axe épistémique du pool.",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
-      },
-      {
-        "key": "mortality_frequency",
-        "origin": "claude-opus-4-6",
-        "question": "Fréquence de saillance mortelle",
-        "description": "Combien de fois au cours des 7 derniers jours avez-vous pensé à la mort, au fait de mourir, ou à votre propre mortalité ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "La mort comme fréquence de fond, pas comme événement. Pari théorique défendu par Claude, réhabilité par GPT qui a concédé : « son évaporation était une erreur de tri ».",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
-      },
-      {
-        "key": "naming_latency",
-        "origin": "claude-opus-4-6",
-        "question": "Latence de dénomination émotionnelle",
-        "description": "Fermez les yeux. Lancez un chronomètre. Nommez en un mot ce que vous ressentez en ce moment. Arrêtez le chronomètre quand le mot arrive. Combien de secondes ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "Ne teste pas si vous ressentez — teste si vous pouvez nommer. Fragile mais conceptuellement puissant — sensible au vocabulaire, au style introspectif, à la thérapie.",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
+    "ask_delay": {
+      "median": 24,
+      "amplitude": 72,
+      "verdicts": {
+        "high": "Hyperindépendance sévère ou honte paralysante (> 72h). Incapacité pathologique à externaliser la vulnérabilité.",
+        "above": "Grande résistance à la demande d'aide (48h). Le coût perçu de la dette sociale ou du rejet est très élevé.",
+        "average": "Délai de traitement standard pour une fierté adulte normale (24h). On essaie de régler le problème seul d'abord.",
+        "below": "Demande d'aide fluide (6h), signe d'un filet de sécurité psychologique perçu comme solide.",
+        "low": "Excellente capacité d'activation relationnelle (0-1h), ou potentiellement dynamique de co-dépendance si systématique."
       }
-    ]
+    },
+    "epistemic_update_frequency": {
+      "median": 1,
+      "amplitude": 5,
+      "verdicts": {
+        "high": "Exceptionnelle humilité intellectuelle (> 5), souvent permise par un environnement social extrêmement sécurisant.",
+        "above": "Très bonne plasticité épistémique (3-4) couplée à un faible ego conversationnel.",
+        "average": "Capacité normale de remise en question sur des sujets majeurs une fois par an (1-2).",
+        "below": "L'ego ou le coût social bloque l'aveu public (0, mais avoue en privé), même si la conviction interne change.",
+        "low": "Rigidité épistémique totale (0 absolu). Aveuglement défensif ou refus dogmatique de la faillibilité."
+      }
+    },
+    "mortality_frequency": {
+      "median": 2,
+      "amplitude": 10,
+      "verdicts": {
+        "high": "Saillance mortelle omniprésente (> 10), potentiellement liée à l'anxiété, la dépression ou une crise de vie majeure.",
+        "above": "Conscience existentielle aiguë (5-9), frôlant la rumination intellectuelle ou l'hypocondrie.",
+        "average": "Bruit de fond sain de la condition humaine (2-4).",
+        "below": "Tendance à l'évitement cognitif ou simple période d'immersion totale dans un présent très exigeant (1).",
+        "low": "Déni complet de la finitude (0) ou ancrage si profond dans l'immédiateté que la perspective disparaît totalement."
+      }
+    },
+    "naming_latency": {
+      "median": 8,
+      "amplitude": 30,
+      "verdicts": {
+        "high": "Alexithymie prononcée (> 30s ou abandon). Le pont entre ressenti viscéral et langage conscient est congestionné ou coupé.",
+        "above": "Difficulté de traduction interne (15-29s), signe d'un brouillard émotionnel ou de sentiments fortement ambivalents.",
+        "average": "Accès standard à son état interne (5-14s), avec un temps naturel de recherche lexicale.",
+        "below": "Excellente granularité émotionnelle et habitude introspective forte (2-4s).",
+        "low": "Accès instantané (< 2s), souvent le signe d'une clarté aiguë ou d'une émotion dominante saturant l'espace psychique."
+      }
+    },
+    "admin_friction_hours": {
+      "median": 6,
+      "amplitude": 15,
+      "verdicts": {
+        "high": "Enlisement systémique grave (> 15h). Marqueur fort de précarité, complexité migratoire ou gestion de maladie chronique.",
+        "above": "Lourde charge mentale (9-14h) dictée par des obligations légales, patrimoniales ou familiales complexes.",
+        "average": "Le « loyer temporel » standard exigé par la société moderne (4-8h) pour exister civiquement.",
+        "below": "Vie grandement simplifiée (1-3h) ou externalisation partielle de la charge mentale.",
+        "low": "Détachement total (0h). Signe d'une marginalité extrême sortant du système, ou d'un privilège absolu d'hyper-délégation (comptables, assistants)."
+      }
+    },
+    "emergency_reach": {
+      "median": 3,
+      "amplitude": 7,
+      "verdicts": {
+        "high": "Capital social exceptionnel (> 7) et communauté profondément solidaire et activable.",
+        "above": "Filet de sécurité interpersonnel très robuste et rassurant (4-6).",
+        "average": "Noyau dur de confiance standard, la « garde rapprochée » typique (2-3).",
+        "below": "Précarité relationnelle alarmante (1). Le filet de sécurité ne tient qu'à une seule variable, souvent un partenaire ou un parent unique.",
+        "low": "Isolement social critique (0). Aucun recours humain matériel en cas de crise imprévue."
+      }
+    },
+    "autonomy_buffer_days": {
+      "median": 45,
+      "amplitude": 365,
+      "verdicts": {
+        "high": "Sécurité financière totale (> 365j), offrant une agentivité et une capacité de refus (« fuck you money ») maximales.",
+        "above": "Marge de manœuvre confortable (90-364j) permettant de transitionner de carrière ou de traverser une longue maladie sans panique.",
+        "average": "Le tampon typique de la classe moyenne (30-89j), capable d'encaisser un petit choc mais fondamentalement dépendant de la paie suivante.",
+        "below": "Forte vulnérabilité systémique (7-29j). La moindre tuile matérielle met en danger la stabilité du foyer.",
+        "low": "Survie immédiate (< 7j). Aucune capacité d'absorption, aliénation totale à la source de revenus actuelle."
+      }
+    },
+    "future_lock_in_years": {
+      "median": 5,
+      "amplitude": 15,
+      "verdicts": {
+        "high": "Trajectoire hyper-déterminée (> 15 ans) par de lourdes dettes, de jeunes enfants ou des engagements professionnels impossibles à défaire rapidement.",
+        "above": "Forte dépendance au sentier (8-14 ans), nécessitant des ruptures massives pour espérer changer de cap de vie.",
+        "average": "Inertie adulte standard (3-7 ans), liant engagements financiers à court/moyen terme et responsabilités courantes.",
+        "below": "Grande flexibilité (1-2 ans), souvent le marqueur d'une période de transition de vie ou d'un allègement voulu des responsabilités.",
+        "low": "Optionalité absolue (0 ans). L'individu est totalement libre de se réinventer demain (un état rare et potentiellement vertigineux)."
+      }
+    },
+    "analog_solitude_capacity": {
+      "median": 3,
+      "amplitude": 12,
+      "verdicts": {
+        "high": "Capacité méditative ou introspective hors du commun (> 12h), ou expérience de retrait monastique.",
+        "above": "Très forte tolérance à l'ennui et excellente mécanique de régulation autonome (6-11h).",
+        "average": "Capacité standard de faire face à son propre bruit cognitif (2-5h) avant l'apparition d'un profond besoin de distraction.",
+        "below": "Dépendance forte aux stimuli externes (1h) pour étouffer l'anxiété de fond ou le silence.",
+        "low": "Intolérance sévère au vide cognitif (< 0.5h). Fuite perpétuelle dans l'hyperconnexion pour éviter l'effondrement interne."
+      }
+    },
+    "identity_translation_switches": {
+      "median": 2,
+      "amplitude": 5,
+      "verdicts": {
+        "high": "Taxe identitaire massive (> 5). Épuisement psychologique dû au « code-switching » permanent, typique des minorités ou transfuges de classe naviguant des espaces hostiles.",
+        "above": "Forte fragmentation sociale (3-4) nécessitant de jongler entre de multiples « versions » performatives de soi.",
+        "average": "Adaptation compartimentée standard (1-2), classiquement la dichotomie entre sphère pro et sphère familiale.",
+        "below": "Peu ou pas de switches car la sphère sociale est soit très restreinte, soit naturellement homogène (0, par isolement ou choix de niche).",
+        "low": "Le privilège de l'interface zéro (0 absolu). Le monde s'adapte à l'individu, qui peut imposer son registre par défaut partout sans subir de répercussions sociales ou économiques."
+      }
+    }
   },
-  {
-    "model": "Structure",
-    "philosophy": "La forme concrète de ta vie. Ce qui te tient, ce qui te contraint, ce qui te protège. Des chiffres, pas des ressentis.",
-    "questions": [
-      {
-        "key": "admin_friction_hours",
-        "origin": "gpt-5-4-thinking",
-        "question": "Friction administrative",
-        "description": "Combien d'heures par mois consacrez-vous à de la friction administrative nécessaire pour rester fonctionnel : formulaires, appels, assurances, impôts, banque, visa, litiges, rendez-vous obligatoires ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "L'eval la plus average. du projet. Mesure le frottement pur entre une personne et les systèmes qui gouvernent sa vie. Condense précarité, maladie, migration, complexité familiale — un coût humain presque jamais mesuré.",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
-      },
-      {
-        "key": "emergency_reach",
-        "origin": "gpt-5-4-thinking",
-        "question": "Portée de secours",
-        "description": "Combien d'adultes distincts pourriez-vous contacter maintenant et obtenir plausiblement, dans les 24 heures, soit un lit pour une nuit, soit un prêt d'urgence équivalent à une semaine de nourriture ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "Capital social opérationnel, pas symbolique. Ne demande pas si vous vous sentez entouré — combien de liens sont activables en crise.",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
-      },
-      {
-        "key": "autonomy_buffer_days",
-        "origin": "gpt-5-4-thinking",
-        "question": "Tampon d'autonomie",
-        "description": "Pendant combien de jours pourriez-vous maintenir votre niveau de vie actuel sans revenu du travail nouveau ni nouvelle dette ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "Un solde bancaire converti en jours — mais ce recadrage change tout. Mesure l'optionalité réelle : la capacité de dire non, d'absorber un choc, de refuser sans s'effondrer.",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
-      },
-      {
-        "key": "future_lock_in_years",
-        "origin": "gpt-5-4-thinking",
-        "question": "Années de verrouillage",
-        "description": "Si vous ne faisiez aucun changement volontaire à partir d'aujourd'hui, pendant combien d'années vos obligations actuelles continueraient-elles à contraindre fortement vos choix majeurs ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "Mesure l'inertie comme propriété de trajectoire — à quel point vos choix passés restreignent vos choix futurs. Conceptuellement puissant.",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
-      }
-    ]
+ {
+  "category_delais": {
+    "median": 3,
+    "amplitude": 4,
+    "verdicts": {
+      "high": "Paralysie interne sévère. Les ponts entre ressentir, savoir et agir sont coupés ou très coûteux socialement.",
+      "above": "Forte friction introspective et relationnelle. L'individu navigue son monde intérieur avec difficulté et évitement.",
+      "average": "Résistance normale. Le coût de la vulnérabilité et de l'aveu est ressenti de manière standard mais surmontable.",
+      "below": "Excellente fluidité psychologique et clarté interne. L'activation vers l'autre est facile.",
+      "low": "Transparence totale, parfois au point de manquer de filtres défensifs ou de protection psychologique de base."
+    }
   },
-  {
-    "model": "Interface",
-    "philosophy": "Ce qui se passe entre toi et le monde extérieur. Comment tu gères le silence, le regard des autres, et les contextes qui te demandent de changer de version de toi.",
-    "questions": [
-      {
-        "key": "analog_solitude_capacity",
-        "origin": "gemini-3-pro",
-        "question": "Capacité d'isolement analogique",
-        "description": "Quelle est la durée continue maximale (en heures) que vous ayez passée seul·e, éveillé·e, sans aucun appareil électronique ni matériel de lecture, sans ressentir de détresse psychologique sévère ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "Mesure la capacité de régulation interne sans béquilles externes. Ce n'est pas la solitude choisie — c'est combien de temps votre esprit tient sans inputs.",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
-      },
-      {
-        "key": "identity_translation_switches",
-        "origin": "gpt-5-4-thinking",
-        "question": "Switches de traduction identitaire",
-        "description": "Dans combien de contextes sociaux distincts par semaine modifiez-vous délibérément votre langage, accent, registre, apparence ou comportement pour rester lisible, accepté·e ou en sécurité ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "La seule eval qui touche à la taxe identitaire — le coût de compatibilité sociale. Mesure le nombre de mondes entre lesquels vous naviguez et la traduction que chaque passage exige.",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
-      }
-    ]
+  "category_structure": {
+    "median": 3,
+    "amplitude": 4,
+    "verdicts": {
+      "high": "L'individu est solidement ancré dans le système, hautement résilient matériellement, mais potentiellement écrasé par l'inertie de ses propres choix.",
+      "above": "Situation systémique stable avec des ressources matérielles et sociales rassurantes mais exigeantes en entretien.",
+      "average": "Adulte fonctionnel standard, dont l'équilibre et la survie tiennent à condition qu'il n'y ait pas de rupture majeure de flux (revenus/relations).",
+      "below": "Précarité systémique ou relationnelle notable. Le filet de sécurité est troué, la flexibilité est une illusion de la survie.",
+      "low": "Effondrement ou exclusion structurelle. L'individu est à la merci absolue de son environnement matériel."
+    }
+  },
+  "category_interface": {
+    "median": 3,
+    "amplitude": 4,
+    "verdicts": {
+      "high": "Capacité d'endurance exceptionnelle aux contraintes cognitives. Soit un contrôle stoïque impressionnant, soit un masque épuisant menant au burnout identitaire.",
+      "above": "Forte taxe d'adaptation sociale et grande capacité de repli intérieur.",
+      "average": "Flexibilité sociale normale et tolérance modérée au vide, dépendant des béquilles modernes habituelles.",
+      "below": "Faible capacité d'adaptation contextuelle ou difficulté marquée à tolérer l'absence de stimuli.",
+      "low": "Rigidité totale de l'interface : fuite absolue face au silence interne, ou incapacité radicale à traduire son identité pour l'autre."
+    }
+  },
+  "overall_benchmark": {
+    "median": 3,
+    "amplitude": 4,
+    "verdicts": {
+      "high": "Un profil d'une grande complexité interne, probablement très résilient structurellement mais portant une lourde taxe identitaire et émotionnelle.",
+      "above": "Individu très ancré mais dont la friction avec le monde (et avec lui-même) génère un coût énergétique significatif.",
+      "average": "L'expérience humaine médiane : un équilibre précaire entre vulnérabilité, inertie matérielle et besoin de conformité sociale.",
+      "below": "Profil très fluide, peu contraint par la structure, mais potentiellement fragile en cas de choc lourd par manque d'ancrage.",
+      "low": "Absence totale de barrières ou de filet. Le sujet est soit extrêmement privilégié, soit dans un état de détachement radical face au réel."
+    }
   }
+}
 ]

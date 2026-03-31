@@ -1,6 +1,6 @@
 [
   {
-    "model": "Délais",
+    "family": "Délais",
     "philosophy": "Le temps que tu mets entre savoir et faire. Entre ressentir et nommer. Entre avoir besoin et demander.",
     "questions": [
       {
@@ -8,57 +8,41 @@
         "origin": "claude-opus-4-6",
         "question": "Délai de demande d'aide",
         "description": "La dernière fois que vous avez eu besoin d'aide et que vous le saviez : combien d'heures se sont écoulées entre le moment où vous l'avez su et le moment où vous avez demandé ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "Flagship unanime du benchmark. Mesure la friction d'activation relationnelle — l'écart entre savoir qu'on a besoin d'aide et oser la demander. Ce délai encode la honte liée au besoin, l'hyperindépendance, ou un historique où demander a été puni.",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
+        "unit": "heures",
+        "options": [0, 6, 24, 48, 90, 168],
+        "why": "Flagship unanime du benchmark. Mesure la friction d'activation relationnelle — l'écart entre savoir qu'on a besoin d'aide et oser la demander. Ce délai encode la honte liée au besoin, l'hyperindépendance, ou un historique où demander a été puni."
       },
       {
         "key": "epistemic_update_frequency",
         "origin": "gemini-3-pro",
         "question": "Fréquence d'auto-correction épistémique",
         "description": "Combien de fois au cours des 12 derniers mois avez-vous explicitement dit « j'avais tort » à une autre personne concernant une conviction profonde ou une décision importante ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "Pas combien de fois tu as changé d'avis — combien de fois tu l'as dit à quelqu'un. Le coût social de l'aveu est le signal. Meilleur axe épistémique du pool.",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
+        "unit": "fois / an",
+        "options": [0, 1, 2, 4, 8],
+        "why": "Pas combien de fois tu as changé d'avis — combien de fois tu l'as dit à quelqu'un. Le coût social de l'aveu est le signal. Meilleur axe épistémique du pool."
       },
       {
         "key": "mortality_frequency",
         "origin": "claude-opus-4-6",
         "question": "Fréquence de saillance mortelle",
         "description": "Combien de fois au cours des 7 derniers jours avez-vous pensé à la mort, au fait de mourir, ou à votre propre mortalité ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "La mort comme fréquence de fond, pas comme événement. Pari théorique défendu par Claude, réhabilité par GPT qui a concédé : « son évaporation était une erreur de tri ».",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
+        "unit": "fois / semaine",
+        "options": [0, 1, 3, 7, 14],
+        "why": "La mort comme fréquence de fond, pas comme événement. Pari théorique défendu par Claude, réhabilité par GPT qui a concédé : « son évaporation était une erreur de tri »."
       },
       {
         "key": "naming_latency",
         "origin": "claude-opus-4-6",
         "question": "Latence de dénomination émotionnelle",
         "description": "Fermez les yeux. Lancez un chronomètre. Nommez en un mot ce que vous ressentez en ce moment. Arrêtez le chronomètre quand le mot arrive. Combien de secondes ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "Ne teste pas si vous ressentez — teste si vous pouvez nommer. Fragile mais conceptuellement puissant — sensible au vocabulaire, au style introspectif, à la thérapie.",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
+        "unit": "secondes",
+        "options": [2, 5, 8, 15, 30],
+        "why": "Ne teste pas si vous ressentez — teste si vous pouvez nommer. Fragile mais conceptuellement puissant — sensible au vocabulaire, au style introspectif, à la thérapie."
       }
     ]
   },
   {
-    "model": "Structure",
+    "family": "Structure",
     "philosophy": "La forme concrète de ta vie. Ce qui te tient, ce qui te contraint, ce qui te protège. Des chiffres, pas des ressentis.",
     "questions": [
       {
@@ -66,57 +50,41 @@
         "origin": "gpt-5-4-thinking",
         "question": "Friction administrative",
         "description": "Combien d'heures par mois consacrez-vous à de la friction administrative nécessaire pour rester fonctionnel : formulaires, appels, assurances, impôts, banque, visa, litiges, rendez-vous obligatoires ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "L'eval la plus average. du projet. Mesure le frottement pur entre une personne et les systèmes qui gouvernent sa vie. Condense précarité, maladie, migration, complexité familiale — un coût humain presque jamais mesuré.",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
+        "unit": "heures / mois",
+        "options": [0, 2, 4, 8, 15, 30],
+        "why": "L'eval la plus average. du projet. Mesure le frottement pur entre une personne et les systèmes qui gouvernent sa vie. Condense précarité, maladie, migration, complexité familiale — un coût humain presque jamais mesuré."
       },
       {
         "key": "emergency_reach",
         "origin": "gpt-5-4-thinking",
         "question": "Portée de secours",
         "description": "Combien d'adultes distincts pourriez-vous contacter maintenant et obtenir plausiblement, dans les 24 heures, soit un lit pour une nuit, soit un prêt d'urgence équivalent à une semaine de nourriture ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "Capital social opérationnel, pas symbolique. Ne demande pas si vous vous sentez entouré — combien de liens sont activables en crise.",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
+        "unit": "personnes",
+        "options": [0, 1, 2, 3, 5, 8],
+        "why": "Capital social opérationnel, pas symbolique. Ne demande pas si vous vous sentez entouré — combien de liens sont activables en crise."
       },
       {
         "key": "autonomy_buffer_days",
         "origin": "gpt-5-4-thinking",
         "question": "Tampon d'autonomie",
         "description": "Pendant combien de jours pourriez-vous maintenir votre niveau de vie actuel sans revenu du travail nouveau ni nouvelle dette ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "Un solde bancaire converti en jours — mais ce recadrage change tout. Mesure l'optionalité réelle : la capacité de dire non, d'absorber un choc, de refuser sans s'effondrer.",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
+        "unit": "jours",
+        "options": [0, 7, 30, 60, 120, 365],
+        "why": "Un solde bancaire converti en jours — mais ce recadrage change tout. Mesure l'optionalité réelle : la capacité de dire non, d'absorber un choc, de refuser sans s'effondrer."
       },
       {
         "key": "future_lock_in_years",
         "origin": "gpt-5-4-thinking",
         "question": "Années de verrouillage",
         "description": "Si vous ne faisiez aucun changement volontaire à partir d'aujourd'hui, pendant combien d'années vos obligations actuelles continueraient-elles à contraindre fortement vos choix majeurs ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "Mesure l'inertie comme propriété de trajectoire — à quel point vos choix passés restreignent vos choix futurs. Conceptuellement puissant.",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
+        "unit": "années",
+        "options": [0, 1, 3, 6, 10, 15],
+        "why": "Mesure l'inertie comme propriété de trajectoire — à quel point vos choix passés restreignent vos choix futurs. Conceptuellement puissant."
       }
     ]
   },
   {
-    "model": "Interface",
+    "family": "Interface",
     "philosophy": "Ce qui se passe entre toi et le monde extérieur. Comment tu gères le silence, le regard des autres, et les contextes qui te demandent de changer de version de toi.",
     "questions": [
       {
@@ -124,26 +92,18 @@
         "origin": "gemini-3-pro",
         "question": "Capacité d'isolement analogique",
         "description": "Quelle est la durée continue maximale (en heures) que vous ayez passée seul·e, éveillé·e, sans aucun appareil électronique ni matériel de lecture, sans ressentir de détresse psychologique sévère ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "Mesure la capacité de régulation interne sans béquilles externes. Ce n'est pas la solitude choisie — c'est combien de temps votre esprit tient sans inputs.",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
+        "unit": "heures",
+        "options": [0, 1, 2, 4, 8, 24],
+        "why": "Mesure la capacité de régulation interne sans béquilles externes. Ce n'est pas la solitude choisie — c'est combien de temps votre esprit tient sans inputs."
       },
       {
         "key": "identity_translation_switches",
         "origin": "gpt-5-4-thinking",
         "question": "Switches de traduction identitaire",
         "description": "Dans combien de contextes sociaux distincts par semaine modifiez-vous délibérément votre langage, accent, registre, apparence ou comportement pour rester lisible, accepté·e ou en sécurité ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "La seule eval qui touche à la taxe identitaire — le coût de compatibilité sociale. Mesure le nombre de mondes entre lesquels vous naviguez et la traduction que chaque passage exige.",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
+        "unit": "contextes / semaine",
+        "options": [0, 1, 2, 4, 6, 10],
+        "why": "La seule eval qui touche à la taxe identitaire — le coût de compatibilité sociale. Mesure le nombre de mondes entre lesquels vous naviguez et la traduction que chaque passage exige."
       }
     ]
   }

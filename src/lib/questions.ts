@@ -26,6 +26,19 @@ export type InputType = "pills" | "slider" | "freeform";
 export const MODEL_IDS = ["claude-opus-4-6", "gpt-5-4-thinking", "gemini-3-pro"] as const;
 export type ModelId = (typeof MODEL_IDS)[number];
 
+// median + verdicts are relative to the model — each AI has its own idea of what's normal.
+// min, max, step, input, options are relative to the question — the measurement apparatus is shared.
+export interface ModelConfig {
+  median: number | null;
+  verdicts: {
+    high: string;
+    above: string;
+    average: string;
+    below: string;
+    low: string;
+  } | null;
+}
+
 export interface Stat {
   id: string;
   key: string;
@@ -58,10 +71,35 @@ export interface Section {
   stats: Stat[];
 }
 
-// median + verdicts are relative to the model — each AI has its own idea of what's normal.
-// min, max, step, input, options are relative to the question — the measurement apparatus is shared.
-export interface ModelConfig {
+// ─── Evals JSON shape (question skeleton) ─────────────
+
+export interface EvalQuestion {
+  key: string;
+  origin: string;
+  question: string;
+  description?: string;
+  unit?: string;
+  options?: number[];
+  why: string;
+}
+
+export interface EvalFamily {
+  family: string;
+  philosophy: string;
+  questions: EvalQuestion[];
+}
+
+// ─── Per-model file shape ─────────────────────────────
+
+interface ModelFileQuestion {
   median: number | null;
+  amplitude?: number | null;
+  unit?: string | null;
+  min?: number | null;
+  max?: number | null;
+  step?: number | null;
+  input?: InputType | null;
+  options?: number[];
   verdicts: {
     high: string;
     above: string;
@@ -71,33 +109,10 @@ export interface ModelConfig {
   } | null;
 }
 
-export interface ModelQuestion {
-  key?: string;
-  origin?: string;
-  question: string;
-  description?: string;
-  unit: string | null;
-  why: string;
-  models: Record<string, ModelConfig>;
-  verdicts?: {
-    high: string;
-    above: string;
-    average: string;
-    below: string;
-    low: string;
-  };
-  estimated_median?: number;
-  min?: number | null;
-  max?: number | null;
-  step?: number | null;
-  input?: InputType | null;
-  options?: number[];
-}
-
-export interface ModelData {
-  model: string;
-  philosophy: string;
-  questions: ModelQuestion[];
+export interface ModelFile {
+  model?: string;
+  questions: Record<string, ModelFileQuestion>;
+  [extra: string]: unknown;
 }
 
 // ─── Distribution ──────────────────────────────────────
@@ -133,7 +148,7 @@ function inferSliderExp(median: number, min: number, max: number, unit: string):
 
 // ─── Verdicts from explicit object ────────────────────
 
-function verdictsFromObj(v: NonNullable<ModelQuestion["verdicts"]>): Verdict[] {
+function verdictsFromObj(v: { high: string; above: string; average: string; below: string; low: string }): Verdict[] {
   return [
     [85, v.high],
     [60, v.above],
@@ -150,57 +165,74 @@ const SECTION_COLORS = [
   "#b8963e", "#6b8f71", "#c75b3f", "#a56b7f",
 ];
 
-export function buildSections(models: ModelData[]): Section[] {
-  return models.map((model, mi) => {
+/**
+ * Build sections from evals skeleton + per-model files.
+ * The origin model's config is used for display (slider, pills, etc).
+ * All models with a numeric median get a calc function.
+ */
+export function buildSections(
+  evals: EvalFamily[],
+  modelFiles: Record<string, ModelFile>,
+): Section[] {
+  return evals.map((fam, mi) => {
     const color = SECTION_COLORS[mi % SECTION_COLORS.length];
     return {
-      id: model.model.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+      id: fam.family.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
       number: String(mi + 1).padStart(2, "0"),
-      label: model.model.toUpperCase(),
-      subtitle: model.philosophy,
+      label: fam.family.toUpperCase(),
+      subtitle: fam.philosophy,
       color,
-      stats: model.questions.map((q, qi) => {
+      stats: fam.questions.map((q, qi) => {
         const origin = q.origin ?? "";
-        const modelsMap = q.models ?? {};
-        const originCfg = modelsMap[origin] ?? Object.values(modelsMap)[0];
 
-        // Question-level params (shared across models)
-        const min = q.min ?? 0;
-        const max = q.max ?? 100;
-        const step = q.step ?? 1;
-        const inputType = q.input ?? "slider";
-        const options = q.options ?? [];
+        // Gather this question's config from each model file
+        const perModel: Record<string, ModelFileQuestion> = {};
+        for (const [modelId, file] of Object.entries(modelFiles)) {
+          const mq = file.questions[q.key];
+          if (mq) perModel[modelId] = mq;
+        }
+        const originData = perModel[origin];
+
+        // Question-level params: unit + options from evals.json, rest from origin model's file
+        const unit = q.unit ?? originData?.unit ?? "";
+        const min = originData?.min ?? 0;
+        const max = originData?.max ?? (originData?.amplitude != null && originData?.median != null
+          ? originData.median + originData.amplitude
+          : 100);
+        const step = originData?.step ?? 1;
+        const inputType: InputType = originData?.input ?? "slider";
+        const options = q.options ?? originData?.options ?? [];
         const pills = inputType === "pills" ? options : [];
 
-        // Median is per-model — "unknown" means not yet calibrated
-        const rawMedian = originCfg?.median ?? q.estimated_median;
-        const median = typeof rawMedian === "number" ? rawMedian : 50;
-        const sliderExp = inferSliderExp(median, min, max, q.unit ?? "");
+        // Median from origin model
+        const median = (typeof originData?.median === "number") ? originData.median : 50;
+        const sliderExp = inferSliderExp(median, min, max, unit);
 
-        // Build per-model calculators and verdicts (skip "unknown" medians)
+        // Build per-model calculators and verdicts
         const calcs: Record<string, (v: number) => number> = {};
         const modelVerdicts: Record<string, Verdict[]> = {};
-        for (const [modelId, cfg] of Object.entries(modelsMap)) {
-          if (typeof cfg.median === "number") {
-            calcs[modelId] = buildCalc(cfg.median, min, max);
+        for (const [modelId, mq] of Object.entries(perModel)) {
+          if (typeof mq.median === "number") {
+            const mMax = mq.max ?? (mq.amplitude != null ? mq.median + mq.amplitude : max);
+            const mMin = mq.min ?? min;
+            calcs[modelId] = buildCalc(mq.median, mMin, mMax);
           }
-          if (cfg.verdicts) {
-            modelVerdicts[modelId] = verdictsFromObj(cfg.verdicts);
+          if (mq.verdicts) {
+            modelVerdicts[modelId] = verdictsFromObj(mq.verdicts);
           }
         }
 
-        // Origin model's verdicts are the default display verdicts
-        const defaultVerdicts = modelVerdicts[origin] ?? (q.verdicts ? verdictsFromObj(q.verdicts) : []);
+        const defaultVerdicts = modelVerdicts[origin] ?? [];
 
         return {
           id: `${mi}-${qi}`,
-          key: q.key ?? `${mi}-${qi}`,
+          key: q.key,
           origin,
           label: q.question,
           description: q.description ?? "",
-          unit: q.unit ?? "",
+          unit,
           why: q.why,
-          placeholder: typeof rawMedian === "number" ? String(rawMedian) : "",
+          placeholder: typeof originData?.median === "number" ? String(originData.median) : "",
           min,
           max,
           step,
@@ -225,7 +257,7 @@ export function getVerdict(stat: Stat, pct: number) {
   for (const [threshold, text] of stat.verdicts) {
     if (pct >= threshold) return text;
   }
-  return stat.verdicts[stat.verdicts.length - 1][1];
+  return stat.verdicts[stat.verdicts.length - 1]?.[1] ?? "";
 }
 
 export function formatPct(p: number) {

@@ -1,425 +1,177 @@
 {
   "ui": {
-    "subtitle": "Ingresá tus datos. Te decimos qué tan normal sos.",
+    "subtitle": "Mete tus datos. Te decimos qué tan normal eres.",
+    "concept": "3 IAs tienen cada una su idea de lo que es un humano normal. Esta es la suya. Y estos son tus números.",
     "outOf": "de 100",
     "aheadOf": "por delante de {n} personas de cada 100",
     "aheadAlmost": "por delante de casi todos",
     "behindAlmost": "casi todos están por delante",
     "middle": "justo en el medio",
-    "aboveMedian": "Por encima de la mediana.",
-    "average": "Promedio.",
-    "belowMost": "Por debajo de la mayoría.",
+    "aboveMedian": "Por encima de lo que se considera normal.",
+    "average": "Dentro de la norma — según nosotros.",
+    "belowMost": "Por debajo de lo que estimamos normal.",
     "clear": "borrar",
-    "compositeScore": "PUNTAJE COMPUESTO",
+    "compositeScore": "PUNTUACIÓN COMPUESTA",
     "data": "DATOS",
-    "models": "MODELOS",
-    "questions": "PREGUNTAS",
-    "approx": "DISTRIBUCIONES APROXIMADAS",
-    "verdictTop": "Estadísticamente, casi no existís.",
-    "verdict75": "Por encima del promedio en casi todo. Impresionante, o suerte.",
-    "verdict60": "Ligeramente arriba. Justo lo suficiente para mencionarlo.",
-    "verdict45": "Promedio. Está en el nombre.",
+    "models": "FAMILIAS",
+    "questions": "EVALS",
+    "approx": "DISTRIBUCIONES ESTIMADAS POR LOS MODELOS",
+    "verdictTop": "Según nuestras normas, casi no existes.",
+    "verdict75": "Por encima de nuestra norma en casi todo.",
+    "verdict60": "Ligeramente por encima. Justo lo suficiente para mencionarlo.",
+    "verdict45": "Average. Está en el nombre.",
     "verdict30": "Por debajo en varios ejes. Un dato, no un juicio.",
-    "verdictLow": "Estadísticamente notable — desde abajo. Igual de notable.",
-    "concept": "Le pedimos a 6 IAs: elegí 5 preguntas para medir qué tan promedio es un humano. Esto es lo que respondieron.",
+    "verdictLow": "Lejos de nuestra norma — por abajo. Igual de notable.",
     "whyQuestion": "¿por qué esta pregunta?"
   },
   "models": [
     {
-      "name": "GPT-5.4 Thinking",
-      "philosophy": "Un humano promedio no se define solo por su cuerpo o ingresos, sino por la forma estadística de su vida: quién depende de él, cuánto tiempo pierde, cuántos vínculos puede activar.",
-      "questions": [
-        {
-          "label": "Horas de cuidado no remunerado por semana",
-          "unit": "horas/semana",
-          "why": "Uno de los mayores bloques invisibles de trabajo humano.",
+      "name": "Plazos",
+      "philosophy": "El tiempo que tardas entre saber y hacer. Entre sentir y nombrar. Entre necesitar y pedir.",
+      "questions": {
+        "ask_delay": {
+          "label": "Tiempo antes de pedir ayuda",
+          "description": "La última vez que necesitabas ayuda y lo sabías: ¿cuántas horas tardaste en pedirla?",
+          "unit": "horas",
+          "why": "Todo el mundo ha vivido ese momento: sabes que necesitas ayuda, sabes a quién pedírsela, y no lo haces. Ese retraso no es pereza — es fricción. Orgullo, vergüenza, costumbre de aguantar solo, o simplemente un entorno donde pedir ya ha costado caro.",
           "verdicts": {
-            "high": "Vida orientada a la responsabilidad, autonomía amputada por el cuidado.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "Gran libertad de tiempo, o pocas obligaciones domésticas."
+            "high": "Esperas mucho antes de pedir. Por orgullo, por costumbre, o porque en tu historia, pedir tuvo un precio.",
+            "above": "Sueles retrasar la petición de ayuda. Sabes que la necesitas, pero la pospones.",
+            "average": "Pides, pero rara vez de inmediato. Un retraso normal.",
+            "below": "Pides bastante rápido. Tu entorno se percibe como fiable.",
+            "low": "Externalizas muy rápido. Buena señal en general — salvo si no puedes funcionar sin ello."
           }
         },
-        {
-          "label": "Personas que dependen de tu ingreso",
+        "epistemic_update_frequency": {
+          "label": "Veces que dijiste «estaba equivocado»",
+          "description": "¿Cuántas veces en 12 meses le dijiste «estaba equivocado» a alguien — sobre algo que realmente importaba?",
+          "unit": "veces al año",
+          "why": "No cuántas veces cambiaste de opinión en tu cabeza. Cuántas veces se lo dijiste a alguien. Es fácil cambiar de opinión en silencio. Decirlo cuesta algo — y eso es lo que medimos.",
+          "verdicts": {
+            "high": "Cambias de opinión seguido y lo dices. No te da miedo haberte equivocado.",
+            "above": "Concedes más que la mayoría. Señal de flexibilidad u honestidad.",
+            "average": "Una o dos veces al año. El ritmo normal.",
+            "below": "Raro que digas «estaba equivocado» en voz alta. Estabilidad o rigidez — las dos existen.",
+            "low": "Casi nunca. O tienes razón a menudo, o el costo social de admitirlo es demasiado alto en tu entorno."
+          }
+        },
+        "mortality_frequency": {
+          "label": "Frecuencia de pensamientos sobre la muerte",
+          "description": "¿Cuántas veces esta semana pensaste en la muerte — la tuya, la de otros, o simplemente el hecho de morir?",
+          "unit": "veces por semana",
+          "why": "Nadie hace esta pregunta. Por eso está aquí. Pensar en la muerte no es un síntoma — es un ruido de fondo. Algunas personas piensan en ello tres veces al día, otras tres veces al año. Las dos cosas son normales. Pero cambia las prioridades.",
+          "verdicts": {
+            "high": "La muerte está a menudo ahí de fondo. Duelo, ansiedad, enfermedad, filosofía — o simplemente tu forma de funcionar.",
+            "above": "Piensas en ello más que la mayoría. Probablemente colorea tus decisiones sin que te des cuenta.",
+            "average": "Algunas veces por semana. Presente pero no invasivo.",
+            "below": "No muy presente. Estás ocupado con el día a día, o simplemente no estás en eso.",
+            "low": "Casi nunca. La muerte es un concepto abstracto para ti, no un ruido de fondo."
+          }
+        },
+        "naming_latency": {
+          "label": "Tiempo para nombrar una emoción",
+          "description": "Cierra los ojos. Pon un cronómetro. Nombra en una palabra lo que sientes ahora mismo. ¿Cuántos segundos?",
+          "unit": "segundos",
+          "why": "No estamos probando si sientes algo — obvio que sí. Estamos probando cuánto tardas en ponerle una palabra. Es la distancia entre tu cuerpo y tu vocabulario.",
+          "verdicts": {
+            "high": "La palabra tarda en llegar. Sientes, pero la traducción es lenta. No es grave — pero es notable.",
+            "above": "Un poco más lento que el promedio. El contacto está, pero poner palabras requiere esfuerzo.",
+            "average": "Unos segundos. Un retraso normal entre sentir y nombrar.",
+            "below": "La palabra llega rápido. Costumbre de observarte, terapia, diario, o práctica contemplativa.",
+            "low": "Instantáneo. Ojo: demasiado rápido puede significar que la palabra es automática, no sentida."
+          }
+        }
+      }
+    },
+    {
+      "name": "Estructura",
+      "philosophy": "La forma concreta de tu vida. Lo que te sostiene, lo que te limita, lo que te protege. Números, no sensaciones.",
+      "questions": {
+        "admin_friction_hours": {
+          "label": "Horas perdidas en trámites",
+          "description": "¿Cuántas horas al mes pasas en trámites obligatorios? Formularios, llamadas, seguros, impuestos, banco, visa, disputas, citas.",
+          "unit": "horas al mes",
+          "why": "El tiempo que el sistema te quita solo para dejarte existir. Es el costo de mantenimiento de una vida — y varía enormemente de una persona a otra. Inmigración, enfermedad, divorcio, deuda: todo se lee en este número.",
+          "verdicts": {
+            "high": "El sistema te come mucho tiempo. Estatus complejo, múltiples trámites, o vida administrativamente pesada.",
+            "above": "Más que el promedio. La burocracia pesa en tu día a día.",
+            "average": "Unas horas al mes. La fricción normal de la vida adulta.",
+            "below": "Poca fricción. Vida simple administrativamente, o delegas bien.",
+            "low": "Casi nada. Situación estable, pocos sistemas que alimentar."
+          }
+        },
+        "emergency_reach": {
+          "label": "Personas a las que puedes llamar en una emergencia",
+          "description": "¿A cuántas personas podrías llamar ahora mismo y conseguir, en 24 horas, una cama por una noche o un préstamo de emergencia para una semana de comida?",
           "unit": "personas",
-          "why": "El ingreso dice poco; la cantidad de vidas que sostiene lo cambia todo.",
+          "why": "No tus amigos de Facebook. No la gente que quieres. La gente que contestaría a las 2 de la mañana y diría que sí. Es la red de seguridad real, no la que te imaginas.",
           "verdicts": {
-            "high": "Pilar económico, presión invisible.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "Gran independencia material."
+            "high": "Varias personas fiables y activables. Estás bien rodeado — de verdad, no en el papel.",
+            "above": "Una buena red. Varios recursos reales en caso de crisis.",
+            "average": "Dos o tres personas. Una red que aguanta, pero sin redundancia.",
+            "below": "Una persona, quizás. O dudas de quién respondería realmente.",
+            "low": "Nadie seguro. Aislamiento real, o red que existe en la superficie pero no en una emergencia."
           }
         },
-        {
-          "label": "Adultos a los que podrías llamar a las 3am",
-          "unit": "personas",
-          "why": "Medida operativa del capital social real.",
+        "autonomy_buffer_days": {
+          "label": "Días de margen financiero",
+          "description": "¿Cuántos días podrías vivir a tu nivel de vida actual, sin nuevos ingresos y sin nueva deuda?",
+          "unit": "días",
+          "why": "No es un saldo bancario — es un número de días. Y ese replanteamiento lo cambia todo. 60 días de margen es la capacidad de decir no. 5 días de margen es la obligación de decir sí.",
           "verdicts": {
-            "high": "Capital social denso, confianza recíproca fuerte.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "Fragilidad estructural, aislamiento."
+            "high": "Amplio margen. Puedes absorber un golpe, rechazar algo tóxico, tomarte tu tiempo.",
+            "above": "Un buen colchón. Un imprevisto no te pone en peligro.",
+            "average": "Unos dos meses. Un imprevisto es manejable, pero no dos.",
+            "below": "Margen delgado. Un mes difícil puede convertirse rápido en una crisis.",
+            "low": "Casi nada. Cada día depende del flujo. Poca libertad para decir no."
           }
         },
-        {
-          "label": "Horas de burocracia por mes",
-          "unit": "horas/mes",
-          "why": "Fricción entre una persona y los sistemas que gobiernan su vida.",
+        "future_lock_in_years": {
+          "label": "Años de bloqueo",
+          "description": "Si no cambiaras nada voluntariamente a partir de ahora, ¿durante cuántos años tus obligaciones actuales seguirían limitando tus opciones?",
+          "unit": "años",
+          "why": "Hipoteca, custodia compartida, estudios, deuda, contrato, visa. Tus decisiones pasadas reducen tus opciones futuras. Este número mide hasta qué punto tu trayectoria ya está escrita.",
           "verdicts": {
-            "high": "Precariedad, enfermedad, migración, estatus complejo.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "Privilegio de delegación o simplicidad burocrática."
-          }
-        },
-        {
-          "label": "Distancia del lugar de nacimiento",
-          "unit": "kilómetros",
-          "why": "Relación concreta con el origen: arraigo, exilio, movilidad elegida.",
-          "verdicts": {
-            "high": "Ruptura biográfica, migración, cosmopolitismo.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "Fuerte continuidad local, vínculos densos."
+            "high": "Mucha inercia. Tus compromisos pasados pesan durante mucho tiempo sobre tus opciones.",
+            "above": "Varios años de restricción por delante. La trayectoria está en marcha.",
+            "average": "Unos años. El bloqueo normal de una vida adulta.",
+            "below": "Pocas restricciones a largo plazo. Podrías cambiar de rumbo sin un desastre mayor.",
+            "low": "Muy fluido. Pocas ataduras estructurales — libertad o inestabilidad, según el resto del perfil."
           }
         }
-      ]
+      }
     },
     {
-      "name": "GPT-5.3",
-      "philosophy": "Un humano promedio optimiza para la estabilidad. Un humano excepcional acumula desviaciones medibles. Las distribuciones invisibles revelan una trayectoria.",
-      "questions": [
-        {
-          "label": "Cambios importantes de opinión por año",
-          "unit": "cambios/año",
-          "why": "Plasticidad cognitiva real. Variable dinámica, no estática.",
+      "name": "Interfaz",
+      "philosophy": "Lo que pasa entre tú y el mundo exterior. Cómo gestionas el silencio, la mirada de los demás, y los contextos que te piden cambiar de versión de ti.",
+      "questions": {
+        "analog_solitude_capacity": {
+          "label": "Duración máxima solo sin pantalla ni libro",
+          "description": "¿Cuál es la mayor duración que pasaste solo, despierto, sin pantalla, sin libro, sin nada — sin que se volviera difícil?",
+          "unit": "horas",
+          "why": "No la soledad elegida con un buen libro y un té. La soledad bruta. Solo tú y tu cabeza. ¿Cuánto aguantas antes de que el silencio se vuelva incómodo? Este número dice algo sobre tu capacidad de estar contigo mismo sin ayuda externa.",
           "verdicts": {
-            "high": "Gran adaptabilidad o inestabilidad cognitiva.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "Rigidez mental o fuerte coherencia interna."
+            "high": "Aguantas mucho tiempo solo con tu propia cabeza. Buena regulación interna.",
+            "above": "Por encima del promedio. El silencio no te pesa demasiado rápido.",
+            "average": "Dos a tres horas. Después, llega la necesidad de estímulos.",
+            "below": "El silencio pesa bastante rápido. Necesitas inputs para sentirte bien.",
+            "low": "Muy poca tolerancia al vacío. El silencio solo se vuelve incómodo rápido."
           }
         },
-        {
-          "label": "Minutos de silencio puro por día",
-          "unit": "minutos/día",
-          "why": "Ausencia total de estimulación. Espacio mental crudo, raramente medido.",
+        "identity_translation_switches": {
+          "label": "Contextos donde cambias de versión de ti",
+          "description": "¿En cuántos contextos diferentes por semana cambias deliberadamente tu forma de hablar, tu acento, tu registro, tu apariencia o tu comportamiento — para ser aceptado, comprendido o estar seguro?",
+          "unit": "contextos por semana",
+          "why": "Algunas personas son iguales en todos lados. Otras tienen que traducirse diez veces al día — entre el idioma de la oficina, el de la casa, el del barrio, el de la administración. Es un costo invisible. Este número lo hace visible.",
           "verdicts": {
-            "high": "Fuerte capacidad contemplativa, creatividad o rumiación.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "Sobrecarga de información, dependencia de estimulación."
-          }
-        },
-        {
-          "label": "Proyectos personales completados (12 meses)",
-          "unit": "proyectos/año",
-          "why": "Agencia sin restricción. Intención transformada en acción.",
-          "verdicts": {
-            "high": "Fuerte disciplina, autonomía.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "Inercia conductual."
-          }
-        },
-        {
-          "label": "Dificultades voluntarias por semana",
-          "unit": "acciones/semana",
-          "why": "Exposición voluntaria repetida a la incomodidad.",
-          "verdicts": {
-            "high": "Alta tolerancia al esfuerzo, crecimiento rápido.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "Evitación, mantenimiento del statu quo."
-          }
-        },
-        {
-          "label": "Revisiones de memoria por año",
-          "unit": "revisiones/año",
-          "why": "Capacidad activa de auto-relectura.",
-          "verdicts": {
-            "high": "Trabajo introspectivo intenso.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "Integración débil del pasado, identidad rígida."
+            "high": "Te traduces permanentemente. Muchos mundos, muchas versiones de ti. Es un trabajo constante.",
+            "above": "Varios contextos por semana donde ajustas quién eres. Probable navegación intercultural.",
+            "average": "Algunos ajustes. El mínimo de la vida social adulta.",
+            "below": "Poca traducción necesaria. Tus entornos se parecen, o estás seguro en todos lados.",
+            "low": "Eres el mismo en todos lados. Entorno homogéneo o muy gran seguridad identitaria."
           }
         }
-      ]
-    },
-    {
-      "name": "Gemini 3 Flash",
-      "philosophy": "El humano promedio es un nodo de repeticiones. Lo excepcional se define por la capacidad de extraerse de la entropía ambiental.",
-      "questions": [
-        {
-          "label": "Generaciones antes de que tu nombre se olvide",
-          "unit": "Generaciones",
-          "why": "Huella memorial proyectada, más allá de la existencia biológica.",
-          "verdicts": {
-            "high": "Constructor de civilización, linaje memorial fuerte.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "Existencia anclada en el presente, sin rastro."
-          }
-        },
-        {
-          "label": "Días por año de dependencia tecnológica",
-          "unit": "Días",
-          "why": "Alienación técnica. Fragilidad ante el colapso sistémico.",
-          "verdicts": {
-            "high": "Urbanita ultra-especializado, vulnerable.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "Autosuficiencia técnica relativa."
-          }
-        },
-        {
-          "label": "Ratio creación/consumo",
-          "unit": "Ratio (Creación / Consumo)",
-          "why": "Índice de metabolismo creativo.",
-          "verdicts": {
-            "high": "Productor compulsivo, artista o artesano.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "Consumidor puro, absorción pasiva."
-          }
-        },
-        {
-          "label": "Sistemas de signos dominados",
-          "unit": "Sistemas",
-          "why": "Pluralidad de marcos lógicos: idiomas, matemática, código, teoría musical.",
-          "verdicts": {
-            "high": "Políglota cognitivo, saltador de paradigmas.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "Pensamiento monocultural."
-          }
-        },
-        {
-          "label": "Minutos al 80% de frecuencia cardíaca máxima",
-          "unit": "Minutos",
-          "why": "Voluntad biológica pura. Tolerancia a la incomodidad visceral.",
-          "verdicts": {
-            "high": "Resiliencia mental y física extraordinaria.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "Baja tolerancia a la exigencia física."
-          }
-        }
-      ]
-    },
-    {
-      "name": "Claude Opus 4.6 (Anthropic)",
-      "philosophy": "El promedio no es una posición — es una gravedad. Lo que distingue a un humano es la textura de su atención, la profundidad de sus vínculos y su relación con el silencio.",
-      "questions": [
-        {
-          "label": "Contactos físicos por día",
-          "unit": "contactos por día",
-          "why": "El tacto es el dato más sub-documentado de la experiencia humana.",
-          "verdicts": {
-            "high": "50+: padre/madre de niño pequeño, cultura de alta proximidad.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "0: millones pasan días enteros sin contacto humano."
-          }
-        },
-        {
-          "label": "Generaciones de ancestros nombrados",
-          "unit": "generaciones",
-          "why": "Capital narrativo transmitido. Indicador de continuidad cultural.",
-          "verdicts": {
-            "high": "7+: fuerte tradición oral, capital cultural establecido.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "0–1: adopción, migración forzada, rupturas profundas."
-          }
-        },
-        {
-          "label": "Horas despierto en lengua materna",
-          "unit": "porcentaje",
-          "why": "No cuántos idiomas tenés, sino cuánto vivís en exilio cognitivo.",
-          "verdicts": {
-            "high": "100%: monolingüe, máximo confort cognitivo.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "< 20%: inmigrante lingüístico total, fatiga cognitiva crónica."
-          }
-        },
-        {
-          "label": "Caligrafías reconocidas",
-          "unit": "personas",
-          "why": "Indicador de intimidad atencional pre-digital.",
-          "verdicts": {
-            "high": "15+: docente, correspondencia manuscrita activa.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "0: vida enteramente mediada por lo digital."
-          }
-        },
-        {
-          "label": "Minutos antes del primer acto libre",
-          "unit": "minutos",
-          "why": "La demora mide el acceso al propio deseo.",
-          "verdicts": {
-            "high": "480+ min: padre/madre soltero/a, cuidador/a, precariedad.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "0 min: el primer gesto ya es una elección libre."
-          }
-        }
-      ]
-    },
-    {
-      "name": "Gemini Pro",
-      "philosophy": "La excepcionalidad reside en gestionar la fricción existencial: soberanía temporal, tolerancia a la vulnerabilidad, inmunidad al fracaso.",
-      "questions": [
-        {
-          "label": "Despertares naturales por mes",
-          "unit": "Días/mes",
-          "why": "Soberanía temporal. Riqueza de tiempo vs. alienación sistémica.",
-          "verdicts": {
-            "high": "Autonomía temporal casi total. Lujo raro o marginación.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "Sumisión total a las restricciones sistémicas."
-          }
-        },
-        {
-          "label": "Personas que guardan tu secreto vergonzoso",
-          "unit": "Individuos",
-          "why": "Capacidad de vulnerabilidad radical frente a la vergüenza social.",
-          "verdicts": {
-            "high": "Transparencia radical, sin filtros sociales.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "Aislamiento psicológico absoluto o fachada impenetrable."
-          }
-        },
-        {
-          "label": "Cartas de rechazo recibidas (en la vida)",
-          "unit": "Rechazos documentados",
-          "why": "Apetito de riesgo frente a sistemas de selección estricta.",
-          "verdicts": {
-            "high": "Ambición implacable, inmunidad al fracaso.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "Seguridad absoluta o parálisis por miedo."
-          }
-        },
-        {
-          "label": "Edad de la persona más vieja con la que hablaste 1h+",
-          "unit": "Años (Edad de la persona)",
-          "why": "Profundidad histórica encarnada. Contacto directo con memorias de épocas pasadas.",
-          "verdicts": {
-            "high": "Puente viviente a una era distante.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "Burbuja generacional estricta, presente perpetuo."
-          }
-        },
-        {
-          "label": "Cicatrices permanentes (> 1 cm)",
-          "unit": "Cicatrices",
-          "why": "Mapa cuantificable de la fricción física con el mundo.",
-          "verdicts": {
-            "high": "Riesgo físico extremo, cuerpo marcado.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "Existencia muy protegida físicamente."
-          }
-        }
-      ]
-    },
-    {
-      "name": "Claude Haiku 4.5",
-      "philosophy": "El humano promedio construye hábitos que funcionan. El excepcional sigue siendo capaz de fricción — de decir que no, renunciar, llorar, estar solo.",
-      "questions": [
-        {
-          "label": "Personas que te pueden decir una verdad dura",
-          "unit": "personas",
-          "why": "Test de fragilidad relacional. Fortaleza bajo impacto.",
-          "verdicts": {
-            "high": "Arquitectura relacional madura. Raro.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "Aislamiento emocional incluso en pareja."
-          }
-        },
-        {
-          "label": "Proyectos totalmente abandonados (5 años)",
-          "unit": "proyectos",
-          "why": "Honestidad con tus límites, no con tu ambición.",
-          "verdicts": {
-            "high": "Reinventor serial o testeador agresivo de límites.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "Lealtad a todo. Tenacidad o miedo al fracaso."
-          }
-        },
-        {
-          "label": "Horas solo sin ocupación por mes",
-          "unit": "horas por mes",
-          "why": "El vacío tolerable. ¿Podés enfrentarte a vos mismo sin un amortiguador?",
-          "verdicts": {
-            "high": "Contemplación regular o soledad impuesta.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "Horror al silencio. Huida crónica."
-          }
-        },
-        {
-          "label": "Alegrías gratuitas por semana",
-          "unit": "instancias por semana",
-          "why": "Momentos de estar contento de existir, sin resultado ni validación.",
-          "verdicts": {
-            "high": "Práctica contemplativa o resolvió el problema del sentido.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "Anhedonia. Vida estructurada por el rendimiento."
-          }
-        },
-        {
-          "label": "Dominios de vida calificados < 5/10",
-          "unit": "dominios",
-          "why": "Test de lucidez. Alguien que dice 0 carece de calibración.",
-          "verdicts": {
-            "high": "Crisis seria o transparencia radical.",
-            "above": "Por encima de la mediana.",
-            "average": "Promedio.",
-            "below": "Por debajo de la mayoría.",
-            "low": "Negación sistemática o privilegio estructural."
-          }
-        }
-      ]
+      }
     }
   ]
 }

@@ -1,19 +1,21 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
-import allModels from "@/evals.json";
+import evalsData from "@/evals.json";
+import claudeData from "@/evals-claude.json";
+import gptData from "@/evals-gpt.json";
+import geminiData from "@/evals-gemini.json";
 import analysisData from "@/analysis.json";
 import {
   buildSections,
   getVerdict,
   formatPct,
-  posToValue,
-  valueToPos,
   formatDisplay,
   fmtPreset,
   type Stat,
   type Section,
-  type ModelData,
+  type EvalFamily,
+  type ModelFile,
 } from "@/lib/questions";
 import {
   LOCALES,
@@ -24,9 +26,19 @@ import {
   translateSections,
 } from "@/lib/i18n";
 
-// ─── Build base sections (French, from evals.json) ─────
+// ─── Build base sections (evals skeleton + per-model files) ─────
 
-const BASE_SECTIONS = buildSections(allModels as ModelData[]);
+// Each model file has a different shape — normalize to { questions: Record<key, data> }
+const geminiQuestions = Array.isArray(geminiData) ? geminiData[0] : geminiData;
+const gptQuestions = (gptData as Record<string, unknown>).questions ?? gptData;
+
+const MODEL_FILES: Record<string, ModelFile> = {
+  "claude-opus-4-6": { questions: claudeData as unknown as ModelFile["questions"] },
+  "gpt-5-4-thinking": { questions: gptQuestions as ModelFile["questions"] },
+  "gemini-3-pro": { questions: geminiQuestions as unknown as ModelFile["questions"] },
+};
+
+const BASE_SECTIONS = buildSections(evalsData as EvalFamily[], MODEL_FILES);
 
 // ─── Analysis helper ───────────────────────────────────
 
@@ -66,66 +78,58 @@ function LanguageBar({ locale, setLocale }: { locale: string; setLocale: (l: str
   );
 }
 
-function PercentileBar({ pct, animate, color }: { pct: number; animate: boolean; color: string }) {
-  return (
-    <div style={{ width: "100%", height: 6, background: "#e8e4de", borderRadius: 3, overflow: "hidden" }}>
-      <div style={{ height: "100%", width: `${animate ? pct : 0}%`, background: color, borderRadius: 3, transition: "width 0.9s cubic-bezier(0.22, 1, 0.36, 1)" }} />
-    </div>
-  );
+
+/** Build ranges from options: each option is a boundary, chips show "lo–hi" and select the midpoint */
+interface Range { lo: number; hi: number; mid: number; label: string }
+
+function buildRanges(options: number[]): Range[] {
+  if (options.length < 2) return options.map(v => ({ lo: v, hi: v, mid: v, label: fmtPreset(v) }));
+  const ranges: Range[] = [];
+  for (let i = 0; i < options.length; i++) {
+    const lo = options[i];
+    const hi = i < options.length - 1 ? options[i + 1] : null;
+    if (hi === null) {
+      // Last option: "N+"
+      ranges.push({ lo, hi: lo, mid: lo, label: fmtPreset(lo) + "+" });
+    } else if (lo === 0 && options[i + 1] <= 1) {
+      // "0" as its own chip
+      ranges.push({ lo: 0, hi: 0, mid: 0, label: "0" });
+    } else {
+      const nextLo = hi;
+      const displayHi = nextLo - (nextLo >= 10 ? 1 : (nextLo >= 1 ? 1 : 0));
+      const mid = Math.round((lo + Math.min(displayHi, nextLo)) / 2);
+      if (displayHi <= lo) {
+        ranges.push({ lo, hi: lo, mid: lo, label: fmtPreset(lo) });
+      } else {
+        ranges.push({ lo, hi: displayHi, mid, label: fmtPreset(lo) + "–" + fmtPreset(displayHi) });
+      }
+    }
+  }
+  return ranges;
 }
 
-function StatSlider({ stat, value, onChange }: { stat: Stat; value: number | null; onChange: (v: number) => void }) {
-  const hasValue = value !== null;
-  const pos = hasValue ? valueToPos(value, stat.min, stat.max, stat.sliderExp) : 0.5;
-  const fillPct = pos * 100;
-
-  return (
-    <input
-      type="range"
-      className="stat-slider"
-      min={0}
-      max={10000}
-      value={Math.round(pos * 10000)}
-      onChange={(e) => {
-        const rawPos = parseInt(e.target.value) / 10000;
-        const rawValue = posToValue(rawPos, stat.min, stat.max, stat.sliderExp);
-        const snapped = Math.round(rawValue / stat.step) * stat.step;
-        onChange(Math.max(stat.min, Math.min(stat.max, snapped)));
-      }}
-      style={{
-        background: hasValue
-          ? `linear-gradient(to right, ${stat.color} 0%, ${stat.color} ${fillPct}%, #e8e4de ${fillPct}%, #e8e4de 100%)`
-          : "#e8e4de",
-        "--accent": hasValue ? stat.color : "#c8c4bc",
-        opacity: hasValue ? 1 : 0.45,
-      } as React.CSSProperties}
-    />
-  );
-}
-
-function Chips({ values, current, step, color, onSelect, size = "sm" }: {
-  values: number[];
+function RangeChips({ options, current, color, onSelect }: {
+  options: number[];
   current: number | null;
-  step: number;
   color: string;
   onSelect: (v: number) => void;
-  size?: "sm" | "lg";
 }) {
-  const lg = size === "lg";
+  const ranges = useMemo(() => buildRanges(options), [options]);
+
   return (
-    <div style={{ display: "flex", gap: lg ? 8 : 6, flexWrap: "wrap" }}>
-      {values.map((v) => {
-        const active = current !== null && Math.abs(current - v) < Math.max(step, 0.5);
+    <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+      {ranges.map((r) => {
+        const active = current !== null && current >= r.lo && (r === ranges[ranges.length - 1] ? true : current < (ranges[ranges.indexOf(r) + 1]?.lo ?? Infinity));
         return (
           <button
-            key={v}
-            onClick={() => onSelect(v)}
+            key={r.label}
+            onClick={() => onSelect(r.mid)}
             style={{
               fontFamily: "'IBM Plex Mono', monospace",
-              fontSize: lg ? 14 : 11,
-              padding: lg ? "7px 16px" : "3px 10px",
+              fontSize: 14,
+              padding: "7px 16px",
               border: `1.5px solid ${active ? color : "#ddd8d0"}`,
-              borderRadius: lg ? 14 : 12,
+              borderRadius: 14,
               background: active ? `${color}20` : "transparent",
               color: active ? color : "#999",
               fontWeight: active ? 600 : 400,
@@ -134,7 +138,7 @@ function Chips({ values, current, step, color, onSelect, size = "sm" }: {
               lineHeight: 1.5,
             }}
           >
-            {fmtPreset(v)}
+            {r.label}
           </button>
         );
       })}
@@ -142,31 +146,6 @@ function Chips({ values, current, step, color, onSelect, size = "sm" }: {
   );
 }
 
-function TextInput({ stat, value, onChange }: { stat: Stat; value: string; onChange: (v: string) => void }) {
-  return (
-    <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-      <input
-        type="text"
-        inputMode="decimal"
-        value={value}
-        onChange={(e) => {
-          const raw = e.target.value.replace(/[^0-9.,]/g, "").replace(",", ".");
-          onChange(raw);
-        }}
-        placeholder={stat.placeholder}
-        style={{
-          width: 80, padding: "4px 0", border: "none",
-          borderBottom: "1.5px solid #d4d0c8", background: "transparent",
-          color: "#1a1a1a", fontFamily: "'IBM Plex Mono', monospace",
-          fontSize: 15, fontWeight: 600, outline: "none", transition: "border-color 0.2s",
-        }}
-        onFocus={(e) => (e.target.style.borderBottomColor = stat.color)}
-        onBlur={(e) => (e.target.style.borderBottomColor = "#d4d0c8")}
-      />
-      <span style={{ fontSize: 12, color: "#999", fontFamily: "'IBM Plex Mono', monospace" }}>{stat.unit}</span>
-    </div>
-  );
-}
 
 function StatRow({ stat, value, onChange, result, locale }: { stat: Stat; value: string; onChange: (v: string) => void; result: number | null; locale: string }) {
   const [animate, setAnimate] = useState(false);
@@ -200,76 +179,49 @@ function StatRow({ stat, value, onChange, result, locale }: { stat: Stat; value:
         </p>
       )}
 
-      {/* Input: slider/pills + value display */}
-      {(stat.inputType === "slider" || stat.inputType === "freeform") && (
-        <>
-          <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 12 }}>
-            <div style={{ flex: 1 }}>
-              {stat.inputType === "slider" ? (
-                <StatSlider stat={stat} value={validNumeric} onChange={setFromNumber} />
-              ) : (
-                <TextInput stat={stat} value={value} onChange={onChange} />
-              )}
-            </div>
-            <div style={{ display: "flex", alignItems: "baseline", gap: 6, flexShrink: 0 }}>
-              {stat.inputType === "slider" ? (
-                <input
-                  type="text"
-                  inputMode="decimal"
-                  value={displayValue}
-                  onChange={(e) => { const raw = e.target.value.replace(/[^0-9.,]/g, "").replace(",", "."); onChange(raw); }}
-                  placeholder={stat.placeholder}
-                  style={{ width: 60, border: "none", background: "transparent", color: "#1a1a1a", fontFamily: "'IBM Plex Mono', monospace", fontSize: 24, fontWeight: 600, outline: "none", textAlign: "right", padding: 0 }}
-                />
-              ) : null}
-              <span style={{ fontSize: 13, color: "#999", fontFamily: "'IBM Plex Mono', monospace" }}>{stat.unit}</span>
-            </div>
-          </div>
-          <Chips values={stat.inputType === "slider" ? stat.presets : stat.presets} current={validNumeric} step={stat.step} color={stat.color} onSelect={setFromNumber} />
-        </>
-      )}
+      {/* Input: chips + freeform value */}
+      <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 12 }}>
+        <div style={{ flex: 1 }}>
+          <RangeChips options={stat.presets.length > 0 ? stat.presets : stat.pills} current={validNumeric} color={stat.color} onSelect={setFromNumber} />
+        </div>
+        <div style={{ display: "flex", alignItems: "baseline", gap: 6, flexShrink: 0 }}>
+          <input
+            type="text"
+            inputMode="decimal"
+            value={displayValue}
+            onChange={(e) => { const raw = e.target.value.replace(/[^0-9.,]/g, "").replace(",", "."); onChange(raw); }}
+            placeholder={stat.placeholder}
+            style={{ width: 50, border: "none", background: "transparent", color: "#1a1a1a", fontFamily: "'IBM Plex Mono', monospace", fontSize: 24, fontWeight: 600, outline: "none", textAlign: "right", padding: 0 }}
+          />
+          <span style={{ fontSize: 13, color: "#999", fontFamily: "'IBM Plex Mono', monospace" }}>{stat.unit}</span>
+        </div>
+      </div>
 
-      {stat.inputType === "pills" && (
-        <>
-          <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 12 }}>
-            <div style={{ flex: 1 }}>
-              <Chips values={stat.pills} current={validNumeric} step={stat.step} color={stat.color} onSelect={setFromNumber} size="lg" />
-            </div>
-            <div style={{ display: "flex", alignItems: "baseline", gap: 6, flexShrink: 0 }}>
-              <input
-                type="text"
-                inputMode="decimal"
-                value={displayValue}
-                onChange={(e) => { const raw = e.target.value.replace(/[^0-9.,]/g, "").replace(",", "."); onChange(raw); }}
-                placeholder={stat.placeholder}
-                style={{ width: 40, border: "none", background: "transparent", color: "#1a1a1a", fontFamily: "'IBM Plex Mono', monospace", fontSize: 24, fontWeight: 600, outline: "none", textAlign: "right", padding: 0 }}
-              />
-              <span style={{ fontSize: 13, color: "#999", fontFamily: "'IBM Plex Mono', monospace" }}>{stat.unit}</span>
-            </div>
-          </div>
-        </>
-      )}
-
-      {/* Result section */}
-      {pct !== null && (
-        <div style={{ marginTop: 24, paddingTop: 20, borderTop: "1px solid #e8e4de", animation: "fadeIn 0.4s ease" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 8 }}>
-            <div style={{ display: "flex", alignItems: "baseline", gap: 6 }}>
-              <span style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 48, fontWeight: 400, color: "#1a1a1a", lineHeight: 1, letterSpacing: "-2px" }}>
-                {formatPct(pct)}
-              </span>
-              <span style={{ fontSize: 16, color: "#aaa", fontFamily: "'IBM Plex Mono', monospace" }}>/ 100</span>
-            </div>
-            <span style={{ fontSize: 13, color: "#999", fontFamily: "'IBM Plex Mono', monospace" }}>
-              {getScoreLabel(locale, pct, formatPct(pct))}
-            </span>
-          </div>
-          <div style={{ width: "100%", height: 10, background: "#e8e4de", borderRadius: 5, overflow: "hidden", marginBottom: 16 }}>
-            <div style={{ height: "100%", width: `${animate ? pct : 0}%`, background: "#1a1a1a", borderRadius: 5, transition: "width 0.9s cubic-bezier(0.22, 1, 0.36, 1)" }} />
-          </div>
-          <p style={{ fontSize: 14, color: "#555", fontFamily: "'IBM Plex Mono', monospace", fontStyle: "italic", lineHeight: 1.6, margin: 0 }}>
-            {getVerdict(stat, pct)}
-          </p>
+      {/* Per-model verdicts */}
+      {validNumeric !== null && Object.keys(stat.modelVerdicts).length > 0 && (
+        <div style={{ marginTop: 24, paddingTop: 20, borderTop: "1px solid #e8e4de", animation: "fadeIn 0.4s ease", display: "flex", flexDirection: "column", gap: 12 }}>
+          {Object.entries(stat.calcs).map(([modelId, calcFn]) => {
+            const modelPct = Math.round(Math.max(0, Math.min(1, calcFn(validNumeric))) * 1000) / 10;
+            const verdicts = stat.modelVerdicts[modelId];
+            if (!verdicts) return null;
+            const verdict = getVerdict({ ...stat, verdicts }, modelPct);
+            if (!verdict) return null;
+            return (
+              <div key={modelId} style={{ padding: "10px 14px", background: "#faf9f7", borderRadius: 10, border: "1px solid #e8e4de" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 4 }}>
+                  <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, color: "#bbb", letterSpacing: 1 }}>
+                    {modelId.toUpperCase().replace(/-/g, " ")}
+                  </span>
+                  <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 13, fontWeight: 600, color: "#1a1a1a" }}>
+                    {formatPct(modelPct)}
+                  </span>
+                </div>
+                <p style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 13, color: "#666", fontStyle: "italic", lineHeight: 1.5, margin: 0 }}>
+                  {verdict}
+                </p>
+              </div>
+            );
+          })}
         </div>
       )}
 
@@ -468,26 +420,7 @@ export default function Home() {
           margin-bottom: 20px;
         }
         @media (max-width: 640px) { .stat-card { padding: 20px 18px; } }
-        .stat-slider {
-          -webkit-appearance: none; appearance: none;
-          width: 100%; height: 4px; border-radius: 2px;
-          outline: none; cursor: grab; transition: opacity 0.2s ease;
-        }
-        .stat-slider:active { cursor: grabbing; }
-        .stat-slider::-webkit-slider-thumb {
-          -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%;
-          background: var(--accent, #ccc); border: 3px solid #f5f2ec;
-          box-shadow: 0 1px 5px rgba(0,0,0,0.12); cursor: grab; transition: transform 0.12s ease;
-        }
-        .stat-slider::-webkit-slider-thumb:hover { transform: scale(1.15); }
-        .stat-slider:active::-webkit-slider-thumb { cursor: grabbing; transform: scale(1.08); }
-        .stat-slider::-moz-range-thumb {
-          width: 20px; height: 20px; border-radius: 50%;
-          background: var(--accent, #ccc); border: 3px solid #f5f2ec;
-          box-shadow: 0 1px 5px rgba(0,0,0,0.12); cursor: grab;
-        }
-        .stat-slider::-moz-range-track { height: 4px; border-radius: 2px; background: #e8e4de; }
-        .meta-btn {
+.meta-btn {
           font-family: 'IBM Plex Mono', monospace; font-size: 11px;
           letter-spacing: 0.5px; padding: 6px 16px;
           border: 1px solid #d4d0c8; border-radius: 20px;
