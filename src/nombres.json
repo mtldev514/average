@@ -1,150 +1,92 @@
-[
-  {
-    "model": "Délais",
-    "philosophy": "Le temps que tu mets entre savoir et faire. Entre ressentir et nommer. Entre avoir besoin et demander.",
-    "questions": [
-      {
-        "key": "ask_delay",
-        "origin": "claude-opus-4-6",
-        "question": "Délai de demande d'aide",
-        "description": "La dernière fois que vous avez eu besoin d'aide et que vous le saviez : combien d'heures se sont écoulées entre le moment où vous l'avez su et le moment où vous avez demandé ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "Flagship unanime du benchmark. Mesure la friction d'activation relationnelle — l'écart entre savoir qu'on a besoin d'aide et oser la demander. Ce délai encode la honte liée au besoin, l'hyperindépendance, ou un historique où demander a été puni.",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
-      },
-      {
-        "key": "epistemic_update_frequency",
-        "origin": "gemini-3-pro",
-        "question": "Fréquence d'auto-correction épistémique",
-        "description": "Combien de fois au cours des 12 derniers mois avez-vous explicitement dit « j'avais tort » à une autre personne concernant une conviction profonde ou une décision importante ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "Pas combien de fois tu as changé d'avis — combien de fois tu l'as dit à quelqu'un. Le coût social de l'aveu est le signal. Meilleur axe épistémique du pool.",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
-      },
-      {
-        "key": "mortality_frequency",
-        "origin": "claude-opus-4-6",
-        "question": "Fréquence de saillance mortelle",
-        "description": "Combien de fois au cours des 7 derniers jours avez-vous pensé à la mort, au fait de mourir, ou à votre propre mortalité ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "La mort comme fréquence de fond, pas comme événement. Pari théorique défendu par Claude, réhabilité par GPT qui a concédé : « son évaporation était une erreur de tri ».",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
-      },
-      {
-        "key": "naming_latency",
-        "origin": "claude-opus-4-6",
-        "question": "Latence de dénomination émotionnelle",
-        "description": "Fermez les yeux. Lancez un chronomètre. Nommez en un mot ce que vous ressentez en ce moment. Arrêtez le chronomètre quand le mot arrive. Combien de secondes ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "Ne teste pas si vous ressentez — teste si vous pouvez nommer. Fragile mais conceptuellement puissant — sensible au vocabulaire, au style introspectif, à la thérapie.",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
-      }
-    ]
+{
+  "ask_delay": {
+    "median": 24,
+    "unit": "heures",
+    "verdicts": {
+      "low": "0-6",
+      "median_band": "7-72",
+      "high": ">72"
+    }
   },
-  {
-    "model": "Structure",
-    "philosophy": "La forme concrète de ta vie. Ce qui te tient, ce qui te contraint, ce qui te protège. Des chiffres, pas des ressentis.",
-    "questions": [
-      {
-        "key": "admin_friction_hours",
-        "origin": "gpt-5-4-thinking",
-        "question": "Friction administrative",
-        "description": "Combien d'heures par mois consacrez-vous à de la friction administrative nécessaire pour rester fonctionnel : formulaires, appels, assurances, impôts, banque, visa, litiges, rendez-vous obligatoires ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "L'eval la plus average. du projet. Mesure le frottement pur entre une personne et les systèmes qui gouvernent sa vie. Condense précarité, maladie, migration, complexité familiale — un coût humain presque jamais mesuré.",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
-      },
-      {
-        "key": "emergency_reach",
-        "origin": "gpt-5-4-thinking",
-        "question": "Portée de secours",
-        "description": "Combien d'adultes distincts pourriez-vous contacter maintenant et obtenir plausiblement, dans les 24 heures, soit un lit pour une nuit, soit un prêt d'urgence équivalent à une semaine de nourriture ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "Capital social opérationnel, pas symbolique. Ne demande pas si vous vous sentez entouré — combien de liens sont activables en crise.",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
-      },
-      {
-        "key": "autonomy_buffer_days",
-        "origin": "gpt-5-4-thinking",
-        "question": "Tampon d'autonomie",
-        "description": "Pendant combien de jours pourriez-vous maintenir votre niveau de vie actuel sans revenu du travail nouveau ni nouvelle dette ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "Un solde bancaire converti en jours — mais ce recadrage change tout. Mesure l'optionalité réelle : la capacité de dire non, d'absorber un choc, de refuser sans s'effondrer.",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
-      },
-      {
-        "key": "future_lock_in_years",
-        "origin": "gpt-5-4-thinking",
-        "question": "Années de verrouillage",
-        "description": "Si vous ne faisiez aucun changement volontaire à partir d'aujourd'hui, pendant combien d'années vos obligations actuelles continueraient-elles à contraindre fortement vos choix majeurs ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "Mesure l'inertie comme propriété de trajectoire — à quel point vos choix passés restreignent vos choix futurs. Conceptuellement puissant.",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
-      }
-    ]
+  "epistemic_update_frequency": {
+    "median": 1,
+    "unit": "fois / 12 mois",
+    "verdicts": {
+      "low": "0",
+      "median_band": "1",
+      "high": "2+"
+    }
   },
-  {
-    "model": "Interface",
-    "philosophy": "Ce qui se passe entre toi et le monde extérieur. Comment tu gères le silence, le regard des autres, et les contextes qui te demandent de changer de version de toi.",
-    "questions": [
-      {
-        "key": "analog_solitude_capacity",
-        "origin": "gemini-3-pro",
-        "question": "Capacité d'isolement analogique",
-        "description": "Quelle est la durée continue maximale (en heures) que vous ayez passée seul·e, éveillé·e, sans aucun appareil électronique ni matériel de lecture, sans ressentir de détresse psychologique sévère ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "Mesure la capacité de régulation interne sans béquilles externes. Ce n'est pas la solitude choisie — c'est combien de temps votre esprit tient sans inputs.",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
-      },
-      {
-        "key": "identity_translation_switches",
-        "origin": "gpt-5-4-thinking",
-        "question": "Switches de traduction identitaire",
-        "description": "Dans combien de contextes sociaux distincts par semaine modifiez-vous délibérément votre langage, accent, registre, apparence ou comportement pour rester lisible, accepté·e ou en sécurité ?",
-        "unit": null, "min": null, "max": null, "step": null, "input": null, "options": [],
-        "why": "La seule eval qui touche à la taxe identitaire — le coût de compatibilité sociale. Mesure le nombre de mondes entre lesquels vous naviguez et la traduction que chaque passage exige.",
-        "models": {
-          "claude-opus-4-6":  { "median": null, "verdicts": null },
-          "gpt-5-4-thinking": { "median": null, "verdicts": null },
-          "gemini-3-pro":     { "median": null, "verdicts": null }
-        }
-      }
-    ]
+  "mortality_frequency": {
+    "median": 1,
+    "unit": "fois / 7 jours",
+    "verdicts": {
+      "low": "0",
+      "median_band": "1-3",
+      "high": "4+"
+    }
+  },
+  "naming_latency": {
+    "median": 4,
+    "unit": "secondes",
+    "verdicts": {
+      "low": "0-2",
+      "median_band": "3-8",
+      "high": ">8"
+    }
+  },
+  "admin_friction_hours": {
+    "median": 4,
+    "unit": "heures / mois",
+    "verdicts": {
+      "low": "0-2",
+      "median_band": "3-6",
+      "high": "7+"
+    }
+  },
+  "emergency_reach": {
+    "median": 2,
+    "unit": "adultes",
+    "verdicts": {
+      "low": "0-1",
+      "median_band": "2-3",
+      "high": "4+"
+    }
+  },
+  "autonomy_buffer_days": {
+    "median": 30,
+    "unit": "jours",
+    "verdicts": {
+      "low": "0-7",
+      "median_band": "8-60",
+      "high": "61+"
+    }
+  },
+  "future_lock_in_years": {
+    "median": 3,
+    "unit": "années",
+    "verdicts": {
+      "low": "0-1",
+      "median_band": "2-5",
+      "high": "6+"
+    }
+  },
+  "analog_solitude_capacity": {
+    "median": 2,
+    "unit": "heures",
+    "verdicts": {
+      "low": "0-0.5",
+      "median_band": "0.5-3",
+      "high": "3+"
+    }
+  },
+  "identity_translation_switches": {
+    "median": 3,
+    "unit": "contextes / semaine",
+    "verdicts": {
+      "low": "0-1",
+      "median_band": "2-4",
+      "high": "5+"
+    }
   }
-]
+}
